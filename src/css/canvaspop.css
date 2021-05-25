@@ -1,0 +1,16 @@
+.cp-modal {
+    background-color: #fff;
+    position: absolute;
+    z-index: 1000000;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 4px 15px 2px rgba(0,0,0,.5);
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    overflow: auto;
+    top: 10% !important;
+    left: 10% !important;
+    max-width: 80% !important;
+    margin-left: 0px !important;
+    width: 100% !important;
+    height: 80% !important;
+}

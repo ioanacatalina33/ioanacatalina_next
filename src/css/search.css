@@ -1,0 +1,81 @@
+#search-wrapper {
+  position: fixed;
+  top: 3.2rem;
+  background: #4a4b4d;
+  width: 100%;
+  z-index: 6;
+  max-height: 0;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+  transition: max-height 0.5s;
+  -webkit-transition: max-height 0.5s; /* For Safari 3.1 to 6.0 */
+  overflow: hidden;
+}
+
+#search-wrapper.slideIn {
+  max-height: 100vh;
+  transition: max-height 0.4s;
+  -webkit-transition: max-height 0.4s; /* For Safari 3.1 to 6.0 */
+  overflow: hidden;
+  animation: 1.4s delay-overflow;
+}
+
+#search-wrapper.slideOut {
+  max-height: 0;
+  transition: max-height 0.4s;
+  -webkit-transition: max-height 0.4s; /* For Safari 3.1 to 6.0 */
+  overflow: hidden;
+}
+
+.photo-wall-search {
+  width: 100vw - 60px;
+  height: 80vh;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: auto;
+  margin: 0 auto;
+  /* padding: 0;
+    margin: 0 auto; */
+  /* overflow-x: scroll;
+    overflow-y: hidden; */
+}
+
+.search-photo-col {
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  height: auto;
+  width: 20rem;
+  /* height: 100%;
+    width: 10rem; */
+  /* overflow: hidden; */
+}
+
+.photo-wall-search::-webkit-scrollbar {
+  width: 1em;
+}
+
+.photo-wall-search::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.photo-wall-search::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+@media only screen and (min-width: 600px) {
+  #search-wrapper {
+    top: 3.9rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #search-wrapper {
+    top: 3.9rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #search-wrapper {
+    top: 4rem;
+  }
+}

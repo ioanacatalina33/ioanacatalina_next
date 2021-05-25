@@ -1,0 +1,195 @@
+
+
+.marker-img-off {
+    width: 1.7rem;
+    height: 2.12rem; /* H = (W*124.4/100) */
+    background-image: url('marker_off.png');
+    background-size: contain;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    /* z-index: 0; */
+  }
+
+  .marker-img-off:hover {
+    background-image: url('marker_on.png');
+  }
+
+  
+.marker-img-active {
+    width: 1.9rem;
+    height: 2.3rem; /* H = (W*124.4/100) */
+    background-image: url('marker_active.png');
+    background-size: contain;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+  }
+
+
+  #map-component-wrapper{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 100vh;
+      background: #fafafa;
+      background-color:rgb(255, 255, 255, 0.7);
+      width: 0%;
+      transition: transform 40ms ease-in;
+      -webkit-transition: transform 40ms ease-in;
+      transition: width 0.5s ;
+      -webkit-transition: width 0.5s ; 
+      overflow-x: hidden;
+      overflow-y: hidden;
+      z-index: 1;
+  }
+
+  #map-component-wrapper.slideIn {
+    width: 80%;
+  }
+
+  #map-component-wrapper.slideOut {
+    width: 0%;
+  }
+
+  #map-component-wrapper.slideIn .map-component{
+    overflow-y: auto;
+    animation: 0.6s delay-overflow;
+  }
+
+  .map-component-close-button{
+    width: auto;
+    margin: 4rem 1rem 0em 1rem;
+    align-content: center;
+    text-align: left;
+    padding: 0rem;
+  }
+
+  .map-component{
+    width: auto;
+    max-height: 80vh;
+    margin: 0rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    align-content: center;
+    text-align: center;
+    padding: 0rem 1rem 1rem 1rem;
+  }
+
+  .map-albums-close, .map-albums-close:focus, .map-albums-close:hover {
+    background: transparent;
+    transition: 0.3s;
+    -webkit-transition: 0.3s ; 
+    color: #888888;
+    border: 0;
+    outline:0;
+    padding: 0rem 0.7rem 0rem 0.7rem;
+    font-size: 2em;
+    border-radius: 50%;
+  }
+
+  .map-albums-close:hover {
+      border-radius: 50%;
+      background: rgb(100, 100, 100, 0.2);
+      transition: 0.3s;
+      -webkit-transition: 0.3s; 
+  }
+
+  .map-photo-col {
+    width: 100%;
+    padding: 2rem;
+    padding:1.5rem 1rem 1.5rem 1rem;
+    overflow-x: hidden;
+  }
+
+  .photo-wall-map {
+    max-width: 100%;;
+    padding: 0;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  .map-filters-container-wrapper {
+    position: absolute;
+    color: #222222;
+    top: 5rem;
+    left: 1rem;
+    /* min-width: 15rem; */
+    background: #fafafa;
+    background-color:rgb(255, 255, 255, 0.9);
+    z-index: 1;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    border-radius: 0.2rem;
+  }
+
+  .map-hide-filters{
+    margin: 0rem 0rem 0rem 0rem; 
+    padding: 0.15rem 0.2rem 0.1rem 0.2rem;
+    font-size: 1rem;
+    box-shadow: 0 2px 0px 0 rgba(0,0,0,0.2);
+    transition: 0.2s;
+    -webkit-transition: 0.2s ; 
+  }
+   
+  .map-hide-filters:hover {
+    box-shadow: 0 1px 2px 1px rgba(0,0,0,0.3);
+    border-radius: 0.2rem;
+    cursor: pointer;
+  }
+  
+
+  #map-filters-container {
+    max-height: 0;
+    transition: max-height 0.3s;
+    -webkit-transition: max-height 0.3s ; /* For Safari 3.1 to 6.0 */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 1;
+    overflow: hidden;
+}
+
+  #map-filters-container.slideIn {
+    max-height: 40vh;
+    -webkit-transition: max-height 0.3s; /* For Safari 3.1 to 6.0 */
+    transition: max-height 0.3s;
+    overflow: auto;
+    animation: 0.6s delay-overflow;
+  }
+
+  #map-filters-container.slideOut {
+    max-height: 0;
+    -webkit-transition: max-height 0.3s ; /* For Safari 3.1 to 6.0 */
+    transition: max-height 0.3s;
+    overflow: hidden;
+  }
+
+  @keyframes delay-overflow {
+    from { overflow: hidden; }
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #map-component-wrapper.slideIn {
+    width: 50%;
+  }
+}
+  
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+  #map-component-wrapper.slideIn {
+    width: 40%;
+  }
+
+  #map-filters-container.slideIn {
+    max-height: 80vh;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+  #map-component-wrapper.slideIn {
+    width: 30%;
+  }
+}

@@ -1,0 +1,129 @@
+@keyframes fadeInImg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.img-normal-loading {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+}
+
+.img-normal-loaded {
+  object-fit: contain;
+  width: auto;
+  height: 100%;
+  animation: fadeInImg;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 0.7s;
+  animation-delay: 0.1s;
+}
+
+.img-loading {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  opacity: 0;
+}
+
+.img-loaded {
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  animation: fadeInImg;
+  /* cubic-bezier(0.23, 1, 0.32, 1) 1; */
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 0.7s;
+  animation-delay: 0.1s;
+}
+
+.img-loaded-text-center {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.img-loaded-text-top-center {
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  -webkit-transform: translate(-50%, -20%);
+}
+
+.img-loaded-text-bottom-center {
+  position: absolute;
+  text-align: center;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  -webkit-transform: translate(-50%, -70%);
+}
+
+.img-loaded-text-top-right {
+  position: absolute;
+  text-align: center;
+  top: 15%;
+  right: 10%;
+}
+
+.img-loaded-text-top-left {
+  position: absolute;
+  text-align: center;
+  top: 15%;
+  left: 10%;
+}
+
+.img-loaded-text-bottom-left {
+  position: absolute;
+  text-align: center;
+  bottom: 15%;
+  left: 10%;
+}
+
+.img-loaded-text-bottom-right {
+  position: absolute;
+  text-align: center;
+  bottom: 10%;
+  right: 10%;
+}
+
+.img-loaded-text-span {
+  background-color: #ffffff;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+  /* font-size: 1.8rem;
+  font-weight: 600; */
+  padding: 0rem 2rem 0rem 2rem;
+  border-radius: 0.2rem;
+  font-family: "serif", "Cambria", "Segoe UI", "Roboto", "Sans serif", "Oxygen";
+}
+
+.opacity40 {
+  opacity: 0.4;
+}
+
+.opacity45 {
+  opacity: 0.45;
+}
+
+.opacity60 {
+  opacity: 0.6;
+}
