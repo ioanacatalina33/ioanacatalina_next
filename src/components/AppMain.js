@@ -7,16 +7,15 @@ export default function AppMain({ Component, pageProps }) {
   const [articles, setArticles] = useState();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchSmallArticles()
-      .then((res) => {
-        setArticles(res);
-        //this.props.updateIsLoading(false);
-        console.log("res are ", { res });
-        dispatch(updateArticles(res));
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   fetchSmallArticles()
+  //     .then((res) => {
+  //       setArticles(res);
+  //       //this.props.updateIsLoading(false);
+  //       dispatch(updateArticles(res));
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
     <>

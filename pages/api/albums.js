@@ -1,7 +1,6 @@
 // Fake users data
 
-import { getListOfAlbums } from "../../api/controllers/albums";
-import { get as getAlbumDetails } from "../../api/controllers/article.controller";
+import { getAlbums } from "../../api/controllers/albums";
 
 export default function userHandler(req, res) {
   const { method } = req;
@@ -9,7 +8,7 @@ export default function userHandler(req, res) {
   switch (method) {
     case "GET": {
       // Get data from your database
-      getAlbumDetails(req, res);
+      getAlbums(req, res);
       break;
     }
     default:

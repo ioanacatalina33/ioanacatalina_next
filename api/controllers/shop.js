@@ -1,10 +1,10 @@
 import { Visitors } from "../models";
-import { getAlbumImagesFromArticleFolder } from "./helpers";
+import { getImagesNamesFromFolder } from "../utils";
 
 export async function getProductList(req, res) {
   try {
     var collection = req.body.collection;
-    var pictures = await getAlbumImagesFromArticleFolder(
+    var pictures = await getImagesNamesFromFolder(
       "canvaspop/" + (collection == "new" ? "all" : collection),
       "shop"
     );
@@ -35,7 +35,7 @@ export async function getProductList(req, res) {
 export async function getProduct(req, res) {
   try {
     var productId = req.body.productId;
-    var pictures = await getAlbumImagesFromArticleFolder(
+    var pictures = await getImagesNamesFromFolder(
       "canvaspop/_fullimages",
       "shop"
     );
