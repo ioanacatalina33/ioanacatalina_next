@@ -1,4 +1,5 @@
 import { getUrlPaths } from "../../api/controllers/albums";
+import { HighlightsAlbums } from "./utils";
 import * as Constants from "./constants";
 
 export const Routes = {
@@ -18,9 +19,10 @@ export async function getRouteStaticPaths(route) {
       fileNames = await getUrlPaths(Constants.TYPE_DANCE);
       break;
     }
-    case Routes.HIGHLIGHTS:
-      //fileNames = fs.readdirSync(highlightsDirectory);
+    case Routes.HIGHLIGHTS: {
+      HighlightsAlbums.forEach((high) => fileNames.push(high.href));
       break;
+    }
     default:
       break;
   }

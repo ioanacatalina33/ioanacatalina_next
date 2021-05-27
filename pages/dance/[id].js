@@ -5,7 +5,7 @@ import { getRouteStaticPaths, Routes } from "../../src/helpers/routes";
 import { getAlbumDetails } from "../../api/controllers/albums";
 
 export async function getStaticPaths() {
-  const paths = await getRouteStaticPaths(Routes.TRAVEL);
+  const paths = await getRouteStaticPaths(Routes.DANCE);
   return {
     paths,
     fallback: false,
@@ -26,7 +26,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const TravelAlbum = ({ album }) => {
+const DanceAlbum = ({ album }) => {
   const router = useRouter();
   const { id } = router.query;
   console.log("album is ", { album });
@@ -41,4 +41,4 @@ const TravelAlbum = ({ album }) => {
   );
 };
 
-export default TravelAlbum;
+export default DanceAlbum;

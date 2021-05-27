@@ -5,8 +5,7 @@ export async function getProductList(req, res) {
   try {
     var collection = req.body.collection;
     var pictures = await getImagesNamesFromFolder(
-      "canvaspop/" + (collection == "new" ? "all" : collection),
-      "shop"
+      "canvaspop/" + (collection == "new" ? "all" : collection)
     );
 
     let finalList = pictures.reverse();
@@ -35,10 +34,7 @@ export async function getProductList(req, res) {
 export async function getProduct(req, res) {
   try {
     var productId = req.body.productId;
-    var pictures = await getImagesNamesFromFolder(
-      "canvaspop/_fullimages",
-      "shop"
-    );
+    var pictures = await getImagesNamesFromFolder("canvaspop/_fullimages");
 
     //increment visitors and fetch number
     let visitors = await Visitors.findOne({

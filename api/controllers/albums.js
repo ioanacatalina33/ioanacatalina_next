@@ -65,13 +65,10 @@ export async function getAlbumDetails(name_url) {
       .populate("locations", Location)
       .sort({ date_start: -1 });
     const [images, recommended, { next, prev }] = await Promise.all([
-      getImagesNamesFromFolder(article.identifier, "client"),
+      getImagesNamesFromFolder(article.identifier),
       getRecommended(article),
       getNextAndPrev(name_url, article.type),
     ]);
-    // const images = await getImagesNamesFromFolder(article.identifier, "client");
-    // const recommended = await getRecommended(article);
-    // const { next, prev } = await getNextAndPrev(name_url, article.type);
     data = { article, images, recommended, next, prev };
   } catch (err) {
     console.error("error at getAlbumDetails " + err.message);
@@ -181,7 +178,7 @@ export async function getAlbums(req, res) {
     const recommended = req.body.recommended;
     if (type === "Highlights") {
       const identifier = req.body.identifier;
-      const images = await getImagesNamesFromFolder(identifier, "client");
+      const images = await getImagesNamesFromFolder(identifier);
       res.status(200).json({ images: images });
       return;
     } else if (type !== undefined && type !== "") {
@@ -198,10 +195,7 @@ export async function getAlbums(req, res) {
       const article = await Article.findById(id)
         .populate("locations", Location)
         .sort({ date_start: -1 });
-      const images = await getImagesNamesFromFolder(
-        article.identifier,
-        "client"
-      );
+      const images = await getImagesNamesFromFolder(article.identifier);
       res.status(200).json({ article: article, images: images });
       return;
     } else if (name_url !== undefined && name_url !== "") {
@@ -209,10 +203,7 @@ export async function getAlbums(req, res) {
       const article = await Article.findOne({ name_url: name_url })
         .populate("locations", Location)
         .sort({ date_start: -1 });
-      const images = await getImagesNamesFromFolder(
-        article.identifier,
-        "client"
-      );
+      const images = await getImagesNamesFromFolder(article.identifier);
       res.status(200).json({ article: article, images: images });
       return;
     } else if (articleReq !== undefined && recommended) {

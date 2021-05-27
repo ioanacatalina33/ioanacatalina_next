@@ -1,11 +1,10 @@
 import Link from "next/link";
 import React from "react";
-import { getAlbumsByType } from "../../api/controllers/albums";
 import Header from "../../src/components/Header";
-import { TYPE_TRAVEL } from "../../src/helpers/constants";
+import { getHighlightsAlbums } from "../../src/helpers/utils";
 
 export async function getStaticProps(context) {
-  const data = await getAlbumsByType(TYPE_TRAVEL);
+  const data = getHighlightsAlbums();
   if (!data) {
     return {
       notFound: true,
@@ -18,7 +17,7 @@ export async function getStaticProps(context) {
   };
 }
 
-const Travel = ({ albums }) => {
+const Highlights = ({ albums }) => {
   return (
     <div>
       <Header />
@@ -26,7 +25,7 @@ const Travel = ({ albums }) => {
       <div>
         {albums.map((album, i) => (
           <div key={i}>
-            <Link href={"/travel/" + album.name_url}>
+            <Link href={"/highlights/" + album.href}>
               <a>{album.name}</a>
             </Link>
           </div>
@@ -36,4 +35,4 @@ const Travel = ({ albums }) => {
   );
 };
 
-export default Travel;
+export default Highlights;

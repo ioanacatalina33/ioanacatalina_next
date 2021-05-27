@@ -329,41 +329,47 @@ export const getAlbumImageURL = (article, imageName) => {
   return string;
 };
 
-const articles = [
+export const HighlightsAlbums = [
   {
     type: "Highlights",
     name: "Nature",
     href: "nature",
+    description: "",
     identifier: "/Highlights/nature/",
   },
   {
     type: "Highlights",
     name: "City",
     href: "city",
+    description: "",
     identifier: "/Highlights/city/",
   },
   {
     type: "Highlights",
     name: "Events",
     href: "events",
+    description: "",
     identifier: "/Highlights/events/",
   },
   {
     type: "Highlights",
     name: "People",
     href: "people",
+    description: "",
     identifier: "/Highlights/people/",
   },
   {
     type: "Highlights",
     name: "Moments",
     href: "moments",
+    description: "",
     identifier: "/Highlights/moments/",
   },
   {
     type: "Highlights",
     name: "Animals",
     href: "animals",
+    description: "",
     identifier: "/Highlights/animals/",
   },
   {
@@ -382,19 +388,26 @@ const articles = [
   },
 ];
 
-export const getHighlightsAlbums = (albumName) => {
-  if (albumName !== undefined) {
-    // var upperName =  albumName.charAt(0).toUpperCase() +  albumName.slice(1, albumName.length);
-    // return articles.filter( article => article.href === upperName);
-    return articles.filter((article) => article.href === albumName);
-  }
-  return articles.slice(0, articles.length - 2);
+export const getHighlightAlbumDetails = (albumName) => {
+  const highlight = HighlightsAlbums.filter(
+    (article) => article.href === albumName
+  )[0];
+  const recommended = getHighlightsRecommended(albumName);
+
+  return { highlight, recommended, next: [], prev: [] };
 };
 
-export const getRecommendedAlbums = (albumName) => {
-  return articles
-    .filter((article) => article.href !== albumName && article.name !== "Geena")
-    .slice(0, 6);
+export const getHighlightsAlbums = (albumName) => {
+  if (albumName !== undefined) {
+    return HighlightsAlbums.filter((article) => article.href === albumName);
+  }
+  return HighlightsAlbums.slice(0, HighlightsAlbums.length - 2);
+};
+
+export const getHighlightsRecommended = (albumName) => {
+  return HighlightsAlbums.filter(
+    (article) => article.href !== albumName && article.name !== "Geena"
+  ).slice(0, 6);
 };
 
 export function contentScroll(screenHeight) {

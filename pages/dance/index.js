@@ -2,10 +2,11 @@ import Link from "next/link";
 import React from "react";
 import { getAlbumsByType } from "../../api/controllers/albums";
 import Header from "../../src/components/Header";
-import { TYPE_TRAVEL } from "../../src/helpers/constants";
+import { TYPE_DANCE } from "../../src/helpers/constants";
 
 export async function getStaticProps(context) {
-  const data = await getAlbumsByType(TYPE_TRAVEL);
+  const data = await getAlbumsByType(TYPE_DANCE);
+
   if (!data) {
     return {
       notFound: true,
@@ -18,15 +19,15 @@ export async function getStaticProps(context) {
   };
 }
 
-const Travel = ({ albums }) => {
+const Dance = ({ albums }) => {
   return (
     <div>
       <Header />
-      <br /> <h1>Travel page</h1>
+      <br /> <h1>Dance page</h1>
       <div>
         {albums.map((album, i) => (
           <div key={i}>
-            <Link href={"/travel/" + album.name_url}>
+            <Link href={"/dance/" + album.name_url}>
               <a>{album.name}</a>
             </Link>
           </div>
@@ -36,4 +37,4 @@ const Travel = ({ albums }) => {
   );
 };
 
-export default Travel;
+export default Dance;
