@@ -1,14 +1,13 @@
 import dbConnect from "../config/dbConnect";
 import { Location, Article } from "../models";
 
-export async function fetchValidLocations() {
+export async function fetchValidLocations(): Promise<Location> {
   let locations = [];
   try {
     await dbConnect();
     locations = await Location.find().populate(
       "articles",
       {
-        _id: 1,
         name: 1,
         name_url: 1,
         name_location: 1,

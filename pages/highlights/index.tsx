@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { GetStaticProps } from "next";
 import React from "react";
-import Header from "../../src/components/Header";
-import { getHighlightsAlbums } from "../../src/helpers/utils";
 
-export async function getStaticProps(context) {
+import Header from "components/Header";
+import { Highlight } from "types/modelTypes";
+import { getHighlightsAlbums } from "staticModel";
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const data = getHighlightsAlbums();
   if (!data) {
     return {
@@ -15,13 +18,17 @@ export async function getStaticProps(context) {
     props: { albums: data },
     // revalidate: 1, // In seconds
   };
+};
+
+interface Props {
+  albums: Highlight[];
 }
 
-const Highlights = ({ albums }) => {
+const Highlights = ({ albums }: Props) => {
   return (
     <div>
       <Header />
-      <br /> <h1>Travel page</h1>
+      <br /> <h1>Highlight page</h1>
       <div>
         {albums.map((album, i) => (
           <div key={i}>

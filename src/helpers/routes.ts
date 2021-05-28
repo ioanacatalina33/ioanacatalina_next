@@ -1,22 +1,22 @@
+import { HighlightsAlbums } from "staticModel";
 import { getUrlPaths } from "../../api/controllers/albums";
-import { HighlightsAlbums } from "./utils";
-import * as Constants from "./constants";
+import { AlbumType } from "./enums";
 
-export const Routes = {
-  TRAVEL: "travel",
-  DANCE: "dance",
-  HIGHLIGHTS: "highlights",
-};
+export enum Routes {
+  TRAVEL = "travel",
+  DANCE = "dance",
+  HIGHLIGHTS = "highlights",
+}
 
-export async function getRouteStaticPaths(route) {
+export async function getRouteStaticPaths(route: Routes) {
   let fileNames = [];
   switch (route) {
     case Routes.TRAVEL: {
-      fileNames = await getUrlPaths(Constants.TYPE_TRAVEL);
+      fileNames = await getUrlPaths(AlbumType.TRAVEL);
       break;
     }
     case Routes.DANCE: {
-      fileNames = await getUrlPaths(Constants.TYPE_DANCE);
+      fileNames = await getUrlPaths(AlbumType.DANCE);
       break;
     }
     case Routes.HIGHLIGHTS: {

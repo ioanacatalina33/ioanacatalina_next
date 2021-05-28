@@ -1,5 +1,5 @@
 import { sleep, getHighlightsAlbums, getRecommendedAlbums } from "./utils";
-import { TYPE_HIGHLIGHTS } from "./constants";
+import { TYPE_HIGHLIGHTS } from "./const";
 
 export const fetchSmallArticles = async () => {
   try {

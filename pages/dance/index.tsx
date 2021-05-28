@@ -1,11 +1,15 @@
+import { GetStaticProps } from "next";
 import Link from "next/link";
 import React from "react";
-import { getAlbumsByType } from "../../api/controllers/albums";
-import Header from "../../src/components/Header";
-import { TYPE_DANCE } from "../../src/helpers/constants";
 
-export async function getStaticProps(context) {
-  const data = await getAlbumsByType(TYPE_DANCE);
+import Header from "components/Header";
+import { AlbumType } from "helpers/enums";
+import { Album } from "types/modelTypes";
+
+import { getAlbumsByType } from "../../api/controllers";
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await getAlbumsByType(AlbumType.DANCE);
 
   if (!data) {
     return {
@@ -17,9 +21,13 @@ export async function getStaticProps(context) {
     props: { albums: data },
     // revalidate: 1, // In seconds
   };
+};
+
+interface Props {
+  albums: Album[];
 }
 
-const Dance = ({ albums }) => {
+const Dance = ({ albums }: Props) => {
   return (
     <div>
       <Header />

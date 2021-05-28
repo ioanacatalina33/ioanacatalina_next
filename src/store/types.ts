@@ -11,3 +11,20 @@ export const TICK = "TICK";
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const RESET = "RESET";
+
+export interface AppStore {
+  screenType: string;
+  screenWidth: string;
+  screenHeight: string;
+  allArticles: any[];
+  isLoading: boolean;
+  isMobileSearch: boolean;
+  queryText: string;
+  filters_travel: {
+    years: number[];
+    months: string[];
+    continents: string[];
+    countries: string[];
+    subtypes: string[];
+  };
+}

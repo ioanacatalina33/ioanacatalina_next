@@ -10,12 +10,14 @@
       "jsx": true
     }
   },
-
-  "plugins": ["react"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react"],
   "extends": [
     "next",
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
@@ -23,6 +25,9 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "react/prop-types": "warn",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": false
   }
 }
+
+// @typescript-eslint/explicit-module-boundary-types

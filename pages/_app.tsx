@@ -1,9 +1,11 @@
+import AppMain from "components/AppMain";
+import type { AppProps /*, AppContext */ } from "next/app";
 import React from "react";
-import { Provider } from "react-redux";
-import AppMain from "../src/components/AppMain";
-import { useStore } from "../src/store/store";
 
-export default function App({ Component, pageProps }) {
+import { Provider } from "react-redux";
+import { useStore } from "store/store";
+
+export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const store = useStore(pageProps.initialReduxState);
 
   return (

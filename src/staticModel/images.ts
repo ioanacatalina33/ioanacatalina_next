@@ -1,18 +1,21 @@
-import { TYPE_DANCE, TYPE_HIGHLIGHTS, TYPE_TRAVEL } from "./constants";
+import { TYPE_DANCE, TYPE_HIGHLIGHTS, TYPE_TRAVEL } from "helpers/const";
+import { AlbumType } from "helpers/enums";
 
-export const sleep = (milliseconds) => {
-  return new Promise((resolve) => setTimeout(resolve, milliseconds));
-};
+interface FullSizeImage {
+  url: string;
+  text: string;
+  class: string;
+}
 
-export const getFullSizeImageByType = (type) => {
+export const getFullSizeImageByType: (type: AlbumType) => FullSizeImage = (
+  type: AlbumType
+) => {
   if (type === TYPE_TRAVEL) return getFullSizeImageTravel();
   if (type === TYPE_DANCE) return getFullSizeImageDance();
   if (type === TYPE_HIGHLIGHTS) return getFullSizeImageHighlights();
-  if (type === "TravelBottom") return getFullSizeImageTravelBottom();
-  if (type === "DanceBottom") return getFullSizeImageDanceBottom();
 };
 
-export const getFullSizeImageAboutMe = () => {
+export const getFullSizeImageAboutMe = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/aboutme_header_01.jpg",
@@ -23,7 +26,7 @@ export const getFullSizeImageAboutMe = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageHome = () => {
+export const getFullSizeImageHome = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/home_header.jpg",
@@ -34,7 +37,7 @@ export const getFullSizeImageHome = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageContact = () => {
+export const getFullSizeImageContact = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/contact_header_01.jpg",
@@ -45,7 +48,7 @@ export const getFullSizeImageContact = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageHighlights = () => {
+export const getFullSizeImageHighlights = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/pic_highlights.jpg",
@@ -56,7 +59,7 @@ export const getFullSizeImageHighlights = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageCollaborations = () => {
+export const getFullSizeImageCollaborations = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/collaborations_header_01.jpg",
@@ -67,7 +70,7 @@ export const getFullSizeImageCollaborations = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageTripsWithMe = () => {
+export const getFullSizeImageTripsWithMe = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/couples_sessions_header_01.jpg",
@@ -78,7 +81,7 @@ export const getFullSizeImageTripsWithMe = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageTravel = () => {
+export const getFullSizeImageTravel = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/travel_header_01.jpg",
@@ -124,7 +127,7 @@ export const getFullSizeImageTravel = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageDance = () => {
+export const getFullSizeImageDance = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/dance_header_01.jpg",
@@ -155,30 +158,9 @@ export const getFullSizeImageDance = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageTravelBottom = () => {
-  const images = [
-    {
-      url: "/img/fullscreen/bottom01.jpg",
-      ratio: "49.55",
-      class: "",
-    },
-  ];
-  return images[0];
-};
-
-export const getFullSizeImageDanceBottom = () => {
-  const images = [
-    {
-      url: "/img/fullscreen/bottom01.jpg",
-      ratio: "49.55",
-      class: "",
-    },
-  ];
-  return images[0];
-};
-
+type PhotosCollage = (index: number) => string[];
 //My story photos
-export const getPhotosForCollage = (index) => {
+export const getPhotosForCollage: PhotosCollage = (index: number) => {
   const images = [
     [
       //1 - adventures
@@ -232,7 +214,7 @@ export const getPhotosForCollage = (index) => {
   return images[index];
 };
 
-export const getPhotosForTravelWithMe = (index) => {
+export const getPhotosForTravelWithMe: PhotosCollage = (index: number) => {
   const image = [
     ["/img/photos/travelwithme/pic1.jpg", "/img/photos/travelwithme/pic2.jpg"],
     ["/img/photos/travelwithme/pic3.jpg", "/img/photos/travelwithme/pic4.jpg"],
@@ -243,7 +225,7 @@ export const getPhotosForTravelWithMe = (index) => {
   return image[index];
 };
 
-export const getPhotosForCollaborationsDance = () => {
+export const getPhotosForCollaborationsDance: () => string[] = () => {
   return [
     "/img/photos/collaborations_dance/001.jpg",
     "/img/photos/collaborations_dance/002.jpg",
@@ -252,7 +234,7 @@ export const getPhotosForCollaborationsDance = () => {
   ];
 };
 
-export const getPhotosForCollaborationsBaby = () => {
+export const getPhotosForCollaborationsBaby: () => string[] = () => {
   return [
     "/img/photos/collaborations_baby/001.jpg",
     "/img/photos/collaborations_baby/002.jpg",
@@ -261,7 +243,7 @@ export const getPhotosForCollaborationsBaby = () => {
   ];
 };
 
-export const getPhotosForCollaborationsEvents = () => {
+export const getPhotosForCollaborationsEvents: () => string[] = () => {
   return [
     "/img/photos/collaborations_events/001.jpg",
     "/img/photos/collaborations_events/002.jpg",
@@ -270,7 +252,7 @@ export const getPhotosForCollaborationsEvents = () => {
   ];
 };
 
-export const getPhotosForCollaborationsIndoors = () => {
+export const getPhotosForCollaborationsIndoors: () => string[] = () => {
   return [
     "/img/photos/collaborations_indoors/001.jpg",
     "/img/photos/collaborations_indoors/002.jpg",
@@ -279,7 +261,7 @@ export const getPhotosForCollaborationsIndoors = () => {
   ];
 };
 
-export const getPhotosForCollaborationsPets = () => {
+export const getPhotosForCollaborationsPets: () => string[] = () => {
   return [
     "/img/photos/collaborations_pets/001.jpg",
     "/img/photos/collaborations_pets/002.jpg",
@@ -288,7 +270,7 @@ export const getPhotosForCollaborationsPets = () => {
   ];
 };
 
-export const getPhotosForCollaborationsPortraits = () => {
+export const getPhotosForCollaborationsPortraits: () => string[] = () => {
   return [
     "/img/photos/collaborations_portraits/001.jpg",
     "/img/photos/collaborations_portraits/002.jpg",
@@ -297,7 +279,7 @@ export const getPhotosForCollaborationsPortraits = () => {
   ];
 };
 
-export const getPhotosForCollaborationsProducts = () => {
+export const getPhotosForCollaborationsProducts: () => string[] = () => {
   return [
     "/img/photos/collaborations_products/001.jpg",
     "/img/photos/collaborations_products/002.jpg",
@@ -306,7 +288,7 @@ export const getPhotosForCollaborationsProducts = () => {
   ];
 };
 
-export const getPhotosForCollaborationsTrash = () => {
+export const getPhotosForCollaborationsTrash: () => string[] = () => {
   return [
     "/img/photos/collaborations_trash/001.jpg",
     "/img/photos/collaborations_trash/002.jpg",
@@ -315,7 +297,7 @@ export const getPhotosForCollaborationsTrash = () => {
   ];
 };
 
-export const getPhotosForAdventureProducts = () => {
+export const getPhotosForAdventureProducts: () => string[] = () => {
   return [
     "/img/photos/collaborations_adventure/001.jpg",
     "/img/photos/collaborations_adventure/002.jpg",
@@ -323,96 +305,3 @@ export const getPhotosForAdventureProducts = () => {
     "/img/photos/collaborations_adventure/004.jpg",
   ];
 };
-
-export const getAlbumImageURL = (article, imageName) => {
-  var string = ("/img" + article.identifier + imageName).replace(" ", "%20");
-  return string;
-};
-
-export const HighlightsAlbums = [
-  {
-    type: "Highlights",
-    name: "Nature",
-    href: "nature",
-    description: "",
-    identifier: "/Highlights/nature/",
-  },
-  {
-    type: "Highlights",
-    name: "City",
-    href: "city",
-    description: "",
-    identifier: "/Highlights/city/",
-  },
-  {
-    type: "Highlights",
-    name: "Events",
-    href: "events",
-    description: "",
-    identifier: "/Highlights/events/",
-  },
-  {
-    type: "Highlights",
-    name: "People",
-    href: "people",
-    description: "",
-    identifier: "/Highlights/people/",
-  },
-  {
-    type: "Highlights",
-    name: "Moments",
-    href: "moments",
-    description: "",
-    identifier: "/Highlights/moments/",
-  },
-  {
-    type: "Highlights",
-    name: "Animals",
-    href: "animals",
-    description: "",
-    identifier: "/Highlights/animals/",
-  },
-  {
-    type: "Highlights",
-    name: "My adventures",
-    href: "myadventures",
-    description: "Just a couple of moments from my life caught on camera..",
-    identifier: "/Highlights/myadventures/",
-  },
-  {
-    type: "Highlights",
-    name: "Geena",
-    href: "geena",
-    description: "",
-    identifier: "/Highlights/geena/",
-  },
-];
-
-export const getHighlightAlbumDetails = (albumName) => {
-  const highlight = HighlightsAlbums.filter(
-    (article) => article.href === albumName
-  )[0];
-  const recommended = getHighlightsRecommended(albumName);
-
-  return { highlight, recommended, next: [], prev: [] };
-};
-
-export const getHighlightsAlbums = (albumName) => {
-  if (albumName !== undefined) {
-    return HighlightsAlbums.filter((article) => article.href === albumName);
-  }
-  return HighlightsAlbums.slice(0, HighlightsAlbums.length - 2);
-};
-
-export const getHighlightsRecommended = (albumName) => {
-  return HighlightsAlbums.filter(
-    (article) => article.href !== albumName && article.name !== "Geena"
-  ).slice(0, 6);
-};
-
-export function contentScroll(screenHeight) {
-  window.scrollTo({
-    top: screenHeight,
-    behavior: "smooth",
-  });
-}

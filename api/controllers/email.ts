@@ -12,10 +12,24 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const root = path.dirname(require.main.filename);
-const absolutePath = path.join(root, "shop/public/img/aboutme_slide1.jpg");
+// TODO
+const absolutePath = path.join(
+  process.cwd(),
+  "shop/public/img/aboutme_slide1.jpg"
+);
 
-function getMailOptions(req, title) {
+interface MailOptions {
+  from: string;
+  to: string;
+  subject: string;
+  text?: string;
+  attachments?: {
+    filename: string;
+    content: fs.ReadStream;
+  }[];
+}
+
+function getMailOptions(req, title): MailOptions {
   return {
     from: process.env.EMAILSUPPORT,
     to: "ioana_catalina_33@yahoo.com, ioana.echim@gmail.com",
