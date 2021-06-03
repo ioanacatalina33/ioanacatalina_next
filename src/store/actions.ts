@@ -1,3 +1,6 @@
+import { ScreenType } from "helpers/enums";
+import { Album } from "types/modelTypes";
+
 import * as types from "./types";
 
 // INITIALIZES CLOCK ON SERVER
@@ -23,7 +26,7 @@ export const decrementCount = () => ({ type: types.DECREMENT });
 export const resetCount = () => ({ type: types.RESET });
 
 // APP
-export function updateScreen(screenType) {
+export function updateScreen(screenType: ScreenType) {
   return { type: types.UPDATE_SCREEN, screenType };
 }
 
@@ -31,7 +34,7 @@ export function updateScreenDim(screenWidth, screenHeight) {
   return { type: types.UPDATE_SCREEN_WIDTH, screenWidth, screenHeight };
 }
 
-export function updateArticles(allArticles) {
+export function updateArticles(allArticles: Album[]) {
   return { type: types.UPDATE_ARTICLES, allArticles };
 }
 

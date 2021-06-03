@@ -1,3 +1,6 @@
+import { ScreenType } from "helpers/enums";
+import { Album } from "types/modelTypes";
+
 export const UPDATE_SCREEN = "UPDATE_SCREEN";
 export const UPDATE_SCREEN_WIDTH = "UPDATE_SCREEN_WIDTH";
 export const UPDATE_TRAVEL_FILTERS = "UPDATE_FILTERS";
@@ -12,11 +15,15 @@ export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const RESET = "RESET";
 
+export interface TimerState {
+  lastUpdate: number;
+  light: boolean;
+}
 export interface AppStore {
-  screenType: string;
+  screenType: ScreenType;
   screenWidth: string;
   screenHeight: string;
-  allArticles: any[];
+  allArticles: Album[];
   isLoading: boolean;
   isMobileSearch: boolean;
   queryText: string;
@@ -27,4 +34,10 @@ export interface AppStore {
     countries: string[];
     subtypes: string[];
   };
+}
+
+export interface ApplicationState {
+  counter: number;
+  timer: TimerState;
+  app: AppStore;
 }

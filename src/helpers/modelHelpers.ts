@@ -17,7 +17,7 @@ export const urlAlbumHeader = (
   identifier: string,
   isCoverLarge: boolean
 ): string => {
-  return type === AlbumType.HIGHLIGHTS || isCoverLarge
+  return type === AlbumType.Highlights || isCoverLarge
     ? articleCoverLarge(identifier)
     : articleCover(identifier);
 };
@@ -125,7 +125,7 @@ export const filterLocations = (
   }
   if (
     (!filters.subtypes || filters.subtypes.length === 0) &&
-    !filters.types.includes(AlbumType.DANCE)
+    !filters.types.includes(AlbumType.Dance)
   ) {
     return [];
   }

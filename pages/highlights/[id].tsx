@@ -2,7 +2,6 @@ import React from "react";
 import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-import Header from "components/Header";
 import { getRouteStaticPaths, Routes } from "helpers/routes";
 import { FullHighlightDetails } from "types/modelTypes";
 import { getHighlightAlbumDetails } from "staticModel";
@@ -43,7 +42,6 @@ const HighlightAlbum = ({ fullAlbum }: Props) => {
 
   return (
     <div>
-      <Header />
       <br /> <h1>Album page</h1>
       <br /> Album id: {id}
       <br /> Name: {fullAlbum.highlight.name}

@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
+
+import { ScreenType } from "helpers/enums";
+
 import * as types from "./types";
 
 // COUNTER REDUCER
-const counterReducer = (state = 0, { type }) => {
+const counterReducer = (state = 0, { type }): number => {
   switch (type) {
     case types.INCREMENT:
       return state + 1;
@@ -22,7 +25,10 @@ const initialTimerState = {
 };
 
 // TIMER REDUCER
-const timerReducer = (state = initialTimerState, { type, payload }) => {
+const timerReducer = (
+  state = initialTimerState,
+  { type, payload }
+): types.TimerState => {
   switch (type) {
     case types.TICK:
       return {
@@ -35,7 +41,7 @@ const timerReducer = (state = initialTimerState, { type, payload }) => {
 };
 
 const initialAppState: types.AppStore = {
-  screenType: "desktop",
+  screenType: ScreenType.Desktop,
   screenWidth: undefined,
   screenHeight: undefined,
   allArticles: [],
@@ -52,7 +58,7 @@ const initialAppState: types.AppStore = {
   },
 };
 
-function appReducer(state = initialAppState, action) {
+function appReducer(state = initialAppState, action): types.AppStore {
   if (action.type === types.UPDATE_SCREEN) {
     const otherState = Object.assign({}, state, {
       screenType: action.screenType,
@@ -106,4 +112,4 @@ const reducers = {
   app: appReducer,
 };
 
-export default combineReducers(reducers);
+export default combineReducers<types.ApplicationState>(reducers);

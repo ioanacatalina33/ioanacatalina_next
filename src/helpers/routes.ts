@@ -12,11 +12,11 @@ export async function getRouteStaticPaths(route: Routes) {
   let fileNames = [];
   switch (route) {
     case Routes.TRAVEL: {
-      fileNames = await getUrlPaths(AlbumType.TRAVEL);
+      fileNames = await getUrlPaths(AlbumType.Travel);
       break;
     }
     case Routes.DANCE: {
-      fileNames = await getUrlPaths(AlbumType.DANCE);
+      fileNames = await getUrlPaths(AlbumType.Dance);
       break;
     }
     case Routes.HIGHLIGHTS: {

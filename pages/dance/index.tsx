@@ -2,14 +2,13 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import React from "react";
 
-import Header from "components/Header";
 import { AlbumType } from "helpers/enums";
 import { Album } from "types/modelTypes";
 
 import { getAlbumsByType } from "../../api/controllers";
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const data = await getAlbumsByType(AlbumType.DANCE);
+  const data = await getAlbumsByType(AlbumType.Dance);
 
   if (!data) {
     return {
@@ -30,7 +29,6 @@ interface Props {
 const Dance = ({ albums }: Props) => {
   return (
     <div>
-      <Header />
       <br /> <h1>Dance page</h1>
       <div>
         {albums.map((album, i) => (

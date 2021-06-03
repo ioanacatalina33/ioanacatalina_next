@@ -2,14 +2,13 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import React from "react";
 
-import Header from "components/Header";
 import { AlbumType } from "helpers/enums";
 import { Album } from "types/modelTypes";
 
 import { getAlbumsByType } from "../../api/controllers/albums";
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const data = await getAlbumsByType(AlbumType.TRAVEL);
+  const data = await getAlbumsByType(AlbumType.Travel);
   if (!data) {
     return {
       notFound: true,
@@ -29,7 +28,6 @@ interface Props {
 const Travel = ({ albums }: Props) => {
   return (
     <div>
-      <Header />
       <br /> <h1>Travel page</h1>
       <div>
         {albums.map((album, i) => (

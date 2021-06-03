@@ -6,7 +6,6 @@ import { getRouteStaticPaths, Routes } from "helpers/routes";
 import { FullAlbumDetails } from "types/modelTypes";
 
 import { getAlbumDetails } from "../../api/controllers";
-import Header from "components/Header";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getRouteStaticPaths(Routes.DANCE);
@@ -43,7 +42,6 @@ const DanceAlbum = ({ fullAlbum }: Props) => {
 
   return (
     <div>
-      <Header />
       <br /> <h1>Album page</h1>
       <br /> Album id: {id}
       <br /> Country: {fullAlbum.album.country}

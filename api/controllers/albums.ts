@@ -163,6 +163,19 @@ async function getRecommended(album: Album): Promise<Album[]> {
   return recommended.slice(0, 6);
 }
 
+export async function getNumberAlbums() {
+  let number = 0;
+  try {
+    await dbConnect();
+    console.log("Getting getNumberAlbums");
+
+    number = await Article.count();
+  } catch (err) {
+    console.error("error at getNumberAlbums: " + err.message);
+  }
+  return number;
+}
+
 export async function getSmallAlbums(req, res) {
   try {
     await dbConnect();

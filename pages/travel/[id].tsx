@@ -2,7 +2,6 @@ import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
-import Header from "components/Header";
 import { FullAlbumDetails } from "types/modelTypes";
 import { getRouteStaticPaths, Routes } from "helpers/routes";
 
@@ -43,7 +42,6 @@ const TravelAlbum = ({ fullAlbum }: Props) => {
 
   return (
     <div>
-      <Header />
       <br /> <h1>Album page</h1>
       <br /> Album id: {id}
       <br /> Country: {fullAlbum.album.country}

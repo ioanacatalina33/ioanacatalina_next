@@ -1,6 +1,5 @@
 import React from "react";
 import { fetchValidLocations } from "../api/controllers/location";
-import Header from "../src/components/Header";
 
 export async function getStaticProps(context) {
   const data = await fetchValidLocations();
@@ -20,7 +19,6 @@ export async function getStaticProps(context) {
 const Map = ({ locations }) => {
   return (
     <div>
-      <Header />
       <br /> <h1>Map page</h1>
       <div>
         {locations.map((loc, i) => (

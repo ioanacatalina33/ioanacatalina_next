@@ -1,17 +1,14 @@
 import { sleep, getHighlightsAlbums, getRecommendedAlbums } from "./utils";
-import { TYPE_HIGHLIGHTS } from "./const";
 
 export const fetchSmallArticles = async () => {
   try {
     const response = await fetch("/api/albums_small");
     const body = await response.json();
     if (response.status !== 200) {
-      // console.log("Error fetching articles " + body.message);
       throw Error(body.message);
     }
     return body;
   } catch (err) {
-    // console.log("fetching again");
     await sleep(2000);
     return await fetchSmallArticles();
   }
@@ -35,7 +32,6 @@ export const addSubscriber = async (email, country, travel, dance) => {
   try {
     const body = await response.json();
     if (response.status !== 200) {
-      //console.log("Error adding the subscriber " + body.message);
       return { result: -1, message: body.message };
     }
     return body;
@@ -132,7 +128,7 @@ export const fetchArticleByUrlId = async (id) => {
 };
 
 export const fetchRecommendedArticles = async (article) => {
-  if (article.type === TYPE_HIGHLIGHTS) {
+  if (article.type === AlbumType.HIGHLIGHTS) {
     return { recommendedArticles: getRecommendedAlbums(article.href) };
   } else
     try {

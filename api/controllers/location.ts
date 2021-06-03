@@ -27,6 +27,19 @@ export async function fetchValidLocations(): Promise<Location> {
   return JSON.parse(JSON.stringify(locations));
 }
 
+export async function getNumberLocations() {
+  let number = 0;
+  try {
+    await dbConnect();
+    console.log("Getting getNumberLocations");
+
+    number = await Location.count();
+  } catch (err) {
+    console.error("error at getNumberLocations: " + err.message);
+  }
+  return number;
+}
+
 export async function getLocations(req, res) {
   Location.find()
     .sort("name")

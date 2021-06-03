@@ -1,5 +1,4 @@
-import { TYPE_DANCE, TYPE_HIGHLIGHTS, TYPE_TRAVEL } from "helpers/const";
-import { AlbumType } from "helpers/enums";
+import { PageType, AlbumType, StaticPage } from "helpers/enums";
 
 interface FullSizeImage {
   url: string;
@@ -7,15 +6,27 @@ interface FullSizeImage {
   class: string;
 }
 
-export const getFullSizeImageByType: (type: AlbumType) => FullSizeImage = (
-  type: AlbumType
-) => {
-  if (type === TYPE_TRAVEL) return getFullSizeImageTravel();
-  if (type === TYPE_DANCE) return getFullSizeImageDance();
-  if (type === TYPE_HIGHLIGHTS) return getFullSizeImageHighlights();
+export const getFullSizeImageByPage = (type: PageType) => {
+  switch (type) {
+    case StaticPage.HOME:
+      return getFullSizeImageHome();
+    case StaticPage.ABOUT:
+      return getFullSizeImageAboutMe();
+    case StaticPage.CONTACT:
+      return getFullSizeImageContact();
+    case StaticPage.COLLABORATORS:
+      return getFullSizeImageCollaborations();
+
+    case AlbumType.Travel:
+      return getFullSizeImageTravel();
+    case AlbumType.Dance:
+      return getFullSizeImageDance();
+    case AlbumType.Highlights:
+      return getFullSizeImageHighlights();
+  }
 };
 
-export const getFullSizeImageAboutMe = (): FullSizeImage => {
+const getFullSizeImageAboutMe = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/aboutme_header_01.jpg",
@@ -26,7 +37,7 @@ export const getFullSizeImageAboutMe = (): FullSizeImage => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageHome = (): FullSizeImage => {
+const getFullSizeImageHome = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/home_header.jpg",
@@ -37,7 +48,7 @@ export const getFullSizeImageHome = (): FullSizeImage => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageContact = (): FullSizeImage => {
+const getFullSizeImageContact = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/contact_header_01.jpg",
@@ -48,7 +59,7 @@ export const getFullSizeImageContact = (): FullSizeImage => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageHighlights = (): FullSizeImage => {
+const getFullSizeImageHighlights = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/pic_highlights.jpg",
@@ -59,7 +70,7 @@ export const getFullSizeImageHighlights = (): FullSizeImage => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageCollaborations = (): FullSizeImage => {
+const getFullSizeImageCollaborations = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/collaborations_header_01.jpg",
@@ -70,7 +81,7 @@ export const getFullSizeImageCollaborations = (): FullSizeImage => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageTripsWithMe = (): FullSizeImage => {
+const getFullSizeImageTripsWithMe = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/couples_sessions_header_01.jpg",
@@ -81,7 +92,7 @@ export const getFullSizeImageTripsWithMe = (): FullSizeImage => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageTravel = (): FullSizeImage => {
+const getFullSizeImageTravel = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/travel_header_01.jpg",
@@ -127,7 +138,7 @@ export const getFullSizeImageTravel = (): FullSizeImage => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
-export const getFullSizeImageDance = (): FullSizeImage => {
+const getFullSizeImageDance = (): FullSizeImage => {
   var images = [
     {
       url: "/img/fullscreen/dance_header_01.jpg",
@@ -212,17 +223,6 @@ export const getPhotosForCollage: PhotosCollage = (index: number) => {
     ],
   ];
   return images[index];
-};
-
-export const getPhotosForTravelWithMe: PhotosCollage = (index: number) => {
-  const image = [
-    ["/img/photos/travelwithme/pic1.jpg", "/img/photos/travelwithme/pic2.jpg"],
-    ["/img/photos/travelwithme/pic3.jpg", "/img/photos/travelwithme/pic4.jpg"],
-    ["/img/photos/travelwithme/pic5.jpg", "/img/photos/travelwithme/pic6.jpg"],
-    ["/img/photos/travelwithme/pic7.jpg", "/img/photos/travelwithme/pic8.jpg"],
-    ["/img/photos/travelwithme/pic9.jpg", "/img/photos/travelwithme/pic10.jpg"],
-  ];
-  return image[index];
 };
 
 export const getPhotosForCollaborationsDance: () => string[] = () => {

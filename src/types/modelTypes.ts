@@ -18,8 +18,8 @@ export interface Album {
   date_start: Date;
   date_end: Date;
   type: AlbumType;
-  subtype: String;
-  url: String;
+  subtype: string;
+  url: string;
   identifier: string;
 }
 
@@ -30,7 +30,7 @@ export type AlbumDetails = Album & {
 };
 
 export type Highlight = {
-  type: AlbumType.HIGHLIGHTS;
+  type: AlbumType.Highlights;
   name: string;
   href: string;
   description: string;

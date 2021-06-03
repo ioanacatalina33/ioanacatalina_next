@@ -1,11 +1,11 @@
 export enum AlbumType {
-  TRAVEL = "Travel",
-  DANCE = "Dance",
-  BIGTRIP = "BigTrip",
-  HIGHLIGHTS = "Highlights",
+  Travel = "Travel",
+  Dance = "Dance",
+  BigTrip = "BigTrip",
+  Highlights = "Highlights",
 }
 
-enum StaticPage {
+export enum StaticPage {
   HOME = "Home",
   MAP = "Map",
   ABOUT = "MyStory",
@@ -14,4 +14,15 @@ enum StaticPage {
   GEENA = "Geena",
 }
 
-type PageType = AlbumType | StaticPage;
+export type PageType = AlbumType | StaticPage;
+
+export enum ScreenType {
+  Desktop = "Desktop",
+  Tablet = "Tablet",
+  Mobile = "Mobile",
+}
+
+export enum AlbumSubType {
+  City = "City",
+  Nature = "Nature",
+}

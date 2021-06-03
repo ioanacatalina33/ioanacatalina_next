@@ -1,24 +1,33 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import Link from "next/link";
+import React from "react";
+import { GetStaticProps } from "next";
 
-import { startClock } from "../src/store/actions";
-import Examples from "../src/components/examples";
-import Header from "../src/components/Header";
+import { Home } from "components";
 
-const Index = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(startClock());
-  }, [dispatch]);
+import { getNumberAlbums, getNumberLocations } from "../api/controllers";
+import { getNumberImages } from "../api/utils";
 
+interface Props {
+  nrAlbums: number;
+  nrLocations: number;
+  nrImages: number;
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  // const [nrAlbums, nrLocations, nrImages] = await Promise.all([
+  //   getNumberAlbums(),
+  //   getNumberLocations(),
+  //   getNumberImages(),
+  // ]);
+
+  return {
+    props: { nrAlbums: 0, nrLocations: 0, nrImages: 0 },
+  };
+};
+
+const Index = ({ nrAlbums, nrLocations, nrImages }: Props) => {
   return (
     <>
-      <Header />
-      <Examples />
-      <Link href="/show-redux-state">
-        <a>Click to see current Redux State</a>
-      </Link>
+      <Home {...{ nrAlbums, nrLocations, nrImages }} />
     </>
   );
 };

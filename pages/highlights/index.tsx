@@ -2,7 +2,6 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 import React from "react";
 
-import Header from "components/Header";
 import { Highlight } from "types/modelTypes";
 import { getHighlightsAlbums } from "staticModel";
 
@@ -27,7 +26,6 @@ interface Props {
 const Highlights = ({ albums }: Props) => {
   return (
     <div>
-      <Header />
       <br /> <h1>Highlight page</h1>
       <div>
         {albums.map((album, i) => (
