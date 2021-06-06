@@ -1,6 +1,6 @@
-import { PageType, AlbumType, StaticPage } from "helpers/enums";
+import { PageType, AlbumType, StaticPage } from "types/enums";
 
-interface FullSizeImage {
+export interface FullSizeImage {
   url: string;
   text: string;
   class: string;

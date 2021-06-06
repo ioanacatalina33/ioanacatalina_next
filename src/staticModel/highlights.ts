@@ -1,4 +1,3 @@
-import { AlbumType } from "helpers/enums";
 import { FullHighlightDetails, Highlight } from "types/modelTypes";
 
 export const HighlightsAlbums: Highlight[] = [

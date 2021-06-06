@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import LazyLoad from "react-lazy-load";
 
 import { articleCover, getFileDateTitleString } from "helpers";
-import { AlbumType } from "helpers/enums";
+import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 import Link from "next/link";
 import { getDanceEvent } from "staticModel";
@@ -69,7 +69,7 @@ export const PhotoContainer = ({
   const colsClass =
     type === PhotoContainerType.PHOTOC_REC
       ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
-      : "photo-col col-lg-4 col-md-4 col-sm-6";
+      : "photo-col col-lg-3 col-md-4 col-sm-6";
 
   return (
     <figure
@@ -82,7 +82,7 @@ export const PhotoContainer = ({
         placeholder={<img alt="" src="/img/loading.gif" />}
         alt=""
       >
-        <Link href={articleURL}>
+        <Link scroll={false} href={articleURL}>
           <div className="photo-container">
             <div className="photo-container-img-space">
               <img

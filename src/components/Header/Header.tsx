@@ -6,7 +6,8 @@ import Link from "next/link";
 
 import { updateQueryText, updateMobileSearch } from "store";
 import { useSelector } from "hooks/utils";
-import { ScreenType } from "helpers/enums";
+import { ScreenType } from "types/enums";
+import { Colors } from "helpers/const";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export const Header = () => {
     //   pathname === "/" ||
     //   pathname === "/travel" ||
     //   pathname === "/dance" ||
-    //   pathname === "/mystory" ||
+    //   pathname === "/about" ||
     //   pathname === "/highlights" ||
     //   pathname === "/contact" ||
     //   pathname === "/collaborations" ||
@@ -87,7 +88,7 @@ export const Header = () => {
         sticky="top"
       >
         {!isMobileSearch && (
-          <Link href="/">
+          <Link scroll={false} href="/">
             <Navbar.Brand
               className="navbar-brand "
               style={{
@@ -111,17 +112,17 @@ export const Header = () => {
           <Nav className="custom-navbar-buttons-main mr-auto">
             <div className="mobile-nav-links">
               {screenType !== ScreenType.Mobile && (
-                <Link href="/map">
+                <Link scroll={false} href="/map">
                   <a className="custom-navbar-link">MAP</a>
                 </Link>
               )}
               {screenType !== ScreenType.Mobile && (
-                <Link href="/travel">
+                <Link scroll={false} href="/travel">
                   <a className="custom-navbar-link">Travel</a>
                 </Link>
               )}
               {screenType !== ScreenType.Mobile && (
-                <Link href="/dance">
+                <Link scroll={false} href="/dance">
                   <a className="custom-navbar-link">Dance</a>
                 </Link>
               )}
@@ -143,9 +144,18 @@ export const Header = () => {
           <NavDropdown
             id={"more"}
             title={
-              <div className="collapsible-nav-dropdown">
+              <div
+                className="collapsible-nav-dropdown"
+                style={{
+                  color: dropdownOpen ? Colors.primary : "",
+                  fontSize: "2rem",
+                  lineHeight: "0.1rem",
+                  paddingBottom: "1.3rem",
+                }}
+              >
                 {/* <img className="thumbnail-image" src="/img/profile_icon_on.png" alt="Me" /> */}
-                More <i className="fa fa-angle-down"></i>
+                {/* <i className="fa fa-ellipsis-h"></i> */}
+                ...
               </div>
             }
             onMouseEnter={onMouseEnter}
@@ -153,16 +163,24 @@ export const Header = () => {
             show={dropdownOpen}
           >
             <NavDropdown.Item>
-              <Link href="/mystory">My Story</Link>
+              <Link scroll={false} href="/about">
+                My Story
+              </Link>
             </NavDropdown.Item>
             <NavDropdown.Item>
-              <Link href="/highlights">Highlights</Link>
+              <Link scroll={false} href="/highlights">
+                Highlights
+              </Link>
             </NavDropdown.Item>
             <NavDropdown.Item>
-              <Link href="/collaborations">Collaborations</Link>
+              <Link scroll={false} href="/collaborations">
+                Collaborations
+              </Link>
             </NavDropdown.Item>
             <NavDropdown.Item>
-              <Link href="/contact">Contact</Link>
+              <Link scroll={false} href="/contact">
+                Contact
+              </Link>
             </NavDropdown.Item>
             {/* <NavDropdown.Item href="/mylongtrip">My long trip</NavDropdown.Item> */}
             {/* <NavDropdown.Item href="/travelwithme">Travel with me</NavDropdown.Item> */}
@@ -234,7 +252,7 @@ export const Header = () => {
             <Nav className="custom-navbar-buttons-me">
               {screenType === ScreenType.Mobile && (
                 <Nav.Link eventKey="1">
-                  <Link href="/map">
+                  <Link scroll={false} href="/map">
                     <a style={{ color: "#cccccc", textDecoration: "none" }}>
                       MAP
                     </a>
@@ -243,7 +261,7 @@ export const Header = () => {
               )}
               {screenType === ScreenType.Mobile && (
                 <Nav.Link eventKey="2">
-                  <Link href="/travel">
+                  <Link scroll={false} href="/travel">
                     <a style={{ color: "#cccccc", textDecoration: "none" }}>
                       Travel
                     </a>
@@ -252,7 +270,7 @@ export const Header = () => {
               )}
               {screenType === ScreenType.Mobile && (
                 <Nav.Link eventKey="3">
-                  <Link href="/dance">
+                  <Link scroll={false} href="/dance">
                     <a style={{ color: "#cccccc", textDecoration: "none" }}>
                       Dance
                     </a>
@@ -260,7 +278,7 @@ export const Header = () => {
                 </Nav.Link>
               )}
               {screenType === ScreenType.Mobile && (
-                <Link href="/shop">
+                <Link scroll={false} href="/shop">
                   <Nav.Link
                     eventKey="4"
                     className="custom-navbar-link"
@@ -273,28 +291,28 @@ export const Header = () => {
                 </Link>
               )}
               <Nav.Link eventKey="5">
-                <Link href="/mystory">
+                <Link scroll={false} href="/about">
                   <a style={{ color: "#cccccc", textDecoration: "none" }}>
                     My story
                   </a>
                 </Link>
               </Nav.Link>
               <Nav.Link eventKey="6">
-                <Link href="/highlights">
+                <Link scroll={false} href="/highlights">
                   <a style={{ color: "#cccccc", textDecoration: "none" }}>
                     Highlights
                   </a>
                 </Link>
               </Nav.Link>
               <Nav.Link eventKey="7">
-                <Link href="/collaborators">
+                <Link scroll={false} href="/collaborators">
                   <a style={{ color: "#cccccc", textDecoration: "none" }}>
                     Collaborators
                   </a>
                 </Link>
               </Nav.Link>
               <Nav.Link eventKey="8">
-                <Link href="/contact">
+                <Link scroll={false} href="/contact">
                   <a style={{ color: "#cccccc", textDecoration: "none" }}>
                     Contact
                   </a>
@@ -303,173 +321,6 @@ export const Header = () => {
               {/* <a className="custom-navbar-link" href="/mylongtrip">My long trip</a> */}
               {/* <NavDropdown.Item href="/travelwithme">Travel with me</NavDropdown.Item> */}
             </Nav>
-          )}
-
-          {screenType === ScreenType.Desktop && (
-            <div className="navbar-social-buttons-container">
-              <div className="navbar-social-buttons-subcontainer">
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://www.facebook.com/IoanaCatalinaPhotography/"
-                >
-                  <img
-                    src="/img/sm_facebook_off.png"
-                    height="20"
-                    alt="FB"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_facebook_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_facebook_off.png")
-                    }
-                  />
-                </Nav.Link>
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://www.instagram.com/ioana.catalina.e/"
-                >
-                  <img
-                    src="/img/sm_instagram_off.png"
-                    height="20"
-                    alt="FB"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_instagram_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_instagram_off.png")
-                    }
-                  />
-                </Nav.Link>
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://www.flickr.com/photos/ioana_e/"
-                >
-                  <img
-                    src="/img/sm_flickr_off.png"
-                    height="20"
-                    alt="FB"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_flickr_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_flickr_off.png")
-                    }
-                  />
-                </Nav.Link>
-              </div>
-              <div className="navbar-social-buttons-subcontainer">
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://500px.com/ioanacatalinae"
-                >
-                  <img
-                    src="/img/sm_500px_off.png"
-                    height="20"
-                    alt="FB"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_500px_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_500px_off.png")
-                    }
-                  />
-                </Nav.Link>
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://www.shutterstock.com/g/IoanaCatalinaE"
-                >
-                  <img
-                    src="/img/sm_shutterstock_off.png"
-                    height="20"
-                    alt="FB"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_shutterstock_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_shutterstock_off.png")
-                    }
-                  />
-                </Nav.Link>
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://yourshot.nationalgeographic.com/profile/1275781/"
-                >
-                  <img
-                    src="/img/sm_nationalgeographic_off.png"
-                    height="20"
-                    alt="FB"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src =
-                        "/img/sm_nationalgeographic_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src =
-                        "/img/sm_nationalgeographic_off.png")
-                    }
-                  />
-                </Nav.Link>
-              </div>
-            </div>
-          )}
-          {screenType !== ScreenType.Desktop && (
-            <div className="navbar-social-buttons-container">
-              <div className="navbar-social-buttons-subcontainer">
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://www.facebook.com/IoanaCatalinaPhotography/"
-                >
-                  <img src="/img/sm_facebook_on.png" height="20" alt="FB" />
-                </Nav.Link>
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://www.instagram.com/ioana.catalina.e/"
-                >
-                  <img src="/img/sm_instagram_on.png" height="20" alt="FB" />
-                </Nav.Link>
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://www.flickr.com/photos/ioana_e/"
-                >
-                  <img src="/img/sm_flickr_on.png" height="20" alt="FB" />
-                </Nav.Link>
-              </div>
-              <div className="navbar-social-buttons-subcontainer">
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://500px.com/ioanacatalinae"
-                >
-                  <img src="/img/sm_500px_on.png" height="20" alt="FB" />
-                </Nav.Link>
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://www.shutterstock.com/g/IoanaCatalinaE"
-                >
-                  <img src="/img/sm_shutterstock_on.png" height="20" alt="FB" />
-                </Nav.Link>
-                <Nav.Link
-                  className="navbar-social-button"
-                  target="_blank"
-                  href="https://yourshot.nationalgeographic.com/profile/1275781/"
-                >
-                  <img
-                    src="/img/sm_nationalgeographic_on.png"
-                    height="20"
-                    alt="FB"
-                  />
-                </Nav.Link>
-              </div>
-            </div>
           )}
         </Navbar.Collapse>
       </Navbar>

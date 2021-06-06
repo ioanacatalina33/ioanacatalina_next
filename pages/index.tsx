@@ -3,9 +3,6 @@ import { GetStaticProps } from "next";
 
 import { Home } from "components";
 
-import { getNumberAlbums, getNumberLocations } from "../api/controllers";
-import { getNumberImages } from "../api/utils";
-
 interface Props {
   nrAlbums: number;
   nrLocations: number;
@@ -25,11 +22,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 };
 
 const Index = ({ nrAlbums, nrLocations, nrImages }: Props) => {
-  return (
-    <>
-      <Home {...{ nrAlbums, nrLocations, nrImages }} />
-    </>
-  );
+  return <Home {...{ nrAlbums, nrLocations, nrImages }} />;
 };
 
 export default Index;

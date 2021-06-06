@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { GetStaticProps } from "next";
 import React from "react";
 
-import { Highlight } from "types/modelTypes";
+import { Highlights } from "components";
+import { Album, Highlight } from "types/modelTypes";
 import { getHighlightsAlbums } from "staticModel";
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -20,24 +20,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 };
 
 interface Props {
-  albums: Highlight[];
+  albums: Album[];
 }
 
-const Highlights = ({ albums }: Props) => {
-  return (
-    <div>
-      <br /> <h1>Highlight page</h1>
-      <div>
-        {albums.map((album, i) => (
-          <div key={i}>
-            <Link href={"/highlights/" + album.href}>
-              <a>{album.name}</a>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+const highlights = ({ albums }: Props) => {
+  return <Highlights albums={albums} />;
 };
 
-export default Highlights;
+export default highlights;

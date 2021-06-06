@@ -39,10 +39,15 @@
     overflow-y: hidden; */
 }
 
+.photo-wall-search-wrapper {
+  max-width: 85%;
+  margin: 0 auto;
+}
+
 .search-photo-col {
-  padding: 1.5rem 1rem 1.5rem 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   height: auto;
-  width: 20rem;
+  /* width: 20rem; */
   /* height: 100%;
     width: 10rem; */
   /* overflow: hidden; */

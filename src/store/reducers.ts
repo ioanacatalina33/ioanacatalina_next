@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
+import produce from "immer";
 
-import { ScreenType } from "helpers/enums";
+import { ScreenType } from "types/enums";
 
 import * as types from "./types";
 
@@ -48,13 +49,28 @@ const initialAppState: types.AppStore = {
   isLoading: false,
   isMobileSearch: false,
   queryText: "",
-
-  filters_travel: {
-    years: [2014],
-    months: [],
-    continents: [],
-    countries: [],
-    subtypes: [],
+  filters: {
+    travel: {
+      years: [],
+      months: [],
+      continents: [],
+      countries: [],
+      subtypes: [],
+    },
+    dance: {
+      years: [],
+      months: [],
+      continents: [],
+      countries: [],
+      subtypes: [],
+    },
+    map: {
+      years: [],
+      months: [],
+      continents: [],
+      countries: [],
+      subtypes: [],
+    },
   },
 };
 
@@ -65,6 +81,7 @@ function appReducer(state = initialAppState, action): types.AppStore {
     });
     return otherState;
   }
+
   if (action.type === types.UPDATE_SCREEN_WIDTH) {
     const otherState = Object.assign({}, state, {
       screenWidth: action.screenWidth,
@@ -72,36 +89,48 @@ function appReducer(state = initialAppState, action): types.AppStore {
     });
     return otherState;
   }
-  if (action.type === types.UPDATE_TRAVEL_FILTERS) {
+
+  if (action.type === types.UPDATE_FILTERS) {
     const otherState = Object.assign({}, state, {
-      filters_travel: action.filters_travel,
+      filters: { ...state.filters, [action.filterType]: action.filters },
     });
     return otherState;
   }
+
+  if (action.type === types.UPDATE_FILTER) {
+    return produce(state, (draftState) => {
+      draftState.filters[action.filterType][action.name] = action.values;
+    });
+  }
+
   if (action.type === types.UPDATE_ARTICLES) {
     const otherState = Object.assign({}, state, {
       allArticles: action.allArticles,
     });
     return otherState;
   }
+
   if (action.type === types.UPDATE_IS_LOADING) {
     const otherState = Object.assign({}, state, {
       isLoading: action.isLoading,
     });
     return otherState;
   }
+
   if (action.type === types.UPDATE_QUERY_TEXT) {
     const otherState = Object.assign({}, state, {
       queryText: action.queryText,
     });
     return otherState;
   }
+
   if (action.type === types.IS_MOBILE_SEARCH) {
     const otherState = Object.assign({}, state, {
       isMobileSearch: action.isMobileSearch,
     });
     return otherState;
   }
+
   return state;
 }
 

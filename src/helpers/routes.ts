@@ -1,6 +1,6 @@
 import { HighlightsAlbums } from "staticModel";
 import { getUrlPaths } from "../../api/controllers/albums";
-import { AlbumType } from "./enums";
+import { AlbumType } from "../types/enums";
 
 export enum Routes {
   TRAVEL = "travel",

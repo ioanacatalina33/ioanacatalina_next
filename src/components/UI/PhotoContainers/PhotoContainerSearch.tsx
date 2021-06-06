@@ -3,17 +3,19 @@ import React, { useState } from "react";
 import LazyLoad from "react-lazy-load";
 
 import { articleCover, getFileDateTitleString } from "helpers";
-import { AlbumType } from "helpers/enums";
+import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 import { getDanceEvent } from "staticModel";
 
 interface PhotoContainerSearchProps {
   article: Album;
+  isSingle: boolean;
   onAlbumClicked: () => void;
 }
 
 export const PhotoContainerSearch = ({
   article,
+  isSingle,
   onAlbumClicked,
 }: PhotoContainerSearchProps): JSX.Element => {
   const [show, setShow] = useState(false);
@@ -64,10 +66,17 @@ export const PhotoContainerSearch = ({
     borderRadius: "0.3rem 0.3rem 0rem 0rem",
   };
 
+  const widthStyle = { maxWidth: isSingle ? "22rem" : "auto" };
+
   return (
-    <figure style={{ display: show ? "block" : "none" }}>
-      <div className="search-photo-col">
-        <Link href={articleURL}>
+    <figure
+      className={
+        isSingle ? "photo-col" : "photo-col col-lg-3 col-md-4 col-sm-6"
+      }
+      style={{ display: show ? "block" : "none" }}
+    >
+      <div className="search-photo-col" style={widthStyle}>
+        <Link scroll={false} href={articleURL}>
           <div
             onClick={onAlbumClicked}
             className="photo-container search-background"

@@ -1,11 +1,11 @@
 import moment from "moment";
 
-import { AlbumType } from "./enums";
+import { AlbumType } from "../types/enums";
 import { PATH_ARTICLES } from "./const";
 import { Album, Location } from "types/modelTypes";
 
 export const articleCover = (identifier: string): string => {
-  return PATH_ARTICLES + identifier + "/cover.jpg";
+  return PATH_ARTICLES + identifier + "cover.jpg";
 };
 
 export const articleCoverLarge = (identifier: string): string => {
@@ -23,19 +23,19 @@ export const urlAlbumHeader = (
 };
 
 export const getUniqueValues = (
-  articles: Album[],
+  albums: Album[],
   property: string,
   sort: boolean
-): Album[] => {
+): string[] => {
   if (sort === true) {
-    return Array.from(new Set(articles.map((item) => item[property]))).sort();
+    return Array.from(new Set(albums.map((item) => item[property]))).sort();
   } else {
-    return Array.from(new Set(articles.map((item) => item[property])));
+    return Array.from(new Set(albums.map((item) => item[property])));
   }
 };
 
 export const getUniqueCountriesByContinents = (
-  articles: Album[],
+  albums: Album[],
   continents: string[],
   sort: boolean
 ): string[] => {
@@ -43,7 +43,7 @@ export const getUniqueCountriesByContinents = (
   if (sort === true) {
     return Array.from(
       new Set(
-        articles
+        albums
           .filter((article) => continents.includes(article.continent))
           .map((item) => item.country)
       )
@@ -51,7 +51,7 @@ export const getUniqueCountriesByContinents = (
   } else {
     return Array.from(
       new Set(
-        articles
+        albums
           .filter((article) => continents.includes(article.continent))
           .map((item) => item.country)
       )
@@ -59,15 +59,15 @@ export const getUniqueCountriesByContinents = (
   }
 };
 
-export const getYears = (articles: Album[]): string[] => {
+export const getYears = (albums: Album[]): string[] => {
   return Array.from(
-    new Set(articles.map((item) => moment(item.date_start).format("YYYY")))
+    new Set(albums.map((item) => moment(item.date_start).format("YYYY")))
   ).sort();
 };
 
-export const getMonths = (articles: Album[]): string[] => {
+export const getMonths = (albums: Album[]): string[] => {
   return Array.from(
-    new Set(articles.map((item) => moment(item.date_start).format("MMM")))
+    new Set(albums.map((item) => moment(item.date_start).format("MMM")))
   ).sort();
 };
 

@@ -38,7 +38,6 @@ interface Props {
 const HighlightAlbum = ({ fullAlbum }: Props) => {
   const router = useRouter();
   const { id } = router.query;
-  console.log("album is ", { fullAlbum });
 
   return (
     <div>

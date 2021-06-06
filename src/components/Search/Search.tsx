@@ -4,7 +4,9 @@ import FadeIn from "react-fade-in/lib/FadeIn";
 
 import { PhotoContainerSearch } from "components/UI/PhotoContainers";
 import { useSelector } from "hooks/utils";
+import { useTextDebounce } from "hooks/useTextDebounce";
 import { updateMobileSearch, updateQueryText } from "store";
+import { Album } from "types/modelTypes";
 
 export const Search = () => {
   const allArticles = useSelector((state) => state.app.allArticles);
@@ -15,19 +17,22 @@ export const Search = () => {
   const [articlesFiltered, setArticlesFiltered] = useState([]);
   const dispatch = useDispatch();
 
-  async function searchInArticles(searchText) {
+  async function searchInArticles(searchText: string) {
     if (searchText === "") setArticlesFiltered([]);
-    var queryText = searchText.toLowerCase().split(" ");
-    var selectedArticles = allArticles.filter((article) => {
-      return (
-        queryText.filter((query) => isQueryInArticle(article, query)).length ===
-        queryText.length
-      );
-    });
-    setArticlesFiltered(selectedArticles);
+    else {
+      console.log("searching for " + searchText);
+      const queryText = searchText.toLowerCase().split(" ");
+      const selectedArticles = allArticles.filter((article) => {
+        return (
+          queryText.filter((query) => isQueryInArticle(article, query))
+            .length === queryText.length
+        );
+      });
+      setArticlesFiltered(selectedArticles.slice(0, 20));
+    }
   }
 
-  function isQueryInArticle(article, query) {
+  function isQueryInArticle(article: Album, query: string) {
     return (
       article.name.toLowerCase().indexOf(query) > -1 ||
       article.locations.filter(
@@ -35,8 +40,7 @@ export const Search = () => {
       ).length > 0 ||
       article.subtype.toLowerCase().indexOf(query) > -1 ||
       article.type.toLowerCase().indexOf(query) > -1 ||
-      article.country.toLowerCase().indexOf(query) > -1 ||
-      article.metadata.toLowerCase().indexOf(query) > -1
+      article.country.toLowerCase().indexOf(query) > -1
     );
   }
 
@@ -45,17 +49,16 @@ export const Search = () => {
     dispatch(updateMobileSearch(false));
   }
 
-  useEffect(() => {
-    setArticlesFiltered([]);
-    if (searchKeyTimeout) clearTimeout(searchKeyTimeout);
+  const { debouncedValue } = useTextDebounce(queryForSearch, 500);
 
-    setSearchKeyTimeout(
-      // @ts-ignore
-      setTimeout(() => {
-        searchInArticles(queryForSearch);
-      }, 300)
-    );
-    return () => clearTimeout(searchKeyTimeout);
+  useEffect(() => {
+    console.log("debouncedValue ", debouncedValue);
+    searchInArticles(debouncedValue);
+  }, [debouncedValue]);
+
+  useEffect(() => {
+    console.log("queryForSearch ", queryForSearch);
+    setArticlesFiltered([]);
   }, [queryForSearch]);
 
   return (
@@ -73,14 +76,17 @@ export const Search = () => {
         </div>
       ) : (
         <FadeIn>
-          <div className="photo-wall-search row">
-            {articlesFiltered.map((article, index) => (
-              <PhotoContainerSearch
-                onAlbumClicked={onAlbumClicked}
-                key={index}
-                article={article}
-              />
-            ))}
+          <div className="photo-wall-search">
+            <div className="photo-wall-search-wrapper row">
+              {articlesFiltered.map((article, index) => (
+                <PhotoContainerSearch
+                  onAlbumClicked={onAlbumClicked}
+                  key={index}
+                  article={article}
+                  isSingle={articlesFiltered.length === 1}
+                />
+              ))}
+            </div>
           </div>{" "}
         </FadeIn>
       )}

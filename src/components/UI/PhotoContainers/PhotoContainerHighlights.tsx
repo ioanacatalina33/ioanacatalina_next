@@ -30,7 +30,7 @@ export const PhotoContainerHighlights = ({
   const colsClass =
     type === PhotoContainerType.PHOTOC_REC
       ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
-      : "photo-col col-lg-3 col-md-4 col-sm-6";
+      : "photo-col col-lg-4 col-md-4 col-sm-6";
 
   return (
     <figure
@@ -43,33 +43,35 @@ export const PhotoContainerHighlights = ({
         placeholder={<img alt="" src="/img/loading.gif" />}
         alt=""
       >
-        <Link href={articleURL}>
-          <div className="photo-container">
-            <div className="photo-container-img-space">
-              <img
-                className="photo-small"
-                style={{ borderRadius: "0.3rem" }}
-                src={"/img/cover_placeholder.png"}
-                onLoad={onLoad}
-                alt=""
-              />
-              <LazyLoad debounce={false} offsetVertical={1000}>
+        <Link scroll={false} href={articleURL}>
+          <a>
+            <div className="photo-container">
+              <div className="photo-container-img-space">
                 <img
-                  className="cover-loaded"
+                  className="photo-small"
                   style={{ borderRadius: "0.3rem" }}
-                  src={articleCover(article.identifier)}
-                  alt=""
+                  src={"/img/cover_placeholder.png"}
                   onLoad={onLoad}
+                  alt=""
                 />
-              </LazyLoad>
-              <span
-                style={{ fontSize: "1.7rem", borderRadius: "0.3rem" }}
-                className="photo-container-title"
-              >
-                {article.name}
-              </span>
+                <LazyLoad debounce={false} offsetVertical={1000}>
+                  <img
+                    className="cover-loaded"
+                    style={{ borderRadius: "0.3rem" }}
+                    src={articleCover(article.identifier)}
+                    alt=""
+                    onLoad={onLoad}
+                  />
+                </LazyLoad>
+                <span
+                  style={{ fontSize: "1.7rem", borderRadius: "0.3rem" }}
+                  className="photo-container-title"
+                >
+                  {article.name}
+                </span>
+              </div>
             </div>
-          </div>
+          </a>
         </Link>
       </LazyLoad>
     </figure>

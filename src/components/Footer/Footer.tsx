@@ -2,7 +2,7 @@ import React from "react";
 
 import { useSelector } from "hooks/utils";
 
-import { ScreenType } from "helpers/enums";
+import { ScreenType } from "types/enums";
 import { useBrowsers } from "hooks/useBrowsers";
 import { Colors } from "helpers/const";
 import Link from "next/link";
@@ -56,13 +56,13 @@ export const Footer = () => {
             className="col text-left my-auto"
             style={{ padding: "0rem 2rem 0rem 1rem" }}
           >
-            <Link href="/map">
+            <Link scroll={false} href="/map">
               <a className="bottom-element-text">MAP</a>
             </Link>
-            <Link href="/travel">
+            <Link scroll={false} href="/travel">
               <a className="bottom-element-text">Travel</a>
             </Link>
-            <Link href="/dance">
+            <Link scroll={false} href="/dance">
               <a className="bottom-element-text">Dance</a>
             </Link>
 
@@ -80,16 +80,16 @@ export const Footer = () => {
             className="col text-left my-auto"
             style={{ padding: "0rem 1rem 0rem 1rem" }}
           >
-            <Link href="/mystory">
+            <Link scroll={false} href="/about">
               <a className="bottom-element-text">My story</a>
             </Link>
-            <Link href="/highlights">
+            <Link scroll={false} href="/highlights">
               <a className="bottom-element-text">Highlights</a>
             </Link>
-            <Link href="/collaborations">
+            <Link scroll={false} href="/collaborations">
               <a className="bottom-element-text">Collaboration</a>
             </Link>
-            <Link href="/contact">
+            <Link scroll={false} href="/contact">
               <a className="bottom-element-text">Contact</a>
             </Link>
           </div>
@@ -112,7 +112,7 @@ export const Footer = () => {
                 >
                   <img
                     src="/img/sm_facebook_off.png"
-                    height="20"
+                    height="22"
                     alt="FB"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_facebook_on.png")
@@ -132,7 +132,7 @@ export const Footer = () => {
                 >
                   <img
                     src="/img/sm_instagram_off.png"
-                    height="20"
+                    height="22"
                     alt="FB"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_instagram_on.png")
@@ -153,7 +153,7 @@ export const Footer = () => {
                 >
                   <img
                     src="/img/sm_flickr_off.png"
-                    height="20"
+                    height="22"
                     alt="FB"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_flickr_on.png")
@@ -173,7 +173,7 @@ export const Footer = () => {
                 >
                   <img
                     src="/img/sm_500px_off.png"
-                    height="20"
+                    height="22"
                     alt="FB"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_500px_on.png")
@@ -194,7 +194,7 @@ export const Footer = () => {
                 >
                   <img
                     src="/img/sm_shutterstock_off.png"
-                    height="20"
+                    height="22"
                     alt="FB"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_shutterstock_on.png")
@@ -213,7 +213,7 @@ export const Footer = () => {
                 >
                   <img
                     src="/img/sm_nationalgeographic_off.png"
-                    height="20"
+                    height="22"
                     alt="FB"
                     onMouseOver={(e) =>
                       (e.currentTarget.src =
@@ -231,11 +231,17 @@ export const Footer = () => {
         </div>
 
         <div style={{ maxWidth: "5rem", margin: "1.5rem" }}>
-          <img
-            style={{ height: "auto", width: "100%" }}
-            src="/img/logo_golden.png"
-            alt=""
-          />
+          <a href="/highlights/geena">
+            <img
+              style={{ width: "inherit", maxWidth: "5.5rem" }}
+              src="/img/logo_golden.png"
+              alt=""
+              onMouseOver={(e) =>
+                (e.currentTarget.src = "/img/logo_golden_color.png")
+              }
+              onMouseOut={(e) => (e.currentTarget.src = "/img/logo_golden.png")}
+            />
+          </a>
         </div>
         <div style={{ maxWidth: "7rem", margin: "1.5rem" }}>
           <img

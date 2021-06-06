@@ -38,7 +38,6 @@ interface Props {
 const TravelAlbum = ({ fullAlbum }: Props) => {
   const router = useRouter();
   const { id } = router.query;
-  console.log("fullAlbum is ", { fullAlbum });
 
   return (
     <div>

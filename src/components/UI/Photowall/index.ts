@@ -1,0 +1,1 @@
+export { Photowall } from "./Photowall";

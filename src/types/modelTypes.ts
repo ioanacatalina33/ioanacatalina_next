@@ -1,4 +1,4 @@
-import { AlbumType } from "helpers/enums";
+import { AlbumType } from "types/enums";
 
 export interface Location {
   _id: string;
@@ -9,6 +9,7 @@ export interface Location {
 }
 
 export interface Album {
+  _id: string;
   name_url: string;
   name: string;
   name_location: string;
@@ -23,11 +24,11 @@ export interface Album {
   identifier: string;
 }
 
-export type AlbumDetails = Album & {
+export interface AlbumDetails extends Album {
   description: string;
   keywords: string;
   metadata: string;
-};
+}
 
 export type Highlight = {
   type: AlbumType.Highlights;

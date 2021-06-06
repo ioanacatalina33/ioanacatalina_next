@@ -1,5 +1,5 @@
 import { Album, AlbumDetails, FullAlbumDetails } from "types/modelTypes.js";
-import { AlbumType } from "helpers/enums";
+import { AlbumType } from "types/enums";
 
 import dbConnect from "../config/dbConnect";
 import { Article, Location } from "../models";
@@ -53,7 +53,6 @@ export async function getAlbumsByType(type: AlbumType): Promise<Album[]> {
   } catch (err) {
     console.error("error at getAlbumsByType: " + err.message);
   }
-  console.log("type are ", { type });
   return JSON.parse(JSON.stringify(albums));
 }
 

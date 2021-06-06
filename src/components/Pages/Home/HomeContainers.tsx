@@ -17,7 +17,7 @@ export const HomeContainers = () => {
       />
       <PhotoContainerHome
         name="About me"
-        url="/mystory"
+        url="/about"
         img="/img/Home/aboutme.jpg"
       />
       <PhotoContainerHome

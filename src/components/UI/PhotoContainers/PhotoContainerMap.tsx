@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import LazyLoad from "react-lazy-load";
 
 import { articleCover, getFileDateTitleString } from "helpers";
-import { AlbumType } from "helpers/enums";
+import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 import Link from "next/link";
 
@@ -44,7 +44,7 @@ export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
       className="map-photo-col col-12 col-centered"
       style={{ visibility: show ? "visible" : "hidden" }}
     >
-      <Link href={articleURL}>
+      <Link scroll={false} href={articleURL}>
         <div className="photo-container white-background-hovered">
           <div className="photo-container-img-space">
             <img

@@ -10,12 +10,13 @@ import {
   updateArticles,
 } from "store";
 import { initGA, PageView } from "helpers/traking";
+import { ScrollToTop } from "helpers";
 import { fetchSmallArticles } from "helpers/api";
 
 import { CanvasPopComp } from "./Canvaspop/CanvasPopComp";
 import { Header } from "./Header";
 import { Search } from "./Search";
-import { ScreenType } from "helpers/enums";
+import { ScreenType } from "types/enums";
 import { Footer } from "./Footer";
 
 interface AppMain {
@@ -84,6 +85,7 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
   return (
     <>
       <div>
+        <ScrollToTop />
         <CanvasPopComp />
         <Header />
         <Search />

@@ -28,7 +28,7 @@ export const PhotoContainerHome = ({ url, img, name }: PhotoContainerHome) => {
         placeholder={<img alt="" src="/img/loading.gif" />}
         alt=""
       >
-        <Link href={url}>
+        <Link scroll={false} href={url}>
           <a>
             <div
               className="photo-container photo-container-opacity"

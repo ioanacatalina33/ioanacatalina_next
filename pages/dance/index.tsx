@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
-import Link from "next/link";
 import React from "react";
 
-import { AlbumType } from "helpers/enums";
+import { Dance } from "components";
+import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 
 import { getAlbumsByType } from "../../api/controllers";
@@ -26,21 +26,8 @@ interface Props {
   albums: Album[];
 }
 
-const Dance = ({ albums }: Props) => {
-  return (
-    <div>
-      <br /> <h1>Dance page</h1>
-      <div>
-        {albums.map((album, i) => (
-          <div key={i}>
-            <Link href={"/dance/" + album.name_url}>
-              <a>{album.name}</a>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+const dance = ({ albums }: Props) => {
+  return <Dance albums={albums} />;
 };
 
-export default Dance;
+export default dance;

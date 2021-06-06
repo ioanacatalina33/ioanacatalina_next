@@ -26,3 +26,9 @@ export enum AlbumSubType {
   City = "City",
   Nature = "Nature",
 }
+
+export enum LinksPageType {
+  MyStory = "MyStory",
+  Collaborations = "Collaborations",
+  Contact = "Contact",
+}

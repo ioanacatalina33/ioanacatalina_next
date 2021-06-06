@@ -14,14 +14,12 @@ import { Provider } from "react-redux";
 import { useStore } from "store/store";
 
 import { AppMain } from "components";
-import { ScrollToTop } from "helpers/ScrollToTop";
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const store = useStore(pageProps.initialReduxState);
 
   return (
     <Provider store={store}>
-      <ScrollToTop />
       <AppMain Component={Component} pageProps={pageProps} />
     </Provider>
   );

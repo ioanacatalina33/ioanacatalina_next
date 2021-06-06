@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ScreenType } from "helpers/enums";
+import { ScreenType } from "types/enums";
 import { useSelector } from "hooks/utils";
 
 import { SubscribeContent } from "../SubscribeContent";

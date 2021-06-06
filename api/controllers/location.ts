@@ -31,7 +31,6 @@ export async function getNumberLocations() {
   let number = 0;
   try {
     await dbConnect();
-    console.log("Getting getNumberLocations");
 
     number = await Location.count();
   } catch (err) {

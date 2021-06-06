@@ -2,19 +2,18 @@ import React from "react";
 import LazyLoad from "react-lazy-load";
 
 import { contentScroll } from "helpers";
-import { ScreenType } from "helpers/enums";
+import { ScreenType } from "types/enums";
 import { useBrowsers } from "hooks/useBrowsers";
 import { useScreenSize, useScreenType } from "hooks/utils";
+import { FullSizeImage } from "staticModel";
 
 import { ImageLoader } from "../ImageLoader";
 
 interface FullScreenLayerProps {
-  imgUrl: string;
-  text: string;
-  textClass: string;
+  fullSizeImage: FullSizeImage;
 }
 
-export const FullScreenLayer = (props: FullScreenLayerProps) => {
+export const FullScreenLayer = ({ fullSizeImage }: FullScreenLayerProps) => {
   const { screenHeight } = useScreenSize();
   const { screenType } = useScreenType();
   const { isIE } = useBrowsers();
@@ -24,22 +23,22 @@ export const FullScreenLayer = (props: FullScreenLayerProps) => {
       <LazyLoad debounce={false} offsetVertical={1000}>
         <div>
           <ImageLoader
-            src={props.imgUrl}
+            src={fullSizeImage.url}
             loadedClassName="img-loaded"
             loadingClassName="img-loading"
             style={{ width: isIE ? "auto" : "100%" }}
           />
           <div className="FullScreen-imgOverlay" />
 
-          {props.text !== undefined && props.text !== "" ? (
+          {fullSizeImage.text !== undefined && fullSizeImage.text !== "" ? (
             <div
               className={
                 screenType === undefined || screenType !== ScreenType.Mobile
-                  ? props.textClass + " img-loaded-text-span opacity45"
+                  ? fullSizeImage.class + " img-loaded-text-span opacity45"
                   : "img-loaded-text-center opacity45 img-loaded-text-span"
               }
             >
-              <h1>{props.text}</h1>
+              <h1>{fullSizeImage.text}</h1>
             </div>
           ) : (
             ""

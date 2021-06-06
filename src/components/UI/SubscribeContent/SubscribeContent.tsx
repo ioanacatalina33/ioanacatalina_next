@@ -3,7 +3,7 @@ import { Col, Form, Row, Button } from "react-bootstrap";
 
 import { sleep } from "helpers";
 import { addSubscriber } from "helpers/api";
-import { AlbumType } from "helpers/enums";
+import { AlbumType } from "types/enums";
 
 interface SubscribeContentProps {
   onSubscribed?: () => void;

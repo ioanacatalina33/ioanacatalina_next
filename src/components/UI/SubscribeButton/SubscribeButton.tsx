@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Event } from "helpers/traking";
-import { ScreenType } from "helpers/enums";
+import { ScreenType } from "types/enums";
 import { useScreenType } from "hooks/utils";
 
 import { ModalSubscribeDialog } from "../Modals";

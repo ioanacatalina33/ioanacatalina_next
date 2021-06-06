@@ -1,14 +1,13 @@
 import React from "react";
 
-import { FullScreenLayer } from "components/UI/FullScreenLayer";
 import { SubscribeButton } from "components/UI/SubscribeButton";
 import { FollowMe } from "components/UI/FollowMe";
-import { ScreenType, StaticPage } from "helpers/enums";
+import { ScreenType, StaticPage } from "types/enums";
 import { useBrowsers } from "hooks/useBrowsers";
 import { useScreenType } from "hooks/utils";
-import { getFullSizeImageByPage } from "staticModel";
 
 import { HomeContainers } from "./HomeContainers";
+import { useFullScreenlayer } from "hooks/useFullScreenLayer";
 
 export interface HomeProps {
   nrLocations: number;
@@ -19,17 +18,13 @@ export interface HomeProps {
 export const Home = ({ nrAlbums, nrLocations, nrImages }: HomeProps) => {
   const { isIE } = useBrowsers();
 
-  const imgFullSize = getFullSizeImageByPage(StaticPage.HOME);
+  const FullSizeLayer = useFullScreenlayer(StaticPage.HOME);
 
   const { screenType } = useScreenType();
 
   return (
     <div className="App" style={{ textAlign: "center" }}>
-      <FullScreenLayer
-        imgUrl={imgFullSize.url}
-        text={imgFullSize.text}
-        textClass={imgFullSize.class}
-      />
+      {FullSizeLayer}
 
       <div
         className="home-container-wrapper"
