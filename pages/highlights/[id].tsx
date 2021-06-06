@@ -2,11 +2,14 @@ import React from "react";
 import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-import { getRouteStaticPaths, Routes } from "helpers/routes";
 import { FullHighlightDetails } from "types/modelTypes";
 import { getHighlightAlbumDetails } from "staticModel";
 
-import { getImagesNamesFromFolder } from "../../api/utils";
+import {
+  getImagesNamesFromFolder,
+  getRouteStaticPaths,
+  Routes,
+} from "../../api/utils";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getRouteStaticPaths(Routes.HIGHLIGHTS);

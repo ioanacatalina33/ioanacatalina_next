@@ -1,5 +1,5 @@
+import { AlbumType } from "types";
 import { Album, AlbumDetails, FullAlbumDetails } from "types/modelTypes.js";
-import { AlbumType } from "types/enums";
 
 import dbConnect from "../config/dbConnect";
 import { Article, Location } from "../models";

@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import React from "react";
 
 import { Highlights } from "components";
-import { Album, Highlight } from "types/modelTypes";
+import { Highlight } from "types/modelTypes";
 import { getHighlightsAlbums } from "staticModel";
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 };
 
 interface Props {
-  albums: Album[];
+  albums: Highlight[];
 }
 
 const highlights = ({ albums }: Props) => {

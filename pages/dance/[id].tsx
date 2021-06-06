@@ -2,10 +2,10 @@ import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
-import { getRouteStaticPaths, Routes } from "helpers/routes";
 import { FullAlbumDetails } from "types/modelTypes";
 
 import { getAlbumDetails } from "../../api/controllers";
+import { getRouteStaticPaths, Routes } from "../../api/utils";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getRouteStaticPaths(Routes.DANCE);

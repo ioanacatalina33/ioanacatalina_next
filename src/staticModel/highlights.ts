@@ -1,3 +1,4 @@
+import { AlbumType } from "types";
 import { FullHighlightDetails, Highlight } from "types/modelTypes";
 
 export const HighlightsAlbums: Highlight[] = [

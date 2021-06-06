@@ -21,7 +21,7 @@ export const Photowall = ({
   filtered = true,
 }: PhotowallProps) => {
   const emptyAlbums = !albums || !albums.length;
-  const emptyHighlights = highlights || !highlights.length;
+  const emptyHighlights = !highlights || !highlights.length;
   const emptyList = emptyAlbums && emptyHighlights;
 
   return (

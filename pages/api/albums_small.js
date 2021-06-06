@@ -1,4 +1,4 @@
-import { getSmallAlbums } from "../../api/controllers/albums";
+import { getSmallAlbums } from "../../api/controllers";
 
 export default function userHandler(req, res) {
   const { method } = req;

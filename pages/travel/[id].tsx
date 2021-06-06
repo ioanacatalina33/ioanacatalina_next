@@ -3,9 +3,9 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
 import { FullAlbumDetails } from "types/modelTypes";
-import { getRouteStaticPaths, Routes } from "helpers/routes";
 
 import { getAlbumDetails } from "../../api/controllers/albums";
+import { getRouteStaticPaths, Routes } from "../../api/utils";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getRouteStaticPaths(Routes.TRAVEL);
