@@ -12,6 +12,18 @@ export const articleCoverLarge = (identifier: string): string => {
   return PATH_ARTICLES + identifier + "cover_large.jpg";
 };
 
+export const getFullPathImgs = (imgNames: string[], identifier: string) => {
+  return imgNames.map((img) => PATH_ARTICLES + identifier + img);
+};
+
+export const albumUrl = (type: AlbumType, name_url: string) => {
+  return "/" + type.toLowerCase() + "/" + name_url;
+};
+
+export const albumDynamicUrl = (type: AlbumType) => {
+  return "/" + type.toLowerCase() + "/[id]";
+};
+
 export const urlAlbumHeader = (
   type: AlbumType,
   identifier: string,
@@ -394,7 +406,7 @@ export function mapURLToProperty(value, property, query) {
   return searchParams.toString();
 }
 
-export function mapPropertyFromURL(query, property) {
+export function mapPropertyFromURL(query: string, property: string) {
   var searchParams = new URLSearchParams(query);
   var value = searchParams.get(property);
   if (value === "" || value === null) return undefined;
@@ -408,10 +420,10 @@ export function mapPhotoFromURL(query) {
   return Number(index) - 1;
 }
 
-export function mapURLPhoto(imgIndex, query) {
+export function mapURLPhoto(imgIndex: number, query: string) {
   var searchParams = new URLSearchParams(query);
   if (imgIndex !== undefined) {
-    searchParams.set("img", imgIndex + 1);
+    searchParams.set("img", imgIndex + 1 + "");
   } else {
     searchParams.delete("img");
   }

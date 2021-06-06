@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
@@ -16,8 +17,12 @@ import { ModalProps } from "./common";
 
 export const ModalShareDialog = ({ onHide, show }: ModalProps) => {
   const [copied, setCopied] = useState(false);
+  const { basePath } = useRouter();
+  let url: string = "";
 
-  var url = window.location.href;
+  useEffect(() => {
+    url = window.location.href;
+  }, []);
 
   return (
     <Modal

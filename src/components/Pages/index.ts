@@ -1,4 +1,5 @@
 export * from "./About";
+export * from "./AlbumPage";
 export * from "./Dance";
 export * from "./Collaborations";
 export * from "./Contact";

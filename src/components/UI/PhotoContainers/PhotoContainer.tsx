@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LazyLoad from "react-lazy-load";
 
-import { articleCover, getFileDateTitleString } from "helpers";
+import { albumUrl, articleCover, getFileDateTitleString } from "helpers";
 import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 import Link from "next/link";
@@ -13,12 +13,12 @@ export enum PhotoContainerType {
 }
 
 interface PhotoContainerProps {
-  article: Album;
+  album: Album;
   type: PhotoContainerType;
 }
 
 export const PhotoContainer = ({
-  article,
+  album,
   type,
 }: PhotoContainerProps): JSX.Element => {
   const [show, setShow] = useState(false);
@@ -28,30 +28,28 @@ export const PhotoContainer = ({
   }
 
   function getTitleText() {
-    return article.type === AlbumType.Travel
-      ? article.name_location !== undefined && article.name_location !== ""
-        ? article.name_location
+    return album.type === AlbumType.Travel
+      ? album.name_location !== undefined && album.name_location !== ""
+        ? album.name_location
         : article_locations
-      : article.name;
+      : album.name;
   }
 
   function getTitleStyle() {
     return {
-      fontSize: article.type === AlbumType.Travel ? "1.5rem" : "1.35rem",
+      fontSize: album.type === AlbumType.Travel ? "1.5rem" : "1.35rem",
       borderRadius: "0rem",
     };
   }
 
   function getNameText() {
-    return article.type === AlbumType.Travel
-      ? article.name
-      : getDanceNameText();
+    return album.type === AlbumType.Travel ? album.name : getDanceNameText();
   }
 
   function getDanceNameText() {
-    var event = getDanceEvent(article.subtype);
+    var event = getDanceEvent(album.subtype);
     if (event === undefined) {
-      return article.subtype + ", " + article_locations;
+      return album.subtype + ", " + article_locations;
     } else {
       let organizers = event.organizers
         .map((organizer) => organizer.name)
@@ -60,11 +58,11 @@ export const PhotoContainer = ({
     }
   }
 
-  const article_locations = article.locations
+  const article_locations = album.locations
     .map((loc) => `${loc.name}`)
     .join(", ");
 
-  const articleURL = "/" + article.type.toLowerCase() + "/" + article.name_url;
+  const articleURL = albumUrl(album.type, album.name_url);
 
   const colsClass =
     type === PhotoContainerType.PHOTOC_REC
@@ -96,7 +94,7 @@ export const PhotoContainer = ({
                 <img
                   className="cover-loaded"
                   style={{ borderRadius: "0.3rem 0.3rem 0rem 0rem" }}
-                  src={articleCover(article.identifier)}
+                  src={articleCover(album.identifier)}
                   alt=""
                   onLoad={onLoad}
                 />
@@ -111,13 +109,10 @@ export const PhotoContainer = ({
                 <div className="photo-container-name"> {getNameText()} </div>
                 <div className="photo-container-date-country">
                   <span className="photo-container-country">
-                    {article.country}
+                    {album.country}
                   </span>
                   <span className="photo-container-date">
-                    {getFileDateTitleString(
-                      article.date_start,
-                      article.date_end
-                    )}
+                    {getFileDateTitleString(album.date_start, album.date_end)}
                   </span>
                 </div>
               </div>

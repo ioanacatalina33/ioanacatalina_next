@@ -1,12 +1,11 @@
 import React from "react";
 
 import { Photowall } from "components/UI/Photowall";
-import { AlbumType } from "types/enums";
-import { Highlight } from "types/modelTypes";
-import { useFullScreenlayer } from "hooks/useFullScreenLayer";
+import { Album, AlbumType } from "types";
+import { useFullScreenlayer } from "hooks";
 
 interface HighlightsProps {
-  albums: Highlight[];
+  albums: Album[];
 }
 
 export const Highlights = ({ albums }: HighlightsProps) => {
@@ -18,7 +17,7 @@ export const Highlights = ({ albums }: HighlightsProps) => {
       <div className="App">
         <h2>Highlights</h2>
 
-        <Photowall highlights={albums} />
+        <Photowall albums={albums} type={AlbumType.Highlights} />
       </div>
     </>
   );

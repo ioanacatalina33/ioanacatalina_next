@@ -52,12 +52,10 @@ export const Search = () => {
   const { debouncedValue } = useTextDebounce(queryForSearch, 500);
 
   useEffect(() => {
-    console.log("debouncedValue ", debouncedValue);
     searchInArticles(debouncedValue);
   }, [debouncedValue]);
 
   useEffect(() => {
-    console.log("queryForSearch ", queryForSearch);
     setArticlesFiltered([]);
   }, [queryForSearch]);
 

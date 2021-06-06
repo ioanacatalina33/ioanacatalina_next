@@ -9,47 +9,31 @@ export interface Location {
 }
 
 export interface Album {
-  _id: string;
+  _id?: string;
   name_url: string;
   name: string;
-  name_location: string;
   locations: Location[];
-  country: string;
-  continent: string;
-  date_start: Date;
-  date_end: Date;
+  name_location?: string;
+  country?: string;
+  continent?: string;
+  date_start?: Date;
+  date_end?: Date;
   type: AlbumType;
-  subtype: string;
-  url: string;
+  subtype?: string;
+  url?: string;
   identifier: string;
 }
 
 export interface AlbumDetails extends Album {
   description: string;
-  keywords: string;
-  metadata: string;
+  keywords?: string;
+  metadata?: string;
 }
-
-export type Highlight = {
-  type: AlbumType.Highlights;
-  name: string;
-  href: string;
-  description: string;
-  identifier: string;
-};
 
 export type FullAlbumDetails = {
   album: AlbumDetails;
   recommended: Album[];
   next: Album[];
   prev: Album[];
-  images: string[];
-};
-
-export type FullHighlightDetails = {
-  highlight: Highlight;
-  recommended: Highlight[];
-  next: Highlight[];
-  prev: Highlight[];
   images: string[];
 };

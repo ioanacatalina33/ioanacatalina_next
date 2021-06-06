@@ -20,37 +20,29 @@ export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   function sendRequest() {
-    setErrorMessage("");
-    closeTimer();
-    setTextSubscribed("Sending...");
-    setSent(true);
+    if (!email || !name || !message)
+      setErrorMessage("Please complete all fields!");
+    else {
+      setErrorMessage("");
+      closeTimer();
+      setTextSubscribed("Sending...");
+      setSent(true);
+    }
   }
 
   async function closeTimer() {
-    const body = await buyDigital(
-      this.state.email,
-      this.state.name,
-      this.state.message,
-      this.props.imgurl
-    );
+    const body = await buyDigital(email, name, message, imgurl);
     await sleep(1000);
     if (body.result !== 1) {
-      this.setState({
-        textAfterSubscription: body.message,
-        type_travel: true,
-        type_dance: true,
-      });
+      setTextSubscribed(body.message);
     } else {
-      this.setState({
-        textAfterSubscription: "sent",
-        type_travel: true,
-        type_dance: true,
-      });
+      setTextSubscribed("sent");
     }
     await sleep(5000);
     onHide();
     await sleep(1000);
-    this.setState({ sent: false, textAfterSubscription: "" });
+    setTextSubscribed("");
+    setSent(false);
   }
 
   function onEmailModified(evt) {
@@ -129,7 +121,7 @@ export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
                   className="form-group"
                   style={{ flexGrow: 1, padding: "0rem 1rem 0rem 1rem" }}
                 >
-                  <label htmlFor="name">Your email</label>
+                  <label htmlFor="name">Your email*</label>
                   <input
                     type="email"
                     className="form-control"
@@ -142,7 +134,7 @@ export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
                   className="form-group"
                   style={{ flexGrow: 1, padding: "0rem 1rem 0rem 1rem" }}
                 >
-                  <label htmlFor="InputEmail">Name</label>
+                  <label htmlFor="InputEmail">Name*</label>
                   <input
                     type="text"
                     className="form-control"
@@ -156,7 +148,7 @@ export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
                 className="form-group"
                 style={{ padding: "0rem 1rem 0rem 1rem" }}
               >
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">Message*</label>
                 <textarea
                   rows={2}
                   className="form-control"
@@ -169,7 +161,7 @@ export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
                 style={{
                   textAlign: "center",
                   padding: "0rem 0rem 0rem 0rem",
-                  margin: "0rem 1rem 0rem 0rem",
+                  margin: "1rem 0rem 0rem 0rem",
                 }}
               >
                 <Button onClick={() => sendRequest()} variant="warning">

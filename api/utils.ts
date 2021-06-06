@@ -51,7 +51,7 @@ export async function getRouteStaticPaths(route: Routes) {
       break;
     }
     case Routes.HIGHLIGHTS: {
-      HighlightsAlbums.forEach((high) => fileNames.push(high.href));
+      HighlightsAlbums.forEach((high) => fileNames.push(high.name_url));
       break;
     }
     default:

@@ -1,0 +1,1 @@
+export { GeenaPage } from "./GeenaPage";

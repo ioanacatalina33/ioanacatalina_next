@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import LazyLoad from "react-lazy-load";
+import Link from "next/link";
 
 import { articleCover } from "helpers";
-import { Highlight } from "types/modelTypes";
-import Link from "next/link";
+import { Album } from "types";
 
 export enum PhotoContainerType {
   PHOTOC_MAIN = "main",
@@ -11,12 +11,12 @@ export enum PhotoContainerType {
 }
 
 interface PhotoContainerProps {
-  article: Highlight;
+  album: Album;
   type: PhotoContainerType;
 }
 
 export const PhotoContainerHighlights = ({
-  article,
+  album,
   type,
 }: PhotoContainerProps): JSX.Element => {
   const [show, setShow] = useState(false);
@@ -25,7 +25,7 @@ export const PhotoContainerHighlights = ({
     setShow(true);
   }
 
-  const articleURL = ("/" + article.type + "/" + article.href).toLowerCase();
+  const articleURL = ("/" + album.type + "/" + album.name_url).toLowerCase();
 
   const colsClass =
     type === PhotoContainerType.PHOTOC_REC
@@ -58,7 +58,7 @@ export const PhotoContainerHighlights = ({
                   <img
                     className="cover-loaded"
                     style={{ borderRadius: "0.3rem" }}
-                    src={articleCover(article.identifier)}
+                    src={articleCover(album.identifier)}
                     alt=""
                     onLoad={onLoad}
                   />
@@ -67,7 +67,7 @@ export const PhotoContainerHighlights = ({
                   style={{ fontSize: "1.7rem", borderRadius: "0.3rem" }}
                   className="photo-container-title"
                 >
-                  {article.name}
+                  {album.name}
                 </span>
               </div>
             </div>

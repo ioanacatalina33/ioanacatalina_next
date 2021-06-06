@@ -117,7 +117,7 @@ async function getRecommended(album: Album): Promise<Album[]> {
   try {
     if (album.type === "Dance") {
       recommended = await Article.find({
-        _id: { $ne: album.name_url },
+        _id: { $ne: album._id },
         subtype: album.subtype,
         type: album.type,
       })
@@ -126,7 +126,7 @@ async function getRecommended(album: Album): Promise<Album[]> {
       if (recommended.length < 6) {
         recommended = recommended.concat(
           await Article.find({
-            _id: { $ne: album.name_url },
+            _id: { $ne: album._id },
             type: album.type,
             subtype: { $ne: album.subtype },
           })
@@ -136,7 +136,7 @@ async function getRecommended(album: Album): Promise<Album[]> {
       }
     } else if (album.type === "Travel") {
       recommended = await Article.find({
-        _id: { $ne: album.name_url },
+        _id: { $ne: album._id },
         country: album.country,
         subtype: album.subtype,
         type: album.type,
@@ -146,7 +146,7 @@ async function getRecommended(album: Album): Promise<Album[]> {
       if (recommended.length < 6) {
         recommended = recommended.concat(
           await Article.find({
-            _id: { $ne: album.name_url },
+            _id: { $ne: album._id },
             country: album.country,
             subtype: { $ne: album.subtype },
             type: album.type,

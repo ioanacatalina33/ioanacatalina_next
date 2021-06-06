@@ -1,13 +1,10 @@
+import { PhotoContainer } from "components/UI/PhotoContainers";
+import { PhotoContainerType } from "components/UI/PhotoContainers/PhotoContainer";
 import React from "react";
 import FadeIn from "react-fade-in/lib/FadeIn";
 import { getHighlightsAlbums } from "staticModel";
 
-import {
-  PhotoContainerHighlights,
-  PhotoContainerType,
-} from "../PhotoContainers/PhotoContainerHighlights";
-
-export const AlbumMyLife = () => {
+export const AlbumRecommendedMyLife = () => {
   return (
     <div>
       <div className="text-container text-centered">
@@ -21,7 +18,7 @@ export const AlbumMyLife = () => {
           className="photo-wall-aboutme"
           style={{ padding: "0rem 0rem 2rem 0rem" }}
         >
-          <PhotoContainerHighlights
+          <PhotoContainer
             album={getHighlightsAlbums("myadventures")[0]}
             type={PhotoContainerType.PHOTOC_REC}
           />

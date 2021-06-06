@@ -819,6 +819,7 @@ h4 {
   text-align: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding-top: 2px;
   width: 3.8rem;
   height: 3.8rem;

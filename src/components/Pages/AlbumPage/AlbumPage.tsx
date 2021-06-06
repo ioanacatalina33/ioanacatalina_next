@@ -1,83 +1,104 @@
 import React, { useEffect, useState } from "react";
 
-import { useScreenType } from "hooks";
-import { AlbumType, FullAlbumDetails, FullHighlightDetails } from "types";
+import { FullAlbumDetails } from "types";
 import { useRouter } from "next/router";
 import {
-  mapURLPhoto,
   mapPhotoFromURL,
   mapPropertyFromURL,
   articleCoverLarge,
-  mapURLToProperty,
   urlAlbumHeader,
+  getFullPathImgs,
+  albumUrl,
 } from "helpers";
 import { FollowMe } from "components/UI/FollowMe";
 import { AlbumHeader } from "./Components/AlbumHeader";
+import { GeenaPage } from "../GeenaPage";
+import { AlbumDisplayType } from "./Components/AlbumDisplayType";
+import { PhotosDisplay } from "./Components/PhotosDisplay";
+import { AlbumRecommended } from "./Components/AlbumRecommended";
+import { AlbumRecommendedMyLife } from "./Components/AlbumRecommendedMyLife";
+import { AlbumSubHeader } from "./Components/AlbumSubHeader";
 
+export enum PhotosDisplayType {
+  ONE = "1",
+  TWO = "2",
+  THREE = "3",
+  FOUR = "4",
+}
 interface AlbumPageProps {
-  fullAlbum?: FullAlbumDetails;
-  fullHighlight?: FullHighlightDetails;
-  type: AlbumType;
+  fullAlbum: FullAlbumDetails;
 }
 
 export const AlbumPage = ({
-  type,
-  fullAlbum,
-  fullHighlight,
+  fullAlbum: { images, album, prev: prevPhotos, recommended, next: nextPhotos },
 }: AlbumPageProps) => {
-  const { screenType } = useScreenType();
-  const { pathname } = useRouter();
+  const { push } = useRouter();
 
-  const [selectedDisplay, setSelectedDisplay] = useState("4");
+  const [selectedDisplay, setSelectedDisplay] = useState(
+    PhotosDisplayType.FOUR
+  );
   const [currentIndex, setCurrentIndex] = useState(undefined);
+  const [pathname, setPathname] = useState("");
+
   const [modalShow, setModalShow] = useState(false);
 
-  function onImgIndexChanged(imgIndex: number) {
-    var url = mapURLPhoto(imgIndex, window.location.search);
-    // history.replace(`?${url}`);
+  type QueryType = {
+    display?: PhotosDisplayType;
+    img?: number;
+  };
+
+  function pushQuery() {
+    let query: QueryType = { display: selectedDisplay };
+    if (currentIndex !== undefined) {
+      query = { ...query, img: currentIndex };
+    }
+    push(
+      {
+        pathname: pathname,
+        query: query,
+      },
+      undefined,
+      {
+        shallow: true,
+      }
+    );
   }
 
   useEffect(() => {
-    var photoIndex = mapPhotoFromURL(window.location.search);
-    var displayMode = mapPropertyFromURL(window.location.search, "display");
+    pushQuery();
+  }, [currentIndex, selectedDisplay]);
 
+  useEffect(() => {
+    const photoIndex = mapPhotoFromURL(window.location.search);
+    const displayMode = mapPropertyFromURL(window.location.search, "display");
+
+    setPathname(
+      window.location.href.indexOf("?") > 0
+        ? window.location.href.slice(0, window.location.href.indexOf("?"))
+        : window.location.href
+    );
+
+    // @ts-ignore
     if (displayMode !== undefined) setSelectedDisplay(displayMode);
+
     setCurrentIndex(photoIndex);
     setModalShow(photoIndex !== undefined ? true : false);
   }, []);
 
-  const identifier = fullAlbum
-    ? fullAlbum.album.identifier
-    : fullHighlight
-    ? fullHighlight.highlight.identifier
-    : "";
+  const imagesFullPath = getFullPathImgs(images, album.identifier);
 
-  const images = fullAlbum
-    ? fullAlbum.images
-    : fullHighlight
-    ? fullHighlight.images
-    : [];
-
-  const hasLargeCover = images.includes(articleCoverLarge(identifier));
-  const imagesToDisplay = images.filter(
-    (img) => img !== articleCoverLarge(identifier)
+  const hasLargeCover = imagesFullPath.includes(
+    articleCoverLarge(album.identifier)
+  );
+  const imagesToDisplay = imagesFullPath.filter(
+    (img) => img !== articleCoverLarge(album.identifier)
   );
 
-  const nextPhotos = fullAlbum ? fullAlbum.next : fullHighlight.next;
-
-  const prevPhotos = fullAlbum ? fullAlbum.prev : fullHighlight.prev;
-
-  const recommended = fullAlbum
-    ? fullAlbum.recommended
-    : fullHighlight.recommended;
-
-  function albumDisplaySelected(value) {
+  function albumDisplaySelected(value: PhotosDisplayType) {
     setSelectedDisplay(value);
-    var url = mapURLToProperty(value, "display", window.location.search);
-    // history.replace(`?${url}`);
   }
 
-  async function setIndex(index) {
+  async function setIndex(index: number) {
     setCurrentIndex(index);
     setModalShow(index !== undefined ? true : false);
     if (index !== undefined) {
@@ -85,71 +106,77 @@ export const AlbumPage = ({
     } else {
       document.body.style.overflow = "visible";
     }
-    onImgIndexChanged(index);
   }
 
   return (
     <div className="App">
-      {/* <AlbumHeader
-        type={type}
-        coverImageSrc={urlAlbumHeader(type, identifier, hasLargeCover)}
+      <AlbumHeader
+        type={album.type}
+        coverImageSrc={urlAlbumHeader(
+          album.type,
+          album.identifier,
+          hasLargeCover
+        )}
         isCoverLarge={hasLargeCover}
-        country={fullAlbum ? fullAlbum.album.country : null}
-        locations={fullAlbum ? fullAlbum.album.locations : null}
-        nextLink={nextPhotos.length ? nextPhotos[0].identifier : ""}
+        country={album.country}
+        locations={album.locations}
+        name_location={album.name_location}
+        nextLink={
+          nextPhotos.length
+            ? albumUrl(nextPhotos[0].type, nextPhotos[0].name_url)
+            : ""
+        }
+        prevLink={
+          prevPhotos.length
+            ? albumUrl(prevPhotos[0].type, prevPhotos[0].name_url)
+            : ""
+        }
       />
 
-      {fullHighlight && fullHighlight.highlight.name === "Geena" && <Geena />}
-
-      <div className="text-container">
-        {<AlbumSubHeader article={article} />}
-
-        <div dangerouslySetInnerHTML={{ __html: article.description }} />
-        <br />
-        <br />
-      </div>
-
-      <AlbumDisplayType
-        selected={selectedDisplay}
-        albumDisplaySelected={albumDisplaySelected}
-        screenType={screenType}
-      />
-
-      <PhotosDisplay
-        setIndex={setIndex}
-        currentIndex={currentIndex}
-        modalShow={modalShow}
-        displayMode={selectedDisplay}
-        images={imagesToDisplay}
-      />
-
-      <FollowMe />
-
-      {nextPhotos.length !== 0 && (
-        <AlbumRecommended
-          text="Next albums:"
-          recommended={nextPhotos}
-          loadingRecommended={false}
-        />
-      )}
-      {prevPhotos.length !== 0 && (
-        <AlbumRecommended
-          text="Previous albums:"
-          recommended={prevPhotos}
-          loadingRecommended={false}
-        />
-      )}
-      {article !== undefined && article.name === "Geena" ? (
-        <AlbumRecommendedMyLife />
-      ) : recommended.length > 0 ? (
-        <AlbumRecommended
-          text="Recommended:"
-          recommended={recommended}
-          loadingRecommended={loadingRecommended}
-        />
+      {album.name === "Geena" ? (
+        <GeenaPage />
       ) : (
-        ""
-      )} */}
+        <>
+          <div className="text-container">
+            {<AlbumSubHeader album={album} />}
+
+            <div dangerouslySetInnerHTML={{ __html: album.description }} />
+            <br />
+            <br />
+          </div>
+
+          <AlbumDisplayType
+            selected={selectedDisplay}
+            albumDisplaySelected={albumDisplaySelected}
+          />
+          <PhotosDisplay
+            setIndex={setIndex}
+            currentIndex={currentIndex}
+            modalShow={modalShow}
+            displayMode={selectedDisplay}
+            images={imagesToDisplay}
+          />
+
+          <FollowMe />
+
+          {nextPhotos.length !== 0 && (
+            <AlbumRecommended text="Next albums:" recommended={nextPhotos} />
+          )}
+          {prevPhotos.length !== 0 && (
+            <AlbumRecommended
+              text="Previous albums:"
+              recommended={prevPhotos}
+            />
+          )}
+          {album.name === "Geena" ? (
+            <AlbumRecommendedMyLife />
+          ) : recommended.length > 0 ? (
+            <AlbumRecommended text="Recommended:" recommended={recommended} />
+          ) : (
+            ""
+          )}
+        </>
+      )}
     </div>
   );
 };

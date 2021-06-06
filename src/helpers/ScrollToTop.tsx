@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { scroller } from "react-scroll";
 
 export function ScrollToTop() {
   const { pathname } = useRouter();

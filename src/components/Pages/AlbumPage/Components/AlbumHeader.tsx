@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import Link from "next/link";
 import React from "react";
 
-import { contentScroll, getLocationsWithComa, urlAlbumHeader } from "helpers";
+import { contentScroll, getLocationsWithComa } from "helpers";
 import { useBrowsers, useScreenSize } from "hooks";
 import { AlbumType, Location } from "types";
 import { ImageLoader } from "components/UI/ImageLoader";
@@ -15,7 +15,7 @@ interface AlbumHeaderProps {
   name_location?: string;
   locations?: Location[];
   country?: string;
-  previousLink?: string;
+  prevLink?: string;
   nextLink?: string;
 }
 
@@ -27,7 +27,7 @@ export const AlbumHeader = ({
   name_location,
   country,
   locations,
-  previousLink,
+  prevLink,
   nextLink,
 }: AlbumHeaderProps) => {
   const { screenHeight } = useScreenSize();
@@ -61,26 +61,29 @@ export const AlbumHeader = ({
           <i className="fa fa-arrow-circle-left"></i> Back
         </button> */}
 
-        {previousLink && (
-          <Link href={previousLink}>
-            <Button
-              variant="outline-light"
-              className="album-header-button album-header-button-left"
-            >
-              <i className="fa fa-angle-left"></i> Previous album
-            </Button>
-            `
+        {prevLink && (
+          <Link href={prevLink}>
+            <a>
+              <Button
+                variant="outline-light"
+                className="album-header-button album-header-button-left"
+              >
+                <i className="fa fa-angle-left"></i> Previous album
+              </Button>
+            </a>
           </Link>
         )}
 
         {nextLink && (
           <Link href={nextLink}>
-            <Button
-              variant="outline-light"
-              className="album-header-button album-header-button-right"
-            >
-              Next album <i className="fa fa-angle-right"></i>
-            </Button>
+            <a>
+              <Button
+                variant="outline-light"
+                className="album-header-button album-header-button-right"
+              >
+                Next album <i className="fa fa-angle-right"></i>
+              </Button>
+            </a>
           </Link>
         )}
 
