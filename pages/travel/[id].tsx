@@ -10,6 +10,8 @@ import { AlbumPage } from "components";
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getRouteStaticPaths(Routes.TRAVEL);
   return {
+    // paths: [],
+    // fallback: "blocking",
     paths,
     fallback: false,
   };

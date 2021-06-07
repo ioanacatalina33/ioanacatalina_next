@@ -32,3 +32,10 @@ export enum LinksPageType {
   Collaborations = "Collaborations",
   Contact = "Contact",
 }
+
+export enum PhotosDisplayType {
+  ONE = "1",
+  TWO = "2",
+  THREE = "3",
+  FOUR = "4",
+}

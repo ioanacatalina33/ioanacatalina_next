@@ -305,7 +305,7 @@ export const Header = () => {
                 </Link>
               </Nav.Link>
               <Nav.Link eventKey="7">
-                <Link scroll={false} href="/collaborators">
+                <Link scroll={false} href="/collaborations">
                   <a style={{ color: "#cccccc", textDecoration: "none" }}>
                     Collaborators
                   </a>

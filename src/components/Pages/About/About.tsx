@@ -13,10 +13,6 @@ import { useFullScreenlayer } from "hooks/useFullScreenLayer";
 export const About = () => {
   const FullSizeLayer = useFullScreenlayer(StaticPage.ABOUT);
 
-  useEffect(() => {
-    ReactGA.pageview("/about");
-  }, []);
-
   return (
     <div className="App">
       {FullSizeLayer}

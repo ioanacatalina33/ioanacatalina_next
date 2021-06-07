@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import { getHighlightAlbumDetails } from "staticModel";
@@ -10,10 +9,13 @@ import {
   Routes,
 } from "../../api/utils";
 import { FullAlbumDetails } from "types";
+import { AlbumPage } from "components";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getRouteStaticPaths(Routes.HIGHLIGHTS);
   return {
+    // paths: [],
+    // fallback: "blocking",
     paths,
     fallback: false,
   };
@@ -39,16 +41,7 @@ interface Props {
 }
 
 const HighlightAlbum = ({ fullAlbum }: Props) => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  return (
-    <div>
-      <br /> <h1>Album page</h1>
-      <br /> Album id: {id}
-      <br /> Name: {fullAlbum.album.name}
-    </div>
-  );
+  return <AlbumPage fullAlbum={fullAlbum} />;
 };
 
 export default HighlightAlbum;

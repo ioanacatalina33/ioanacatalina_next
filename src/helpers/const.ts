@@ -1,3 +1,5 @@
+import { PhotosDisplayType } from "types";
+
 export const PAGE_NOT_FOUND = "PNF";
 
 export const WEBSITE_PATH = "https://ioanacatalina.com";
@@ -26,3 +28,5 @@ export const Months = [
   "Nov",
   "Dec",
 ];
+
+export const DefaultDisplayType = PhotosDisplayType.FOUR;

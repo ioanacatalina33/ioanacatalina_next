@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { FullAlbumDetails } from "types";
+import { FullAlbumDetails, PhotosDisplayType } from "types";
 import { useRouter } from "next/router";
 import {
   mapPhotoFromURL,
@@ -9,6 +9,7 @@ import {
   urlAlbumHeader,
   getFullPathImgs,
   albumUrl,
+  DefaultDisplayType,
 } from "helpers";
 import { FollowMe } from "components/UI/FollowMe";
 import { AlbumHeader } from "./Components/AlbumHeader";
@@ -19,12 +20,6 @@ import { AlbumRecommended } from "./Components/AlbumRecommended";
 import { AlbumRecommendedMyLife } from "./Components/AlbumRecommendedMyLife";
 import { AlbumSubHeader } from "./Components/AlbumSubHeader";
 
-export enum PhotosDisplayType {
-  ONE = "1",
-  TWO = "2",
-  THREE = "3",
-  FOUR = "4",
-}
 interface AlbumPageProps {
   fullAlbum: FullAlbumDetails;
 }
@@ -34,9 +29,7 @@ export const AlbumPage = ({
 }: AlbumPageProps) => {
   const { push } = useRouter();
 
-  const [selectedDisplay, setSelectedDisplay] = useState(
-    PhotosDisplayType.FOUR
-  );
+  const [selectedDisplay, setSelectedDisplay] = useState(DefaultDisplayType);
   const [currentIndex, setCurrentIndex] = useState(undefined);
   const [pathname, setPathname] = useState("");
 
@@ -48,10 +41,14 @@ export const AlbumPage = ({
   };
 
   function pushQuery() {
-    let query: QueryType = { display: selectedDisplay };
+    let query: QueryType = {};
+    if (selectedDisplay !== DefaultDisplayType)
+      query = { ...query, display: selectedDisplay };
+
     if (currentIndex !== undefined) {
-      query = { ...query, img: currentIndex };
+      query = { ...query, img: currentIndex + 1 };
     }
+
     push(
       {
         pathname: pathname,
@@ -112,6 +109,7 @@ export const AlbumPage = ({
     <div className="App">
       <AlbumHeader
         type={album.type}
+        name={album.name}
         coverImageSrc={urlAlbumHeader(
           album.type,
           album.identifier,

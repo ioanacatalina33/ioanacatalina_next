@@ -1,7 +1,5 @@
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -17,17 +15,21 @@ import { ModalProps } from "./common";
 
 export const ModalShareDialog = ({ onHide, show }: ModalProps) => {
   const [copied, setCopied] = useState(false);
-  const { basePath } = useRouter();
   let url: string = "";
 
   useEffect(() => {
     url = window.location.href;
   }, []);
 
+  function closeModal() {
+    setCopied(false);
+    onHide();
+  }
+
   return (
     <Modal
       show={show}
-      onHide={onHide}
+      onHide={closeModal}
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -35,7 +37,7 @@ export const ModalShareDialog = ({ onHide, show }: ModalProps) => {
         <Modal.Title id="contained-modal-title-vcenter">Share</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div className="row">
+        <div style={{ display: "flex" }}>
           <FacebookShareButton url={url}>
             <FacebookIcon
               size={50}
@@ -66,17 +68,31 @@ export const ModalShareDialog = ({ onHide, show }: ModalProps) => {
           </EmailShareButton>
         </div>
 
-        <div style={{ margin: "1rem" }} className="align-center">
-          <CopyToClipboard text={url} onCopy={() => setCopied(true)}>
-            <button className="col-12 filter-element" onClick={onHide}>
-              Copy to clipboard
-            </button>
-          </CopyToClipboard>
+        <div style={{ marginTop: "1rem" }} className="align-center">
+          <button
+            className="col-12 filter-element"
+            onClick={() => {
+              navigator.clipboard.writeText(url);
+              setCopied(true);
+            }}
+          >
+            Copy to clipboard
+          </button>
         </div>
-        {copied && <div>Copied to clipboard!</div>}
+        {copied && (
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "0.5rem",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Copied to clipboard!
+          </div>
+        )}
       </Modal.Body>
       <Modal.Footer>
-        <button className="filter-element" onClick={onHide}>
+        <button className="filter-element" onClick={closeModal}>
           Close
         </button>
       </Modal.Footer>

@@ -162,7 +162,7 @@ async function getRecommended(album: Album): Promise<Album[]> {
   return recommended.slice(0, 6);
 }
 
-export async function getNumberAlbums() {
+export async function getNumberAlbums(): Promise<number> {
   let number = 0;
   try {
     await dbConnect();
@@ -175,10 +175,10 @@ export async function getNumberAlbums() {
   return number;
 }
 
-export async function getSmallAlbums(req, res) {
+export async function getSmallAlbums(): Promise<Album[]> {
   try {
     await dbConnect();
-    var articles = await Article.find()
+    const albums = await Article.find()
       .select({
         _id: 1,
         name: 1,
@@ -195,122 +195,9 @@ export async function getSmallAlbums(req, res) {
       })
       .populate("locations", Location)
       .sort({ date_start: -1 });
-    res.status(200).json(articles);
+    return albums;
   } catch (err) {
     console.error(JSON.stringify(err));
-    res.status(500).json({ message: err.message });
-  }
-}
-
-export async function getAlbums(req, res) {
-  try {
-    await dbConnect();
-    console.log("Get Articles Request");
-    const type = req.body.type;
-    const id = req.body.id;
-    const name_url = req.body.name_url;
-    const articleReq = req.body.article;
-    const recommended = req.body.recommended;
-    if (type === "Highlights") {
-      const identifier = req.body.identifier;
-      const images = await getImagesNamesFromFolder(identifier);
-      res.status(200).json({ images: images });
-      return;
-    } else if (type !== undefined && type !== "") {
-      //retrieve articles by type
-      const articles = await Article.find()
-        .populate("locations", Location)
-        .sort({ date_start: -1 })
-        .where("type")
-        .equals(type);
-      res.status(200).json(articles);
-      return;
-    } else if (id !== undefined && id !== "") {
-      //retrieve one article
-      const article = await Article.findById(id)
-        .populate("locations", Location)
-        .sort({ date_start: -1 });
-      const images = await getImagesNamesFromFolder(article.identifier);
-      res.status(200).json({ article: article, images: images });
-      return;
-    } else if (name_url !== undefined && name_url !== "") {
-      //retrieve one article
-      const article = await Article.findOne({ name_url: name_url })
-        .populate("locations", Location)
-        .sort({ date_start: -1 });
-      const images = await getImagesNamesFromFolder(article.identifier);
-      res.status(200).json({ article: article, images: images });
-      return;
-    } else if (articleReq !== undefined && recommended) {
-      //retrieve recommended
-      let recommendedArticles;
-      if (articleReq.type === "Dance") {
-        recommendedArticles = await Article.find({
-          _id: { $ne: articleReq._id },
-          subtype: articleReq.subtype,
-          type: articleReq.type,
-        })
-          .populate("locations", Location)
-          .sort({ date_start: -1 });
-        if (recommendedArticles.length < 6) {
-          recommendedArticles = recommendedArticles.concat(
-            await Article.find({
-              _id: { $ne: articleReq._id },
-              type: articleReq.type,
-              subtype: { $ne: articleReq.subtype },
-            })
-              .populate("locations", Location)
-              .sort({ date_start: -1 })
-          );
-        }
-      } else if (articleReq.type === "Travel") {
-        recommendedArticles = await Article.find({
-          _id: { $ne: articleReq._id },
-          country: articleReq.country,
-          subtype: articleReq.subtype,
-          type: articleReq.type,
-        })
-          .populate("locations", Location)
-          .sort({ date_start: -1 });
-        if (recommendedArticles.length < 6) {
-          recommendedArticles = recommendedArticles.concat(
-            await Article.find({
-              _id: { $ne: articleReq._id },
-              country: articleReq.country,
-              subtype: { $ne: articleReq.subtype },
-              type: articleReq.type,
-            })
-              .populate("locations", Location)
-              .sort({ date_start: -1 })
-          );
-        }
-        if (recommendedArticles.length < 6) {
-          recommendedArticles = recommendedArticles.concat(
-            await Article.find({
-              _id: { $ne: articleReq._id },
-              type: articleReq.type,
-              subtype: articleReq.subtype,
-              country: { $ne: articleReq.country },
-            })
-              .populate("locations", Location)
-              .sort({ date_start: -1 })
-          );
-        }
-      }
-      res
-        .status(200)
-        .json({ recommendedArticles: recommendedArticles.slice(0, 6) });
-      return;
-    } else {
-      var articles = await Article.find()
-        .populate("locations", Location)
-        .sort({ date_start: -1 });
-      res.status(200).json(articles);
-      return;
-    }
-  } catch (err) {
-    console.error("error retrieving articles " + err.message);
-    res.status(500).json({ message: err.message });
-    return;
+    throw err;
   }
 }

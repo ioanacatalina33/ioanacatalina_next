@@ -24,13 +24,13 @@ export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
       setErrorMessage("Please complete all fields!");
     else {
       setErrorMessage("");
-      closeTimer();
+      sendAndCloseModal();
       setTextSubscribed("Sending...");
       setSent(true);
     }
   }
 
-  async function closeTimer() {
+  async function sendAndCloseModal() {
     const body = await buyDigital(email, name, message, imgurl);
     await sleep(1000);
     if (body.result !== 1) {

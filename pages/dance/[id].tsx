@@ -1,15 +1,17 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { useRouter } from "next/router";
 
 import { FullAlbumDetails } from "types/modelTypes";
 
 import { getAlbumDetails } from "../../api/controllers";
 import { getRouteStaticPaths, Routes } from "../../api/utils";
+import { AlbumPage } from "components";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getRouteStaticPaths(Routes.DANCE);
   return {
+    // paths: [],
+    // fallback: "blocking",
     paths,
     fallback: false,
   };
@@ -36,16 +38,7 @@ interface Props {
 }
 
 const DanceAlbum = ({ fullAlbum }: Props) => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  return (
-    <div>
-      <br /> <h1>Album page</h1>
-      <br /> Album id: {id}
-      <br /> Country: {fullAlbum.album.country}
-    </div>
-  );
+  return <AlbumPage fullAlbum={fullAlbum} />;
 };
 
 export default DanceAlbum;

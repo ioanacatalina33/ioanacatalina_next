@@ -46,7 +46,7 @@ export async function getLocations(req, res) {
       res.status(200).json(locations);
     })
     .catch((err) => {
-      res.status(500).json({ message: err.message });
+      res.status(400).json({ message: err.message });
     });
 }
 
@@ -75,6 +75,6 @@ export async function getValidLocations(req, res) {
       res.status(200).json(locations);
     })
     .catch((err) => {
-      res.status(500).json({ message: err.message });
+      res.status(400).json({ message: err.message });
     });
 }

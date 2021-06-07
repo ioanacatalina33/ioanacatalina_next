@@ -34,14 +34,14 @@ export const Footer = () => {
           <img
             style={{ height: "auto", width: "100%" }}
             src="/img/logo_airplane.png"
-            alt=""
+            alt="Plane"
           />
         </div>
         <div style={{ maxWidth: "4rem", margin: "1.5rem" }}>
           <img
             style={{ height: "auto", width: "100%" }}
             src="/img/logo_camera.png"
-            alt=""
+            alt="Photo Camera"
           />
         </div>
 
@@ -113,7 +113,7 @@ export const Footer = () => {
                   <img
                     src="/img/sm_facebook_off.png"
                     height="22"
-                    alt="FB"
+                    alt="Facebook"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_facebook_on.png")
                     }
@@ -133,7 +133,7 @@ export const Footer = () => {
                   <img
                     src="/img/sm_instagram_off.png"
                     height="22"
-                    alt="FB"
+                    alt="Instagram"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_instagram_on.png")
                     }
@@ -154,7 +154,7 @@ export const Footer = () => {
                   <img
                     src="/img/sm_flickr_off.png"
                     height="22"
-                    alt="FB"
+                    alt="Flickr"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_flickr_on.png")
                     }
@@ -174,7 +174,7 @@ export const Footer = () => {
                   <img
                     src="/img/sm_500px_off.png"
                     height="22"
-                    alt="FB"
+                    alt="500px"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_500px_on.png")
                     }
@@ -195,7 +195,7 @@ export const Footer = () => {
                   <img
                     src="/img/sm_shutterstock_off.png"
                     height="22"
-                    alt="FB"
+                    alt="Shutterstock"
                     onMouseOver={(e) =>
                       (e.currentTarget.src = "/img/sm_shutterstock_on.png")
                     }
@@ -214,7 +214,7 @@ export const Footer = () => {
                   <img
                     src="/img/sm_nationalgeographic_off.png"
                     height="22"
-                    alt="FB"
+                    alt="NationalGeographic"
                     onMouseOver={(e) =>
                       (e.currentTarget.src =
                         "/img/sm_nationalgeographic_on.png")
@@ -235,7 +235,7 @@ export const Footer = () => {
             <img
               style={{ width: "inherit", maxWidth: "5.5rem" }}
               src="/img/logo_golden.png"
-              alt=""
+              alt="Golden Retriever"
               onMouseOver={(e) =>
                 (e.currentTarget.src = "/img/logo_golden_color.png")
               }
@@ -247,7 +247,7 @@ export const Footer = () => {
           <img
             style={{ height: "auto", width: "100%" }}
             src="/img/logo_mountain.png"
-            alt=""
+            alt="Mountain"
           />
         </div>
       </div>

@@ -1,7 +1,6 @@
 import { useScreenSize, useScreenType } from "hooks";
 import React, { useRef, useState } from "react";
-import { ScreenType } from "types";
-import { PhotosDisplayType } from "../AlbumPage";
+import { ScreenType, PhotosDisplayType } from "types";
 
 interface ImageLoaderDisplayProps {
   src: string;

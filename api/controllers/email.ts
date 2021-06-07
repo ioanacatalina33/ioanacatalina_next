@@ -1,16 +1,26 @@
 import nodemailer from "nodemailer";
+import * as SMTPTransport from "nodemailer/lib/smtp-transport";
 import fs from "fs";
 import path from "path";
+import { NextApiRequest, NextApiResponse } from "next";
 
-const transporter = nodemailer.createTransport({
+// some code here...
+
+const poolOptions = {
   host: process.env.EMAILHOST,
-  port: process.env.EMAILPORT,
-  secure: process.env.EMAILSECURE,
+  port: Number(process.env.EMAILPORT),
+  secure: Boolean(process.env.EMAILSECURE),
   auth: {
     user: process.env.EMAILSUPPORT,
     pass: process.env.EMAILPASS,
   },
-});
+};
+
+const nodemailerOptions: SMTPTransport.Options = {
+  ...poolOptions,
+};
+
+const transporter = nodemailer.createTransport(nodemailerOptions);
 
 // TODO
 const absolutePath = path.join(
@@ -51,15 +61,18 @@ export async function sendEmail(req, res) {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log("Error sending the email:" + error);
-      res.status(500).json({ message: "error" });
+      res.status(400).json({ message: "error" });
     } else {
-      console.log("Email sent: " + info.response);
+      console.log("Email sent: " + info.messageId);
       res.status(200).json({ message: "sent" });
     }
   });
 }
 
-export async function sendBuyDigitalEmail(req, res) {
+export async function sendBuyDigitalEmail(
+  req: NextApiRequest,
+  res: NextApiResponse<{ message?: string; result?: number }>
+) {
   var mailOptions = getMailOptions(
     req,
     "IOANA CATALINA E. WEBSITE Request to buy digital"
@@ -76,10 +89,10 @@ export async function sendBuyDigitalEmail(req, res) {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log("Error sending the email:" + error);
-      res.status(500).json({ message: "error" });
+      res.status(400).json({ message: error.message, result: -1 });
     } else {
-      console.log("Email sent: " + info.response);
-      res.status(200).json({ message: "sent" });
+      console.log("Email sent: " + info.messageId);
+      res.status(200).json({ message: "sent", result: 1 });
     }
   });
 }
@@ -92,9 +105,9 @@ export async function sendEmailFreelance(req, res) {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log("Error sending the email:" + error);
-      res.status(500).json({ message: "error" });
+      res.status(400).json({ message: "error" });
     } else {
-      console.log("Email sent: " + info.response);
+      console.log("Email sent: " + info.messageId);
       res.status(200).json({ message: "sent" });
     }
   });

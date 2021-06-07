@@ -5,9 +5,8 @@ import { Button } from "react-bootstrap";
 import { ModalBuyDigital } from "components/UI/Modals";
 import { WEBSITE_PATH } from "helpers";
 import { useScreenType } from "hooks";
-import { ScreenType } from "types";
+import { PhotosDisplayType, ScreenType } from "types";
 
-import { PhotosDisplayType } from "../AlbumPage";
 import { ImageLoaderDisplay } from "./ImageLoaderDisplay";
 import SlideshowModal from "./SlideshowModal";
 

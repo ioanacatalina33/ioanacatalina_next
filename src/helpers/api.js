@@ -15,7 +15,7 @@ export const fetchSmallArticles = async () => {
 };
 
 export const addSubscriber = async (email, country, travel, dance) => {
-  const response = await fetch("/subscribers/add", {
+  const response = await fetch("/api/subscriber", {
     method: "POST",
     body: JSON.stringify({
       subscriber: {
@@ -41,7 +41,9 @@ export const addSubscriber = async (email, country, travel, dance) => {
 };
 
 export const buyDigital = async (email, name, message, img) => {
-  const response = await fetch("/email/buydigital", {
+  console.log("Sending buyDigital");
+
+  const response = await fetch("/api/email/buydigital", {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -67,7 +69,7 @@ export const buyDigital = async (email, name, message, img) => {
 
 export const fetchParameter = async (name) => {
   try {
-    const response = await fetch("/parameter/getParameter", {
+    const response = await fetch("/api/parameter/getParameter", {
       method: "POST",
       body: JSON.stringify({ name: name }),
       headers: { "Content-Type": "application/json" },

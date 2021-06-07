@@ -87,9 +87,14 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
       <div style={{ textAlign: "left", padding: "0rem 0rem 1.4rem 0rem" }}>
         Get notified when I post new albums!
       </div>
-      <Form>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          subscribe();
+        }}
+      >
         <Form.Group className="justify-content-md-center">
-          <Form style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <Form.Control
               style={{ maxWidth: "20rem" }}
               type="text"
@@ -110,12 +115,12 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
             >
               <b>Subscribe</b>
             </Button>
-          </Form>
+          </div>
         </Form.Group>
       </Form>
 
       {errorMessage !== "" && (
-        <div
+        <span
           style={{
             textAlign: "center",
             padding: "0.2rem 0rem",
@@ -123,7 +128,7 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
           }}
         >
           {errorMessage}
-        </div>
+        </span>
       )}
     </div>
   );

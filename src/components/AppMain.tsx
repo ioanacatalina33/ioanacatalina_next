@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NextComponentType, NextPageContext } from "next";
+import ReactGA from "react-ga";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -9,8 +10,8 @@ import {
   updateScreenDim,
   updateArticles,
 } from "store";
-import { initGA, PageView } from "helpers/traking";
-import { ScrollToTop } from "helpers";
+import { initGA } from "helpers/traking";
+import { sleep } from "helpers";
 import { fetchSmallArticles } from "helpers/api";
 
 import { CanvasPopComp } from "./Canvaspop/CanvasPopComp";
@@ -26,7 +27,7 @@ interface AppMain {
 
 export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
   const dispatch = useDispatch();
-  const { pathname } = useRouter();
+  const { pathname, query } = useRouter();
 
   function updateDeviceType(device: ScreenType) {
     dispatch(updateScreen(device));
@@ -63,11 +64,22 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
     updateDeviceDim(window.innerWidth, window.innerHeight);
   };
 
+  const [showContent, setShowContent] = useState(true);
+
+  useEffect(() => {
+    rerender();
+    ReactGA.pageview(window.location.pathname + (query.id ? query.id : ""));
+  }, [pathname, query.id]);
+
+  async function rerender() {
+    setShowContent(false);
+    await sleep(0);
+    setShowContent(true);
+  }
+
   useEffect(() => {
     initGA();
-    PageView();
     getAlbums();
-
     checkWidth();
     updateDim();
 
@@ -78,20 +90,21 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
     return () => {
       window.removeEventListener("resize", checkWidth);
       window.removeEventListener("resize", updateDim);
-      window.removeEventListener("resize", escFunction, false);
+      window.removeEventListener("keydown", escFunction, false);
     };
   }, []);
 
   return (
-    <>
-      <div>
-        <ScrollToTop />
-        <CanvasPopComp />
-        <Header />
-        <Search />
-        <Component {...pageProps} />
-        {pathname !== "/map" && <Footer />}
-      </div>
-    </>
+    <div>
+      <CanvasPopComp />
+      {showContent && (
+        <>
+          <Header />
+          <Search />
+          <Component {...pageProps} />
+          {pathname !== "/map" && <Footer />}
+        </>
+      )}
+    </div>
   );
 };

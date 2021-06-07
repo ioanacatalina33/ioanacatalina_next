@@ -1,8 +1,6 @@
 import { useScreenType } from "hooks";
 import React from "react";
-import { ScreenType } from "types";
-
-import { PhotosDisplayType } from "../AlbumPage";
+import { PhotosDisplayType, ScreenType } from "types";
 
 interface AlbumDisplayTypeProps {
   selected: string;

@@ -12,7 +12,6 @@ export const Search = () => {
   const allArticles = useSelector((state) => state.app.allArticles);
   const isLoading = useSelector((state) => state.app.isLoading);
   const queryForSearch = useSelector((state) => state.app.queryText);
-  const [searchKeyTimeout, setSearchKeyTimeout] = useState<number>(0);
 
   const [articlesFiltered, setArticlesFiltered] = useState([]);
   const dispatch = useDispatch();

@@ -4,10 +4,6 @@ export const initGA = () => {
   ReactGA.initialize("UA-68607928-1");
 };
 
-export const PageView = () => {
-  ReactGA.pageview(window.location.pathname + window.location.search);
-};
-
 /**
  * Event - Add custom tracking event.
  * @param {string} category
