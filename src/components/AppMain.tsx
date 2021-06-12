@@ -15,6 +15,7 @@ import { sleep } from "helpers";
 import { fetchSmallArticles } from "helpers/api";
 
 import { CanvasPopComp } from "./Canvaspop/CanvasPopComp";
+import { Meta } from "./Head";
 import { Header } from "./Header";
 import { Search } from "./Search";
 import { ScreenType } from "types/enums";
@@ -96,6 +97,7 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
 
   return (
     <div>
+      <Meta />
       <CanvasPopComp />
       {showContent && (
         <>

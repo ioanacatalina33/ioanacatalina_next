@@ -24,6 +24,7 @@ export const AlbumMyLife = () => {
           <PhotoContainerHighlights
             album={getHighlightsAlbums("myadventures")[0]}
             type={PhotoContainerType.PHOTOC_REC}
+            isSingle
           />
         </div>
       </FadeIn>

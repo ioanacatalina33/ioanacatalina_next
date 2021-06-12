@@ -45,43 +45,45 @@ export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
       style={{ visibility: show ? "visible" : "hidden" }}
     >
       <Link scroll={false} href={articleURL}>
-        <div className="photo-container white-background-hovered">
-          <div className="photo-container-img-space">
-            <img
-              className="photo-small"
-              style={cornersStyle}
-              src={"/img/cover_placeholder_map.png"}
-              alt=""
-              onLoad={onLoad}
-            />
-            <LazyLoad debounce={false} offsetVertical={800}>
+        <a>
+          <div className="photo-container white-background-hovered">
+            <div className="photo-container-img-space">
               <img
-                className="cover-loaded"
+                className="photo-small"
                 style={cornersStyle}
-                src={articleCover(article.identifier)}
+                src={"/img/cover_placeholder_map.png"}
                 alt=""
                 onLoad={onLoad}
               />
-            </LazyLoad>
-            {show ? (
-              <span style={getTitleStyle()} className="photo-container-title">
-                {getDate()}
-              </span>
-            ) : (
-              " "
-            )}
-          </div>
+              <LazyLoad debounce={false} offsetVertical={800}>
+                <img
+                  className="cover-loaded"
+                  style={cornersStyle}
+                  src={articleCover(article.identifier)}
+                  alt=""
+                  onLoad={onLoad}
+                />
+              </LazyLoad>
+              {show ? (
+                <span style={getTitleStyle()} className="photo-container-title">
+                  {getDate()}
+                </span>
+              ) : (
+                " "
+              )}
+            </div>
 
-          <div>
-            <div className="photo-container-name">{getNameText()}</div>
+            <div>
+              <div className="photo-container-name">{getNameText()}</div>
 
-            <div className="photo-container-date-country">
-              <span className="photo-container-country">
-                {getLeftCornerText()}
-              </span>
+              <div className="photo-container-date-country">
+                <span className="photo-container-country">
+                  {getLeftCornerText()}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       </Link>
     </figure>
   );

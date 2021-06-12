@@ -56,6 +56,7 @@ const initialAppState: types.AppStore = {
       continents: [],
       countries: [],
       subtypes: [],
+      types: [],
     },
     dance: {
       years: [],
@@ -63,6 +64,7 @@ const initialAppState: types.AppStore = {
       continents: [],
       countries: [],
       subtypes: [],
+      types: [],
     },
     map: {
       years: [],
@@ -70,6 +72,7 @@ const initialAppState: types.AppStore = {
       continents: [],
       countries: [],
       subtypes: [],
+      types: [],
     },
   },
 };

@@ -2,7 +2,12 @@ import { PhotosDisplayType } from "types";
 
 export const PAGE_NOT_FOUND = "PNF";
 
-export const WEBSITE_PATH = "https://ioanacatalina.com";
+export const WEBSITE_PATH = "https://www.ioanacatalina.com";
+
+export const rootPath =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : WEBSITE_PATH;
 
 export const PATH_LOGO = "img/Logos/";
 export const PATH_ARTICLES = "/img";

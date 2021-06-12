@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import React from "react";
 
-import { Travel } from "components";
+import { TravelPage } from "components";
 import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 
@@ -26,7 +26,7 @@ interface Props {
 }
 
 const travel = ({ albums }: Props) => {
-  return <Travel albums={albums} />;
+  return <TravelPage albums={albums} />;
 };
 
 export default travel;

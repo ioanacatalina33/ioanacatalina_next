@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { HighlightsAlbums } from "staticModel";
-import { AlbumType } from "types";
+import { AlbumType, Routes } from "types";
 import { getUrlPaths } from "./controllers";
 
 export async function getImagesNamesFromFolder(folderPath: string) {
@@ -33,24 +33,18 @@ export function getImagesNumberFromFolder(folderPath: string) {
   return totalCount;
 }
 
-export enum Routes {
-  TRAVEL = "travel",
-  DANCE = "dance",
-  HIGHLIGHTS = "highlights",
-}
-
 export async function getRouteStaticPaths(route: Routes) {
   let fileNames = [];
   switch (route) {
-    case Routes.TRAVEL: {
+    case Routes.Travel: {
       fileNames = await getUrlPaths(AlbumType.Travel);
       break;
     }
-    case Routes.DANCE: {
+    case Routes.Dance: {
       fileNames = await getUrlPaths(AlbumType.Dance);
       break;
     }
-    case Routes.HIGHLIGHTS: {
+    case Routes.Highlights: {
       HighlightsAlbums.forEach((high) => fileNames.push(high.name_url));
       break;
     }

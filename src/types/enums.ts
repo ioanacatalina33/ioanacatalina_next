@@ -1,3 +1,17 @@
+export enum Routes {
+  Home = "/",
+  Map = "/map",
+  About = "/about",
+  Contact = "/contact",
+  Collaborations = "/collaborations",
+  Highlights = "/highlights",
+  Travel = "/travel",
+  Dance = "/dance",
+  AlbumTravel = "/travel/[id]",
+  AlbumDance = "/dance/[id]",
+  AlbumHighlights = "/highlights/[id]",
+}
+
 export enum AlbumType {
   Travel = "Travel",
   Dance = "Dance",
@@ -17,6 +31,7 @@ export enum StaticPage {
 export type PageType = AlbumType | StaticPage;
 
 export enum ScreenType {
+  LargeDesktop = "LargeDesktop",
   Desktop = "Desktop",
   Tablet = "Tablet",
   Mobile = "Mobile",

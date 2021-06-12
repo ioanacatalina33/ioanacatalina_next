@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Collaborations } from "components";
+import { CollaborationsPage } from "components";
 
 const collaborations = () => {
-  return <Collaborations />;
+  return <CollaborationsPage />;
 };
 
 export default collaborations;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useFilters } from "hooks/utils";
 
@@ -15,10 +15,13 @@ import { Months } from "helpers/const";
 import { FiltersProps } from "./common";
 import { FiltersHeader } from "./FiltersHeader";
 import { FilterComponent } from "./FilterComponent";
+import { useFiltersQuery } from "hooks/useFiltersQuery";
 
 export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
   const dispatch = useDispatch();
   const { filters } = useFilters(FiltersType.Travel);
+
+  const { addFiltersToURL } = useFiltersQuery(FiltersType.Travel);
 
   const years = getYears(albums);
   const months = Months;
@@ -27,18 +30,25 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
   const [countries, setCountries] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
 
+  useEffect(() => {
+    if (filters.continents.length) {
+      setCountries(
+        getUniqueCountriesByContinents(albums, filters.continents, true)
+      );
+    } else setCountries([]);
+  }, [filters.continents]);
+
   function onFiltersChanged(filterName: FilterName, filterNewValues: string[]) {
     dispatch(updateFilter(filterName, filterNewValues, FiltersType.Travel));
 
     if (filterName === FilterName.continents) {
       dispatch(updateFilter(FilterName.countries, [], FiltersType.Travel));
-
-      const countries = getUniqueCountriesByContinents(
-        albums,
-        filterNewValues,
-        true
-      );
-      setCountries(countries);
+      addFiltersToURL({
+        [filterName]: filterNewValues,
+        [FilterName.countries]: [],
+      });
+    } else {
+      addFiltersToURL({ [filterName]: filterNewValues });
     }
   }
 
@@ -65,11 +75,17 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
         style={{ height: showFilters ? "auto" : 0 }}
         className={showFilters ? "box-show" : "box-hide"}
       >
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <div className="col" style={styleMention}>
-            <b>Ctrl+Click</b> for multiple select year and month, <b>Esc</b> to
-            deselect all
+            <b>Ctrl+Click</b> for multiple select, <b>Esc</b> to deselect all
           </div>
+
           <FilterComponent
             filterName={FilterName.years}
             values={years}
@@ -77,6 +93,7 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
             selected={filters.years}
             onFiltersChanged={onFiltersChanged}
           />
+
           <FilterComponent
             filterName={FilterName.months}
             values={months}
@@ -84,34 +101,38 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
             selected={filters.months}
             onFiltersChanged={onFiltersChanged}
           />
-          <div style={{ marginTop: "0.8rem" }} className="filters-same-line">
-            <div className="filters-same-line-element">
-              <FilterComponent
-                filterName={FilterName.continents}
-                albumType={AlbumType.Travel}
-                values={continents}
-                selected={filters.continents}
-                onFiltersChanged={onFiltersChanged}
-              />
-            </div>
-            <div className="filters-same-line-element">
-              <FilterComponent
-                filterName={FilterName.subtypes}
-                albumType={AlbumType.Travel}
-                values={subtypes}
-                selected={filters.subtypes}
-                onFiltersChanged={onFiltersChanged}
-              />
-            </div>
+
+          <div
+            style={{
+              marginTop: "0.8rem",
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <FilterComponent
+              filterName={FilterName.continents}
+              albumType={AlbumType.Travel}
+              values={continents}
+              selected={filters.continents}
+              onFiltersChanged={onFiltersChanged}
+            />
+            &nbsp;&nbsp;&nbsp;
+            <FilterComponent
+              filterName={FilterName.subtypes}
+              albumType={AlbumType.Travel}
+              values={subtypes}
+              selected={filters.subtypes}
+              onFiltersChanged={onFiltersChanged}
+            />
           </div>
-          <FilterComponent
-            albumType={AlbumType.Travel}
-            filterName={FilterName.countries}
-            values={countries}
-            selected={filters.countries}
-            onFiltersChanged={onFiltersChanged}
-          />
         </div>
+        <FilterComponent
+          albumType={AlbumType.Travel}
+          filterName={FilterName.countries}
+          values={countries}
+          selected={filters.countries}
+          onFiltersChanged={onFiltersChanged}
+        />
       </div>
     </div>
   );

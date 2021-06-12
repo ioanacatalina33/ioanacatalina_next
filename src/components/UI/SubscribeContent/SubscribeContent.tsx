@@ -75,7 +75,10 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
               <b>To complete the subscription process, please click the link in the email we just sent you! </b>
               <br/><br/>In case you subscribed with <b>Gmail</b>, please check also the <b>'Social' Tab</b>
            */}
-        <b>Thanks for your subscription!</b>
+        <b>
+          One more step before you're subscribed! Check your email for the
+          confirmation link! Thank you!
+        </b>
       </div>
     ) : (
       <div style={{ textAlign: "center", padding: "1rem 0rem" }}>

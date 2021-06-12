@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import React from "react";
 
-import { Dance } from "components";
+import { DancePage } from "components";
 import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 
@@ -27,7 +27,7 @@ interface Props {
 }
 
 const dance = ({ albums }: Props) => {
-  return <Dance albums={albums} />;
+  return <DancePage albums={albums} />;
 };
 
 export default dance;

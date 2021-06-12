@@ -10,6 +10,7 @@ import { FilterName, FiltersType, updateFilter, updateFilters } from "store";
 import { FiltersProps } from "./common";
 import { FiltersHeader } from "./FiltersHeader";
 import { FilterComponent } from "./FilterComponent";
+import { useFiltersQuery } from "hooks/useFiltersQuery";
 
 export const FiltersDance = ({ albums, nrFiltered }: FiltersProps) => {
   const dispatch = useDispatch();
@@ -21,22 +22,23 @@ export const FiltersDance = ({ albums, nrFiltered }: FiltersProps) => {
   const countries = getUniqueValues(albums, "country", true);
   const [showFilters, setShowFilters] = useState(true);
 
+  const { addFiltersToURL } = useFiltersQuery(FiltersType.Dance);
+
   function onFiltersChanged(filterName: FilterName, filterNewValues: string[]) {
     if (filterName === FilterName.subtypes) {
-      dispatch(
-        updateFilters(
-          {
-            countries: [],
-            years: [],
-            months: [],
-            continents: [],
-            subtypes: filterNewValues,
-          },
-          FiltersType.Dance
-        )
-      );
+      const onlySubtypesFilters = {
+        countries: [],
+        years: [],
+        months: [],
+        continents: [],
+        types: [],
+        subtypes: filterNewValues,
+      };
+      dispatch(updateFilters(onlySubtypesFilters, FiltersType.Dance));
+      addFiltersToURL(onlySubtypesFilters);
     } else {
       dispatch(updateFilter(filterName, filterNewValues, FiltersType.Dance));
+      addFiltersToURL({ [filterName]: filterNewValues });
     }
   }
 
@@ -60,13 +62,18 @@ export const FiltersDance = ({ albums, nrFiltered }: FiltersProps) => {
       />
       <div>
         <div
-          style={{ height: showFilters ? "auto" : 0 }}
+          style={{ marginBottom: "1rem", height: showFilters ? "auto" : 0 }}
           className={showFilters ? "box-show" : "box-hide"}
         >
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <div className="col" style={styleMention}>
-              <b>Ctrl+Click</b> for multiple select year and month, <b>Esc</b>{" "}
-              to deselect all
+              <b>Ctrl+Click</b> for multiple select, <b>Esc</b> to deselect all
             </div>
             <FilterComponent
               filterName={FilterName.years}

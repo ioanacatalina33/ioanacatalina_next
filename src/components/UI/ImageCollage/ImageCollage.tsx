@@ -25,20 +25,22 @@ export const ImageCollage = ({
   const imageRatio = 66.7;
 
   const renderImages =
-    screenType === ScreenType.Desktop && collaborations !== true
-      ? photos
-      : photos.slice(0, 4);
+    screenType === ScreenType.Desktop ? photos : photos.slice(0, 4);
+
   const imageWidthPercentage =
     screenType !== ScreenType.Desktop || collaborations
       ? 50
       : 100 / renderImages.length;
+
   const imageStyle = {
     width: imageWidthPercentage + "%",
     padding:
       !photoPadding || screenType === ScreenType.Mobile ? "0rem" : photoPadding,
   };
   let imageHeight = 0;
-  const fullWidth = !!fullWidthParam ? fullWidthParam : screenWidth;
+  const fullWidth = !!fullWidthParam
+    ? Math.min(fullWidthParam, screenWidth)
+    : screenWidth;
 
   if (screenType !== undefined) {
     const imageWidth = (fullWidth * imageWidthPercentage) / 100;
@@ -53,12 +55,12 @@ export const ImageCollage = ({
         !isNaN(imageHeight)
           ? {
               height: imageHeight,
-              width: fullWidth,
+              maxWidth: fullWidthParam ? fullWidthParam : "100%",
               margin: (marginTopBottom ? marginTopBottom : "3rem") + " auto",
+              padding: "0rem",
             }
           : {}
       }
-      className="collage-container"
     >
       <LazyLoad debounce={false} offsetVertical={500}>
         <div>

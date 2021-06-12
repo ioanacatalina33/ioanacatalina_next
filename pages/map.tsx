@@ -1,4 +1,6 @@
+import { MapPage } from "components/Pages/MapPage";
 import React from "react";
+import { Location } from "types";
 import { fetchValidLocations } from "../api/controllers/location";
 
 export async function getStaticProps(context) {
@@ -16,19 +18,12 @@ export async function getStaticProps(context) {
   };
 }
 
-const Map = ({ locations }) => {
-  return (
-    <div>
-      <br /> <h1>Map page</h1>
-      <div>
-        {locations.map((loc, i) => (
-          <div key={i}>
-            {loc.name} {loc.coord_lat} {loc.coord_long}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+interface Props {
+  locations: Location[];
+}
+
+const Map = ({ locations }: Props) => {
+  return <MapPage locations={locations} />;
 };
 
 export default Map;

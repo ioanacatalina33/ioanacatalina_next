@@ -1,5 +1,4 @@
 import { filterArticles, sleep } from "helpers";
-import { AlbumType } from "types/enums";
 import { useEffect, useState } from "react";
 import { FiltersType } from "store";
 import { Album } from "types/modelTypes";

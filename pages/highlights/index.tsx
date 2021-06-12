@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import React from "react";
 
-import { Highlights } from "components";
+import { HighlightsPage } from "components";
 
 import { getHighlightsAlbums } from "staticModel";
 import { Album } from "types";
@@ -25,7 +25,7 @@ interface Props {
 }
 
 const highlights = ({ albums }: Props) => {
-  return <Highlights albums={albums} />;
+  return <HighlightsPage albums={albums} />;
 };
 
 export default highlights;

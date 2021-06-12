@@ -81,43 +81,45 @@ export const PhotoContainer = ({
         alt=""
       >
         <Link scroll={false} href={articleURL}>
-          <div className="photo-container">
-            <div className="photo-container-img-space">
-              <img
-                className="photo-small"
-                style={{ borderRadius: "0.3rem 0.3rem 0rem 0rem" }}
-                src={"/img/cover_placeholder.png"}
-                onLoad={onLoad}
-                alt=""
-              />
-              <LazyLoad debounce={false} offsetVertical={1000}>
+          <a>
+            <div className="photo-container">
+              <div className="photo-container-img-space">
                 <img
-                  className="cover-loaded"
+                  className="photo-small"
                   style={{ borderRadius: "0.3rem 0.3rem 0rem 0rem" }}
-                  src={articleCover(album.identifier)}
-                  alt=""
+                  src={"/img/cover_placeholder.png"}
                   onLoad={onLoad}
+                  alt=""
                 />
-              </LazyLoad>
-              <span style={getTitleStyle()} className="photo-container-title">
-                {getTitleText()}
-              </span>
-            </div>
-
-            {
-              <div style={{ background: "transparent" }}>
-                <div className="photo-container-name"> {getNameText()} </div>
-                <div className="photo-container-date-country">
-                  <span className="photo-container-country">
-                    {album.country}
-                  </span>
-                  <span className="photo-container-date">
-                    {getFileDateTitleString(album.date_start, album.date_end)}
-                  </span>
-                </div>
+                <LazyLoad debounce={false} offsetVertical={1000}>
+                  <img
+                    className="cover-loaded"
+                    style={{ borderRadius: "0.3rem 0.3rem 0rem 0rem" }}
+                    src={articleCover(album.identifier)}
+                    alt=""
+                    onLoad={onLoad}
+                  />
+                </LazyLoad>
+                <span style={getTitleStyle()} className="photo-container-title">
+                  {getTitleText()}
+                </span>
               </div>
-            }
-          </div>
+
+              {
+                <div style={{ background: "transparent" }}>
+                  <div className="photo-container-name"> {getNameText()} </div>
+                  <div className="photo-container-date-country">
+                    <span className="photo-container-country">
+                      {album.country}
+                    </span>
+                    <span className="photo-container-date">
+                      {getFileDateTitleString(album.date_start, album.date_end)}
+                    </span>
+                  </div>
+                </div>
+              }
+            </div>
+          </a>
         </Link>
       </LazyLoad>
     </figure>

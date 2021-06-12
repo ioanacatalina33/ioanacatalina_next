@@ -1,1 +1,0 @@
-export { Collaborations } from "./Collaborations";

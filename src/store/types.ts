@@ -35,6 +35,7 @@ export enum FilterName {
   continents = "continents",
   countries = "countries",
   subtypes = "subtypes",
+  types = "types",
 }
 export interface AppStore {
   screenType: ScreenType;

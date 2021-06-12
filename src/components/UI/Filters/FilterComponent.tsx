@@ -5,13 +5,15 @@ import { ButtonToolbar, Button } from "react-bootstrap";
 import CSSTransition from "react-transition-group/CSSTransition";
 import { getDanceEvent } from "staticModel";
 import { FilterName } from "store";
+import { ButtonGroup } from "react-bootstrap";
 
 interface FilterComponentProps {
   filterName: FilterName;
-  albumType: AlbumType;
+  albumType?: AlbumType;
   allowMultipleSelect?: boolean;
   values: string[];
   selected: string[];
+  mapFilters?: boolean;
   onFiltersChanged: (filterName: FilterName, filterNewValues: string[]) => void;
 }
 
@@ -21,12 +23,14 @@ export const FilterComponent = ({
   allowMultipleSelect = true,
   values,
   selected,
+  mapFilters,
   onFiltersChanged,
 }: FilterComponentProps) => {
   useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
+    if (!mapFilters) document.addEventListener("keydown", escFunction, false);
     return () => {
-      document.removeEventListener("keydown", escFunction, false);
+      if (!mapFilters)
+        document.removeEventListener("keydown", escFunction, false);
     };
   }, []);
 
@@ -69,11 +73,20 @@ export const FilterComponent = ({
     onFiltersChanged(filterName, selectedValues);
   }
 
-  var styleButton = {};
-  var styleButtonClicked = {
+  const buttonStyle = {
+    width: "content-fit",
+    maxWidth: "content-fit",
+    padding: mapFilters
+      ? "0.3rem 0.8rem 0.3rem 0.8rem"
+      : "0.5rem 0.8rem 0.5rem 0.8rem",
+    margin: mapFilters ? "0.05rem" : "0.08rem",
+  };
+
+  const styleButtonClicked = {
     backgroundColor: "#f6bc00",
     borderColor: "white",
     color: "white",
+    ...buttonStyle,
   };
 
   if (filterName === FilterName.countries)
@@ -131,7 +144,10 @@ export const FilterComponent = ({
     );
   else
     return (
-      <ButtonToolbar className="justify-content-center">
+      <ButtonGroup
+        style={{ flexWrap: "wrap", justifyContent: "center" }}
+        vertical={mapFilters}
+      >
         {values.map((value, index) => {
           var filterClassName =
             filterName === FilterName.months
@@ -139,9 +155,11 @@ export const FilterComponent = ({
               : "filter-element";
           var className =
             index === 0
-              ? filterClassName + " radius-edge-left"
+              ? filterClassName +
+                (mapFilters ? " radius-edge-top" : " radius-edge-left")
               : index === values.length - 1
-              ? filterClassName + " radius-edge-right"
+              ? filterClassName +
+                (mapFilters ? " radius-edge-bottom" : " radius-edge-right")
               : filterClassName;
           return (
             <Button
@@ -150,7 +168,7 @@ export const FilterComponent = ({
               onClick={handleClick}
               name={value}
               style={
-                selected.indexOf(value) > -1 ? styleButtonClicked : styleButton
+                selected.indexOf(value) > -1 ? styleButtonClicked : buttonStyle
               }
               size={filterName === FilterName.months ? "sm" : undefined}
             >
@@ -158,6 +176,6 @@ export const FilterComponent = ({
             </Button>
           );
         })}
-      </ButtonToolbar>
+      </ButtonGroup>
     );
 };

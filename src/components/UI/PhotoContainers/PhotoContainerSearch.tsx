@@ -76,41 +76,45 @@ export const PhotoContainerSearch = ({
       style={{ display: show ? "block" : "none" }}
     >
       <div className="search-photo-col" style={widthStyle}>
-        <Link scroll={false} href={articleURL}>
-          <div
-            onClick={onAlbumClicked}
-            className="photo-container search-background"
-          >
-            <div className="photo-container-img-space" style={cornersStyle}>
-              <img
-                className="photo-small"
-                style={cornersStyle}
-                src={"/img/cover_placeholder_search.png"}
-                alt=""
-                onLoad={onLoad}
-              />
-              <LazyLoad debounce={false} offsetVertical={800}>
+        <a>
+          <Link scroll={false} href={articleURL}>
+            <div
+              onClick={onAlbumClicked}
+              className="photo-container search-background"
+            >
+              <div className="photo-container-img-space" style={cornersStyle}>
                 <img
-                  className="cover-loaded"
+                  className="photo-small"
                   style={cornersStyle}
-                  src={articleCover(article.identifier)}
+                  src={"/img/cover_placeholder_search.png"}
                   alt=""
+                  onLoad={onLoad}
                 />
-              </LazyLoad>
-              <span style={getTitleStyle()} className="photo-container-title">
-                {getTitleText()}
-              </span>
-            </div>
+                <LazyLoad debounce={false} offsetVertical={800}>
+                  <img
+                    className="cover-loaded"
+                    style={cornersStyle}
+                    src={articleCover(article.identifier)}
+                    alt=""
+                  />
+                </LazyLoad>
+                <span style={getTitleStyle()} className="photo-container-title">
+                  {getTitleText()}
+                </span>
+              </div>
 
-            <div className="photo-container-name"> {getNameText()}</div>
-            <div className="photo-container-date-country">
-              <span className="photo-container-country">{article.country}</span>
-              <span className="photo-container-date">
-                {getFileDateTitleString(article.date_start, article.date_end)}
-              </span>
+              <div className="photo-container-name"> {getNameText()}</div>
+              <div className="photo-container-date-country">
+                <span className="photo-container-country">
+                  {article.country}
+                </span>
+                <span className="photo-container-date">
+                  {getFileDateTitleString(article.date_start, article.date_end)}
+                </span>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </a>
       </div>
     </figure>
   );

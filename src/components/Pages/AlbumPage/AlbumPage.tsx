@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-
-import { FullAlbumDetails, PhotosDisplayType } from "types";
 import { useRouter } from "next/router";
+
+import { FollowMe } from "components/UI/FollowMe";
+import { Meta } from "components/Head";
 import {
   mapPhotoFromURL,
   mapPropertyFromURL,
@@ -11,7 +12,8 @@ import {
   albumUrl,
   DefaultDisplayType,
 } from "helpers";
-import { FollowMe } from "components/UI/FollowMe";
+import { FullAlbumDetails, PhotosDisplayType } from "types";
+
 import { AlbumHeader } from "./Components/AlbumHeader";
 import { GeenaPage } from "../GeenaPage";
 import { AlbumDisplayType } from "./Components/AlbumDisplayType";
@@ -106,75 +108,71 @@ export const AlbumPage = ({
   }
 
   return (
-    <div className="App">
-      <AlbumHeader
-        type={album.type}
-        name={album.name}
-        coverImageSrc={urlAlbumHeader(
-          album.type,
-          album.identifier,
-          hasLargeCover
+    <>
+      <Meta album={album} />
+      <div className="App">
+        <AlbumHeader
+          type={album.type}
+          name={album.name}
+          coverImageSrc={urlAlbumHeader(
+            album.type,
+            album.identifier,
+            hasLargeCover
+          )}
+          isCoverLarge={hasLargeCover}
+          country={album.country}
+          locations={album.locations}
+          name_location={album.name_location}
+          nextLink={
+            nextPhotos.length
+              ? albumUrl(nextPhotos[0].type, nextPhotos[0].name_url)
+              : ""
+          }
+          prevLink={
+            prevPhotos.length
+              ? albumUrl(prevPhotos[0].type, prevPhotos[0].name_url)
+              : ""
+          }
+        />
+
+        {album.name === "Geena" && <GeenaPage />}
+
+        <div className="text-container">
+          {<AlbumSubHeader album={album} />}
+
+          <div dangerouslySetInnerHTML={{ __html: album.description }} />
+          <br />
+          <br />
+        </div>
+
+        <AlbumDisplayType
+          selected={selectedDisplay}
+          albumDisplaySelected={albumDisplaySelected}
+        />
+        <PhotosDisplay
+          setIndex={setIndex}
+          currentIndex={currentIndex}
+          modalShow={modalShow}
+          displayMode={selectedDisplay}
+          images={imagesToDisplay}
+        />
+
+        <FollowMe />
+
+        {nextPhotos.length !== 0 && (
+          <AlbumRecommended text="Next albums:" recommended={nextPhotos} />
         )}
-        isCoverLarge={hasLargeCover}
-        country={album.country}
-        locations={album.locations}
-        name_location={album.name_location}
-        nextLink={
-          nextPhotos.length
-            ? albumUrl(nextPhotos[0].type, nextPhotos[0].name_url)
-            : ""
-        }
-        prevLink={
-          prevPhotos.length
-            ? albumUrl(prevPhotos[0].type, prevPhotos[0].name_url)
-            : ""
-        }
-      />
-
-      {album.name === "Geena" ? (
-        <GeenaPage />
-      ) : (
-        <>
-          <div className="text-container">
-            {<AlbumSubHeader album={album} />}
-
-            <div dangerouslySetInnerHTML={{ __html: album.description }} />
-            <br />
-            <br />
-          </div>
-
-          <AlbumDisplayType
-            selected={selectedDisplay}
-            albumDisplaySelected={albumDisplaySelected}
-          />
-          <PhotosDisplay
-            setIndex={setIndex}
-            currentIndex={currentIndex}
-            modalShow={modalShow}
-            displayMode={selectedDisplay}
-            images={imagesToDisplay}
-          />
-
-          <FollowMe />
-
-          {nextPhotos.length !== 0 && (
-            <AlbumRecommended text="Next albums:" recommended={nextPhotos} />
-          )}
-          {prevPhotos.length !== 0 && (
-            <AlbumRecommended
-              text="Previous albums:"
-              recommended={prevPhotos}
-            />
-          )}
-          {album.name === "Geena" ? (
-            <AlbumRecommendedMyLife />
-          ) : recommended.length > 0 ? (
-            <AlbumRecommended text="Recommended:" recommended={recommended} />
-          ) : (
-            ""
-          )}
-        </>
-      )}
-    </div>
+        {prevPhotos.length !== 0 && (
+          <AlbumRecommended text="Previous albums:" recommended={prevPhotos} />
+        )}
+        {album.name === "Geena" ? (
+          <AlbumRecommendedMyLife />
+        ) : recommended.length > 0 ? (
+          <AlbumRecommended text="Recommended:" recommended={recommended} />
+        ) : (
+          ""
+        )}
+      </div>
+    </>
   );
 };

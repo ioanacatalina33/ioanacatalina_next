@@ -46,7 +46,7 @@ export const FullScreenLayer = ({ fullSizeImage }: FullScreenLayerProps) => {
 
           <button
             onClick={() => contentScroll(screenHeight)}
-            className="arrow-down"
+            className="arrow-down arrow-down-absolute"
           >
             <i className="fa fa-arrow-down arrow-down-icon"></i>
           </button>

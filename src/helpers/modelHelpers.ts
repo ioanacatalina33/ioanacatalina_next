@@ -3,6 +3,7 @@ import moment from "moment";
 import { AlbumType } from "../types/enums";
 import { PATH_ARTICLES } from "./const";
 import { Album, Location } from "types/modelTypes";
+import { FilterName } from "store";
 
 export const articleCover = (identifier: string): string => {
   return PATH_ARTICLES + identifier + "cover.jpg";
@@ -89,18 +90,20 @@ interface Filters {
   continents: string[];
   countries: string[];
   subtypes: string[];
-  types: AlbumType[];
+  types: string[];
 }
 
 export const filterArticles = (
   articles: Album[],
   filters: Partial<Filters>
 ): Album[] => {
-  var hasYears = filters.years && filters.years.length !== 0;
-  var hasMonths = filters.months && filters.months.length !== 0;
-  var hasContinents = filters.continents && filters.continents.length !== 0;
-  var hasCountries = filters.countries && filters.countries.length !== 0;
-  var hasSubtypes = filters.subtypes && filters.subtypes.length !== 0;
+  const hasYears = filters.years && filters.years.length !== 0;
+  const hasMonths = filters.months && filters.months.length !== 0;
+  const hasContinents = filters.continents && filters.continents.length !== 0;
+  const hasCountries = filters.countries && filters.countries.length !== 0;
+  const hasSubtypes = filters.subtypes && filters.subtypes.length !== 0;
+  const hasTypes = filters.types && filters.types.length !== 0;
+
   return articles.filter((article) => {
     return (
       (!hasContinents ||
@@ -120,7 +123,9 @@ export const filterArticles = (
       (!hasMonths ||
         filters.months.filter(
           (month) => moment(article.date_start).format("MMM") === month
-        ).length > 0)
+        ).length > 0) &&
+      (!hasTypes ||
+        filters.types.filter((type) => article.type === type).length > 0)
     );
   });
 };
@@ -129,24 +134,8 @@ export const filterLocations = (
   locations: Location[],
   filters: Partial<Filters>
 ) => {
-  if (!filters.years || filters.years.length === 0) {
-    return [];
-  }
-  if (!filters.months || filters.months.length === 0) {
-    return [];
-  }
-  if (
-    (!filters.subtypes || filters.subtypes.length === 0) &&
-    !filters.types.includes(AlbumType.Dance)
-  ) {
-    return [];
-  }
-  if (!filters.types || filters.types.length === 0) {
-    return [];
-  }
-
   var newLocations = locations.filter((location) => {
-    var articles = filterArticlesForLocation(location.articles, filters);
+    var articles = filterArticles(location.articles, filters);
     return articles.length > 0;
   });
   return newLocations;
@@ -418,6 +407,20 @@ export function mapPhotoFromURL(query) {
   var index = searchParams.get("img");
   if (index === "" || index === null) return undefined;
   return Number(index) - 1;
+}
+
+export function mapFiltersFromURL(query) {
+  var searchParams = new URLSearchParams(query);
+
+  const filtersFromURL = {
+    years: searchParams.getAll(FilterName.years),
+    months: searchParams.getAll(FilterName.months),
+    continents: searchParams.getAll(FilterName.continents),
+    countries: searchParams.getAll(FilterName.countries),
+    types: searchParams.getAll(FilterName.types),
+    subtypes: searchParams.getAll(FilterName.subtypes),
+  };
+  return filtersFromURL;
 }
 
 export function mapURLPhoto(imgIndex: number, query: string) {

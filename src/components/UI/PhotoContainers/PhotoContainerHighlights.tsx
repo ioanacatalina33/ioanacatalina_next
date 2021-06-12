@@ -13,11 +13,13 @@ export enum PhotoContainerType {
 interface PhotoContainerProps {
   album: Album;
   type: PhotoContainerType;
+  isSingle?: boolean;
 }
 
 export const PhotoContainerHighlights = ({
   album,
   type,
+  isSingle,
 }: PhotoContainerProps): JSX.Element => {
   const [show, setShow] = useState(false);
 
@@ -27,10 +29,13 @@ export const PhotoContainerHighlights = ({
 
   const articleURL = ("/" + album.type + "/" + album.name_url).toLowerCase();
 
-  const colsClass =
-    type === PhotoContainerType.PHOTOC_REC
-      ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
-      : "photo-col col-lg-4 col-md-4 col-sm-6";
+  const colsClass = isSingle
+    ? "photo-col"
+    : type === PhotoContainerType.PHOTOC_REC
+    ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
+    : "photo-col col-lg-4 col-md-4 col-sm-6";
+
+  const widthStyle = { maxWidth: isSingle ? "22rem" : "auto" };
 
   return (
     <figure
@@ -45,7 +50,7 @@ export const PhotoContainerHighlights = ({
       >
         <Link scroll={false} href={articleURL}>
           <a>
-            <div className="photo-container">
+            <div className="photo-container" style={widthStyle}>
               <div className="photo-container-img-space">
                 <img
                   className="photo-small"

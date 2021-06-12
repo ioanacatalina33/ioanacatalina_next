@@ -1,5 +1,5 @@
 import React from "react";
-import { GeenaLinks } from "../About/GeenaLinks";
+import { GeenaLinks } from "../AboutPage/GeenaLinks";
 
 export const GeenaPage = () => {
   return (

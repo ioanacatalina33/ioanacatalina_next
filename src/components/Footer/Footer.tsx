@@ -65,15 +65,9 @@ export const Footer = () => {
             <Link scroll={false} href="/dance">
               <a className="bottom-element-text">Dance</a>
             </Link>
-
-            <a
-              className="bottom-element-text"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.shop.ioanacatalina.com"
-            >
-              <span style={{ color: "yellow" }}>Shop</span>
-            </a>
+            <Link scroll={false} href="/blog">
+              <a className="bottom-element-text">Blog</a>
+            </Link>
           </div>
 
           <div
@@ -89,6 +83,14 @@ export const Footer = () => {
             <Link scroll={false} href="/collaborations">
               <a className="bottom-element-text">Collaboration</a>
             </Link>
+            <a
+              className="bottom-element-text"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.ioanacatalina.com/shop"
+            >
+              <span>Shop</span>
+            </a>
             <Link scroll={false} href="/contact">
               <a className="bottom-element-text">Contact</a>
             </Link>
@@ -111,15 +113,15 @@ export const Footer = () => {
                   href="https://www.facebook.com/IoanaCatalinaPhotography"
                 >
                   <img
-                    src="/img/sm_facebook_off.png"
-                    height="22"
+                    src="/img/sm_facebook_on.png"
+                    height="25"
                     alt="Facebook"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_facebook_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_facebook_off.png")
-                    }
+                    // onMouseOver={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_facebook_off.png")
+                    // }
+                    // onMouseOut={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_facebook_off.png")
+                    // }
                   />
                 </a>
 
@@ -131,15 +133,15 @@ export const Footer = () => {
                   href="https://www.instagram.com/ioana.catalina.e/"
                 >
                   <img
-                    src="/img/sm_instagram_off.png"
-                    height="22"
+                    src="/img/sm_instagram_on.png"
+                    height="25"
                     alt="Instagram"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_instagram_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_instagram_off.png")
-                    }
+                    // onMouseOver={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_instagram_on.png")
+                    // }
+                    // onMouseOut={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_instagram_off.png")
+                    // }
                   />
                 </a>
               </div>
@@ -152,15 +154,15 @@ export const Footer = () => {
                   href="https://www.flickr.com/photos/ioana_e"
                 >
                   <img
-                    src="/img/sm_flickr_off.png"
-                    height="22"
+                    src="/img/sm_flickr_on.png"
+                    height="25"
                     alt="Flickr"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_flickr_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_flickr_off.png")
-                    }
+                    // onMouseOver={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_flickr_on.png")
+                    // }
+                    // onMouseOut={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_flickr_off.png")
+                    // }
                   />
                 </a>
 
@@ -172,15 +174,15 @@ export const Footer = () => {
                   href="https://500px.com/ioanacatalinae"
                 >
                   <img
-                    src="/img/sm_500px_off.png"
-                    height="22"
+                    src="/img/sm_500px_on.png"
+                    height="25"
                     alt="500px"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_500px_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_500px_off.png")
-                    }
+                    // onMouseOver={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_500px_on.png")
+                    // }
+                    // onMouseOut={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_500px_off.png")
+                    // }
                   />
                 </a>
               </div>
@@ -193,15 +195,15 @@ export const Footer = () => {
                   href="https://www.shutterstock.com/g/IoanaCatalinaE"
                 >
                   <img
-                    src="/img/sm_shutterstock_off.png"
-                    height="22"
+                    src="/img/sm_shutterstock_on.png"
+                    height="25"
                     alt="Shutterstock"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src = "/img/sm_shutterstock_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src = "/img/sm_shutterstock_off.png")
-                    }
+                    // onMouseOver={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_shutterstock_on.png")
+                    // }
+                    // onMouseOut={(e) =>
+                    //   (e.currentTarget.src = "/img/sm_shutterstock_off.png")
+                    // }
                   />
                 </a>
                 <a
@@ -209,20 +211,20 @@ export const Footer = () => {
                   target="_blank"
                   style={{ margin: "0.2rem" }}
                   rel="noopener noreferrer"
-                  href="https://yourshot.nationalgeographic.com/profile/1275781"
+                  href="https://stock.adobe.com/es/contributor/206273411/icephotography"
                 >
                   <img
-                    src="/img/sm_nationalgeographic_off.png"
-                    height="22"
-                    alt="NationalGeographic"
-                    onMouseOver={(e) =>
-                      (e.currentTarget.src =
-                        "/img/sm_nationalgeographic_on.png")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.src =
-                        "/img/sm_nationalgeographic_off.png")
-                    }
+                    src="/img/sm_adobe_on.png"
+                    height="25"
+                    alt="Adobe Stock"
+                    // onMouseOver={(e) =>
+                    //   (e.currentTarget.src =
+                    //     "/img/sm_adobe_on.png")
+                    // }
+                    // onMouseOut={(e) =>
+                    //   (e.currentTarget.src =
+                    //     "/img/sm_adobe_off.png")
+                    // }
                   />
                 </a>
               </div>

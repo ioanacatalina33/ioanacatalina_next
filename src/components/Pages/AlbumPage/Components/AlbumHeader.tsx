@@ -87,13 +87,6 @@ export const AlbumHeader = ({
           </Link>
         )}
 
-        <Button
-          onClick={() => contentScroll(screenHeight)}
-          className="arrow-down arrow-down-smaller arrow-down-inverted"
-        >
-          <i className="fa fa-arrow-down arrow-down-icon-inverted"></i>
-        </Button>
-
         <div className={(isIE ? "row " : "") + " album-header-container"}>
           <ImageLoader
             style={{
@@ -107,24 +100,31 @@ export const AlbumHeader = ({
             loadedClassName="img-normal-loaded"
             loadingClassName="img-normal-loading"
           />
-          <div className="img-loaded-text-album-header">
-            <span
-              className={
-                type !== AlbumType.Highlights
-                  ? "album-header-text-span"
-                  : "album-header-text-span album-header-text-span-highlights"
-              }
-            >
-              {getTitle()}
-            </span>
-
-            {type !== AlbumType.Highlights ? (
-              <span className="album-header-text-span-subtitle">
-                {getSubTitle()}
+          <div className="img-loaded-text-album-header-absolute">
+            <div className="img-loaded-text-album-header">
+              <span
+                className={
+                  type !== AlbumType.Highlights
+                    ? "album-header-text-span"
+                    : "album-header-text-span album-header-text-span-highlights"
+                }
+              >
+                {getTitle()}
               </span>
-            ) : (
-              ""
-            )}
+
+              {type !== AlbumType.Highlights && (
+                <span className="album-header-text-span-subtitle">
+                  {getSubTitle()}
+                </span>
+              )}
+            </div>
+            <button
+              onClick={() => contentScroll(screenHeight)}
+              className="arrow-down arrow-down-inverted"
+              style={{ margin: "0 auto", marginTop: "2rem" }}
+            >
+              <i className="fa fa-arrow-down arrow-down-icon-inverted"></i>
+            </button>
           </div>
         </div>
       </div>

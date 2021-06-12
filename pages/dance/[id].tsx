@@ -4,11 +4,12 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { FullAlbumDetails } from "types/modelTypes";
 
 import { getAlbumDetails } from "../../api/controllers";
-import { getRouteStaticPaths, Routes } from "../../api/utils";
+import { getRouteStaticPaths } from "../../api/utils";
 import { AlbumPage } from "components";
+import { Routes } from "types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getRouteStaticPaths(Routes.DANCE);
+  const paths = await getRouteStaticPaths(Routes.Dance);
   return {
     // paths: [],
     // fallback: "blocking",

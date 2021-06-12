@@ -3,16 +3,12 @@ import { GetStaticPaths, GetStaticProps } from "next";
 
 import { getHighlightAlbumDetails } from "staticModel";
 
-import {
-  getImagesNamesFromFolder,
-  getRouteStaticPaths,
-  Routes,
-} from "../../api/utils";
-import { FullAlbumDetails } from "types";
+import { getImagesNamesFromFolder, getRouteStaticPaths } from "../../api/utils";
+import { FullAlbumDetails, Routes } from "types";
 import { AlbumPage } from "components";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getRouteStaticPaths(Routes.HIGHLIGHTS);
+  const paths = await getRouteStaticPaths(Routes.Highlights);
   return {
     // paths: [],
     // fallback: "blocking",
