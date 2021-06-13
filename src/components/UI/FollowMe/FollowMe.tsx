@@ -17,10 +17,11 @@ export const FollowMe = ({ subscribe }: FollowMeInterface) => {
     <div>
       <FollowMeFlex screenType={screenType}>
         <FlexElement1>
-          <AvatarIcon src="/img/followme.jpg" />
+          <AvatarIcon src="/img/followme.jpg" alt="Travel girl" />
         </FlexElement1>
         <FlexElement2 className="text-container">
-          I'm a passionate <b>travel photographer</b> in love with the journey.
+          I'm a passionate <b>traveler/ photographer</b> in love with the
+          journey.
           <br /> For more photos of my adventures, follow me on
           {/* <span className="text-left links-element">
           <a className="links-element-text link-photo-facebook" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/catalina.i.e.3">

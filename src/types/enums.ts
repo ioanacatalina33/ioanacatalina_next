@@ -10,6 +10,9 @@ export enum Routes {
   AlbumTravel = "/travel/[id]",
   AlbumDance = "/dance/[id]",
   AlbumHighlights = "/highlights/[id]",
+
+  TravelAll = "/travel/all",
+  DanceAll = "/dance/all",
 }
 
 export enum AlbumType {

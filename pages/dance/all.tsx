@@ -27,7 +27,7 @@ interface Props {
 }
 
 const dance = ({ albums }: Props) => {
-  return <DancePage albums={albums} lazyload />;
+  return <DancePage albums={albums} />;
 };
 
 export default dance;

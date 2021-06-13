@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import LazyLoad from "react-lazy-load";
 
 import { albumUrl, articleCover, getFileDateTitleString } from "helpers";
@@ -15,11 +15,13 @@ export enum PhotoContainerType {
 interface PhotoContainerProps {
   album: Album;
   type: PhotoContainerType;
+  lazyload?: boolean;
 }
 
 export const PhotoContainer = ({
   album,
   type,
+  lazyload,
 }: PhotoContainerProps): JSX.Element => {
   const [show, setShow] = useState(false);
 
@@ -69,59 +71,81 @@ export const PhotoContainer = ({
       ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
       : "photo-col col-lg-3 col-md-4 col-sm-6";
 
-  return (
-    <figure
-      className={colsClass}
-      style={{ visibility: show ? "visible" : "hidden" }}
-    >
-      <LazyLoad
-        debounce={false}
-        offsetVertical={300}
-        placeholder={<img alt="" src="/img/loading.gif" />}
-        alt=""
-      >
-        <Link scroll={false} href={articleURL}>
-          <a>
-            <div className="photo-container">
-              <div className="photo-container-img-space">
+  const loadedImage = (
+    <img
+      className="cover-loaded border-corner-up"
+      src={articleCover(album.identifier)}
+      alt={getTitleText() + " " + album.country}
+      onLoad={onLoad}
+    />
+  );
+
+  const content = useMemo(
+    () => (
+      <Link scroll={false} href={articleURL}>
+        <a>
+          <div className="photo-container">
+            <div className="photo-container-img-space border-corner-up">
+              <div className="loading-animation border-corner-up">
                 <img
-                  className="photo-small"
-                  style={{ borderRadius: "0.3rem 0.3rem 0rem 0rem" }}
-                  src={"/img/cover_placeholder.png"}
+                  className="photo-small border-corner-up"
+                  style={{
+                    visibility: "hidden",
+                  }}
+                  src={"/img/cover_placeholder_.jpg"}
                   onLoad={onLoad}
                   alt=""
                 />
-                <LazyLoad debounce={false} offsetVertical={1000}>
-                  <img
-                    className="cover-loaded"
-                    style={{ borderRadius: "0.3rem 0.3rem 0rem 0rem" }}
-                    src={articleCover(album.identifier)}
-                    alt=""
-                    onLoad={onLoad}
-                  />
-                </LazyLoad>
-                <span style={getTitleStyle()} className="photo-container-title">
-                  {getTitleText()}
-                </span>
               </div>
-
-              {
-                <div style={{ background: "transparent" }}>
-                  <div className="photo-container-name"> {getNameText()} </div>
-                  <div className="photo-container-date-country">
-                    <span className="photo-container-country">
-                      {album.country}
-                    </span>
-                    <span className="photo-container-date">
-                      {getFileDateTitleString(album.date_start, album.date_end)}
-                    </span>
-                  </div>
-                </div>
-              }
+              {lazyload ? (
+                <LazyLoad debounce={false} offsetVertical={1000}>
+                  {loadedImage}
+                </LazyLoad>
+              ) : (
+                loadedImage
+              )}
+              <span style={getTitleStyle()} className="photo-container-title">
+                {getTitleText()}
+              </span>
             </div>
-          </a>
-        </Link>
-      </LazyLoad>
-    </figure>
+
+            {type !== PhotoContainerType.PHOTOC_REC && (
+              <div style={{ background: "transparent" }}>
+                <div className="photo-container-name"> {getNameText()} </div>
+                <div className="photo-container-date-country">
+                  <span className="photo-container-country">
+                    {album.country}
+                  </span>
+                  <span className="photo-container-date">
+                    {getFileDateTitleString(album.date_start, album.date_end)}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+        </a>
+      </Link>
+    ),
+    [album, onLoad]
+  );
+
+  return (
+    <div
+      className={colsClass}
+      // style={{ visibility: show ? "visible" : "hidden" }}
+    >
+      {lazyload ? (
+        <LazyLoad
+          debounce={false}
+          offsetVertical={300}
+          placeholder={<img alt="" src="/img/loading.gif" />}
+          alt=""
+        >
+          {content}
+        </LazyLoad>
+      ) : (
+        content
+      )}
+    </div>
   );
 };

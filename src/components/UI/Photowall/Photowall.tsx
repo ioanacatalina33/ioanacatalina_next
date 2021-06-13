@@ -15,18 +15,20 @@ interface PhotowallProps {
   type?: AlbumType;
   loading?: boolean;
   filtered?: boolean;
+  lazyload?: boolean;
 }
 
 export const Photowall = ({
   albums,
   type,
   loading,
+  lazyload,
   filtered = true,
 }: PhotowallProps) => {
   const emptyAlbums = !albums || !albums.length;
 
   return (
-    <div className="photowall-container">
+    <div className="photowall-container" style={{ minWidth: "30rem" }}>
       <div className="photowall-container-albums">
         {loading ? (
           <></>
@@ -46,25 +48,26 @@ export const Photowall = ({
             )}
 
             {!emptyAlbums && (
-              <FadeIn>
-                <div className="photo-wall row">
-                  {albums.map((album, index) =>
-                    type === AlbumType.Highlights ? (
-                      <PhotoContainerHighlights
-                        key={index}
-                        album={album}
-                        type={PhotoContainerType.PHOTOC_MAIN}
-                      />
-                    ) : (
-                      <PhotoContainer
-                        key={index}
-                        album={album}
-                        type={PhotoContainerType.PHOTOC_MAIN}
-                      />
-                    )
-                  )}
-                </div>
-              </FadeIn>
+              // <FadeIn>
+              <div className="photo-wall row">
+                {albums.map((album, index) =>
+                  type === AlbumType.Highlights ? (
+                    <PhotoContainerHighlights
+                      key={index}
+                      album={album}
+                      type={PhotoContainerType.PHOTOC_MAIN}
+                    />
+                  ) : (
+                    <PhotoContainer
+                      key={index}
+                      album={album}
+                      lazyload={lazyload}
+                      type={PhotoContainerType.PHOTOC_MAIN}
+                    />
+                  )
+                )}
+              </div>
+              // </FadeIn>
             )}
           </>
         )}

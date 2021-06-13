@@ -6,62 +6,78 @@ interface PhotoContainerHome {
   url: string;
   img: string;
   name: string;
+  lazyLoad?: string;
 }
 
-export const PhotoContainerHome = ({ url, img, name }: PhotoContainerHome) => {
+export const PhotoContainerHome = ({
+  url,
+  img,
+  name,
+  lazyLoad,
+}: PhotoContainerHome) => {
   const [show, setShow] = useState(false);
 
   function onLoad() {
     setShow(true);
   }
 
-  const cornersStyle = { borderRadius: "0.2rem" };
+  const cornersStyle = { borderRadius: "0.1rem" };
+
+  const loadedImg = (
+    <img
+      className="cover-loaded"
+      style={cornersStyle}
+      src={img}
+      alt={name}
+      onLoad={onLoad}
+    />
+  );
 
   return (
-    <figure
+    <div
       className="photo-col-home col-lg-4 col-md-4 col-5 col-xs-offset-2 col-centered"
-      style={{ visibility: show ? "visible" : "hidden" }}
+      // style={{ visibility: show ? "visible" : "hidden" }}
     >
-      <LazyLoad
+      {/* <LazyLoad
         debounce={false}
         offsetVertical={500}
         placeholder={<img alt="" src="/img/loading.gif" />}
         alt=""
-      >
-        <Link scroll={false} href={url}>
-          <a>
-            <div
-              className="photo-container photo-container-opacity"
-              style={cornersStyle}
-            >
-              <div className="photo-container-img-space">
+      > */}
+      <Link scroll={false} href={url}>
+        <a>
+          <div
+            className="photo-container photo-container-opacity"
+            style={cornersStyle}
+          >
+            <div className="photo-container-img-space">
+              <div className="loading-animation" style={cornersStyle}>
                 <img
                   className="photo-small"
                   onLoad={onLoad}
-                  style={cornersStyle}
-                  src={"/img/cover_placeholder_square.png"}
+                  style={{ visibility: "hidden", ...cornersStyle }}
+                  src={"/img/cover_placeholder_square.jpg"}
                   alt=""
                 />
-                <LazyLoad debounce={false} offsetVertical={300}>
-                  <img
-                    className="cover-loaded"
-                    style={cornersStyle}
-                    src={img}
-                    alt={name}
-                    onLoad={onLoad}
-                  />
-                </LazyLoad>
-                <span
-                  style={cornersStyle}
-                  className="photo-container-title photo-container-title-home"
-                >
-                  {name}
-                </span>
               </div>
+              {lazyLoad ? (
+                <LazyLoad debounce={false} offsetVertical={300}>
+                  {loadedImg}
+                </LazyLoad>
+              ) : (
+                loadedImg
+              )}
+              <span
+                style={cornersStyle}
+                className="photo-container-title photo-container-title-home"
+              >
+                {name}
+              </span>
             </div>
-          </a>
-        </Link>
-      </LazyLoad>
-    </figure>
+          </div>
+        </a>
+      </Link>
+      {/* </LazyLoad> */}
+    </div>
   );
 };

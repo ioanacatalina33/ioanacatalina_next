@@ -2,19 +2,17 @@ import { Button } from "react-bootstrap";
 import Link from "next/link";
 import React from "react";
 
-import { contentScroll, getLocationsWithComa } from "helpers";
+import { contentScroll } from "helpers";
 import { useBrowsers, useScreenSize } from "hooks";
-import { AlbumType, Location } from "types";
+import { AlbumType } from "types";
 import { ImageLoader } from "components/UI/ImageLoader";
 
 interface AlbumHeaderProps {
   type: AlbumType;
   coverImageSrc: string;
   isCoverLarge?: boolean;
-  name?: string;
-  name_location?: string;
-  locations?: Location[];
-  country?: string;
+  title: string;
+  subtitle: string;
   prevLink?: string;
   nextLink?: string;
 }
@@ -23,30 +21,14 @@ export const AlbumHeader = ({
   type,
   coverImageSrc,
   isCoverLarge,
-  name,
-  name_location,
-  country,
-  locations,
+  title,
+  subtitle,
   prevLink,
   nextLink,
 }: AlbumHeaderProps) => {
   const { screenHeight } = useScreenSize();
 
   const { isIE } = useBrowsers();
-
-  function getTitle() {
-    return type === AlbumType.Travel && !!locations
-      ? !!name_location
-        ? name_location
-        : getLocationsWithComa(locations)
-      : name;
-  }
-
-  function getSubTitle() {
-    return type === AlbumType.Dance && !!locations
-      ? getLocationsWithComa(locations) + ", " + country
-      : country;
-  }
 
   return (
     <div
@@ -81,7 +63,8 @@ export const AlbumHeader = ({
                 variant="outline-light"
                 className="album-header-button album-header-button-right"
               >
-                Next album <i className="fa fa-angle-right"></i>
+                Next album
+                <i className="fa fa-angle-right"></i>
               </Button>
             </a>
           </Link>
@@ -99,6 +82,7 @@ export const AlbumHeader = ({
             src={coverImageSrc}
             loadedClassName="img-normal-loaded"
             loadingClassName="img-normal-loading"
+            alt={title + " " + subtitle + " header"}
           />
           <div className="img-loaded-text-album-header-absolute">
             <div className="img-loaded-text-album-header">
@@ -109,12 +93,12 @@ export const AlbumHeader = ({
                     : "album-header-text-span album-header-text-span-highlights"
                 }
               >
-                {getTitle()}
+                {title}
               </span>
 
               {type !== AlbumType.Highlights && (
                 <span className="album-header-text-span-subtitle">
-                  {getSubTitle()}
+                  {subtitle}
                 </span>
               )}
             </div>

@@ -6,6 +6,7 @@ import { useScreenSize, useScreenType } from "hooks/utils";
 
 interface ImageCollageProps {
   photos: string[];
+  alt?: string;
   collaborations?: boolean;
   photoPadding?: string;
   marginTopBottom?: string;
@@ -14,6 +15,7 @@ interface ImageCollageProps {
 
 export const ImageCollage = ({
   photos,
+  alt,
   collaborations,
   photoPadding,
   marginTopBottom,
@@ -64,12 +66,12 @@ export const ImageCollage = ({
     >
       <LazyLoad debounce={false} offsetVertical={500}>
         <div>
-          {renderImages.map((image) => (
+          {renderImages.map((image, i) => (
             <img
               className="collage-img"
               key={image}
               style={imageStyle}
-              alt=""
+              alt={(alt ? alt : "") + i.toString()}
               src={image}
             />
           ))}

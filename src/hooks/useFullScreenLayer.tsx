@@ -10,6 +10,7 @@ export const useFullScreenlayer = (pageType: PageType) => {
     text: "",
     class: "",
     url: "",
+    alt: "",
   });
 
   useEffect(() => {

@@ -48,9 +48,11 @@ export const Meta = ({ album }: MetaProps) => {
       metaData = getMetaForMap();
       break;
     case Routes.Travel:
+    case Routes.TravelAll:
       metaData = getMetaForTravel();
       break;
     case Routes.Dance:
+    case Routes.DanceAll:
       metaData = getMetaForDance();
       break;
     case Routes.Highlights:

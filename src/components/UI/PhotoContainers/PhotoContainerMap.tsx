@@ -40,37 +40,31 @@ export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
 
   const cornersStyle = { borderRadius: " 0.3rem 0.3rem 0rem 0rem" };
   return (
-    <figure
-      className="map-photo-col col-12 col-centered"
-      style={{ visibility: show ? "visible" : "hidden" }}
-    >
+    <div className="map-photo-col col-12 col-centered">
       <Link scroll={false} href={articleURL}>
         <a>
           <div className="photo-container white-background-hovered">
-            <div className="photo-container-img-space">
-              <img
-                className="photo-small"
-                style={cornersStyle}
-                src={"/img/cover_placeholder_map.png"}
-                alt=""
-                onLoad={onLoad}
-              />
-              <LazyLoad debounce={false} offsetVertical={800}>
+            <div className="photo-container-img-space border-corner-up">
+              <div className="loading-animation border-corner-up">
                 <img
-                  className="cover-loaded"
-                  style={cornersStyle}
-                  src={articleCover(article.identifier)}
+                  className="photo-small border-corner-up"
+                  style={{ visibility: "hidden", ...cornersStyle }}
+                  src={"/img/cover_placeholder_search_.jpg"}
                   alt=""
                   onLoad={onLoad}
                 />
-              </LazyLoad>
-              {show ? (
-                <span style={getTitleStyle()} className="photo-container-title">
-                  {getDate()}
-                </span>
-              ) : (
-                " "
-              )}
+              </div>
+
+              <img
+                className="cover-loaded border-corner-up"
+                src={articleCover(article.identifier)}
+                alt=""
+                onLoad={onLoad}
+              />
+
+              <span style={getTitleStyle()} className="photo-container-title">
+                {getDate()}
+              </span>
             </div>
 
             <div>
@@ -85,6 +79,6 @@ export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
           </div>
         </a>
       </Link>
-    </figure>
+    </div>
   );
 };

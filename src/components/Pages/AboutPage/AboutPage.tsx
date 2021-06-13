@@ -1,5 +1,4 @@
-import ReactGA from "react-ga";
-import React, { useEffect } from "react";
+import React from "react";
 
 import { LinksPageType, StaticPage } from "types/enums";
 import { getPhotosForCollage } from "staticModel";
@@ -39,7 +38,7 @@ export const AboutPage = () => {
         picture.
       </div>
 
-      <ImageCollage photos={getPhotosForCollage(0)} />
+      <ImageCollage photos={getPhotosForCollage(0)} alt="Adventures" />
       {/* Adventure pics */}
 
       <div className="text-container">
@@ -73,7 +72,7 @@ export const AboutPage = () => {
         amazing magical way of expression.
       </div>
 
-      <ImageCollage photos={getPhotosForCollage(1)} />
+      <ImageCollage photos={getPhotosForCollage(1)} alt="About me" />
 
       <div className="text-container">
         I remember I was using my first camera on film, the family camera, when
@@ -96,7 +95,7 @@ export const AboutPage = () => {
       </div>
 
       {/* Dog shows */}
-      <ImageCollage photos={getPhotosForCollage(2)} />
+      <ImageCollage photos={getPhotosForCollage(2)} alt="Dogs" />
 
       <div className="text-container">
         Later, after I started working and had my own money, I went traveling
@@ -108,7 +107,7 @@ export const AboutPage = () => {
       </div>
 
       {/* Travel */}
-      <ImageCollage photos={getPhotosForCollage(4)} />
+      <ImageCollage photos={getPhotosForCollage(4)} alt="Dancing" />
 
       <div className="text-container">
         In 2010 I discovered{" "}
@@ -124,7 +123,7 @@ export const AboutPage = () => {
       </div>
 
       {/* Dancing */}
-      <ImageCollage photos={getPhotosForCollage(3)} />
+      <ImageCollage photos={getPhotosForCollage(3)} alt="Traveling" />
 
       <div className="text-container">
         Besides dancing events, I love traveling on every occasion, either if
@@ -150,7 +149,7 @@ export const AboutPage = () => {
         style={{ padding: "3rem 2rem 0rem 2rem" }}
       >
         <span className="text-container-bold">
-          Some articles where I had my photos published:
+          Articles where my photos had been published:
         </span>
       </div>
 
@@ -195,7 +194,10 @@ export const AboutPage = () => {
 
       {/* <button data-cp-url="https://www.ioanacatalina.com/img/photos/aboutme_adventures/pic2.jpg">Buy Now</button> */}
 
-      <ImageCollage photos={getPhotosForCollage(5)} />
+      <ImageCollage
+        photos={getPhotosForCollage(5)}
+        alt="Geena my Golden Retriever"
+      />
 
       <GeenaLinks />
 

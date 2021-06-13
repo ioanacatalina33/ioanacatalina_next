@@ -1,5 +1,8 @@
 import { PhotosDisplayType } from "types";
 
+export const STATIC_PAGE_LOAD = true;
+export const STATIC_PATHS_LOAD = true;
+
 export const PAGE_NOT_FOUND = "PNF";
 
 export const WEBSITE_PATH = "https://www.ioanacatalina.com";

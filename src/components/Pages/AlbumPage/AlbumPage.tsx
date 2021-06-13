@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 
 import { FollowMe } from "components/UI/FollowMe";
@@ -11,8 +11,9 @@ import {
   getFullPathImgs,
   albumUrl,
   DefaultDisplayType,
+  getLocationsWithComa,
 } from "helpers";
-import { FullAlbumDetails, PhotosDisplayType } from "types";
+import { AlbumType, FullAlbumDetails, PhotosDisplayType } from "types";
 
 import { AlbumHeader } from "./Components/AlbumHeader";
 import { GeenaPage } from "../GeenaPage";
@@ -107,22 +108,38 @@ export const AlbumPage = ({
     }
   }
 
+  const title = useMemo(
+    () =>
+      album.type === AlbumType.Travel && !!album.locations
+        ? !!album.name_location
+          ? album.name_location
+          : getLocationsWithComa(album.locations)
+        : album.name,
+    [album]
+  );
+
+  const subTitle = useMemo(
+    () =>
+      album.type === AlbumType.Dance && !!album.locations
+        ? getLocationsWithComa(album.locations) + ", " + album.country
+        : album.country,
+    [album]
+  );
+
   return (
     <>
       <Meta album={album} />
       <div className="App">
         <AlbumHeader
           type={album.type}
-          name={album.name}
+          title={title}
+          subtitle={subTitle}
           coverImageSrc={urlAlbumHeader(
             album.type,
             album.identifier,
             hasLargeCover
           )}
           isCoverLarge={hasLargeCover}
-          country={album.country}
-          locations={album.locations}
-          name_location={album.name_location}
           nextLink={
             nextPhotos.length
               ? albumUrl(nextPhotos[0].type, nextPhotos[0].name_url)
@@ -155,6 +172,7 @@ export const AlbumPage = ({
           modalShow={modalShow}
           displayMode={selectedDisplay}
           images={imagesToDisplay}
+          alt={title + " " + subTitle}
         />
 
         <FollowMe />

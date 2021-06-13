@@ -4,6 +4,7 @@ export interface FullSizeImage {
   url: string;
   text: string;
   class: string;
+  alt: string;
 }
 
 export const getFullSizeImageByPage = (type: PageType) => {
@@ -32,6 +33,7 @@ const getFullSizeImageAboutMe = (): FullSizeImage => {
       url: "/img/fullscreen/aboutme_header_01.jpg",
       text: "My story",
       class: "img-loaded-text-center",
+      alt: "About me",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
@@ -43,6 +45,7 @@ const getFullSizeImageHome = (): FullSizeImage => {
       url: "/img/fullscreen/home_header.jpg",
       text: "A database of my adventures",
       class: "img-loaded-text-center",
+      alt: "Malaga Spain Home Image",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
@@ -54,6 +57,7 @@ const getFullSizeImageContact = (): FullSizeImage => {
       url: "/img/fullscreen/contact_header_01.jpg",
       text: "Contact",
       class: "img-loaded-text-center",
+      alt: "Contact me Ioana Catalina E. photography",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
@@ -65,6 +69,7 @@ const getFullSizeImageHighlights = (): FullSizeImage => {
       url: "/img/fullscreen/pic_highlights.jpg",
       text: "Highlights",
       class: "img-loaded-text-center",
+      alt: "Highlights Portfolio",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
@@ -76,6 +81,7 @@ const getFullSizeImageCollaborations = (): FullSizeImage => {
       url: "/img/fullscreen/collaborations_header_01.jpg",
       text: "Collaborations",
       class: "img-loaded-text-center",
+      alt: "Collaborators services photo shootings",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
@@ -87,6 +93,7 @@ const getFullSizeImageTripsWithMe = (): FullSizeImage => {
       url: "/img/fullscreen/couples_sessions_header_01.jpg",
       text: "See your unique moments through my lens!",
       class: "img-loaded-text-center opacity45",
+      alt: "Trips with me",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
@@ -98,41 +105,49 @@ const getFullSizeImageTravel = (): FullSizeImage => {
       url: "/img/fullscreen/travel_header_01.jpg",
       text: "In a world where you can be anything, be kind.",
       class: "img-loaded-text-top-right opacity40",
+      alt: "Travel around the world",
     },
     {
       url: "/img/fullscreen/travel_header_02.jpg",
       text: "Never stop exploring",
       class: "img-loaded-text-center opacity45",
+      alt: "Travel around the world",
     },
     {
       url: "/img/fullscreen/travel_header_03.jpg",
       text: "Travel is like knowledge. The more you see the more you know you haven't seen.",
       class: "img-loaded-text-top-right opacity40",
+      alt: "Travel around the world",
     },
     {
       url: "/img/fullscreen/travel_header_04.jpg",
       text: "It feels good to be lost in the right direction.",
       class: "img-loaded-text-top-right opacity45",
+      alt: "Travel around the world",
     },
     {
       url: "/img/fullscreen/travel_header_05.jpg",
       text: "Never lose the sense of wonder.",
       class: "img-loaded-text-top-right opacity45",
+      alt: "Travel around the world",
     },
     {
       url: "/img/fullscreen/travel_header_06.jpg",
       text: "Wherever you are, be all there.",
       class: "img-loaded-text-top-center opacity45",
+      alt: "Travel around the world",
     },
     {
       url: "/img/fullscreen/travel_header_07.jpg",
       text: "There's no such place as faraway.",
       class: "img-loaded-text-top-right opacity40",
+      alt: "Travel around the world",
     },
     {
       url: "/img/fullscreen/travel_header_08.jpg",
       text: "A journey of a thousands miles begins with a single step.",
       class: "img-loaded-text-top-left opacity40",
+      alt: "Travel around the world",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
@@ -144,26 +159,31 @@ const getFullSizeImageDance = (): FullSizeImage => {
       url: "/img/fullscreen/dance_header_01.jpg",
       text: "Dancing is like dreaming with your feet.",
       class: "img-loaded-text-top-left opacity40",
+      alt: "Dancing Brazilian Zouk Ryel Jessica",
     },
     {
       url: "/img/fullscreen/dance_header_02.jpg",
       text: "Don't walk, dance.",
       class: "img-loaded-text-top-center opacity40",
+      alt: "Dancing Brazilian Zouk Ryel",
     },
     {
       url: "/img/fullscreen/dance_header_03.jpg",
       text: "Dance is freedom and connection.",
       class: "img-loaded-text-top-right opacity60",
+      alt: "Dancing Brazilian Zouk Anderson and Brenda",
     },
     {
       url: "/img/fullscreen/dance_header_04.jpg",
       text: "Life is better when you dance.",
       class: "img-loaded-text-top-left opacity45",
+      alt: "Dancing Brazilian Zouk",
     },
     {
       url: "/img/fullscreen/dance_header_05.jpg",
       text: "Dancing is the closest thing to magic.",
       class: "img-loaded-text-top-left opacity60",
+      alt: "Dancing Brazilian Zouk Freddy and Andressa",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];

@@ -6,6 +6,7 @@ interface ImageLoaderProps {
   className?: string;
   loadingClassName?: string;
   loadedClassName?: string;
+  alt?: string;
 }
 
 export const ImageLoader = ({
@@ -14,6 +15,7 @@ export const ImageLoader = ({
   className = "",
   loadingClassName = "img-loading",
   loadedClassName = "img-loaded",
+  alt,
 }: ImageLoaderProps) => {
   const [loaded, isLoaded] = useState(false);
 
@@ -24,7 +26,13 @@ export const ImageLoader = ({
   className = `${className} ${loaded ? loadedClassName : loadingClassName}`;
 
   return (
-    <img src={src} style={style} className={className} alt="" onLoad={onLoad} />
+    <img
+      src={src}
+      style={style}
+      className={className}
+      alt={alt ? alt : ""}
+      onLoad={onLoad}
+    />
   );
 };
 

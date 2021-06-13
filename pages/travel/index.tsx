@@ -26,7 +26,7 @@ interface Props {
 }
 
 const travel = ({ albums }: Props) => {
-  return <TravelPage albums={albums} />;
+  return <TravelPage albums={albums} lazyload />;
 };
 
 export default travel;

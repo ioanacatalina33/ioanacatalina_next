@@ -11,9 +11,10 @@ import { useFullScreenlayer } from "hooks/useFullScreenLayer";
 
 interface TravelProps {
   albums: Album[];
+  lazyload?: boolean;
 }
 
-export const TravelPage = ({ albums }: TravelProps) => {
+export const TravelPage = ({ albums, lazyload }: TravelProps) => {
   const FullSizeLayer = useFullScreenlayer(AlbumType.Travel);
 
   const { filteredAlbums, loading } = useFilteredAlbums(
@@ -34,6 +35,7 @@ export const TravelPage = ({ albums }: TravelProps) => {
           albums={filteredAlbums}
           loading={loading}
           filtered={isFiltered}
+          lazyload={lazyload}
         />
       </div>
     </>

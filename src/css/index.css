@@ -640,6 +640,11 @@ h4 {
   max-height: auto;
 }
 
+.image-zoom:hover {
+  transform: scale(1.1);
+  transition: transform 1s ease-out;
+}
+
 .img-display-loaded {
   object-fit: contain;
   width: 100%;
@@ -881,7 +886,7 @@ h4 {
   background-color: rgba(255, 255, 255, 0.7);
   border: 0;
   outline: 0;
-  z-index: 4;
+  z-index: 1;
 
   transition: 0.2s;
   -webkit-transition: 0.2s;
@@ -1052,15 +1057,17 @@ h4 {
 }
 
 .photo-container {
-  border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
+  border-radius: 0.1rem 0.1rem 0.1rem 0.1rem;
   border: 1;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   /* background-color: #252525; */
   border: 0px solid #d3d3d3;
   position: relative;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   transition: 0.2s;
   -webkit-transition: 0.2s;
+
   padding: 0rem 0rem 0rem 0rem;
 }
 
@@ -1082,12 +1089,14 @@ h4 {
 
 .photo-container-img-space {
   position: relative;
+  overflow: hidden;
 }
 
 /* On mouse-over, add a deeper shadow */
 .photo-container:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   cursor: pointer;
 }
 
@@ -1097,6 +1106,11 @@ h4 {
     rgba(11, 11, 11, 0),
     rgba(11, 11, 11, 0.9)
   );
+  transition: background 0.5s ease;
+}
+
+.photo-container:hover .cover-loaded {
+  transform: scale(1.12);
 }
 
 .photo-container-title {
@@ -1118,6 +1132,7 @@ h4 {
   display: inline-block;
   color: #eeeeee;
   width: 100%;
+  transition: background 0.5s ease;
 }
 
 .photo-container-title-home {
@@ -1163,9 +1178,11 @@ h4 {
   background: transparent;
 }
 
-.photo-small {
-  width: 100%;
-  visibility: visible;
+.border-corner-up {
+  border-radius: 0.1rem 0.1rem 0rem 0rem;
+}
+
+.loading-animation {
   animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
@@ -1174,23 +1191,22 @@ h4 {
   background: #f6f7f8;
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
   background-size: 800px 104px;
+}
+
+.photo-small {
+  width: 100%;
+  visibility: visible;
 }
 
 .photo-small-display {
   width: fit-content;
   height: fit-content;
   visibility: visible;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: placeHolderShimmer;
-  animation-timing-function: linear;
-  background: #f6f7f8;
-  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-  background-size: 800px 104px;
+  overflow: hidden;
 }
 
 .cover-loaded {
+  border-radius: 0.1rem 0.1rem 0rem 0rem;
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -1203,6 +1219,7 @@ h4 {
   animation-fill-mode: forwards;
   animation-duration: 0.7s;
   animation-delay: 0.1s;
+  transition: transform 1s ease-out;
 }
 
 .photo-wall-corners {

@@ -74,7 +74,10 @@ export const CollaborationsPage = () => {
         className="text-container"
         style={{ padding: "3rem 2rem 0rem 2rem" }}
       ></div>
-      <ImageCollage photos={getPhotosForCollaborationsDance()} />
+      <ImageCollage
+        photos={getPhotosForCollaborationsDance()}
+        alt="Brazilian Zouk Dance Events Festivals"
+      />
       <ZoukOrganizers />
 
       {getHeader("Portraits")}
@@ -84,6 +87,7 @@ export const CollaborationsPage = () => {
         photoPadding={"1rem"}
         fullWidth={1200}
         collaborations
+        alt="Portraits photo shooting"
       />
 
       {getHeader("Events")}
@@ -93,6 +97,7 @@ export const CollaborationsPage = () => {
         photoPadding={"1rem"}
         fullWidth={1200}
         collaborations
+        alt="Events photo shooting"
       />
 
       {getHeader("Newborns")}
@@ -102,6 +107,7 @@ export const CollaborationsPage = () => {
         photoPadding={"1rem"}
         fullWidth={1200}
         collaborations
+        alt="Newborns photo shooting"
       />
 
       {getHeader("Trash the dress")}
@@ -111,6 +117,7 @@ export const CollaborationsPage = () => {
         photoPadding={"1rem"}
         fullWidth={1200}
         collaborations
+        alt="Trash the dress photo shooting"
       />
 
       {getHeader("Pets")}
@@ -120,6 +127,7 @@ export const CollaborationsPage = () => {
         photoPadding={"1rem"}
         fullWidth={1200}
         collaborations
+        alt="Pets photo shooting"
       />
 
       {getHeader("Clinics / Indoors")}
@@ -129,6 +137,7 @@ export const CollaborationsPage = () => {
         photoPadding={"1rem"}
         fullWidth={1200}
         collaborations
+        alt="Clinics hospitals photo shooting indoors"
       />
 
       {getHeader("Products")}
@@ -138,6 +147,7 @@ export const CollaborationsPage = () => {
         photoPadding={"1rem"}
         fullWidth={1200}
         collaborations
+        alt="Product photo shooting"
       />
 
       {getHeader("Adventure / outdoors")}
@@ -147,6 +157,7 @@ export const CollaborationsPage = () => {
         photoPadding={"1rem"}
         fullWidth={1200}
         collaborations
+        alt="Adventure outdoors photo shooting"
       />
 
       <div

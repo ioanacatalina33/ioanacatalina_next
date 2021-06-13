@@ -62,18 +62,14 @@ export const PhotoContainerSearch = ({
 
   const articleURL = "/" + article.type.toLowerCase() + "/" + article.name_url;
 
-  const cornersStyle = {
-    borderRadius: "0.3rem 0.3rem 0rem 0rem",
-  };
-
   const widthStyle = { maxWidth: isSingle ? "22rem" : "auto" };
 
   return (
-    <figure
+    <div
       className={
         isSingle ? "photo-col" : "photo-col col-lg-3 col-md-4 col-sm-6"
       }
-      style={{ display: show ? "block" : "none" }}
+      // style={{ display: show ? "block" : "none" }}
     >
       <div className="search-photo-col" style={widthStyle}>
         <a>
@@ -82,18 +78,19 @@ export const PhotoContainerSearch = ({
               onClick={onAlbumClicked}
               className="photo-container search-background"
             >
-              <div className="photo-container-img-space" style={cornersStyle}>
-                <img
-                  className="photo-small"
-                  style={cornersStyle}
-                  src={"/img/cover_placeholder_search.png"}
-                  alt=""
-                  onLoad={onLoad}
-                />
+              <div className="photo-container-img-space border-corner-up">
+                <div className="loading-animation border-corner-up">
+                  <img
+                    className="photo-small border-corner-up"
+                    style={{ visibility: "hidden" }}
+                    src={"/img/cover_placeholder_search_.jpg"}
+                    alt=""
+                    onLoad={onLoad}
+                  />
+                </div>
                 <LazyLoad debounce={false} offsetVertical={800}>
                   <img
-                    className="cover-loaded"
-                    style={cornersStyle}
+                    className="cover-loaded border-corner-up"
                     src={articleCover(article.identifier)}
                     alt=""
                   />
@@ -116,7 +113,7 @@ export const PhotoContainerSearch = ({
           </Link>
         </a>
       </div>
-    </figure>
+    </div>
   );
 };
 

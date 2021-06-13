@@ -4,6 +4,7 @@ import { ScreenType, PhotosDisplayType } from "types";
 
 interface ImageLoaderDisplayProps {
   src: string;
+  alt?: string;
   displayMode: PhotosDisplayType;
   className?: string;
   loadingClassName?: string;
@@ -12,6 +13,7 @@ interface ImageLoaderDisplayProps {
 
 export const ImageLoaderDisplay = ({
   src,
+  alt,
   displayMode,
   className = "",
   loadingClassName = "img-loading",
@@ -53,7 +55,7 @@ export const ImageLoaderDisplay = ({
       src={src}
       style={getCorrectHeight()}
       className={className}
-      alt=""
+      alt={alt ? alt : ""}
       onLoad={onLoad}
     />
   );

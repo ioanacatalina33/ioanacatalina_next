@@ -59,10 +59,10 @@ export const Footer = () => {
             <Link scroll={false} href="/map">
               <a className="bottom-element-text">MAP</a>
             </Link>
-            <Link scroll={false} href="/travel">
+            <Link scroll={false} href="/travel/all">
               <a className="bottom-element-text">Travel</a>
             </Link>
-            <Link scroll={false} href="/dance">
+            <Link scroll={false} href="/dance/all">
               <a className="bottom-element-text">Dance</a>
             </Link>
             <Link scroll={false} href="/blog">

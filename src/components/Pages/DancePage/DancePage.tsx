@@ -11,9 +11,10 @@ import { Album } from "types/modelTypes";
 
 interface DanceProps {
   albums: Album[];
+  lazyload?: boolean;
 }
 
-export const DancePage = ({ albums }: DanceProps) => {
+export const DancePage = ({ albums, lazyload }: DanceProps) => {
   const FullSizeLayer = useFullScreenlayer(AlbumType.Dance);
 
   const { filteredAlbums, loading } = useFilteredAlbums(
@@ -33,6 +34,7 @@ export const DancePage = ({ albums }: DanceProps) => {
         <Photowall
           albums={filteredAlbums}
           loading={loading}
+          lazyload={lazyload}
           filtered={isFiltered}
         />
       </div>

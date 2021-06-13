@@ -14,6 +14,7 @@ interface PhotosDisplayProps {
   currentIndex: number;
   modalShow: boolean;
   images: string[];
+  alt: string;
   displayMode: PhotosDisplayType;
   setIndex: (value: number) => void;
 }
@@ -21,6 +22,7 @@ interface PhotosDisplayProps {
 export const PhotosDisplay = ({
   setIndex,
   images,
+  alt,
   modalShow,
   displayMode,
   currentIndex,
@@ -91,15 +93,16 @@ export const PhotosDisplay = ({
         }}
         className="photo-display-container"
       >
-        <div className="photo-small-display">
-          <LazyLoad debounce={false} offsetVertical={500}>
-            <ImageLoaderDisplay
-              displayMode={displayMode}
-              loadedClassName="img-display-loaded"
-              loadingClassName="img-display-loading"
-              src={image}
-            />
-          </LazyLoad>
+        <div className="photo-small-display loading-animation">
+          {/* <LazyLoad debounce={false} offsetVertical={500}> */}
+          <ImageLoaderDisplay
+            displayMode={displayMode}
+            loadedClassName="img-display-loaded image-zoom"
+            loadingClassName="img-display-loading"
+            src={image}
+            alt={alt + " " + index}
+          />
+          {/* </LazyLoad> */}
         </div>
       </div>
     );

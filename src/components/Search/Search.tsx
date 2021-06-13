@@ -19,7 +19,6 @@ export const Search = () => {
   async function searchInArticles(searchText: string) {
     if (searchText === "") setArticlesFiltered([]);
     else {
-      console.log("searching for " + searchText);
       const queryText = searchText.toLowerCase().split(" ");
       const selectedArticles = allArticles.filter((article) => {
         return (
@@ -72,20 +71,18 @@ export const Search = () => {
           <div className="animated-background"></div>
         </div>
       ) : (
-        <FadeIn>
-          <div className="photo-wall-search">
-            <div className="photo-wall-search-wrapper row">
-              {articlesFiltered.map((article, index) => (
-                <PhotoContainerSearch
-                  onAlbumClicked={onAlbumClicked}
-                  key={index}
-                  article={article}
-                  isSingle={articlesFiltered.length === 1}
-                />
-              ))}
-            </div>
-          </div>{" "}
-        </FadeIn>
+        <div className="photo-wall-search">
+          <div className="photo-wall-search-wrapper row">
+            {articlesFiltered.map((article, index) => (
+              <PhotoContainerSearch
+                onAlbumClicked={onAlbumClicked}
+                key={index}
+                article={article}
+                isSingle={articlesFiltered.length === 1}
+              />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

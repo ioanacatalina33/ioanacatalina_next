@@ -9,6 +9,7 @@ import {
   updateScreen,
   updateScreenDim,
   updateArticles,
+  updateMobileSearch,
 } from "store";
 import { initGA } from "helpers/traking";
 import { sleep } from "helpers";
@@ -70,6 +71,10 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
   useEffect(() => {
     rerender();
     ReactGA.pageview(window.location.pathname + (query.id ? query.id : ""));
+
+    // closing search
+    dispatch(updateQueryText(""));
+    dispatch(updateMobileSearch(false));
   }, [pathname, query.id]);
 
   async function rerender() {

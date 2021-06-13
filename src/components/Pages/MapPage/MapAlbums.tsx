@@ -1,5 +1,4 @@
 import React from "react";
-import FadeIn from "react-fade-in/lib/FadeIn";
 import { PhotoContainerMap } from "../../UI/PhotoContainers";
 
 import { Location } from "types";
@@ -31,13 +30,11 @@ export const MapAlbums = ({
 
       {location && (
         <div className="map-component">
-          <FadeIn>
-            <div className="photo-wall-map row">
-              {location.articles.map((article, index) => (
-                <PhotoContainerMap key={index} article={article} />
-              ))}
-            </div>{" "}
-          </FadeIn>
+          <div className="photo-wall-map row">
+            {location.articles.map((article, index) => (
+              <PhotoContainerMap key={index} article={article} />
+            ))}
+          </div>{" "}
         </div>
       )}
     </div>

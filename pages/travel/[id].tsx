@@ -7,14 +7,16 @@ import { getAlbumDetails } from "../../api/controllers/albums";
 import { getRouteStaticPaths } from "../../api/utils";
 import { AlbumPage } from "components";
 import { Routes } from "types";
+import { STATIC_PATHS_LOAD } from "helpers";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await getRouteStaticPaths(Routes.Travel);
+  let paths = [];
+  if (STATIC_PATHS_LOAD) {
+    paths = await getRouteStaticPaths(Routes.Travel);
+  }
   return {
-    // paths: [],
-    // fallback: "blocking",
-    paths,
-    fallback: false,
+    paths: STATIC_PATHS_LOAD ? paths : [],
+    fallback: STATIC_PATHS_LOAD ? false : "blocking",
   };
 };
 
