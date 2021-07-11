@@ -4,9 +4,9 @@ export async function addSubscriber(
   req: NextApiRequest,
   res: NextApiResponse<{ message?: string; result: number }>
 ) {
-  var mailchimpInstance = "us20";
-  var listUniqueId = "be5c667052";
-  var mailchimpApiKey = "f84333620fade641d91cbb59de75c54f-us20";
+  const mailchimpInstance = process.env.REACT_APP_mailchimpInstance;
+  const listUniqueId = process.env.REACT_APP_listUniqueId;
+  const mailchimpApiKey = process.env.REACT_APP_mailchimpApiKey;
   var request = require("superagent");
   try {
     console.log(

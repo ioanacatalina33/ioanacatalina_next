@@ -108,6 +108,15 @@ export const PhotosDisplay = ({
     );
   }
 
+  const [printsDisabled, setPrintsDisabled] = useState(false);
+
+  function disablePrints() {
+    setPrintsDisabled(true);
+    setTimeout(() => {
+      setPrintsDisabled(false);
+    }, 500);
+  }
+
   return (
     <div>
       <SlideshowModal
@@ -137,15 +146,25 @@ export const PhotosDisplay = ({
                       variant="warning"
                       onClick={() => setDigitalShow(index)}
                       className="button-buy"
-                      style={{ fontSize: "0.9rem", padding: "0.5rem 1.4rem" }}
+                      style={{
+                        fontSize: "0.9rem",
+                        padding: "0.5rem 1.4rem",
+                        outline: "none",
+                      }}
                     >
                       Buy digital
                     </Button>
                     <Button
                       variant="warning"
                       data-cp-url={WEBSITE_PATH + "/offline" + image}
+                      disabled={printsDisabled}
+                      onClick={disablePrints}
                       className="button-buy"
-                      style={{ fontSize: "0.9rem", padding: "0.5rem 1.4rem" }}
+                      style={{
+                        fontSize: "0.9rem",
+                        padding: "0.5rem 1.4rem",
+                        outline: "none",
+                      }}
                     >
                       Buy print
                     </Button>

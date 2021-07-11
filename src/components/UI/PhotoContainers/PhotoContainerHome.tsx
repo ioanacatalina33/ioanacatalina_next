@@ -51,7 +51,10 @@ export const PhotoContainerHome = ({
             style={cornersStyle}
           >
             <div className="photo-container-img-space">
-              <div className="loading-animation" style={cornersStyle}>
+              <div
+                className="loading-animation"
+                style={{ minHeight: show ? "auto" : "13rem", ...cornersStyle }}
+              >
                 <img
                   className="photo-small"
                   onLoad={onLoad}

@@ -1,11 +1,17 @@
 import { Button } from "react-bootstrap";
 import Link from "next/link";
 import React from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleDown,
+  faAngleLeft,
+  faAngleRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { contentScroll } from "helpers";
 import { useBrowsers, useScreenSize } from "hooks";
 import { AlbumType } from "types";
 import { ImageLoader } from "components/UI/ImageLoader";
+import { IconContext } from "react-icons/lib";
 
 interface AlbumHeaderProps {
   type: AlbumType;
@@ -85,7 +91,10 @@ export const AlbumHeader = ({
             alt={title + " " + subtitle + " header"}
           />
           <div className="img-loaded-text-album-header-absolute">
-            <div className="img-loaded-text-album-header">
+            <div
+              className="img-loaded-text-album-header"
+              style={{ paddingBottom: "0.8rem" }}
+            >
               <span
                 className={
                   type !== AlbumType.Highlights
@@ -93,7 +102,9 @@ export const AlbumHeader = ({
                     : "album-header-text-span album-header-text-span-highlights"
                 }
               >
-                {title}
+                <h1 style={{ padding: "0.8rem 0rem 0.5rem 0rem", margin: "0" }}>
+                  {title}
+                </h1>
               </span>
 
               {type !== AlbumType.Highlights && (
@@ -103,11 +114,11 @@ export const AlbumHeader = ({
               )}
             </div>
             <button
-              onClick={() => contentScroll(screenHeight)}
+              onClick={() => contentScroll(screenHeight - 60)}
               className="arrow-down arrow-down-inverted"
               style={{ margin: "0 auto", marginTop: "2rem" }}
             >
-              <i className="fa fa-arrow-down arrow-down-icon-inverted"></i>
+              <i className="fa fa-angle-down arrow-down-icon-inverted"></i>
             </button>
           </div>
         </div>

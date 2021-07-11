@@ -125,19 +125,19 @@ export const Header = () => {
               {screenType !== ScreenType.Mobile && (
                 <div>
                   <Link scroll={false} href="/map">
-                    <a className="custom-navbar-link links-large">Map</a>
+                    <a className="custom-navbar-link links-large">MAP</a>
                   </Link>
 
                   <Link scroll={false} href="/travel">
-                    <a className="custom-navbar-link links-large">Travel</a>
+                    <a className="custom-navbar-link links-large">TRAVEL</a>
                   </Link>
 
                   <Link scroll={false} href="/dance">
-                    <a className="custom-navbar-link links-large">Dance</a>
+                    <a className="custom-navbar-link links-large">DANCE</a>
                   </Link>
 
                   <Link scroll={false} href="/blog">
-                    <a className="custom-navbar-link links-large">Blog</a>
+                    <a className="custom-navbar-link links-large">BLOG</a>
                   </Link>
                   {!isLargeScreen && (
                     <div style={{ display: "inline-block" }}>

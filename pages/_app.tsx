@@ -8,6 +8,9 @@ import "../src/css/menu.css";
 import "../src/css/screensize.css";
 import "../src/css/search.css";
 import "../src/css/map.css";
+// import "../public/fonts/martelsans/MartelSans-SemiBold.ttf";
+// import "../public/fonts/martelsans/MartelSans-Black.ttf";
+// import "../public/fonts/charter/ttf/Charter-Regular.ttf";
 
 import type { AppProps /*, AppContext */ } from "next/app";
 import React from "react";
@@ -16,11 +19,19 @@ import { useStore } from "store/store";
 
 import { AppMain } from "components";
 
+import { createGlobalStyle } from "styled-components";
+import { config, dom } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+const GlobalStyles = createGlobalStyle`
+    ${dom.css()}
+`;
+
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   const store = useStore(pageProps.initialReduxState);
 
   return (
     <Provider store={store}>
+      <GlobalStyles />
       <AppMain Component={Component} pageProps={pageProps} />
     </Provider>
   );

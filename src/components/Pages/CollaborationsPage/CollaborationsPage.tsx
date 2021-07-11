@@ -162,9 +162,9 @@ export const CollaborationsPage = () => {
 
       <div
         className="text-container"
-        style={{ padding: "3rem 2rem 0rem 2rem" }}
+        style={{ padding: "3rem 2rem 3rem 2rem", textAlign: "center" }}
       >
-        <h4>For more info, don't hesitate to contact me!</h4>
+        For more info, don't hesitate to contact me!
       </div>
       <LinksContainer containerType={LinksPageType.Collaborations} />
       <div style={{ margin: "4rem 0rem" }} />

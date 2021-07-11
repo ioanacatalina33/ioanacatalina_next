@@ -54,11 +54,9 @@ export const GeenaPage = () => {
 
       <GeenaLinks />
 
-      <h4>
-        <span className="text-container-bold">
-          And of course, many more photos of her!
-        </span>
-      </h4>
+      <span className="text-container" style={{ textAlign: "center" }}>
+        And of course, many more photos of her:
+      </span>
     </div>
   );
 };

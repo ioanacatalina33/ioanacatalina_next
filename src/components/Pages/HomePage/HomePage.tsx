@@ -41,11 +41,21 @@ export const HomePage = ({ nrAlbums, nrLocations, nrImages }: HomeProps) => {
               fontSize: "1.5rem",
             }}
           >
-            <b style={{ fontSize: "2rem" }}>{nrLocations}</b> locations{" "}
-            {screenType !== ScreenType.Mobile ? "\u00A0" : <br />}
-            <b style={{ fontSize: "2rem" }}>{nrAlbums}</b> albums{" "}
-            {screenType !== ScreenType.Mobile ? "\u00A0" : <br />}
-            <b style={{ fontSize: "2rem" }}>{nrImages}</b> photos
+            <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
+              {nrLocations}
+            </span>
+            {"  "}
+            locations {screenType !== ScreenType.Mobile ? "\u00A0" : <br />}
+            <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
+              {nrAlbums}
+            </span>
+            {"  "}
+            albums {screenType !== ScreenType.Mobile ? "\u00A0" : <br />}
+            <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
+              {nrImages}
+            </span>
+            {"  "}
+            photos
           </div>
 
           <div
@@ -78,7 +88,7 @@ export const HomePage = ({ nrAlbums, nrLocations, nrImages }: HomeProps) => {
           <HomeContainers />
         </div>
       </div>
-      <FollowMe subscribe={true} />
+      <FollowMe subscribe />
     </div>
   );
 };

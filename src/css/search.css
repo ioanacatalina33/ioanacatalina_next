@@ -1,6 +1,6 @@
 #search-wrapper {
   position: fixed;
-  top: 3.2rem;
+  top: 3.1rem;
   background: #4a4b4d;
   width: 100%;
   z-index: 6;
@@ -40,7 +40,7 @@
 }
 
 .photo-wall-search-wrapper {
-  max-width: 85%;
+  max-width: 95%;
   margin: 0 auto;
 }
 

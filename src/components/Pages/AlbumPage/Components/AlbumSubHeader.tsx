@@ -16,7 +16,7 @@ export const AlbumSubHeader = ({ album }: AlbumSubHeaderProps) => {
   let eventOrganizer = getDanceEvent(album.subtype);
 
   return (
-    <div className="album-subheader">
+    <div>
       <div className="album-subheader-line">
         <div className="album-subheader-element1">
           {album.date_start !== undefined
@@ -40,7 +40,7 @@ export const AlbumSubHeader = ({ album }: AlbumSubHeaderProps) => {
         {album.type === AlbumType.Travel ? (
           <h2 style={{ textAlign: "left" }}>{album.name}</h2>
         ) : album.type === AlbumType.Dance && eventOrganizer !== undefined ? (
-          <h2 style={{ textAlign: "left" }}>
+          <h3 style={{ textAlign: "left" }}>
             Organized by{" "}
             {eventOrganizer.organizers.map((organizer, index) => {
               return (
@@ -54,13 +54,14 @@ export const AlbumSubHeader = ({ album }: AlbumSubHeaderProps) => {
                     {organizer.name}
                   </a>
                   {index !== eventOrganizer.organizers.length - 1 ? (
-                    <span> &nbsp;&amp;&nbsp; </span>
+                    <span> &amp; </span>
                   ) : (
                     ""
                   )}
                 </span>
               );
             })}
+            <br />
             <FestivalLinksContainer
               imageHeight="1.5rem"
               includeBrackets={true}
@@ -68,7 +69,7 @@ export const AlbumSubHeader = ({ album }: AlbumSubHeaderProps) => {
               includeFestivalsLinks={true}
               eventOrganizer={eventOrganizer}
             />
-          </h2>
+          </h3>
         ) : album.type === AlbumType.Highlights ? (
           <h2 style={{ textAlign: "left" }}>{album.description}</h2>
         ) : (

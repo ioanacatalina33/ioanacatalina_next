@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useFilters } from "hooks/utils";
+import { useFilters, useScreenType } from "hooks/utils";
 
 import { getUniqueValues, getYears } from "helpers";
-import { AlbumType } from "types/enums";
+import { AlbumType, ScreenType } from "types/enums";
 import { Months } from "helpers/const";
 import { FilterName, FiltersType, updateFilter, updateFilters } from "store";
 
@@ -15,6 +15,8 @@ import { useFiltersQuery } from "hooks/useFiltersQuery";
 export const FiltersDance = ({ albums, nrFiltered }: FiltersProps) => {
   const dispatch = useDispatch();
   const { filters } = useFilters(FiltersType.Dance);
+
+  const { screenType } = useScreenType();
 
   const years = getYears(albums);
   const months = Months;
@@ -70,11 +72,15 @@ export const FiltersDance = ({ albums, nrFiltered }: FiltersProps) => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              paddingTop: screenType === ScreenType.Mobile ? "0.4rem" : 0,
             }}
           >
-            <div className="col" style={styleMention}>
-              <b>Ctrl+Click</b> for multiple select, <b>Esc</b> to deselect all
-            </div>
+            {screenType !== ScreenType.Mobile && (
+              <div className="col" style={styleMention}>
+                <b>Ctrl+Click</b> for multiple select, <b>Esc</b> to deselect
+                all
+              </div>
+            )}
             <FilterComponent
               filterName={FilterName.years}
               values={years}

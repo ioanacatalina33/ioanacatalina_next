@@ -158,8 +158,12 @@ export const AlbumPage = ({
           {<AlbumSubHeader album={album} />}
 
           <div dangerouslySetInnerHTML={{ __html: album.description }} />
-          <br />
-          <br />
+          {!!album.description && (
+            <>
+              <br />
+              <br />
+            </>
+          )}
         </div>
 
         <AlbumDisplayType
@@ -175,7 +179,7 @@ export const AlbumPage = ({
           alt={title + " " + subTitle}
         />
 
-        <FollowMe />
+        <FollowMe subscribe />
 
         {nextPhotos.length !== 0 && (
           <AlbumRecommended text="Next albums:" recommended={nextPhotos} />

@@ -74,7 +74,7 @@
   overflow-y: hidden;
   align-content: center;
   text-align: center;
-  padding: 0rem 1rem 1rem 1rem;
+  padding: 0rem;
 }
 
 .map-albums-close,
@@ -100,8 +100,6 @@
 
 .map-photo-col {
   width: 100%;
-  padding: 2rem;
-  padding: 1.5rem 1rem 1.5rem 1rem;
   overflow-x: hidden;
 }
 

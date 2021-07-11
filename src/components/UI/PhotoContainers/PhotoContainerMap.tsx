@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import LazyLoad from "react-lazy-load";
 
-import { articleCover, getFileDateTitleString } from "helpers";
-import { AlbumType } from "types/enums";
+import { albumUrl, articleCover, getFileDateTitleString } from "helpers";
+import { AlbumType, ScreenType } from "types/enums";
 import { Album } from "types/modelTypes";
 import Link from "next/link";
+import { useScreenType } from "hooks";
 
 interface PhotoContainerMapProps {
   article: Album;
@@ -12,6 +13,8 @@ interface PhotoContainerMapProps {
 
 export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
   const [show, setShow] = useState(false);
+
+  const { screenType } = useScreenType();
 
   function onLoad() {
     setShow(true);
@@ -35,17 +38,26 @@ export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
     return getFileDateTitleString(article.date_start, article.date_end);
   }
 
-  const articleURL =
-    "/" + article.type.toLowerCase() + "/" + article.identifier;
+  const articleURL = albumUrl(article.type, article.name_url);
 
   const cornersStyle = { borderRadius: " 0.3rem 0.3rem 0rem 0rem" };
+
+  const containerPadding = {
+    padding:
+      screenType === ScreenType.Desktop
+        ? "0rem 2rem 3rem 2rem"
+        : "0rem 1rem 1rem 1rem",
+  };
   return (
-    <div className="map-photo-col col-12 col-centered">
+    <div className="map-photo-col col-12 col-centered" style={containerPadding}>
       <Link scroll={false} href={articleURL}>
         <a>
           <div className="photo-container white-background-hovered">
             <div className="photo-container-img-space border-corner-up">
-              <div className="loading-animation border-corner-up">
+              <div
+                className="loading-animation border-corner-up"
+                style={{ minHeight: show ? "auto" : "13rem" }}
+              >
                 <img
                   className="photo-small border-corner-up"
                   style={{ visibility: "hidden", ...cornersStyle }}

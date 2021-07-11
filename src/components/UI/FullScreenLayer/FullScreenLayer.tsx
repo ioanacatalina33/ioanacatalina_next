@@ -19,7 +19,7 @@ export const FullScreenLayer = ({ fullSizeImage }: FullScreenLayerProps) => {
   const { isIE } = useBrowsers();
 
   return (
-    <div style={{ marginBottom: "105vh" }}>
+    <div style={{ marginBottom: "100vh" }}>
       {/* <LazyLoad debounce={false} offsetVertical={1000}> */}
       <div>
         <ImageLoader
@@ -46,10 +46,10 @@ export const FullScreenLayer = ({ fullSizeImage }: FullScreenLayerProps) => {
         )}
 
         <button
-          onClick={() => contentScroll(screenHeight)}
+          onClick={() => contentScroll(screenHeight - 60)}
           className="arrow-down arrow-down-absolute"
         >
-          <i className="fa fa-arrow-down arrow-down-icon"></i>
+          <i className="fa fa-angle-down arrow-down-icon"></i>
         </button>
       </div>
       {/* </LazyLoad> */}

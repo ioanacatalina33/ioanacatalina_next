@@ -1,4 +1,6 @@
+import { useScreenType } from "hooks";
 import React from "react";
+import { ScreenType } from "types";
 
 interface FiltersHeaderProps {
   nrDisplayed: number;
@@ -13,6 +15,8 @@ export const FiltersHeader = ({
   forMap,
   toggleFilters,
 }: FiltersHeaderProps) => {
+  const { screenType } = useScreenType();
+
   const showFiltersText = (
     <span onClick={toggleFilters} className="hide-filters">
       {showFilters ? (
@@ -34,12 +38,12 @@ export const FiltersHeader = ({
         padding: "0rem 1rem 0rem 1rem",
       }}
     >
-      {<div style={{ flex: 1 }} />}
+      {screenType !== ScreenType.Mobile && <div style={{ flex: 1 }} />}
       <div
         style={{
           flex: 1,
           display: "flex",
-          justifyContent: "center",
+          justifyContent: screenType !== ScreenType.Mobile ? "center" : "left",
         }}
       >
         {showFiltersText}

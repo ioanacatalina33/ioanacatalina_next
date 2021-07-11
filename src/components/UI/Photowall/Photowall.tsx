@@ -28,7 +28,7 @@ export const Photowall = ({
   const emptyAlbums = !albums || !albums.length;
 
   return (
-    <div className="photowall-container" style={{ minWidth: "30rem" }}>
+    <div className="photowall-container" style={{ minHeight: "100vh" }}>
       <div className="photowall-container-albums">
         {loading ? (
           <></>

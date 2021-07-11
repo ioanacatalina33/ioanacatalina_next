@@ -86,7 +86,10 @@ export const PhotoContainer = ({
         <a>
           <div className="photo-container">
             <div className="photo-container-img-space border-corner-up">
-              <div className="loading-animation border-corner-up">
+              <div
+                className="loading-animation border-corner-up"
+                style={{ minHeight: show ? "auto" : "13rem" }}
+              >
                 <img
                   className="photo-small border-corner-up"
                   style={{
@@ -109,7 +112,7 @@ export const PhotoContainer = ({
               </span>
             </div>
 
-            {type !== PhotoContainerType.PHOTOC_REC && (
+            {album.type !== AlbumType.Highlights && (
               <div style={{ background: "transparent" }}>
                 <div className="photo-container-name"> {getNameText()} </div>
                 <div className="photo-container-date-country">

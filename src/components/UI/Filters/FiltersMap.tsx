@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useFilters } from "hooks/utils";
+import { useFilters, useScreenType } from "hooks/utils";
 
 import { getYears } from "helpers";
 import { FilterName, FiltersType, updateFilter } from "store";
@@ -10,7 +10,7 @@ import { Months } from "helpers/const";
 import { MapFiltersProps } from "./common";
 import { FiltersHeader } from "./FiltersHeader";
 import { FilterComponent } from "./FilterComponent";
-import { Album } from "types";
+import { Album, ScreenType } from "types";
 import { useFiltersQuery } from "hooks/useFiltersQuery";
 
 export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
@@ -38,7 +38,14 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
   const months = Months;
   const subtypes = ["Nature", "City"];
   const types = ["Travel", "Dance"];
+
+  const { screenType } = useScreenType();
+
   const [showFilters, setShowFilters] = useState(true);
+
+  useEffect(() => {
+    if (screenType === ScreenType.Mobile) setShowFilters(false);
+  }, [screenType]);
 
   function onFiltersChanged(filterName: FilterName, filterNewValues: string[]) {
     dispatch(updateFilter(filterName, filterNewValues, FiltersType.Map));
@@ -77,14 +84,16 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
         className={showFilters ? "box-show" : "box-hide"}
       >
         <div>
-          <div
-            style={{
-              padding: "0.4rem 0.4rem 0.4rem 0.4rem",
-              fontSize: "0.9rem",
-            }}
-          >
-            <b>Ctrl+Click</b> for multiple select
-          </div>
+          {screenType !== ScreenType.Mobile && (
+            <div
+              style={{
+                padding: "0.4rem 0.4rem 0.4rem 0.4rem",
+                fontSize: "0.9rem",
+              }}
+            >
+              <b>Ctrl+Click</b> for multiple select
+            </div>
+          )}
           <div
             style={{
               marginTop: "0.8rem",

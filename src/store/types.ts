@@ -10,17 +10,6 @@ export const UPDATE_ARTICLES = "UPDATE_ARTICLES";
 export const UPDATE_QUERY_TEXT = "UPDATE_QUERY_TEXT";
 export const IS_MOBILE_SEARCH = "IS_MOBILE_SEARCH";
 
-// REDUX ACTION TYPES
-export const TICK = "TICK";
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
-export const RESET = "RESET";
-
-export interface TimerState {
-  lastUpdate: number;
-  light: boolean;
-}
-
 export type Filters = Record<FilterName, string[]>;
 
 export enum FiltersType {
@@ -53,7 +42,5 @@ export interface AppStore {
 }
 
 export interface ApplicationState {
-  counter: number;
-  timer: TimerState;
   app: AppStore;
 }

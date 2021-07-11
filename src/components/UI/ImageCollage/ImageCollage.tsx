@@ -58,7 +58,12 @@ export const ImageCollage = ({
           ? {
               height: imageHeight,
               maxWidth: fullWidthParam ? fullWidthParam : "100%",
-              margin: (marginTopBottom ? marginTopBottom : "3rem") + " auto",
+              margin:
+                (marginTopBottom
+                  ? marginTopBottom
+                  : screenType !== ScreenType.Mobile
+                  ? "3rem"
+                  : "1rem") + " auto",
               padding: "0rem",
             }
           : {}

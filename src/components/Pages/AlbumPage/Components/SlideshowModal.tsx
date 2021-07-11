@@ -17,6 +17,16 @@ export const SlideshowModal = (props: SlideshowModalProps) => {
   const [modalShow, setModalShow] = useState(false);
   const [digitalShow, setDigitalShow] = useState(false);
 
+  const [disabled, setDisable] = useState(false);
+
+  function disableButtons() {
+    window.focus();
+    setDisable(true);
+    setTimeout(() => {
+      setDisable(false);
+    }, 300);
+  }
+
   function modalClose() {
     setModalShow(false);
   }
@@ -107,12 +117,16 @@ export const SlideshowModal = (props: SlideshowModalProps) => {
               <Button
                 variant="warning"
                 onClick={() => setDigitalShow(true)}
+                style={{ outline: "none" }}
                 className="button-buy"
               >
                 Buy digital
               </Button>
               <Button
                 variant="warning"
+                disabled={disabled}
+                onClick={disableButtons}
+                style={{ outline: "none" }}
                 data-cp-url={
                   WEBSITE_PATH + "/offline" + props.images[props.currentIndex]
                 }

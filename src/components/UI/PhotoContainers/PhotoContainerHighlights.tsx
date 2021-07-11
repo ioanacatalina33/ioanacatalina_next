@@ -55,7 +55,10 @@ export const PhotoContainerHighlights = ({
       <a>
         <div className="photo-container" style={widthStyle}>
           <div className="photo-container-img-space">
-            <div className="loading-animation">
+            <div
+              className="loading-animation"
+              style={{ minHeight: show ? "auto" : "13rem" }}
+            >
               <img
                 className="photo-small"
                 style={cornersStyle}

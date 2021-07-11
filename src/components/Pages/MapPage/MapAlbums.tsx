@@ -24,7 +24,9 @@ export const MapAlbums = ({
           <i className="fa fa-close"></i>
         </button>
       </div>
-      <h3 style={{ textAlign: "center", color: "#222222" }}>
+      <h3
+        style={{ textAlign: "center", color: "#222222", marginBottom: "2rem" }}
+      >
         {location ? "Trips in " + location.name : ""}
       </h3>
 

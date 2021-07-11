@@ -79,7 +79,10 @@ export const PhotoContainerSearch = ({
               className="photo-container search-background"
             >
               <div className="photo-container-img-space border-corner-up">
-                <div className="loading-animation border-corner-up">
+                <div
+                  className="loading-animation border-corner-up"
+                  style={{ minHeight: show ? "auto" : "13rem" }}
+                >
                   <img
                     className="photo-small border-corner-up"
                     style={{ visibility: "hidden" }}

@@ -28,7 +28,7 @@ export const DancePage = ({ albums, lazyload }: DanceProps) => {
     <>
       {FullSizeLayer}
       <div className="App">
-        <h2>Dance</h2>
+        <h2>Dance events</h2>
 
         <FiltersDance albums={albums} nrFiltered={filteredAlbums.length} />
         <Photowall

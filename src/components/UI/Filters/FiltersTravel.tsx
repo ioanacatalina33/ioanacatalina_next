@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useFilters } from "hooks/utils";
+import { useFilters, useScreenType } from "hooks/utils";
 
 import {
   getUniqueCountriesByContinents,
@@ -9,7 +9,7 @@ import {
 } from "helpers";
 import { FilterName, FiltersType, updateFilter } from "store";
 
-import { AlbumType } from "types/enums";
+import { AlbumType, ScreenType } from "types/enums";
 import { Months } from "helpers/const";
 
 import { FiltersProps } from "./common";
@@ -29,6 +29,8 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
   const subtypes = getUniqueValues(albums, "subtype", true);
   const [countries, setCountries] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
+
+  const { screenType } = useScreenType();
 
   useEffect(() => {
     if (filters.continents.length) {
@@ -80,12 +82,14 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            paddingTop: screenType === ScreenType.Mobile ? "0.4rem" : 0,
           }}
         >
-          <div className="col" style={styleMention}>
-            <b>Ctrl+Click</b> for multiple select, <b>Esc</b> to deselect all
-          </div>
-
+          {screenType !== ScreenType.Mobile && (
+            <div className="col" style={styleMention}>
+              <b>Ctrl+Click</b> for multiple select, <b>Esc</b> to deselect all
+            </div>
+          )}
           <FilterComponent
             filterName={FilterName.years}
             values={years}
@@ -93,7 +97,6 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
             selected={filters.years}
             onFiltersChanged={onFiltersChanged}
           />
-
           <FilterComponent
             filterName={FilterName.months}
             values={months}
@@ -101,7 +104,6 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
             selected={filters.months}
             onFiltersChanged={onFiltersChanged}
           />
-
           <div
             style={{
               marginTop: "0.8rem",
