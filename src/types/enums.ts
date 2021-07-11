@@ -7,9 +7,11 @@ export enum Routes {
   Highlights = "/highlights",
   Travel = "/travel",
   Dance = "/dance",
+  Blog = "/blog",
   AlbumTravel = "/travel/[id]",
   AlbumDance = "/dance/[id]",
   AlbumHighlights = "/highlights/[id]",
+  BlogArticle = "/blog/[id]",
 
   TravelAll = "/travel/all",
   DanceAll = "/dance/all",
@@ -29,6 +31,7 @@ export enum StaticPage {
   COLLABORATORS = "Coolab",
   CONTACT = "Contact",
   GEENA = "Geena",
+  BLOG = "Blog",
 }
 
 export type PageType = AlbumType | StaticPage;

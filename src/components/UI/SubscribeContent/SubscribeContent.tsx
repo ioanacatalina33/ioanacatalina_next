@@ -97,7 +97,12 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
         }}
       >
         <Form.Group className="justify-content-md-center">
-          <div style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "Segoe UI, Roboto, Sans serif, Oxygen",
+            }}
+          >
             <Form.Control
               style={{ maxWidth: "20rem" }}
               type="text"

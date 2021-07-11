@@ -6,6 +6,7 @@ import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 
 import { getAlbumsByType } from "../../api/controllers/albums";
+import { BlogPage } from "components/Pages/BlogPage/BlogPage";
 
 // export const getStaticProps: GetStaticProps<Props> = async () => {
 //   const data = await getAlbumsByType(AlbumType.Travel);
@@ -26,18 +27,7 @@ import { getAlbumsByType } from "../../api/controllers/albums";
 // }
 
 const blog = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Coming up soon! :)</h1>
-    </div>
-  );
+  return <BlogPage />;
 };
 
 export default blog;

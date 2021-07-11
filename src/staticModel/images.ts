@@ -17,6 +17,8 @@ export const getFullSizeImageByPage = (type: PageType) => {
       return getFullSizeImageContact();
     case StaticPage.COLLABORATORS:
       return getFullSizeImageCollaborations();
+    case StaticPage.BLOG:
+      return getFullSizeImageBlog();
 
     case AlbumType.Travel:
       return getFullSizeImageTravel();
@@ -82,6 +84,18 @@ const getFullSizeImageCollaborations = (): FullSizeImage => {
       text: "Collaborations",
       class: "img-loaded-text-center",
       alt: "Collaborators services photo shootings",
+    },
+  ];
+  return images[Math.floor(Math.random() * images.length)];
+};
+
+const getFullSizeImageBlog = (): FullSizeImage => {
+  var images = [
+    {
+      url: "/img/fullscreen/blog_header_01.jpg",
+      text: "Blog posts",
+      class: "img-loaded-text-center",
+      alt: "Blog posts",
     },
   ];
   return images[Math.floor(Math.random() * images.length)];
