@@ -14,8 +14,6 @@ export function PostCard({ post }: { post: BlogPost }) {
   const months = Months;
   const isMobile = screenType === ScreenType.Mobile;
 
-  console.log("months ", { months });
-
   return (
     <Link scroll={false} href={"/blog/" + post.url}>
       <a style={{ textDecoration: "none", color: "inherit" }}>
@@ -70,7 +68,7 @@ export function PostCard({ post }: { post: BlogPost }) {
                     padding: 0,
                   }}
                 >
-                  {months[post.date.getMonth() + 1].toUpperCase()}{" "}
+                  {months[post.date.getMonth()].toUpperCase()}{" "}
                   {post.date.getFullYear()}
                 </div>
               </div>

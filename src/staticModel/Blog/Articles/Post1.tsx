@@ -1,3 +1,12 @@
 import React from "react";
 
-export const Post1 = <div>first post</div>;
+export function Post1() {
+  return (
+    <div>
+      first post first post first post first post first post first post first
+      post first post first post first post first post first post first post
+      first post first post first post first post first post first post first
+      postv first post first post first post first post first post
+    </div>
+  );
+}

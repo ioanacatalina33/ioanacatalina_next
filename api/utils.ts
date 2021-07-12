@@ -1,12 +1,14 @@
 import fs from "fs";
 import path from "path";
 import { HighlightsAlbums } from "staticModel";
+import { blogPosts } from "staticModel/Blog";
 import { AlbumType, Routes } from "types";
 import { getUrlPaths } from "./controllers";
 
 export async function getImagesNamesFromFolder(folderPath: string) {
   const directoryPath = path.join(process.cwd(), "public/img/" + folderPath);
-  return fs.readdirSync(directoryPath);
+  if (fs.existsSync(directoryPath)) return fs.readdirSync(directoryPath);
+  else return [];
 }
 
 export async function getNumberImages() {
@@ -46,6 +48,10 @@ export async function getRouteStaticPaths(route: Routes) {
     }
     case Routes.Highlights: {
       HighlightsAlbums.forEach((high) => fileNames.push(high.name_url));
+      break;
+    }
+    case Routes.BlogArticle: {
+      blogPosts.forEach((post) => fileNames.push(post.url));
       break;
     }
     default:

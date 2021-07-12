@@ -5,21 +5,30 @@ import { ScreenType } from "types/enums";
 import { useSelector } from "hooks/utils";
 
 import { SubscribeContent } from "../SubscribeContent";
+import { Colors } from "helpers";
 
 interface FollowMeInterface {
   subscribe?: boolean;
+  invertColors?: boolean;
 }
 
-export const FollowMe = ({ subscribe }: FollowMeInterface) => {
+export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
   const screenType = useSelector((state) => state.app.screenType);
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: invertColors ? Colors.secondary.main : "",
+      }}
+    >
       <FollowMeFlex screenType={screenType}>
         <FlexElement1>
           <AvatarIcon src="/img/followme.jpg" alt="Travel girl" />
         </FlexElement1>
-        <FlexElement2 className="text-container">
+        <FlexElement2
+          className="text-container"
+          style={{ color: invertColors ? "#fafafa" : "" }}
+        >
           I'm a passionate <b>traveler/ photographer</b> in love with the
           journey.
           <br /> For more photos of my adventures, follow me on
@@ -50,6 +59,7 @@ export const FollowMe = ({ subscribe }: FollowMeInterface) => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.instagram.com/ioana.catalina.e"
+              style={{ color: invertColors ? "#ffffff" : "" }}
             >
               Instagram
             </a>
@@ -84,7 +94,7 @@ const FollowMeFlex = styled.div<FollowMeFlexProp>`
   flex-wrap: wrap;
   max-width: 900px;
   padding: 2rem 1rem;
-  margin: 2rem auto;
+  margin: 0rem auto;
   justify-content: center;
   align-items: center;
   flex-direction: ${({ screenType }) =>

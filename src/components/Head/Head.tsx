@@ -6,6 +6,8 @@ import { AlbumDetails, Routes } from "types";
 import { rootPath } from "helpers";
 
 import {
+  getMetaForBlog,
+  getMetaForBlogPost,
   getMetaForCollaborations,
   getMetaForContact,
   getMetaForDance,
@@ -19,12 +21,14 @@ import {
   getMetaForTravelAlbum,
   MetaData,
 } from "./MetaHelper";
+import { BlogPost, blogPosts } from "staticModel/Blog/blog";
 
 interface MetaProps {
   album?: AlbumDetails;
+  blogPost?: BlogPost;
 }
 
-export const Meta = ({ album }: MetaProps) => {
+export const Meta = ({ album, blogPost }: MetaProps) => {
   const { pathname, query } = useRouter();
 
   const url =
@@ -38,7 +42,7 @@ export const Meta = ({ album }: MetaProps) => {
 
   let metaData: MetaData;
 
-  if (query.id && !album) return <></>;
+  if (query.id && !album && !blogPost) return <></>;
 
   switch (pathname) {
     case Routes.Home:
@@ -76,6 +80,12 @@ export const Meta = ({ album }: MetaProps) => {
     case Routes.AlbumTravel:
       metaData = getMetaForTravelAlbum(album);
       break;
+    case Routes.Blog:
+      metaData = getMetaForBlog();
+      break;
+    case Routes.BlogArticle:
+      metaData = getMetaForBlogPost(blogPost);
+      break;
     default:
       metaData = getMetaForHome();
       break;
@@ -88,7 +98,7 @@ export const Meta = ({ album }: MetaProps) => {
         <title>{metaData.title}</title>
         <meta name="keywords" content={metaData.keywords} />
         <meta name="description" content={metaData.description} />
-        <meta name="url" content={url} />
+        {/* <meta name="url" content={url} /> */}
 
         <meta
           property="og:title"
@@ -107,7 +117,7 @@ export const Meta = ({ album }: MetaProps) => {
           property="og:type"
           content={metaData.ogtype ? metaData.ogtype : "website"}
         />
-        <meta property="og:url" content={url} />
+        <meta property="og:url" content={canonical} />
         <meta name="og:site_name" content="Ioana Catalina E. Photography" />
         <meta name="og:email" content="ioana.echim@gmail.com" />
         <meta name="og:latitude" content="45.7489" />

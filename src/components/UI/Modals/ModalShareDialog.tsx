@@ -12,6 +12,7 @@ import {
 } from "react-share";
 
 import { ModalProps } from "./common";
+import { ShareButtons } from "./ShareButtons";
 
 export const ModalShareDialog = ({ onHide, show }: ModalProps) => {
   const [copied, setCopied] = useState(false);
@@ -37,36 +38,7 @@ export const ModalShareDialog = ({ onHide, show }: ModalProps) => {
         <Modal.Title id="contained-modal-title-vcenter">Share</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div style={{ display: "flex" }}>
-          <FacebookShareButton url={url}>
-            <FacebookIcon
-              size={50}
-              className="social-media-modal-buttons"
-              round={true}
-            />
-          </FacebookShareButton>
-          <TwitterShareButton url={url}>
-            <TwitterIcon
-              size={50}
-              className="social-media-modal-buttons"
-              round={true}
-            />
-          </TwitterShareButton>
-          <WhatsappShareButton url={url}>
-            <WhatsappIcon
-              size={50}
-              className="social-media-modal-buttons"
-              round={true}
-            />
-          </WhatsappShareButton>
-          <EmailShareButton url={url}>
-            <EmailIcon
-              size={50}
-              className="social-media-modal-buttons"
-              round={true}
-            />
-          </EmailShareButton>
-        </div>
+        <ShareButtons all />
 
         <div style={{ marginTop: "1rem" }} className="align-center">
           <button

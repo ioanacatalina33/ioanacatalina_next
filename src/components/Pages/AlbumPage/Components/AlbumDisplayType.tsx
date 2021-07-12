@@ -22,7 +22,7 @@ export const AlbumDisplayType = ({
     //var backgroundImageStyle = type === "1" ? "url('/img/table_display_1.png')" : type === "2" ? "url('/img/table_display_2.png')" : "url('/img/table_display_3.png')"
     if (hover)
       return {
-        backgroundColor: "#f6bc00",
+        backgroundColor: "#e2a71e",
         borderColor: "white",
         color: "white",
         backgroundImage: backgroundImageStyle,

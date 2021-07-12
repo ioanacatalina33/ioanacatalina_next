@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { updateQueryText, updateMobileSearch } from "store";
 import { useScreenSize, useSelector } from "hooks/utils";
-import { ScreenType } from "types/enums";
+import { Routes, ScreenType } from "types/enums";
 
 import { HeaderDropdown } from "./HeaderUtils";
 
@@ -54,13 +54,15 @@ export const Header = () => {
 
   function allowInvisibleBackground() {
     return (
-      pathname === "/" ||
-      pathname === "/travel" ||
-      pathname === "/dance" ||
-      pathname === "/about" ||
-      pathname === "/highlights" ||
-      pathname === "/contact" ||
-      pathname === "/collaborations"
+      pathname === Routes.Home ||
+      pathname === Routes.Travel ||
+      pathname === Routes.Dance ||
+      pathname === Routes.About ||
+      pathname === Routes.Highlights ||
+      pathname === Routes.Collaborations ||
+      pathname === Routes.Contact ||
+      pathname === Routes.Blog ||
+      pathname === Routes.BlogArticle
     );
   }
 

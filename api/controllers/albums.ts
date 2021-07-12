@@ -56,6 +56,45 @@ export async function getAlbumsByType(type: AlbumType): Promise<Album[]> {
   return JSON.parse(JSON.stringify(albums));
 }
 
+export async function getAlbumsBetweenDates(
+  dateStart: Date,
+  dateEnd: Date,
+  type?: AlbumType
+): Promise<Album[]> {
+  let albums = [];
+  try {
+    await dbConnect();
+    console.log("Getting albums between dates");
+
+    //retrieve albums by type
+    albums = await Article.find({
+      date_start: {
+        $gte: dateStart,
+        $lte: dateEnd,
+      },
+    })
+      .select({
+        name: 1,
+        name_url: 1,
+        name_location: 1,
+        date_start: 1,
+        date_end: 1,
+        country: 1,
+        continent: 1,
+        type: 1,
+        subtype: 1,
+        identifier: 1,
+      })
+      .populate("locations", Location)
+      .sort({ date_start: -1 })
+      .where("type")
+      .equals(type);
+  } catch (err) {
+    console.error("error at getAlbumsBetweenDatesAndType: " + err.message);
+  }
+  return JSON.parse(JSON.stringify(albums));
+}
+
 export async function getAlbumDetails(
   name_url: string
 ): Promise<FullAlbumDetails> {

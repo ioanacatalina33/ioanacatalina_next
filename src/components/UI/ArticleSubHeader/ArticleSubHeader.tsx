@@ -1,45 +1,49 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { getDanceEvent } from "staticModel";
-import { AlbumDetails, AlbumType } from "types";
 import { getFileDateTitleMonthString } from "helpers";
 import { FestivalLinksContainer } from "components/UI/FestivalLinksContainer";
-import { ModalShareDialog } from "components/UI/Modals";
+import { ShareButtons } from "components/UI/Modals/ShareButtons";
+import { useScreenType } from "hooks";
+import { ScreenType } from "types";
 
-interface AlbumSubHeaderProps {
-  album: AlbumDetails;
+interface ArticleSubHeaderProps {
+  title?: string;
+  dateStart?: Date;
+  dateEnd?: Date;
+  danceEvent?: string;
 }
 
-export const AlbumSubHeader = ({ album }: AlbumSubHeaderProps) => {
-  const [modalShow, setModalShow] = useState(false);
-
-  let eventOrganizer = getDanceEvent(album.subtype);
+export const ArticleSubHeader = ({
+  title,
+  dateStart,
+  dateEnd,
+  danceEvent,
+}: ArticleSubHeaderProps) => {
+  let eventOrganizer = getDanceEvent(danceEvent);
+  const { screenType } = useScreenType();
 
   return (
-    <div>
+    <div
+      style={{
+        paddingTop: screenType === ScreenType.Mobile ? "rem" : "3rem",
+        paddingBottom: screenType === ScreenType.Mobile ? "rem" : "3rem",
+      }}
+    >
       <div className="album-subheader-line">
         <div className="album-subheader-element1">
-          {album.date_start !== undefined
-            ? getFileDateTitleMonthString(album.date_start, album.date_end)
+          {dateStart !== undefined
+            ? getFileDateTitleMonthString(dateStart, dateEnd)
             : ""}
         </div>
 
         <div className="album-subheader-element3">
-          <button
-            onClick={() => setModalShow(true)}
-            className="filter-element"
-            style={{ margin: "1 rem 0rem 0rem 0rem" }}
-          >
-            <i className="fa fa-share-alt"></i>
-          </button>
+          {!dateStart && <div style={{ textAlign: "right" }}>Share this:</div>}
+          <ShareButtons facebook twitter whatsupp />
         </div>
-
-        <ModalShareDialog show={modalShow} onHide={() => setModalShow(false)} />
       </div>
       <div>
-        {album.type === AlbumType.Travel ? (
-          <h2 style={{ textAlign: "left" }}>{album.name}</h2>
-        ) : album.type === AlbumType.Dance && eventOrganizer !== undefined ? (
+        {danceEvent && eventOrganizer !== undefined ? (
           <h3 style={{ textAlign: "left" }}>
             Organized by{" "}
             {eventOrganizer.organizers.map((organizer, index) => {
@@ -70,10 +74,8 @@ export const AlbumSubHeader = ({ album }: AlbumSubHeaderProps) => {
               eventOrganizer={eventOrganizer}
             />
           </h3>
-        ) : album.type === AlbumType.Highlights ? (
-          <h2 style={{ textAlign: "left" }}>{album.description}</h2>
         ) : (
-          ""
+          <h2 style={{ textAlign: "left" }}>{title}</h2>
         )}
       </div>
     </div>

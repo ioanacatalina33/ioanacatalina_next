@@ -24,7 +24,7 @@ export function BlogPage() {
         }}
       >
         {posts.map((post) => (
-          <PostCard post={post} />
+          <PostCard key={post.id} post={post} />
         ))}
       </div>
     </div>

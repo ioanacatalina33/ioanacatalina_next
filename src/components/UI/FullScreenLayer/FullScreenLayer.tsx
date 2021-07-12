@@ -11,9 +11,13 @@ import { ImageLoader } from "../ImageLoader";
 
 interface FullScreenLayerProps {
   fullSizeImage: FullSizeImage;
+  inverse?: boolean;
 }
 
-export const FullScreenLayer = ({ fullSizeImage }: FullScreenLayerProps) => {
+export const FullScreenLayer = ({
+  fullSizeImage,
+  inverse,
+}: FullScreenLayerProps) => {
   const { screenHeight } = useScreenSize();
   const { screenType } = useScreenType();
   const { isIE } = useBrowsers();
@@ -47,9 +51,17 @@ export const FullScreenLayer = ({ fullSizeImage }: FullScreenLayerProps) => {
 
         <button
           onClick={() => contentScroll(screenHeight - 60)}
-          className="arrow-down arrow-down-absolute"
+          className={
+            "arrow-down arrow-down-absolute " +
+            (inverse ? "arrow-down-inverted" : "")
+          }
         >
-          <i className="fa fa-angle-down arrow-down-icon"></i>
+          <i
+            className={
+              "fa fa-angle-down " +
+              (inverse ? "arrow-down-icon-inverted" : "arrow-down-icon")
+            }
+          ></i>
         </button>
       </div>
       {/* </LazyLoad> */}

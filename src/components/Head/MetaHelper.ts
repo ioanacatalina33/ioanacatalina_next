@@ -5,6 +5,7 @@ import {
   getLocationsWithComa,
 } from "helpers";
 import { getDanceEvent, getDanceEventMeta } from "staticModel";
+import { BlogPost } from "staticModel/Blog/blog";
 import { AlbumDetails } from "types";
 
 const albumTravelDefaultKeywords =
@@ -89,6 +90,18 @@ export function getMetaForHighlights(): MetaData {
     ogdescription:
       "View my portfolio of all the greatest photos I took over the years of cities, landscapes, dance events, people, hikes, adventures and priceless moments.",
     h1: "My best photography. nature, city, landscapes, dance, people.",
+  };
+}
+
+export function getMetaForBlog(): MetaData {
+  return {
+    title: "My adventures in words",
+    keywords:
+      "blog, posts, my, travel, life, about, thoughts, explore, mind, journey, road trip, trips",
+    description: "My first personal blog ",
+    ogimage: "/img/photos/meta/blog.jpg",
+    ogdescription: "My adventures in words",
+    h1: "Blog posts about my journeys",
   };
 }
 
@@ -193,6 +206,18 @@ export function getMetaForGeena(): MetaData {
     ogdescription:
       "Photos of my awesome Golden Retriever girl, Wizzdom of Soulcharisma, Geena. She is a pure bred show dog champion, travel and hiking companion and an amazing best friend.",
     h1: "About my beloved Golden Retriever, Geena",
+  };
+}
+
+export function getMetaForBlogPost(blog: BlogPost): MetaData {
+  return {
+    title: blog.title,
+    keywords:
+      "photography, blog, post, articles, mind " + blog.keywords.join(","),
+    description: "My adventures in words. " + blog.text.slice(0, 200),
+    ogimage: "/img/Blog/" + blog.id + ".jpg",
+    ogdescription: blog.subtitle + " " + blog.text.slice(0, 200),
+    h1: "",
   };
 }
 

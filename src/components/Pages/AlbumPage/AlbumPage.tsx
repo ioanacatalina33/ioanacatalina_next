@@ -21,7 +21,7 @@ import { AlbumDisplayType } from "./Components/AlbumDisplayType";
 import { PhotosDisplay } from "./Components/PhotosDisplay";
 import { AlbumRecommended } from "./Components/AlbumRecommended";
 import { AlbumRecommendedMyLife } from "./Components/AlbumRecommendedMyLife";
-import { AlbumSubHeader } from "./Components/AlbumSubHeader";
+import { ArticleSubHeader } from "components/UI/ArticleSubHeader";
 
 interface AlbumPageProps {
   fullAlbum: FullAlbumDetails;
@@ -155,8 +155,18 @@ export const AlbumPage = ({
         {album.name === "Geena" && <GeenaPage />}
 
         <div className="text-container">
-          {<AlbumSubHeader album={album} />}
-
+          <ArticleSubHeader
+            title={
+              album.type === AlbumType.Highlights
+                ? album.description
+                : album.name
+            }
+            dateStart={album.date_start}
+            dateEnd={album.date_end}
+            danceEvent={
+              album.type === AlbumType.Dance ? album.subtype : undefined
+            }
+          />
           <div dangerouslySetInnerHTML={{ __html: album.description }} />
           {!!album.description && (
             <>
@@ -179,7 +189,8 @@ export const AlbumPage = ({
           alt={title + " " + subTitle}
         />
 
-        <FollowMe subscribe />
+        <div style={{ height: "3rem" }} />
+        <FollowMe subscribe invertColors />
 
         {nextPhotos.length !== 0 && (
           <AlbumRecommended text="Next albums:" recommended={nextPhotos} />

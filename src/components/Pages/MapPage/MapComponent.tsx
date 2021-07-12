@@ -12,7 +12,16 @@ import { Location } from "types";
 interface MapComponentProps {
   locationsFiltered: Location[];
   selectedLocation: Location;
+  width?: string;
+  height?: string;
+  viewport?: ViewPort;
   onMarkerClicked: (location: Location) => void;
+}
+
+export interface ViewPort {
+  longitude: number;
+  latitude: number;
+  zoom: number;
 }
 
 const token =
@@ -21,13 +30,20 @@ const token =
 export const MapComponent = ({
   locationsFiltered,
   selectedLocation,
+  width,
+  height,
+  viewport: viewportProp,
   onMarkerClicked,
 }: MapComponentProps) => {
-  const [viewport, setViewport] = useState({
-    longitude: 0,
-    latitude: 44.854256,
-    zoom: 1.3,
-  });
+  const [viewport, setViewport] = useState(
+    viewportProp
+      ? viewportProp
+      : {
+          longitude: 0,
+          latitude: 44.854256,
+          zoom: 1.3,
+        }
+  );
 
   const [markerSize, setMarkerSize] = useState({
     width: "1.2rem",
@@ -105,9 +121,10 @@ export const MapComponent = ({
   return (
     <ReactMapGL
       {...viewport}
-      width="100vw"
-      height="100vh"
+      width={width ?? "100vw"}
+      height={height ?? "100vh"}
       mapboxApiAccessToken={token}
+      mapStyle="mapbox://styles/mapbox/outdoors-v11"
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
       {markers}

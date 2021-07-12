@@ -5,7 +5,11 @@ import { PageType } from "types/enums";
 import { useEffect, useState } from "react";
 import { FullSizeImage, getFullSizeImageByPage } from "staticModel";
 
-export const useFullScreenlayer = (pageType: PageType) => {
+export const useFullScreenlayer = (
+  pageType: PageType,
+  imageP?: FullSizeImage,
+  inverse?: boolean
+) => {
   const [imageProps, setImageProps] = useState<FullSizeImage>({
     text: "",
     class: "",
@@ -14,8 +18,8 @@ export const useFullScreenlayer = (pageType: PageType) => {
   });
 
   useEffect(() => {
-    setImageProps(getFullSizeImageByPage(pageType));
+    setImageProps(imageP ? imageP : getFullSizeImageByPage(pageType));
   }, []);
 
-  return <FullScreenLayer fullSizeImage={imageProps} />;
+  return <FullScreenLayer fullSizeImage={imageProps} inverse={inverse} />;
 };

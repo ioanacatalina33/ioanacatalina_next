@@ -83,9 +83,9 @@ export const FilterComponent = ({
   };
 
   const styleButtonClicked = {
-    backgroundColor: "#f6bc00",
+    backgroundColor: "#e2a71e", //"#f6bc00",
     borderColor: "white",
-    color: "white",
+    color: "#ffffff",
     ...buttonStyle,
   };
 

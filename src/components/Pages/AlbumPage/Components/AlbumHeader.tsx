@@ -1,17 +1,10 @@
 import { Button } from "react-bootstrap";
 import Link from "next/link";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDown,
-  faAngleLeft,
-  faAngleRight,
-} from "@fortawesome/free-solid-svg-icons";
 import { contentScroll } from "helpers";
 import { useBrowsers, useScreenSize } from "hooks";
 import { AlbumType } from "types";
 import { ImageLoader } from "components/UI/ImageLoader";
-import { IconContext } from "react-icons/lib";
 
 interface AlbumHeaderProps {
   type: AlbumType;
@@ -113,14 +106,15 @@ export const AlbumHeader = ({
                 </span>
               )}
             </div>
-            <button
-              onClick={() => contentScroll(screenHeight - 60)}
-              className="arrow-down arrow-down-inverted"
-              style={{ margin: "0 auto", marginTop: "2rem" }}
-            >
-              <i className="fa fa-angle-down arrow-down-icon-inverted"></i>
-            </button>
           </div>
+
+          <button
+            onClick={() => contentScroll(screenHeight - 60)}
+            className="arrow-down arrow-down-absolute arrow-down-inverted"
+            style={{ margin: "0 auto", marginTop: "2rem" }}
+          >
+            <i className="fa fa-angle-down arrow-down-icon-inverted"></i>
+          </button>
         </div>
       </div>
     </div>
