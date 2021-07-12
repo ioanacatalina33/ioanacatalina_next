@@ -15,7 +15,7 @@ export interface BlogPost {
   subtitle: string;
   text: string;
   date: Date;
-  content: () => JSX.Element;
+  content: JSX.Element;
   keywords: string[];
 
   dateStart?: Date;
@@ -36,6 +36,8 @@ export function getRandomPosts(postId: string) {
   return posts.filter((p) => p.id !== postId).slice(0, 3);
 }
 
+export const blogPosts_: BlogPost[] = [];
+
 export const blogPosts: BlogPost[] = [
   {
     id: "Post1",
@@ -44,7 +46,7 @@ export const blogPosts: BlogPost[] = [
     subtitle: "My golden friend",
     text: "It is a long established fact that a reader will a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less",
     date: new Date(2021, 6, 12),
-    content: Post1,
+    content: <Post1 />,
     keywords: ["geena", "golden", "retriever"],
   },
   {
@@ -54,7 +56,7 @@ export const blogPosts: BlogPost[] = [
     subtitle: "How I started my journey and never looked back",
     text: "It is a long established fact that a reader will a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less",
     date: new Date(2021, 5, 14),
-    content: Post2,
+    content: <Post2 />,
     keywords: [],
   },
   {
@@ -64,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of",
     subtitle: "How winter of 2020 brought me back to the Carpathians",
     date: new Date(2021, 0, 15),
-    content: Post3,
+    content: <Post3 />,
     keywords: [],
 
     dateStart: new Date(2021, 0, 22),

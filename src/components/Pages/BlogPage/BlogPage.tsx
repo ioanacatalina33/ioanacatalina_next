@@ -26,6 +26,7 @@ export function BlogPage() {
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
+        {posts.length === 0 && <h1>Coming up soon! :) </h1>}
       </div>
     </div>
   );

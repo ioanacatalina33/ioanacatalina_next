@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 import { FollowMe } from "components/UI/FollowMe";
 import { Photowall } from "components/UI/Photowall";
 import { useFullScreenlayer, useScreenType } from "hooks";
 import { useMemo } from "react";
-import { FullBlogPostDetails, getRandomPosts } from "staticModel/Blog/blog";
+import {
+  blogPosts,
+  FullBlogPostDetails,
+  getRandomPosts,
+} from "staticModel/Blog/blog";
 import { ScreenType, StaticPage } from "types";
 import { Location } from "types";
 
@@ -15,6 +20,7 @@ import { MapAlbums } from "../MapPage/MapAlbums";
 import { Meta } from "components/Head";
 import { PostCard } from "../BlogPage/PostCard";
 import { ArticleSubHeader } from "components/UI/ArticleSubHeader";
+import { Button } from "react-bootstrap";
 
 interface BlogArticlePageInterface {
   fullPost: FullBlogPostDetails;
@@ -90,8 +96,6 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
     setShowAlbums(false);
   }
 
-  const element = post.content;
-
   return (
     <>
       <Meta blogPost={post} />
@@ -106,7 +110,7 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
             dateEnd={post.date}
           />
         </div>
-        {element}
+        {post.content}
         {images.length !== 0 && (
           <BlogImagesDisplay images={images} alt={post.title} />
         )}
@@ -152,6 +156,24 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
             {otherPosts.map((post) => (
               <PostCard key={post.id} post={post} />
             ))}
+
+            {blogPosts.length > 3 && (
+              <Link href="/blog">
+                <a>
+                  <Button
+                    style={{
+                      textAlign: "center",
+                      padding: "0.5rem 1rem 0.5rem 1rem",
+                      margin: "1rem 0rem 0rem 0rem",
+                      color: "#1a1a1a",
+                    }}
+                    variant="warning"
+                  >
+                    <b>See more posts</b>
+                  </Button>
+                </a>
+              </Link>
+            )}
           </div>
         </div>
       </div>
