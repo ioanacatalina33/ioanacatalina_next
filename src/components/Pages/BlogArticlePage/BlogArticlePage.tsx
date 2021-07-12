@@ -21,6 +21,7 @@ import { Meta } from "components/Head";
 import { PostCard } from "../BlogPage/PostCard";
 import { ArticleSubHeader } from "components/UI/ArticleSubHeader";
 import { Button } from "react-bootstrap";
+import { getContent } from "staticModel/Blog/Articles";
 
 interface BlogArticlePageInterface {
   fullPost: FullBlogPostDetails;
@@ -102,7 +103,6 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
       <div className="App">
         {" "}
         {FullSizeLayer}
-        {/* {post.subtitle && <h2>{post.subtitle}</h2>} */}
         <div className="text-container">
           <ArticleSubHeader
             title={post.subtitle}
@@ -110,7 +110,7 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
             dateEnd={post.date}
           />
         </div>
-        {post.content}
+        {getContent(post.id)}
         {images.length !== 0 && (
           <BlogImagesDisplay images={images} alt={post.title} />
         )}
