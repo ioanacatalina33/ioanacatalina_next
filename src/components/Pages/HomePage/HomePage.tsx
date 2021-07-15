@@ -10,12 +10,18 @@ import { HomeContainers } from "./HomeContainers";
 import { useFullScreenlayer } from "hooks/useFullScreenLayer";
 
 export interface HomeProps {
+  nrCountries: number;
   nrLocations: number;
   nrAlbums: number;
   nrImages: number;
 }
 
-export const HomePage = ({ nrAlbums, nrLocations, nrImages }: HomeProps) => {
+export const HomePage = ({
+  nrCountries,
+  nrAlbums,
+  nrLocations,
+  nrImages,
+}: HomeProps) => {
   const { isIE } = useBrowsers();
 
   const FullSizeLayer = useFullScreenlayer(StaticPage.HOME);
@@ -39,8 +45,15 @@ export const HomePage = ({ nrAlbums, nrLocations, nrImages }: HomeProps) => {
             style={{
               padding: "3rem 1rem 0rem 1rem",
               fontSize: "1.5rem",
+              textAlign: "left",
+              width: "fit-content",
             }}
           >
+            <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
+              {nrCountries}
+            </span>
+            {"  "}
+            countries {screenType !== ScreenType.Mobile ? "\u00A0" : <br />}
             <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
               {nrLocations}
             </span>

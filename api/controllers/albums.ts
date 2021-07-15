@@ -201,6 +201,19 @@ async function getRecommended(album: Album): Promise<Album[]> {
   return recommended.slice(0, 6);
 }
 
+export async function getNumberOfCountries(): Promise<number> {
+  let number = 0;
+  try {
+    await dbConnect();
+    console.log("Getting getNumberCountries");
+
+    number = (await Article.distinct("country")).length;
+  } catch (err) {
+    console.error("error at getNumberCountries: " + err.message);
+  }
+  return number;
+}
+
 export async function getNumberAlbums(): Promise<number> {
   let number = 0;
   try {

@@ -14,6 +14,9 @@ const poolOptions = {
     user: process.env.EMAILSUPPORT,
     pass: process.env.EMAILPASS,
   },
+  tls: {
+    rejectUnauthorized: false,
+  },
 };
 
 const nodemailerOptions: SMTPTransport.Options = {
@@ -22,12 +25,11 @@ const nodemailerOptions: SMTPTransport.Options = {
 
 const transporter = nodemailer.createTransport(nodemailerOptions);
 
-// TODO
-const absolutePath = path.join(
-  process.cwd(),
-  "shop/public/img/aboutme_slide1.jpg"
-);
-
+const absolutePath = function (p: string) {
+  return process.env.NODE_ENV === "development"
+    ? path.join(process.cwd(), "/public" + p)
+    : path.join("/home/ioanacat/public_html", p);
+};
 interface MailOptions {
   from: string;
   to: string;
@@ -83,7 +85,7 @@ export async function sendBuyDigitalEmail(
     {
       // stream as an attachment
       filename: "wwww.ioanacatalina.com" + req.body.img,
-      content: fs.createReadStream(absolutePath),
+      content: fs.createReadStream(absolutePath(req.body.img)),
     },
   ];
   transporter.sendMail(mailOptions, function (error, info) {

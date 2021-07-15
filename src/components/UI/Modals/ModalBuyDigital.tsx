@@ -14,10 +14,19 @@ interface ModalBuyDigital extends ModalProps {
 export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("I wish to buy this picture");
   const [sent, setSent] = useState(false);
   const [textSubscribed, setTextSubscribed] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  function reset() {
+    setEmail("");
+    setMessage("");
+    setName("");
+    setTextSubscribed("");
+    setErrorMessage("");
+    setSent(false);
+  }
 
   function sendRequest() {
     if (!email || !name || !message)
@@ -39,10 +48,8 @@ export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
       setTextSubscribed("sent");
     }
     await sleep(5000);
+    reset();
     onHide();
-    await sleep(1000);
-    setTextSubscribed("");
-    setSent(false);
   }
 
   function onEmailModified(evt) {
@@ -107,11 +114,11 @@ export const ModalBuyDigital = ({ onHide, show, imgurl }: ModalBuyDigital) => {
             style={{ padding: "1.4rem 0rem 1.4rem 0rem", textAlign: "left" }}
           >
             <div style={{ textAlign: "left", padding: "0rem 1rem 1rem 1rem" }}>
-              <div>Currently this photo cannot be purchased online.</div>
+              <div>Currently photos cannot be purchased online.</div>
               <div style={{ fontSize: "1.2rem", marginTop: "0.7rem" }}>
                 <b>
                   Contact me to make a request! <br />
-                  Price: 9.99 &#8364;
+                  {/* Price: 9.99 &#8364; */}
                 </b>
               </div>
             </div>
