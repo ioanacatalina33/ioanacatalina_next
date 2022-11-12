@@ -448,6 +448,204 @@ export const danceEvents: DanceEvent[] = [
       website: "",
     },
   },
+  // NEW!
+  {
+    subtype: "KamillionArts",
+    name: "Kamillion ArTs",
+    logo: PATH_LOGO + "KamillionArts.png",
+    organizers: [
+      {
+        name: "Kamacho",
+        facebook: "https://www.facebook.com/Kamachozouk",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/profile.php?id=100031641231292",
+      website: "",
+    },
+  },
+  {
+    subtype: "Ramalhos",
+    name: "Ramalho's Zouk Festival",
+    logo: PATH_LOGO + "RZF.png",
+    organizers: [
+      {
+        name: "Renato Ramalho",
+        facebook: "https://www.facebook.com/renato.ramalho.12",
+        email: "",
+      },
+      {
+        name: "Rachel Ramalho",
+        facebook: "https://www.facebook.com/rachel.ramalho.3",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/ramalhoszoukfestival",
+      website: "",
+    },
+  },
+  {
+    subtype: "Renata",
+    name: "Núcleo de Dança Renata Peçanha",
+    logo: PATH_LOGO + "NucleoDeDancaRenataPecanha.png",
+    organizers: [
+      {
+        name: "Renata Peçanha",
+        facebook: "https://www.facebook.com/renata.pecanhaii",
+        email: "",
+      },
+      
+    ],
+    links: {
+      facebook: "https://www.facebook.com/nucleorenatapecanha",
+      website: "https://renatapecanha.wixsite.com/nucleodedanca",
+    },
+  },
+  {
+    subtype: "ZoukMX",
+    name: "ZoukMX",
+    logo: PATH_LOGO + "ZoukMX.png",
+    organizers: [
+      {
+        name: "Joe Sandoval",
+        facebook: "https://www.facebook.com/sandoval.joe",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/zoukmx",
+      website: "",
+    },
+  },
+  {
+    subtype: "Kizomba Beats",
+    name: "Kizomba Beats",
+    logo: PATH_LOGO + "KizombaBeats.png",
+    organizers: [
+      {
+        name: "Joe Sandoval",
+        facebook: "https://www.facebook.com/sandoval.joe",
+        email: "",
+      },
+      {
+        name: "Joe Sandoval",
+        facebook: "https://www.facebook.com/sandoval.joe",
+        email: "",
+      },
+      {
+        name: "Joe Sandoval",
+        facebook: "https://www.facebook.com/sandoval.joe",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/Kizombabeatsmx",
+      website: "",
+    },
+  },
+  {
+    subtype: "ZoukDiverse",
+    name: "Zouk Diverse",
+    logo: PATH_LOGO + "ZoukDiverse.png",
+    organizers: [
+      {
+        name: "Daniel Pytel",
+        facebook: "https://www.facebook.com/daniel.pytel",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/ZoukDiverse",
+      website: "",
+    },
+  },
+  {
+    subtype: "Ocho",
+    name: "Zouk Energy Boston",
+    logo: "",
+    organizers: [
+      {
+        name: "Ocho Jan",
+        facebook: "https://www.facebook.com/ochojan",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/boszouk",
+      website: "",
+    },
+  },
+  {
+    subtype: "FutureZouk",
+    name: "Future Zouk Festival",
+    logo: PATH_LOGO + "FutureZouk.png",
+    organizers: [
+      {
+        name: "Jacob S. Heiss",
+        facebook: "https://www.facebook.com/jacob.s.heiss",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/FutureZouk",
+      website: "",
+    },
+  },
+  {
+    subtype: "Brandon",
+    name: "Zouk Awakening",
+    logo: "",
+    organizers: [
+      {
+        name: "Brandon Gonzalez",
+        facebook: "https://www.facebook.com/Elskeletu",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "",
+      website: "",
+    },
+  },
+  {
+    subtype: "Conexao",
+    name: "Zouk Conexão Atlanta",
+    logo: PATH_LOGO + "ZoukConexao.png",
+    organizers: [
+      {
+        name: "Jose L Hernandez",
+        facebook: "https://www.facebook.com/salsa.arte.1",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/Salsazoukbachatak",
+      website: "",
+    },
+  },
+  {
+    subtype: "Sunset",
+    name: "Sunset Zouk Marathon",
+    logo: PATH_LOGO + "SunsetZoukMarathon.png",
+    organizers: [
+      {
+        name: "Bruno Miranda",
+        facebook: "https://www.facebook.com/purebm",
+        email: "",
+      },
+      {
+        name: "Fae Hermann",
+        facebook: "https://www.facebook.com/olga.d.hermann",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/sunsetzoukmarathon",
+      website: "https://zoukcentralflorida.com",
+    },
+  },
 ];
 
 export const getDanceEvent = (subtype: string): DanceEvent | undefined => {
