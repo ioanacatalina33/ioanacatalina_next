@@ -190,7 +190,7 @@ export const Header = () => {
                     </Link>
 
                     <a
-                      href="/shop"
+                      href="https://ioanacatalina.smugmug.com/"
                       className="custom-navbar-link links-small"
                       target="_blank"
                       rel="noopener noreferrer"

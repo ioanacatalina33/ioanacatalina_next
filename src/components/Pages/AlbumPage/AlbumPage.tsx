@@ -22,6 +22,7 @@ import { PhotosDisplay } from "./Components/PhotosDisplay";
 import { AlbumRecommended } from "./Components/AlbumRecommended";
 import { AlbumRecommendedMyLife } from "./Components/AlbumRecommendedMyLife";
 import { ArticleSubHeader } from "components/UI/ArticleSubHeader";
+import { ShopLink } from "components/UI/Advertising";
 
 interface AlbumPageProps {
   fullAlbum: FullAlbumDetails;
@@ -167,6 +168,7 @@ export const AlbumPage = ({
               album.type === AlbumType.Dance ? album.subtype : undefined
             }
           />
+
           <div dangerouslySetInnerHTML={{ __html: album.description }} />
           {!!album.description && (
             <>

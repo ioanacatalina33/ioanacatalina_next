@@ -8,6 +8,7 @@ import { useFullScreenlayer } from "hooks/useFullScreenLayer";
 import { useIsFiltered } from "hooks/utils";
 import { FiltersType } from "store";
 import { Album } from "types/modelTypes";
+import { ShopLink } from "components/UI/Advertising";
 
 interface DanceProps {
   albums: Album[];
@@ -29,7 +30,7 @@ export const DancePage = ({ albums, lazyload }: DanceProps) => {
       {FullSizeLayer}
       <div className="App">
         <h2>Dance events</h2>
-
+        <ShopLink center />
         <FiltersDance albums={albums} nrFiltered={filteredAlbums.length} />
         <Photowall
           albums={filteredAlbums}

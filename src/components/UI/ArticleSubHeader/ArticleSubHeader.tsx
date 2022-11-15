@@ -6,6 +6,7 @@ import { FestivalLinksContainer } from "components/UI/FestivalLinksContainer";
 import { ShareButtons } from "components/UI/Modals/ShareButtons";
 import { useScreenType } from "hooks";
 import { ScreenType } from "types";
+import { ShopLink } from "../Advertising";
 
 interface ArticleSubHeaderProps {
   title?: string;
@@ -78,6 +79,7 @@ export const ArticleSubHeader = ({
           <h2 style={{ textAlign: "left" }}>{title}</h2>
         )}
       </div>
+      {danceEvent && <ShopLink />}
     </div>
   );
 };

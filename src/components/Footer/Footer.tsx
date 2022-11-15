@@ -48,7 +48,7 @@ export const Footer = () => {
         className="bottom-element-text"
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.ioanacatalina.com/shop"
+        href="https://ioanacatalina.smugmug.com/"
       >
         <span>Shop</span>
       </a>
