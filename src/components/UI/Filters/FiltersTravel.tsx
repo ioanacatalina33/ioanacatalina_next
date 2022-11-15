@@ -58,7 +58,7 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
     setShowFilters((prevState) => !prevState);
   }
 
-  var styleMention = {
+  const styleMention = {
     padding: "0.4rem 0rem 0.4rem 0rem",
     fontSize: "0.9rem",
   };

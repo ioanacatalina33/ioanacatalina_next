@@ -255,7 +255,7 @@ export function getMetaForTravelAlbum(article: AlbumDetails): MetaData {
 }
 
 export function getMetaForDanceAlbum(article: AlbumDetails): MetaData {
-  var organizer = getDanceEvent(article.subtype);
+  const organizer = getDanceEvent(article.subtype);
   return {
     title:
       getFileDateTitleMonthString(article.date_start, article.date_end) +
@@ -299,14 +299,17 @@ export function getMetaForHighlightsAlbum(article: AlbumDetails): MetaData {
   switch (article.name) {
     case "myadventures":
       highlightsInfo = getMetaForMyAdventures();
+      break;
     case "Geena":
       highlightsInfo = getMetaForGeena();
+      break;
     default:
       highlightsInfo = {
         title: "Highlights - " + article.name,
         keywords: article.name + ", " + albumHighlightsDefaultKeywords,
         description: article.name + ". " + albumHighlightsDefaultDescription,
       };
+      break;
   }
 
   return {

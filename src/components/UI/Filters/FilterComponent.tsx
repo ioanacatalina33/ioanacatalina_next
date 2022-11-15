@@ -149,11 +149,11 @@ export const FilterComponent = ({
         vertical={mapFilters}
       >
         {values.map((value, index) => {
-          var filterClassName =
+          const filterClassName =
             filterName === FilterName.months
               ? "filter-element-outline"
               : "filter-element";
-          var className =
+          const className =
             index === 0
               ? filterClassName +
                 (mapFilters ? " radius-edge-top" : " radius-edge-left")

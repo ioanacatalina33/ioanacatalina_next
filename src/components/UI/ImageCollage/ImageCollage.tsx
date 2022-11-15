@@ -40,7 +40,7 @@ export const ImageCollage = ({
       !photoPadding || screenType === ScreenType.Mobile ? "0rem" : photoPadding,
   };
   let imageHeight = 0;
-  const fullWidth = !!fullWidthParam
+  const fullWidth = fullWidthParam
     ? Math.min(fullWidthParam, screenWidth)
     : screenWidth;
 

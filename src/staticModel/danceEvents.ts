@@ -448,9 +448,9 @@ export const danceEvents: DanceEvent[] = [
       website: "",
     },
   },
-  // NEW!
-  {
-    subtype: "KamillionArts",
+   // NEW
+   {
+    subtype: "KamillionArTs",
     name: "Kamillion ArTs",
     logo: PATH_LOGO + "KamillionArts.png",
     organizers: [
@@ -516,32 +516,6 @@ export const danceEvents: DanceEvent[] = [
     ],
     links: {
       facebook: "https://www.facebook.com/zoukmx",
-      website: "",
-    },
-  },
-  {
-    subtype: "Kizomba Beats",
-    name: "Kizomba Beats",
-    logo: PATH_LOGO + "KizombaBeats.png",
-    organizers: [
-      {
-        name: "Joe Sandoval",
-        facebook: "https://www.facebook.com/sandoval.joe",
-        email: "",
-      },
-      {
-        name: "Joe Sandoval",
-        facebook: "https://www.facebook.com/sandoval.joe",
-        email: "",
-      },
-      {
-        name: "Joe Sandoval",
-        facebook: "https://www.facebook.com/sandoval.joe",
-        email: "",
-      },
-    ],
-    links: {
-      facebook: "https://www.facebook.com/Kizombabeatsmx",
       website: "",
     },
   },

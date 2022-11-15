@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NextComponentType, NextPageContext } from "next";
-import ReactGA from "react-ga";
+import { pageview } from "react-ga";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -23,6 +23,7 @@ import { ScreenType } from "types/enums";
 import { Footer } from "./Footer";
 
 interface AppMain {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   Component: NextComponentType<NextPageContext, any, {}>;
   pageProps: any;
 }
@@ -70,12 +71,12 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
 
   useEffect(() => {
     rerender();
-    ReactGA.pageview(window.location.pathname + (query.id ? query.id : ""));
+    pageview(window.location.pathname + (query.id ? query.id : ""));
 
     // closing search
     dispatch(updateQueryText(""));
     dispatch(updateMobileSearch(false));
-  }, [pathname, query.id]);
+  }, [pathname, query.id, dispatch]);
 
   async function rerender() {
     setShowContent(false);

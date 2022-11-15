@@ -65,9 +65,9 @@ export const CollaborationsPage = () => {
       <h2>Dance festivals</h2>
 
       <div className="text-container">
-        During the years I've had the chance to collaborate with a lot of people
-        in a vast range of circumstances. Below I tried to categorize my photos
-        and services that I've offered.
+        During the years I&apos;ve had the chance to collaborate with a lot of
+        people in a vast range of circumstances. Below I tried to categorize my
+        photos and services that I&apos;ve offered.
       </div>
 
       <div
@@ -164,7 +164,7 @@ export const CollaborationsPage = () => {
         className="text-container"
         style={{ padding: "3rem 2rem 3rem 2rem", textAlign: "center" }}
       >
-        For more info, don't hesitate to contact me!
+        For more info, don&apos;t hesitate to contact me!
       </div>
       <LinksContainer containerType={LinksPageType.Collaborations} />
       <div style={{ margin: "4rem 0rem" }} />

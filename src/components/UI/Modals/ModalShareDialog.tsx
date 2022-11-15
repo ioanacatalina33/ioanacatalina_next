@@ -16,7 +16,7 @@ import { ShareButtons } from "./ShareButtons";
 
 export const ModalShareDialog = ({ onHide, show }: ModalProps) => {
   const [copied, setCopied] = useState(false);
-  let url: string = "";
+  let url = "";
 
   useEffect(() => {
     url = window.location.href;

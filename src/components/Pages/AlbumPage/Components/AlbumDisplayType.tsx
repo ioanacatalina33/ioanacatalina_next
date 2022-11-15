@@ -18,8 +18,8 @@ export const AlbumDisplayType = ({
   }
 
   function getButtonStyle(type: PhotosDisplayType, hover: boolean) {
-    var backgroundImageStyle = "url('/img/table_display_" + type + ".png')";
-    //var backgroundImageStyle = type === "1" ? "url('/img/table_display_1.png')" : type === "2" ? "url('/img/table_display_2.png')" : "url('/img/table_display_3.png')"
+    const backgroundImageStyle = "url('/img/table_display_" + type + ".png')";
+    //const backgroundImageStyle = type === "1" ? "url('/img/table_display_1.png')" : type === "2" ? "url('/img/table_display_2.png')" : "url('/img/table_display_3.png')"
     if (hover)
       return {
         backgroundColor: "#e2a71e",

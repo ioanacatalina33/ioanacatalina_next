@@ -58,7 +58,7 @@ export const FestivalLinksContainer = ({
             src="/img/sm_www.png"
             className="festival-links-socialmedia"
             style={{
-              height: !!imageHeight ? imageHeight : "",
+              height: imageHeight ? imageHeight : "",
             }}
           />
         </a>

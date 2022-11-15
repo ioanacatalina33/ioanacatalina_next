@@ -35,11 +35,11 @@ export const ImageLoaderDisplay = ({
 
   function getCorrectHeight() {
     if (isPortrait && screenType !== ScreenType.Mobile) {
-      var correctHeight =
+      const correctHeight =
         displayMode === PhotosDisplayType.ONE
           ? "900"
           : screenWidth / Number(displayMode) - 50;
-      var styleHeight = {
+      const styleHeight = {
         height: correctHeight + "px",
         width: "auto",
       };

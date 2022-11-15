@@ -134,8 +134,8 @@ export const filterLocations = (
   locations: Location[],
   filters: Partial<Filters>
 ) => {
-  var newLocations = locations.filter((location) => {
-    var articles = filterArticles(location.articles, filters);
+  const newLocations = locations.filter((location) => {
+    const articles = filterArticles(location.articles, filters);
     return articles.length > 0;
   });
   return newLocations;
@@ -145,7 +145,7 @@ export const filterArticlesForLocation = (
   articles: Album[],
   filters: Partial<Filters>
 ): Album[] => {
-  var articlesSelected = articles.filter((article) => {
+  const articlesSelected = articles.filter((article) => {
     return (
       filters.types.filter((type) => article.type === type).length > 0 &&
       (filters.subtypes.filter((subtype) => article.subtype === subtype)
@@ -386,7 +386,7 @@ export function mapFiltersFromURLSearch(query) {
 }
 
 export function mapURLToProperty(value, property, query) {
-  var searchParams = new URLSearchParams(query);
+  const searchParams = new URLSearchParams(query);
   if (value !== undefined) {
     searchParams.set(property, value);
   } else {
@@ -396,21 +396,21 @@ export function mapURLToProperty(value, property, query) {
 }
 
 export function mapPropertyFromURL(query: string, property: string) {
-  var searchParams = new URLSearchParams(query);
-  var value = searchParams.get(property);
+  const searchParams = new URLSearchParams(query);
+  const value = searchParams.get(property);
   if (value === "" || value === null) return undefined;
   return value;
 }
 
 export function mapPhotoFromURL(query) {
-  var searchParams = new URLSearchParams(query);
-  var index = searchParams.get("img");
+  const searchParams = new URLSearchParams(query);
+  const index = searchParams.get("img");
   if (index === "" || index === null) return undefined;
   return Number(index) - 1;
 }
 
 export function mapFiltersFromURL(query) {
-  var searchParams = new URLSearchParams(query);
+  const searchParams = new URLSearchParams(query);
 
   const filtersFromURL = {
     years: searchParams.getAll(FilterName.years),
@@ -424,7 +424,7 @@ export function mapFiltersFromURL(query) {
 }
 
 export function mapURLPhoto(imgIndex: number, query: string) {
-  var searchParams = new URLSearchParams(query);
+  const searchParams = new URLSearchParams(query);
   if (imgIndex !== undefined) {
     searchParams.set("img", imgIndex + 1 + "");
   } else {

@@ -1,7 +1,7 @@
-import ReactGA from "react-ga";
+import { initialize, event } from "react-ga";
 
 export const initGA = () => {
-  ReactGA.initialize("UA-68607928-1");
+  initialize("UA-68607928-1");
 };
 
 /**
@@ -11,7 +11,7 @@ export const initGA = () => {
  * @param {string} label
  */
 export const Event = (category, action, label) => {
-  ReactGA.event({
+  event({
     category: category,
     action: action,
     label: label,

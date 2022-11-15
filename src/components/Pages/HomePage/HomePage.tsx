@@ -101,7 +101,7 @@ export const HomePage = ({
           <HomeContainers />
         </div>
       </div>
-      <FollowMe subscribe />
+      <FollowMe />
     </div>
   );
 };

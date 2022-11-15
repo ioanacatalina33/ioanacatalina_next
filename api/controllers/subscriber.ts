@@ -7,7 +7,7 @@ export async function addSubscriber(
   const mailchimpInstance = process.env.REACT_APP_mailchimpInstance;
   const listUniqueId = process.env.REACT_APP_listUniqueId;
   const mailchimpApiKey = process.env.REACT_APP_mailchimpApiKey;
-  var request = require("superagent");
+  const request = require("superagent");
   try {
     console.log(
       "Save Subscribers request " + JSON.stringify(req.body.subscriber)

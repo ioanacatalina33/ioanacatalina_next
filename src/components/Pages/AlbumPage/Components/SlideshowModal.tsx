@@ -111,7 +111,7 @@ export const SlideshowModal = (props: SlideshowModalProps) => {
             />
           )}
         </div>
-        {props.currentIndex !== undefined && (
+        {/* {props.currentIndex !== undefined && (
           <div className="div-buy-buttons-container">
             <div className="div-buy-buttons">
               <Button
@@ -148,7 +148,7 @@ export const SlideshowModal = (props: SlideshowModalProps) => {
               </span>
             </div>
           </div>
-        )}
+        )} */}
       </div>
 
       <ModalShareDialog show={modalShow} onHide={modalClose} />

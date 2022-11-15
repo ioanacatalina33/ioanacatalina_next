@@ -5,7 +5,7 @@ export function ScrollToTop() {
   const { pathname } = useRouter();
 
   useEffect(() => {
-    var timeout = setTimeout(() => {
+    const timeout = setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       // scroller.scrollTo("css_class_scroll", {
       //   duration: 1,

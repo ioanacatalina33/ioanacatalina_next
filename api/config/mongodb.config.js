@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 exports.connect = (mongoose) => {
-  var db = mongoose.connection;
+  const db = mongoose.connection;
 
   db.on("connecting", function () {
     console.log("connecting to MongoDB...");

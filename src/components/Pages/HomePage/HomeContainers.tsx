@@ -1,3 +1,4 @@
+import React from "react";
 import { PhotoContainerHome } from "components/UI/PhotoContainers";
 
 export const HomeContainers = () => {

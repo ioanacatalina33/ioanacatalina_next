@@ -29,6 +29,10 @@ export const AlbumHeader = ({
 
   const { isIE } = useBrowsers();
 
+  const blurrBackground = {
+    backgroundImage: "url('" + coverImageSrc + "')",
+  };
+
   return (
     <div
       className={
@@ -38,10 +42,10 @@ export const AlbumHeader = ({
       }
     >
       <div className="album-header-wrapper">
+        <div className="blurred-background" style={blurrBackground} />
         {/* <button onClick={props.backPressed} variant="outline-light" className="album-header-button album-header-button-close">
           <i className="fa fa-arrow-circle-left"></i> Back
         </button> */}
-
         {prevLink && (
           <Link href={prevLink}>
             <a>
@@ -54,7 +58,6 @@ export const AlbumHeader = ({
             </a>
           </Link>
         )}
-
         {nextLink && (
           <Link href={nextLink}>
             <a>
@@ -68,7 +71,6 @@ export const AlbumHeader = ({
             </a>
           </Link>
         )}
-
         <div className={(isIE ? "row " : "") + " album-header-container"}>
           <ImageLoader
             style={{

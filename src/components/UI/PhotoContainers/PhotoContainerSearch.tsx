@@ -45,11 +45,11 @@ export const PhotoContainerSearch = ({
   }
 
   function getDanceNameText() {
-    var event = getDanceEvent(article.subtype);
+    const event = getDanceEvent(article.subtype);
     if (event === undefined) {
       return article.subtype + ", " + article_locations;
     } else {
-      let organizers = event.organizers
+      const organizers = event.organizers
         .map((organizer) => organizer.name)
         .join(" & ");
       return "Organized by " + organizers;

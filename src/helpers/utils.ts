@@ -3,7 +3,7 @@ export const sleep = (milliseconds: number) => {
 };
 
 export const getAlbumImageURL = (identifier: string, imageName: string) => {
-  var string = ("/img" + identifier + imageName).replace(" ", "%20");
+  const string = ("/img" + identifier + imageName).replace(" ", "%20");
   return string;
 };
 

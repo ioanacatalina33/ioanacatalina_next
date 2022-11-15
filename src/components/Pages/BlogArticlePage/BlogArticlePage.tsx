@@ -135,7 +135,7 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
         {post.showAlbums && albums && <Photowall albums={albums} />}
         <br />
         <br />
-        <FollowMe subscribe invertColors />
+        <FollowMe invertColors />
         <div
           style={{
             backgroundColor: "#f5f5f5",

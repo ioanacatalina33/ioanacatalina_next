@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   EmailIcon,
   EmailShareButton,
@@ -25,10 +25,10 @@ export function ShareButtons({
   twitter,
   all,
 }: ShareButtonsProps) {
-  let url: string = "";
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
-    url = window.location.href;
+    setUrl(window.location.href);
   }, []);
 
   return (

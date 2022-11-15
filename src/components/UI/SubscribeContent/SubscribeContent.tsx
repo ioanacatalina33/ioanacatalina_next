@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Col, Form, Row, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
-import { sleep } from "helpers";
 import { addSubscriber } from "helpers/api";
 import { AlbumType } from "types/enums";
+import { sleep } from "helpers";
 
 interface SubscribeContentProps {
   onSubscribed?: () => void;
@@ -34,7 +34,7 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
   }
 
   async function closeTimer() {
-    var body = await addSubscriber(email, "non", typeTravel, typeDance);
+    const body = await addSubscriber(email, "non", typeTravel, typeDance);
     await sleep(1000);
     if (body.result !== 1) {
       setTextAfterSubscription(body.message);
@@ -58,10 +58,10 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
 
   function handleChecked(evt) {
     if (evt.target.name === AlbumType.Dance) {
-      var newState = !typeDance;
+      const newState = !typeDance;
       setTypeDance(newState);
     } else if (evt.target.name === AlbumType.Travel) {
-      var toggle = !typeTravel;
+      const toggle = !typeTravel;
       setTypeTravel(toggle);
     }
   }
@@ -76,7 +76,7 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
               <br/><br/>In case you subscribed with <b>Gmail</b>, please check also the <b>'Social' Tab</b>
            */}
         <b>
-          One more step before you're subscribed! Check your email for the
+          One more step before you&apos;re subscribed! Check your email for the
           confirmation link! Thank you!
         </b>
       </div>
@@ -87,7 +87,7 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
     )
   ) : (
     <div style={{ padding: "1.4rem 0rem 1.4rem 0rem" }}>
-      <div style={{ textAlign: "left", padding: "0rem 0rem 1.4rem 0rem" }}>
+      <div style={{ textAlign: "left", padding: "0rem 0rem 0.5rem 0rem" }}>
         Get notified when I post new albums!
       </div>
       <Form
@@ -117,6 +117,7 @@ export const SubscribeContent = ({ onSubscribed }: SubscribeContentProps) => {
                 textAlign: "center",
                 padding: "0rem 1rem 0rem 1rem",
                 margin: "0rem 0rem 0rem 0.5rem",
+                fontSize: "1.1rem",
               }}
               onClick={() => subscribe()}
               variant="warning"

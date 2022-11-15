@@ -29,17 +29,19 @@ export const PhotoContainer = ({
     setShow(true);
   }
 
-  function getTitleText() {
-    return album.type === AlbumType.Travel
+  const article_locations = album.locations
+    .map((loc) => `${loc.name}`)
+    .join(", ");
+
+  const titleText =
+    album.type === AlbumType.Travel
       ? album.name_location !== undefined && album.name_location !== ""
         ? album.name_location
         : article_locations
       : album.name;
-  }
 
   function getTitleStyle() {
     return {
-      fontSize: album.type === AlbumType.Travel ? "1.5rem" : "1.35rem",
       borderRadius: "0rem",
     };
   }
@@ -49,20 +51,16 @@ export const PhotoContainer = ({
   }
 
   function getDanceNameText() {
-    var event = getDanceEvent(album.subtype);
+    const event = getDanceEvent(album.subtype);
     if (event === undefined) {
       return album.subtype + ", " + article_locations;
     } else {
-      let organizers = event.organizers
+      const organizers = event.organizers
         .map((organizer) => organizer.name)
         .join(" & ");
       return "Organized by " + organizers; //.concat(" in " + article_locations);
     }
   }
-
-  const article_locations = album.locations
-    .map((loc) => `${loc.name}`)
-    .join(", ");
 
   const articleURL = albumUrl(album.type, album.name_url);
 
@@ -75,7 +73,7 @@ export const PhotoContainer = ({
     <img
       className="cover-loaded border-corner-up"
       src={articleCover(album.identifier)}
-      alt={getTitleText() + " " + album.country}
+      alt={titleText + " " + album.country}
       onLoad={onLoad}
     />
   );
@@ -83,7 +81,7 @@ export const PhotoContainer = ({
   const content = useMemo(
     () => (
       <Link scroll={false} href={articleURL}>
-        <a>
+        <a title={titleText.length > 18 ? titleText : ""}>
           <div className="photo-container">
             <div className="photo-container-img-space border-corner-up">
               <div
@@ -108,7 +106,7 @@ export const PhotoContainer = ({
                 loadedImage
               )}
               <span style={getTitleStyle()} className="photo-container-title">
-                {getTitleText()}
+                {titleText}
               </span>
             </div>
 

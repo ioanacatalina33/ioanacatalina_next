@@ -20,7 +20,7 @@ export const ArticleSubHeader = ({
   dateEnd,
   danceEvent,
 }: ArticleSubHeaderProps) => {
-  let eventOrganizer = getDanceEvent(danceEvent);
+  const eventOrganizer = getDanceEvent(danceEvent);
   const { screenType } = useScreenType();
 
   return (

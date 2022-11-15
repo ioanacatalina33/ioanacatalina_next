@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const useCanvasPopScript = (props) => {
   useEffect(() => {
     //let cpJs = d.getElementsByTagName('script')
-    var t = new Date();
+    const t = new Date();
     const js = document.createElement("script");
     js.id = "canvaspop-jssdk";
     js.setAttribute("data-cp-url", "https://store.canvaspop.com");

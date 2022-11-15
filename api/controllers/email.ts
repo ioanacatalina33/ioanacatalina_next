@@ -56,7 +56,7 @@ function getMailOptions(req, title): MailOptions {
 }
 
 export async function sendEmail(req, res) {
-  var mailOptions = getMailOptions(
+  const mailOptions = getMailOptions(
     req,
     "IOANA CATALINA E. SHOP Title: " + req.body.title
   );
@@ -75,7 +75,7 @@ export async function sendBuyDigitalEmail(
   req: NextApiRequest,
   res: NextApiResponse<{ message?: string; result?: number }>
 ) {
-  var mailOptions = getMailOptions(
+  const mailOptions = getMailOptions(
     req,
     "IOANA CATALINA E. WEBSITE Request to buy digital"
   );
@@ -100,7 +100,7 @@ export async function sendBuyDigitalEmail(
 }
 
 export async function sendEmailFreelance(req, res) {
-  var mailOptions = getMailOptions(
+  const mailOptions = getMailOptions(
     req,
     "IOANA CATALINA Freelance: " + req.body.subject
   );

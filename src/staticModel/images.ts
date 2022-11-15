@@ -30,7 +30,7 @@ export const getFullSizeImageByPage = (type: PageType) => {
 };
 
 const getFullSizeImageAboutMe = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/aboutme_header_01.jpg",
       text: "My story",
@@ -42,7 +42,7 @@ const getFullSizeImageAboutMe = (): FullSizeImage => {
 };
 
 const getFullSizeImageHome = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/home_header.jpg",
       text: "A database of my adventures",
@@ -54,7 +54,7 @@ const getFullSizeImageHome = (): FullSizeImage => {
 };
 
 const getFullSizeImageContact = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/contact_header_01.jpg",
       text: "Contact",
@@ -66,7 +66,7 @@ const getFullSizeImageContact = (): FullSizeImage => {
 };
 
 const getFullSizeImageHighlights = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/pic_highlights.jpg",
       text: "Highlights",
@@ -78,7 +78,7 @@ const getFullSizeImageHighlights = (): FullSizeImage => {
 };
 
 const getFullSizeImageCollaborations = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/collaborations_header_01.jpg",
       text: "Collaborations",
@@ -90,7 +90,7 @@ const getFullSizeImageCollaborations = (): FullSizeImage => {
 };
 
 const getFullSizeImageBlog = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/blog_header_01.jpg",
       text: "Blog posts",
@@ -102,7 +102,7 @@ const getFullSizeImageBlog = (): FullSizeImage => {
 };
 
 const getFullSizeImageTripsWithMe = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/couples_sessions_header_01.jpg",
       text: "See your unique moments through my lens!",
@@ -114,7 +114,7 @@ const getFullSizeImageTripsWithMe = (): FullSizeImage => {
 };
 
 const getFullSizeImageTravel = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/travel_header_01.jpg",
       text: "In a world where you can be anything, be kind.",
@@ -168,7 +168,7 @@ const getFullSizeImageTravel = (): FullSizeImage => {
 };
 
 const getFullSizeImageDance = (): FullSizeImage => {
-  var images = [
+  const images = [
     {
       url: "/img/fullscreen/dance_header_01.jpg",
       text: "Dancing is like dreaming with your feet.",

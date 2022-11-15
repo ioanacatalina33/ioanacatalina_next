@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import LazyLoad from "react-lazy-load";
 import { Button } from "react-bootstrap";
 
 import { ModalBuyDigital } from "components/UI/Modals";
@@ -8,7 +7,7 @@ import { useScreenType } from "hooks";
 import { PhotosDisplayType, ScreenType } from "types";
 
 import { ImageLoaderDisplay } from "./ImageLoaderDisplay";
-import SlideshowModal from "./SlideshowModal";
+import { SlideshowModal } from "./SlideshowModal";
 
 interface PhotosDisplayProps {
   currentIndex: number;
@@ -32,7 +31,7 @@ export const PhotosDisplay = ({
   const [digitalShow, setDigitalShow] = useState<number | undefined>(undefined);
 
   function getPicWidth(mode: PhotosDisplayType) {
-    var picWidth = "100%";
+    let picWidth = "100%";
     switch (mode) {
       case PhotosDisplayType.ONE:
         picWidth = "100%";
@@ -64,7 +63,7 @@ export const PhotosDisplay = ({
   }
 
   async function onLeft() {
-    var current = currentIndex;
+    let current = currentIndex;
     if (current !== 0) {
       current = current - 1;
       setIndex(current);
@@ -72,7 +71,7 @@ export const PhotosDisplay = ({
   }
 
   async function onRight() {
-    var current = currentIndex;
+    let current = currentIndex;
     if (current !== images.length - 1) {
       current = current + 1;
       setIndex(current);
@@ -139,9 +138,9 @@ export const PhotosDisplay = ({
               screenType !== ScreenType.Mobile ? (
                 getImage(image, index)
               ) : (
-                <div key={index} style={{ paddingBottom: "0.5rem" }}>
+                <div key={index}>
                   {getImage(image, index)}
-                  <div style={{ display: "flex", justifyContent: "center" }}>
+                  {/* <div style={{ display: "flex", justifyContent: "center" }}>
                     <Button
                       variant="warning"
                       onClick={() => setDigitalShow(index)}
@@ -168,7 +167,7 @@ export const PhotosDisplay = ({
                     >
                       Buy print
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
               )
             )

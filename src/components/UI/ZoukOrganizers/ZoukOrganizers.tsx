@@ -7,8 +7,8 @@ export const ZoukOrganizers = () => {
   return (
     <div style={{ margin: "4rem 0rem 4rem 0rem" }}>
       <div className="text-container">
-        Brazilian Zouk events organizers I've collaborated with (including their
-        facebook profiles):
+        Brazilian Zouk events organizers I&apos;ve collaborated with (including
+        their facebook profiles):
       </div>
 
       <div className="text-container">

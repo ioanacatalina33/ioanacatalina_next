@@ -30,7 +30,7 @@ interface AlbumPageProps {
 export const AlbumPage = ({
   fullAlbum: { images, album, prev: prevPhotos, recommended, next: nextPhotos },
 }: AlbumPageProps) => {
-  const { push } = useRouter();
+  const { push, query } = useRouter();
 
   const [selectedDisplay, setSelectedDisplay] = useState(DefaultDisplayType);
   const [currentIndex, setCurrentIndex] = useState(undefined);
@@ -44,18 +44,18 @@ export const AlbumPage = ({
   };
 
   function pushQuery() {
-    let query: QueryType = {};
+    let newQuery: QueryType = { ...query };
     if (selectedDisplay !== DefaultDisplayType)
-      query = { ...query, display: selectedDisplay };
+      newQuery = { ...newQuery, display: selectedDisplay };
 
     if (currentIndex !== undefined) {
-      query = { ...query, img: currentIndex + 1 };
+      newQuery = { ...newQuery, img: currentIndex + 1 };
     }
 
     push(
       {
         pathname: pathname,
-        query: query,
+        query: newQuery,
       },
       undefined,
       {
@@ -78,8 +78,8 @@ export const AlbumPage = ({
         : window.location.href
     );
 
-    // @ts-ignore
-    if (displayMode !== undefined) setSelectedDisplay(displayMode);
+    if (displayMode !== undefined)
+      setSelectedDisplay(displayMode as PhotosDisplayType);
 
     setCurrentIndex(photoIndex);
     setModalShow(photoIndex !== undefined ? true : false);
@@ -111,7 +111,7 @@ export const AlbumPage = ({
   const title = useMemo(
     () =>
       album.type === AlbumType.Travel && !!album.locations
-        ? !!album.name_location
+        ? album.name_location
           ? album.name_location
           : getLocationsWithComa(album.locations)
         : album.name,
@@ -190,7 +190,7 @@ export const AlbumPage = ({
         />
 
         <div style={{ height: "3rem" }} />
-        <FollowMe subscribe invertColors />
+        <FollowMe invertColors />
 
         {nextPhotos.length !== 0 && (
           <AlbumRecommended text="Next albums:" recommended={nextPhotos} />
