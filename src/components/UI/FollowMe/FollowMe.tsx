@@ -7,6 +7,7 @@ import { useSelector } from "hooks/utils";
 import { SubscribeContent } from "../SubscribeContent";
 import { Colors } from "helpers";
 import { Button } from "react-bootstrap";
+import { ShopLink } from "../Advertising";
 
 interface FollowMeInterface {
   subscribe?: boolean;
@@ -66,7 +67,7 @@ export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
           </span>
           <br />
           <br />
-          If you'd like to support my work you can now
+          If you enjoy and want to support my work, you can
           <a
             target="_blank"
             rel="noopener noreferrer"

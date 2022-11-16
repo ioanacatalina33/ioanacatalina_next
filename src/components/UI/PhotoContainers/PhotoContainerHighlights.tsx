@@ -31,11 +31,14 @@ export const PhotoContainerHighlights = ({
 
   const articleURL = ("/" + album.type + "/" + album.name_url).toLowerCase();
 
-  const colsClass = isSingle
+  let colsClass = isSingle
     ? "photo-col"
     : type === PhotoContainerType.PHOTOC_REC
     ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
     : "photo-col col-lg-4 col-md-4 col-sm-6";
+
+  //adding v2 padding
+  colsClass = colsClass + " photo-col-padding-v2";
 
   const widthStyle = { maxWidth: isSingle ? "22rem" : "auto" };
   const cornersStyle = { borderRadius: "0.1rem" };

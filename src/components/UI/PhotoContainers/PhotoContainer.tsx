@@ -64,10 +64,13 @@ export const PhotoContainer = ({
 
   const articleURL = albumUrl(album.type, album.name_url);
 
-  const colsClass =
+  let colsClass =
     type === PhotoContainerType.PHOTOC_REC
       ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
-      : "photo-col col-lg-3 col-md-4 col-sm-6";
+      : "photo-col col-lg-3 col-md-4 col-sm-6 ";
+
+  // version two
+  colsClass = colsClass + " photo-col-padding-v2";
 
   const loadedImage = (
     <img

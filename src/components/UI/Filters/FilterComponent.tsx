@@ -156,10 +156,14 @@ export const FilterComponent = ({
           const className =
             index === 0
               ? filterClassName +
-                (mapFilters ? " radius-edge-top" : " radius-edge-left")
+                (mapFilters || albumType === AlbumType.Dance
+                  ? " radius-edge-top"
+                  : " radius-edge-left")
               : index === values.length - 1
               ? filterClassName +
-                (mapFilters ? " radius-edge-bottom" : " radius-edge-right")
+                (mapFilters || albumType === AlbumType.Dance
+                  ? " radius-edge-bottom"
+                  : " radius-edge-right")
               : filterClassName;
           return (
             <Button

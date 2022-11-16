@@ -75,7 +75,9 @@ export const getUniqueCountriesByContinents = (
 export const getYears = (albums: Album[]): string[] => {
   return Array.from(
     new Set(albums.map((item) => moment(item.date_start).format("YYYY")))
-  ).sort();
+  )
+    .sort()
+    .reverse();
 };
 
 export const getMonths = (albums: Album[]): string[] => {

@@ -673,11 +673,11 @@ h4 {
   -webkit-transition: 0.3s;
   margin-top: auto;
   margin-bottom: auto;
-  padding: 1rem 0rem 1rem 0rem;
+  padding: 0.6rem 0rem 0.6rem 0rem;
 }
 
 .photo-display-container:hover {
-  padding: 1rem 0rem 1rem 0rem;
+  padding: 0.6rem 0rem 0.6rem 0rem;
 }
 
 .img-display-loading {
@@ -1065,7 +1065,7 @@ h4 {
   width: 100%;
   align-content: center;
   text-align: center;
-  padding: 2rem 0rem 2rem 0rem;
+  padding: 1rem 0rem 1rem 0rem;
 }
 
 .photowall-container-recommended {
@@ -1092,11 +1092,14 @@ h4 {
   padding: 0rem;
 }
 
-.photo-col,
-.photo-col-home {
+.photo-col {
   max-width: 100%;
   margin: 0;
-  padding: 1.5rem 0rem 1.5rem 0rem;
+  padding: 1rem 0rem 1rem 0rem;
+}
+
+.photo-col-padding-v2 {
+  padding: 0.2rem 0rem 0.2rem 0rem;
 }
 
 .col-centered {
@@ -1718,11 +1721,11 @@ h4 {
   }
 
   .photo-col {
-    padding: 1.5rem 0.8rem 1.5rem 0.8rem;
+    padding: 1rem 0.8rem 1rem 0.8rem;
   }
 
-  .photo-col-home {
-    padding: 1rem 1rem 1rem 1rem;
+  .photo-col-padding-v2 {
+    padding: 0.2rem;
   }
 
   .album-header {
@@ -1736,11 +1739,11 @@ h4 {
   }
 
   .photo-display-container {
-    padding: 0.8rem;
+    padding: 0.2rem;
     cursor: pointer;
   }
   .photo-display-container:hover {
-    padding: 0.8rem;
+    padding: 0.2rem;
   }
 
   .photowall-container-albums-recommended {
@@ -1826,10 +1829,10 @@ h4 {
   }
 
   .photo-display-container {
-    padding: 1.2rem;
+    padding: 0.8rem;
   }
   .photo-display-container:hover {
-    padding: 1.2rem;
+    padding: 0.8rem;
   }
 
   hr.style1 {
@@ -1887,11 +1890,11 @@ h4 {
   }
 
   .photo-col {
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 1rem;
   }
 
-  .photo-col-home {
-    padding: 1rem 1rem 1rem 1rem;
+  .photo-col-padding-v2 {
+    padding: 0.2rem;
   }
 
   .photo-container-opacity {
@@ -1927,7 +1930,7 @@ h4 {
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .logos-element {
-    width: 10%;
+    width: 10.5%;
     padding: 0.5rem 1em 0.5rem 1rem;
   }
 
@@ -1948,7 +1951,7 @@ h4 {
 /* Super extra large devices (large desktops, 1600px and up) */
 @media only screen and (min-width: 1600px) {
   .logos-element {
-    width: 9%;
+    width: 8%;
     padding: 1rem;
   }
 
@@ -1981,7 +1984,7 @@ h4 {
 /* Extra extra large devices */
 @media only screen and (min-width: 1900px) {
   .logos-element {
-    width: 10%;
+    width: 8%;
     padding: 1rem;
   }
 

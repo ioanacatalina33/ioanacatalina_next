@@ -64,11 +64,15 @@ export const PhotoContainerSearch = ({
 
   const widthStyle = { maxWidth: isSingle ? "22rem" : "auto" };
 
+  let colsClass = isSingle
+    ? "photo-col"
+    : "photo-col col-lg-3 col-md-4 col-sm-6";
+
+  colsClass = colsClass + " photo-col-padding-v2";
+
   return (
     <div
-      className={
-        isSingle ? "photo-col" : "photo-col col-lg-3 col-md-4 col-sm-6"
-      }
+      className={colsClass}
       // style={{ display: show ? "block" : "none" }}
     >
       <div className="search-photo-col" style={widthStyle}>

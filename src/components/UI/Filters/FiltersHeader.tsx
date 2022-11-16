@@ -1,6 +1,7 @@
 import { useScreenType } from "hooks";
 import React from "react";
 import { ScreenType } from "types";
+import { ShowFiltersText } from "./components";
 
 interface FiltersHeaderProps {
   nrDisplayed: number;
@@ -17,18 +18,17 @@ export const FiltersHeader = ({
 }: FiltersHeaderProps) => {
   const { screenType } = useScreenType();
 
-  const showFiltersText = (
-    <span onClick={toggleFilters} className="hide-filters">
-      {showFilters ? (
-        <i className="fa fa-angle-up" />
-      ) : (
-        <i className="fa fa-angle-down" />
-      )}{" "}
-      {showFilters ? "Hide filters" : "Show filters"}
-    </span>
-  );
-
-  if (forMap) return <div>{showFiltersText}</div>;
+  if (forMap)
+    return (
+      <div>
+        {
+          <ShowFiltersText
+            showFilters={showFilters}
+            toggleFilters={toggleFilters}
+          />
+        }
+      </div>
+    );
 
   return (
     <div
@@ -46,7 +46,12 @@ export const FiltersHeader = ({
           justifyContent: screenType !== ScreenType.Mobile ? "center" : "left",
         }}
       >
-        {showFiltersText}
+        {
+          <ShowFiltersText
+            showFilters={showFilters}
+            toggleFilters={toggleFilters}
+          />
+        }
       </div>
       <div style={{ flex: 1 }}>Albums displayed: {nrDisplayed}</div>
     </div>

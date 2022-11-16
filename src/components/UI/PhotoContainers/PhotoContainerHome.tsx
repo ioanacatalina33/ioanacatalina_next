@@ -35,7 +35,7 @@ export const PhotoContainerHome = ({
 
   return (
     <div
-      className="photo-col-home col-lg-4 col-md-4 col-5 col-xs-offset-2 col-centered"
+      className="photo-col photo-col-padding-v2 col-lg-4 col-md-4 col-5 col-xs-offset-2 col-centered"
       // style={{ visibility: show ? "visible" : "hidden" }}
     >
       {/* <LazyLoad
