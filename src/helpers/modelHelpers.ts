@@ -168,6 +168,20 @@ export const getLocationsWithComa = (locations: Location[]): string => {
   return locations.map((loc) => `${loc.name}`).join(", ");
 };
 
+export const getLocationsWithComaAnd = (locations: Location[]): string => {
+  let locationsString = "";
+  if (locations.length) {
+    locations.map((loc, index) =>
+      index < locations.length - 3
+        ? (locationsString = locationsString + loc.name + ", ")
+        : index === locations.length - 2
+        ? (locationsString = locationsString + loc.name + " & ")
+        : (locationsString = locationsString + loc.name)
+    );
+  }
+  return locationsString;
+};
+
 export const getFileDateTitle = (date_start: Date, date_end: Date): string => {
   if (
     moment(date_start).format("YYYY.MM.DD") ===

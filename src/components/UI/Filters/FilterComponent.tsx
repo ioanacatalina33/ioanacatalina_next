@@ -1,6 +1,6 @@
 import { Colors } from "helpers/const";
 import { AlbumType } from "types/enums";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import CSSTransition from "react-transition-group/CSSTransition";
 import { getDanceEvent } from "staticModel";
@@ -26,9 +26,15 @@ export const FilterComponent = ({
   mapFilters,
   onFiltersChanged,
 }: FilterComponentProps) => {
+  const [ctrlPressed, setCtrlPressed] = useState(false);
+
   useEffect(() => {
     if (!mapFilters) document.addEventListener("keydown", escFunction, false);
+    document.addEventListener("keydown", ctrlDown, false);
+    document.addEventListener("keyup", ctrlUp, false);
     return () => {
+      document.addEventListener("keydown", ctrlDown, false);
+      document.addEventListener("keydown", ctrlUp, false);
       if (!mapFilters)
         document.removeEventListener("keydown", escFunction, false);
     };
@@ -40,11 +46,23 @@ export const FilterComponent = ({
     }
   }
 
+  function ctrlDown(event) {
+    if (event.keyCode === 91 || event.keyCode === 17) {
+      setCtrlPressed(true);
+    }
+  }
+
+  function ctrlUp(event) {
+    if (event.keyCode === 91 || event.keyCode === 17) {
+      setCtrlPressed(false);
+    }
+  }
+
   function handleClick(evt) {
     const selectedValue = evt.target.name;
     let selectedValues = [...selected];
 
-    if (evt.ctrlKey && allowMultipleSelect) {
+    if (ctrlPressed && allowMultipleSelect) {
       if (selected.indexOf(selectedValue) > -1) {
         //exists - take it out
         selectedValues = selectedValues.filter(

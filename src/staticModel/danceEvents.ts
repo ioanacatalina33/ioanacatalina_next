@@ -448,8 +448,8 @@ export const danceEvents: DanceEvent[] = [
       website: "",
     },
   },
-   // NEW
-   {
+  // NEW
+  {
     subtype: "KamillionArTs",
     name: "Kamillion ArTs",
     logo: PATH_LOGO + "KamillionArts.png",
@@ -496,7 +496,6 @@ export const danceEvents: DanceEvent[] = [
         facebook: "https://www.facebook.com/renata.pecanhaii",
         email: "",
       },
-      
     ],
     links: {
       facebook: "https://www.facebook.com/nucleorenatapecanha",
@@ -618,6 +617,130 @@ export const danceEvents: DanceEvent[] = [
     links: {
       facebook: "https://www.facebook.com/sunsetzoukmarathon",
       website: "https://zoukcentralflorida.com",
+    },
+  },
+  {
+    subtype: "ZoukFamily",
+    name: "Zouk Family",
+    logo: PATH_LOGO + "ZoukFamily.png",
+    organizers: [
+      {
+        name: "Sasha Eslami",
+        facebook: "https://www.facebook.com/sashaeksa",
+        email: "",
+      },
+      {
+        name: "Blanca Dasi",
+        facebook: "https://www.facebook.com/blan.qui.161",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/zoukfamilyprofile",
+      website: "",
+    },
+  },
+  {
+    subtype: "AllThatZouk",
+    name: "All That Zouk",
+    logo: "",
+    organizers: [
+      {
+        name: "Jorge Peres",
+        facebook: "https://www.facebook.com/profile.php?id=100008640880252",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "",
+      website: "",
+    },
+  },
+  {
+    subtype: "ZoukNeedsYou",
+    name: "Zouk Needs You",
+    logo: "",
+    organizers: [
+      {
+        name: "Val Clemente",
+        facebook: "https://www.facebook.com/val.clemente.1",
+        email: "",
+      },
+      {
+        name: "Vanessa Bonilha",
+        facebook: "https://www.facebook.com/vanessa.bonilha",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/profile.php?id=100063616060588",
+      website: "",
+    },
+  },
+  {
+    subtype: "NeoFlowImmersion",
+    name: "Neo & Flow Immersion",
+    logo: "",
+    organizers: [
+      {
+        name: "Bruno Barreto",
+        facebook: "https://www.facebook.com/arkkanjo",
+        email: "",
+      },
+      {
+        name: "Malu Maia",
+        facebook: "https://www.facebook.com/malu.maia.902",
+        email: "",
+      },
+      {
+        name: "Anna Russa",
+        facebook: "https://www.facebook.com/zvezdaomega",
+        email: "",
+      },
+      {
+        name: "Mafie Zouker",
+        facebook: "https://www.facebook.com/profile.php?id=100063058877955",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/neoandflow",
+      website: "",
+    },
+  },
+  {
+    subtype: "IZC",
+    name: "IZC - International Zouk Congress",
+    logo: PATH_LOGO + "IZC.png",
+    organizers: [
+      {
+        name: "David",
+        facebook: "https://www.facebook.com/daviddeywyllazoukI",
+        email: "",
+      },
+      {
+        name: "Deywylla",
+        facebook: "https://www.facebook.com/daviddeywyllazoukI",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/profile.php?id=100063616060588",
+    },
+  },
+  {
+    subtype: "BrasilSambaCongress",
+    name: "Brasil Samba Congress",
+    logo: "",
+    organizers: [
+      {
+        name: "Rodrigo Marques",
+        facebook: "https://www.facebook.com/rodrigo.marques.7798",
+        email: "",
+      },
+    ],
+    links: {
+      website: "https://www.instagram.com/brasilsambacongress/",
     },
   },
 ];

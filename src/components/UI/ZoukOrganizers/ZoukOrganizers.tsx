@@ -7,8 +7,8 @@ export const ZoukOrganizers = () => {
   return (
     <div style={{ margin: "4rem 0rem 4rem 0rem" }}>
       <div className="text-container">
-        Brazilian Zouk events organizers I&apos;ve collaborated with (including
-        their facebook profiles):
+        Dance events organizers I&apos;ve collaborated with (including their
+        facebook profiles):
       </div>
 
       <div className="text-container">
@@ -32,7 +32,7 @@ export const ZoukOrganizers = () => {
 
                     {/* {organizer.name} */}
                     {index !== zouk.organizers.length - 1 ? (
-                      <span> &nbsp;&amp;&nbsp; </span>
+                      <span> &amp; </span>
                     ) : (
                       ""
                     )}

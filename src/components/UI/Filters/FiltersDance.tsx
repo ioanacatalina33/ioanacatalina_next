@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { useFilters, useScreenSize, useScreenType } from "hooks/utils";
+import { useFilters, useScreenType } from "hooks/utils";
 
 import { getUniqueValues, getYears } from "helpers";
-import { AlbumType, ScreenType } from "types/enums";
+import { AlbumType } from "types/enums";
 import { Months } from "helpers/const";
 import { FilterName, FiltersType, updateFilter, updateFilters } from "store";
 

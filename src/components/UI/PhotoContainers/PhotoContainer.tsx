@@ -1,7 +1,12 @@
 import React, { useMemo, useState } from "react";
 import LazyLoad from "react-lazy-load";
 
-import { albumUrl, articleCover, getFileDateTitleString } from "helpers";
+import {
+  albumUrl,
+  articleCover,
+  getFileDateTitleString,
+  getLocationsWithComaAnd,
+} from "helpers";
 import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 import Link from "next/link";
@@ -37,7 +42,7 @@ export const PhotoContainer = ({
     album.type === AlbumType.Travel
       ? album.name_location !== undefined && album.name_location !== ""
         ? album.name_location
-        : article_locations
+        : getLocationsWithComaAnd(album.locations)
       : album.name;
 
   function getTitleStyle() {

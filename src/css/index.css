@@ -1180,14 +1180,14 @@ h4 {
   padding-top: 3rem;
   letter-spacing: 0px;
   display: inline-block;
-  color: rgb(255, 255, 255, 0.66);
+  color: rgb(255, 255, 255, 0.86);
   width: 100%;
   transition: background 0.5s ease;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   /* font-family: "serif", "Cambria", "Segoe UI", "Roboto", "Sans serif", "Oxygen"; */
 }
 

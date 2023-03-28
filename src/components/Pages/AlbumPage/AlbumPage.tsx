@@ -11,7 +11,7 @@ import {
   getFullPathImgs,
   albumUrl,
   DefaultDisplayType,
-  getLocationsWithComa,
+  getLocationsWithComaAnd,
 } from "helpers";
 import { AlbumType, FullAlbumDetails, PhotosDisplayType } from "types";
 
@@ -114,7 +114,7 @@ export const AlbumPage = ({
       album.type === AlbumType.Travel && !!album.locations
         ? album.name_location
           ? album.name_location
-          : getLocationsWithComa(album.locations)
+          : getLocationsWithComaAnd(album.locations)
         : album.name,
     [album]
   );
@@ -122,7 +122,7 @@ export const AlbumPage = ({
   const subTitle = useMemo(
     () =>
       album.type === AlbumType.Dance && !!album.locations
-        ? getLocationsWithComa(album.locations) + ", " + album.country
+        ? getLocationsWithComaAnd(album.locations) + ", " + album.country
         : album.country,
     [album]
   );
