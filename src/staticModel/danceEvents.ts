@@ -726,6 +726,7 @@ export const danceEvents: DanceEvent[] = [
     ],
     links: {
       facebook: "https://www.facebook.com/profile.php?id=100063616060588",
+      website: "",
     },
   },
   {
@@ -740,7 +741,93 @@ export const danceEvents: DanceEvent[] = [
       },
     ],
     links: {
+      facebook: "",
       website: "https://www.instagram.com/brasilsambacongress/",
+    },
+  },
+  {
+    subtype: "CZC",
+    name: "Canada Zouk Congress",
+    logo: PATH_LOGO + "CZC.png",
+    organizers: [
+      {
+        name: "Darius Zi",
+        facebook: "https://www.facebook.com/dariustoronto",
+        email: "",
+      },
+      {
+        name: "Laura Riva",
+        facebook: "https://www.facebook.com/ZoukMeInToronto",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/canadazouk",
+      website: "https://canadazouk.com/",
+    },
+  },
+  {
+    subtype: "YoZouk",
+    name: "YoZouk Congress",
+    logo: PATH_LOGO + "YoZouk.png",
+    organizers: [
+      {
+        name: "Joe Sandoval",
+        facebook: "https://www.facebook.com/sandoval.joe",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/yozouknewyork",
+      website: "https://www.nyzouk.com",
+    },
+  },
+  {
+    subtype: "ForroVsZouk",
+    name: "Forro Vs Zouk",
+    logo: PATH_LOGO + "ForroVsZouk.png",
+    organizers: [
+      {
+        name: "Fabricio Durães",
+        facebook: "https://www.facebook.com/fabrricio.barbosa",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "",
+      website: "https://www.instagram.com/forrovszouk/",
+    },
+  },
+  {
+    subtype: "Forzouk",
+    name: "Forzouk",
+    logo: PATH_LOGO + "Forzouk.png",
+    organizers: [
+      {
+        name: "Karina Batista (DJ Kakah)",
+        facebook: "https://www.facebook.com/kakahbatsta",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "",
+      website: "https://www.instagram.com/forzouk/",
+    },
+  },
+  {
+    subtype: "JaimeAroxa",
+    name: "Workshops by Jaime Aroxa",
+    logo: PATH_LOGO + "JaimeAroxa.png",
+    organizers: [
+      {
+        name: "JaimeAroxa",
+        facebook: "https://www.facebook.com/jaimearoxa",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "",
+      website: "",
     },
   },
 ];

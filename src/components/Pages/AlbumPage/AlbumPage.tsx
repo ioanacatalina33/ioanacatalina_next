@@ -22,7 +22,6 @@ import { PhotosDisplay } from "./Components/PhotosDisplay";
 import { AlbumRecommended } from "./Components/AlbumRecommended";
 import { AlbumRecommendedMyLife } from "./Components/AlbumRecommendedMyLife";
 import { ArticleSubHeader } from "components/UI/ArticleSubHeader";
-import { ShopLink } from "components/UI/Advertising";
 
 interface AlbumPageProps {
   fullAlbum: FullAlbumDetails;
@@ -92,7 +91,9 @@ export const AlbumPage = ({
     articleCoverLarge(album.identifier)
   );
   const imagesToDisplay = imagesFullPath.filter(
-    (img) => img !== articleCoverLarge(album.identifier)
+    (img) =>
+      img !== articleCoverLarge(album.identifier) &&
+      (img.includes(".jpg") || img.includes(".png"))
   );
 
   function albumDisplaySelected(value: PhotosDisplayType) {
