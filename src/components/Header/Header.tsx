@@ -4,11 +4,11 @@ import { Navbar, Nav, FormControl, Button, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 
-import { updateQueryText, updateMobileSearch } from "store";
 import { useScreenSize, useSelector } from "hooks/utils";
 import { Routes, ScreenType } from "types/enums";
 
 import { HeaderDropdown } from "./HeaderUtils";
+import { updateMobileSearch, updateQueryText } from "store/appSlice";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -96,24 +96,22 @@ export const Header = () => {
         >
           {!isMobileSearch && (
             <Link scroll={false} href="/">
-              <a>
-                <div
-                  className="navbar-brand "
-                  style={{
-                    display:
-                      isMobileSearch && screenType === ScreenType.Mobile
-                        ? "none"
-                        : "",
-                  }}
-                >
-                  <img
-                    src="/img/logo1.png"
-                    className="logo-navbar"
-                    alt="Ioana Catalaina Photography"
-                    style={{ cursor: "pointer" }}
-                  />
-                </div>
-              </a>
+              <div
+                className="navbar-brand "
+                style={{
+                  display:
+                    isMobileSearch && screenType === ScreenType.Mobile
+                      ? "none"
+                      : "inline",
+                }}
+              >
+                <img
+                  src="/img/logo1.png"
+                  className="logo-navbar"
+                  alt="Ioana Catalaina Photography"
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
             </Link>
           )}
 
@@ -126,20 +124,36 @@ export const Header = () => {
             >
               {screenType !== ScreenType.Mobile && (
                 <div>
-                  <Link scroll={false} href="/map">
-                    <a className="custom-navbar-link links-large">MAP</a>
+                  <Link
+                    scroll={false}
+                    href="/map"
+                    className="custom-navbar-link links-large"
+                  >
+                    MAP
                   </Link>
 
-                  <Link scroll={false} href="/travel">
-                    <a className="custom-navbar-link links-large">TRAVEL</a>
+                  <Link
+                    scroll={false}
+                    href="/travel"
+                    className="custom-navbar-link links-large"
+                  >
+                    TRAVEL
                   </Link>
 
-                  <Link scroll={false} href="/dance">
-                    <a className="custom-navbar-link links-large">DANCE</a>
+                  <Link
+                    scroll={false}
+                    href="/dance"
+                    className="custom-navbar-link links-large"
+                  >
+                    DANCE
                   </Link>
 
-                  <Link scroll={false} href="/blog">
-                    <a className="custom-navbar-link links-large">BLOG</a>
+                  <Link
+                    scroll={false}
+                    href="/blog"
+                    className="custom-navbar-link links-large"
+                  >
+                    BLOG
                   </Link>
                   {!isLargeScreen && (
                     <div style={{ display: "inline-block" }}>
@@ -173,33 +187,36 @@ export const Header = () => {
                   }}
                 >
                   <div className="mobile-nav-links">
-                    <Link scroll={false} href="/about">
-                      <a className="custom-navbar-link links-small">My story</a>
-                    </Link>
-
-                    <Link scroll={false} href="/highlights">
-                      <a className="custom-navbar-link links-small">
-                        Highlights
-                      </a>
-                    </Link>
-
-                    <Link scroll={false} href="/collaborations">
-                      <a className="custom-navbar-link links-small">
-                        Collaborations
-                      </a>
-                    </Link>
-
-                    <a
-                      href="https://ioanacatalina.smugmug.com/"
+                    <Link
+                      scroll={false}
+                      href="/about"
                       className="custom-navbar-link links-small"
-                      target="_blank"
-                      rel="noopener noreferrer"
                     >
-                      Shop
-                    </a>
+                      My story
+                    </Link>
 
-                    <Link scroll={false} href="/contact">
-                      <a className="custom-navbar-link links-small">Contact</a>
+                    <Link
+                      scroll={false}
+                      href="/highlights"
+                      className="custom-navbar-link links-small"
+                    >
+                      Highlights
+                    </Link>
+
+                    <Link
+                      scroll={false}
+                      href="/collaborations"
+                      className="custom-navbar-link links-small"
+                    >
+                      Collaborations
+                    </Link>
+
+                    <Link
+                      scroll={false}
+                      href="/contact"
+                      className="custom-navbar-link links-small"
+                    >
+                      Contact
                     </Link>
                   </div>
                 </div>
@@ -243,7 +260,7 @@ export const Header = () => {
 
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
-            style={{ display: isMobileSearch ? "none" : "" }}
+            style={{ display: isMobileSearch ? "none" : undefined }}
           />
 
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -273,84 +290,70 @@ export const Header = () => {
             {screenType !== ScreenType.Desktop && (
               <Nav className="custom-navbar-buttons-me">
                 {screenType === ScreenType.Mobile && (
-                  <Nav.Link eventKey="1">
-                    <Link scroll={false} href="/map">
-                      <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                        MAP
-                      </a>
-                    </Link>
+                  <Nav.Link
+                    eventKey="1"
+                    href="/map"
+                    style={{ color: "#cccccc", textDecoration: "none" }}
+                  >
+                    MAP
                   </Nav.Link>
                 )}
                 {screenType === ScreenType.Mobile && (
-                  <Nav.Link eventKey="2">
-                    <Link scroll={false} href="/travel">
-                      <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                        Travel
-                      </a>
-                    </Link>
+                  <Nav.Link
+                    eventKey="2"
+                    href="/travel"
+                    style={{ color: "#cccccc", textDecoration: "none" }}
+                  >
+                    Travel
                   </Nav.Link>
                 )}
                 {screenType === ScreenType.Mobile && (
-                  <Nav.Link eventKey="3">
-                    <Link scroll={false} href="/dance">
-                      <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                        Dance
-                      </a>
-                    </Link>
+                  <Nav.Link
+                    eventKey="3"
+                    href="/dance"
+                    style={{ color: "#cccccc", textDecoration: "none" }}
+                  >
+                    Dance
                   </Nav.Link>
                 )}
                 {screenType === ScreenType.Mobile && (
-                  <Nav.Link eventKey="3">
-                    <Link scroll={false} href="/blog">
-                      <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                        Blog
-                      </a>
-                    </Link>
+                  <Nav.Link
+                    eventKey="3"
+                    href="/blog"
+                    style={{ color: "#cccccc", textDecoration: "none" }}
+                  >
+                    Blog
                   </Nav.Link>
                 )}
 
                 <Nav.Link
-                  eventKey="4"
-                  className="custom-navbar-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.ioanacatalina.com/shop"
+                  eventKey="5"
+                  href="/about"
+                  style={{ color: "#cccccc", textDecoration: "none" }}
                 >
-                  <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                    Shop
-                  </a>
+                  My story
                 </Nav.Link>
-
-                <Nav.Link eventKey="5">
-                  <Link scroll={false} href="/about">
-                    <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                      My story
-                    </a>
-                  </Link>
+                <Nav.Link
+                  eventKey="6"
+                  href="/highlights"
+                  style={{ color: "#cccccc", textDecoration: "none" }}
+                >
+                  Highlights
                 </Nav.Link>
-                <Nav.Link eventKey="6">
-                  <Link scroll={false} href="/highlights">
-                    <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                      Highlights
-                    </a>
-                  </Link>
+                <Nav.Link
+                  eventKey="7"
+                  href="/collaborations"
+                  style={{ color: "#cccccc", textDecoration: "none" }}
+                >
+                  Collaborations
                 </Nav.Link>
-                <Nav.Link eventKey="7">
-                  <Link scroll={false} href="/collaborations">
-                    <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                      Collaborations
-                    </a>
-                  </Link>
+                <Nav.Link
+                  eventKey="8"
+                  href="/contact"
+                  style={{ color: "#cccccc", textDecoration: "none" }}
+                >
+                  Contact
                 </Nav.Link>
-                <Nav.Link eventKey="8">
-                  <Link scroll={false} href="/contact">
-                    <a style={{ color: "#cccccc", textDecoration: "none" }}>
-                      Contact
-                    </a>
-                  </Link>
-                </Nav.Link>
-                {/* <a className="custom-navbar-link" href="/mylongtrip">My long trip</a> */}
-                {/* <NavDropdown.Item href="/travelwithme">Travel with me</NavDropdown.Item> */}
               </Nav>
             )}
           </Navbar.Collapse>

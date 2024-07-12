@@ -2,7 +2,8 @@ import { mapFiltersFromURL } from "helpers";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Filters, FiltersType, updateFilters } from "store";
+import { Filters, FiltersType } from "store";
+import { updateFilters } from "store/appSlice";
 
 export function useFiltersQuery(filterType: FiltersType) {
   const { pathname, query, push } = useRouter();
@@ -10,7 +11,10 @@ export function useFiltersQuery(filterType: FiltersType) {
 
   useEffect(() => {
     dispatch(
-      updateFilters(mapFiltersFromURL(window.location.search), filterType)
+      updateFilters({
+        filters: mapFiltersFromURL(window.location.search),
+        filterType: filterType,
+      }),
     );
   }, []);
 
@@ -28,7 +32,7 @@ export function useFiltersQuery(filterType: FiltersType) {
       undefined,
       {
         shallow: true,
-      }
+      },
     );
   }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { GeenaLinks } from "../AboutPage/GeenaLinks";
+import { GeenaLinks } from "../../Pages/AboutPage/GeenaLinks";
 
 export const GeenaPage = () => {
   return (
@@ -46,18 +46,7 @@ export const GeenaPage = () => {
         , having two litters in her life.
       </div>
 
-      <div className="text-container" style={{ display: "block" }}>
-        Since my lifestyle has changed so drastically with my many travels and
-        future plans, unfortunately now she doesn&apos;t live with me anymore,
-        but she is at a dear friend together with her family, spending time
-        together with her daughter, son, granddaughter and husband!
-      </div>
-
       <GeenaLinks />
-
-      <span className="text-container" style={{ textAlign: "center" }}>
-        And of course, many more photos of her:
-      </span>
     </div>
   );
 };

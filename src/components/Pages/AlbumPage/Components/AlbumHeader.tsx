@@ -53,27 +53,23 @@ export const AlbumHeader = ({
         </button> */}
         {prevLink && (
           <Link href={prevLink}>
-            <a>
-              <Button
-                variant="outline-light"
-                className="album-header-button album-header-button-left"
-              >
-                <i className="fa fa-angle-left"></i> Previous album
-              </Button>
-            </a>
+            <Button
+              variant="outline-light"
+              className="album-header-button album-header-button-left"
+            >
+              <i className="fa fa-angle-left"></i> Previous album
+            </Button>
           </Link>
         )}
         {nextLink && (
           <Link href={nextLink}>
-            <a>
-              <Button
-                variant="outline-light"
-                className="album-header-button album-header-button-right"
-              >
-                Next album
-                <i className="fa fa-angle-right"></i>
-              </Button>
-            </a>
+            <Button
+              variant="outline-light"
+              className="album-header-button album-header-button-right"
+            >
+              Next album
+              <i className="fa fa-angle-right"></i>
+            </Button>
           </Link>
         )}
         <div className={(isIE ? "row " : "") + " album-header-container"}>

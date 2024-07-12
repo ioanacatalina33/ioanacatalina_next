@@ -4,23 +4,23 @@ import { pageview } from "react-ga";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
-import {
-  updateQueryText,
-  updateScreen,
-  updateScreenDim,
-  updateArticles,
-  updateMobileSearch,
-} from "store";
 import { initGA } from "helpers/traking";
 import { sleep } from "helpers";
 import { fetchSmallArticles } from "helpers/api";
 
-import { CanvasPopComp } from "./Canvaspop/CanvasPopComp";
+// import { CanvasPopComp } from "./Canvaspop/CanvasPopComp";
 import { Meta } from "./Head";
 import { Header } from "./Header";
 import { Search } from "./Search";
 import { ScreenType } from "types/enums";
 import { Footer } from "./Footer";
+import {
+  updateArticles,
+  updateMobileSearch,
+  updateQueryText,
+  updateScreen,
+  updateScreenDim,
+} from "store/appSlice";
 
 interface AppMain {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -32,16 +32,16 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
   const dispatch = useDispatch();
   const { pathname, query } = useRouter();
 
-  function updateDeviceType(device: ScreenType) {
-    dispatch(updateScreen(device));
+  function updateDeviceType(screenType: ScreenType) {
+    dispatch(updateScreen(screenType));
   }
 
-  function updateDeviceDim(width: number, height: number) {
-    dispatch(updateScreenDim(width, height));
+  function updateDeviceDim(screenWidth: number, screenHeight: number) {
+    dispatch(updateScreenDim({ screenWidth, screenHeight }));
   }
 
   function escFunction(event) {
-    if (event.keyCode === 27) dispatch(dispatch(updateQueryText("")));
+    if (event.keyCode === 27) dispatch(updateQueryText(""));
   }
 
   const checkWidth = () => {
@@ -104,7 +104,7 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
   return (
     <div>
       <Meta />
-      <CanvasPopComp />
+      {/* <CanvasPopComp /> */}
       {showContent && (
         <>
           <Header />

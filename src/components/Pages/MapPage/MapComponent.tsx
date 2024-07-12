@@ -1,6 +1,7 @@
 // ES6
 import React, { useEffect, useState } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
+import Map from "react-map-gl";
 
 import { Location } from "types";
 
@@ -42,7 +43,7 @@ export const MapComponent = ({
           longitude: 0,
           latitude: 44.854256,
           zoom: 1.3,
-        }
+        },
   );
 
   const [markerSize, setMarkerSize] = useState({
@@ -92,13 +93,13 @@ export const MapComponent = ({
           key={location.name}
           longitude={parseFloat(location.coord_long)}
           latitude={parseFloat(location.coord_lat)}
-          offsetLeft={markerSize.offsetLeft}
-          offsetTop={markerSize.setOffsetTop}
-          className={
-            selectedLocation && selectedLocation.name === location.name
-              ? "marker-1"
-              : "marker-0"
-          }
+          offset={[markerSize.offsetLeft, markerSize.setOffsetTop]}
+          style={{
+            zIndex:
+              selectedLocation && selectedLocation.name === location.name
+                ? 1
+                : 0,
+          }}
         >
           <div
             onClick={() => onMarkerClicked(location)}
@@ -115,19 +116,18 @@ export const MapComponent = ({
           />
         </Marker>
       )),
-    [locationsFiltered, selectedLocation, markerSize]
+    [locationsFiltered, selectedLocation, markerSize],
   );
 
   return (
-    <ReactMapGL
-      {...viewport}
-      width={width ?? "100vw"}
-      height={height ?? "100vh"}
-      mapboxApiAccessToken={token}
+    <Map
+      initialViewState={{ ...viewport }}
+      style={{ width: width ?? "100vw", height: height ?? "100vh" }}
+      mapboxAccessToken={token}
       mapStyle="mapbox://styles/mapbox/outdoors-v11"
-      onViewportChange={(nextViewport) => setViewport(nextViewport)}
+      onZoom={(zoom) => setViewport(zoom.viewState)}
     >
       {markers}
-    </ReactMapGL>
+    </Map>
   );
 };

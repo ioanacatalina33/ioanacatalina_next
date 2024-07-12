@@ -45,40 +45,38 @@ export const PhotoContainerHome = ({
         alt=""
       > */}
       <Link scroll={false} href={url}>
-        <a>
-          <div
-            className="photo-container photo-container-opacity"
-            style={cornersStyle}
-          >
-            <div className="photo-container-img-space">
-              <div
-                className="loading-animation"
-                style={{ minHeight: show ? "auto" : "13rem", ...cornersStyle }}
-              >
-                <img
-                  className="photo-small"
-                  onLoad={onLoad}
-                  style={{ visibility: "hidden", ...cornersStyle }}
-                  src={"/img/cover_placeholder_square.jpg"}
-                  alt=""
-                />
-              </div>
-              {lazyLoad ? (
-                <LazyLoad debounce={false} offsetVertical={300}>
-                  {loadedImg}
-                </LazyLoad>
-              ) : (
-                loadedImg
-              )}
-              <span
-                style={cornersStyle}
-                className="photo-container-title photo-container-title-home"
-              >
-                {name}
-              </span>
+        <div
+          className="photo-container photo-container-opacity"
+          style={cornersStyle}
+        >
+          <div className="photo-container-img-space">
+            <div
+              className="loading-animation"
+              style={{ minHeight: show ? "auto" : "13rem", ...cornersStyle }}
+            >
+              <img
+                className="photo-small"
+                onLoad={onLoad}
+                style={{ visibility: "hidden", ...cornersStyle }}
+                src={"/img/cover_placeholder_square.jpg"}
+                alt=""
+              />
             </div>
+            {lazyLoad ? (
+              <LazyLoad debounce={false} offsetVertical={300}>
+                {loadedImg}
+              </LazyLoad>
+            ) : (
+              loadedImg
+            )}
+            <span
+              style={cornersStyle}
+              className="photo-container-title photo-container-title-home"
+            >
+              {name}
+            </span>
           </div>
-        </a>
+        </div>
       </Link>
       {/* </LazyLoad> */}
     </div>

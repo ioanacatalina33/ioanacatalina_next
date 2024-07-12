@@ -35,16 +35,28 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
   useEffect(() => {
     if (filters.continents.length) {
       setCountries(
-        getUniqueCountriesByContinents(albums, filters.continents, true)
+        getUniqueCountriesByContinents(albums, filters.continents, true),
       );
     } else setCountries([]);
   }, [filters.continents]);
 
   function onFiltersChanged(filterName: FilterName, filterNewValues: string[]) {
-    dispatch(updateFilter(filterName, filterNewValues, FiltersType.Travel));
+    dispatch(
+      updateFilter({
+        name: filterName,
+        values: filterNewValues,
+        filterType: FiltersType.Travel,
+      }),
+    );
 
     if (filterName === FilterName.continents) {
-      dispatch(updateFilter(FilterName.countries, [], FiltersType.Travel));
+      dispatch(
+        updateFilter({
+          name: FilterName.countries,
+          values: [],
+          filterType: FiltersType.Travel,
+        }),
+      );
       addFiltersToURL({
         [filterName]: filterNewValues,
         [FilterName.countries]: [],

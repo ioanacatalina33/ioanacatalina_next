@@ -19,23 +19,20 @@ export const AboutPage = () => {
       <h2>About me</h2>
 
       <div className="text-container">
-        As you can probably guess, I love{" "}
-        <span className="text-container-bold">life</span> and admire the world
-        around us a lot. As a child, I’ve had my own universe, spending time
-        alone, day dreaming most of the time and watching documentaries on
-        Animal Planet and Discovery Channel. I could not stop admiring nature
-        and the Earth’s beauties, hoping that one day I will be that explorer
-        from Animal Planet going on the adventure. Even though things didn’t go
-        quite like that, I am seeing all my dreams coming true, one by one.
-        Along the years I’ve discovered other passions and hobbies as well, just
-        more ways of blessing and cherishing life.
+        As you probably noticed, I've always had a profound love for nature and
+        a deep admiration for the world around us. In my childhood, I had my own
+        universe, spending time alone, day dreaming and watching documentaries
+        on Animal Planet, hoping that one day I will be that explorer going on
+        the adventure. Even though things didn’t go quite like that, I am seeing
+        my dreams coming true, one by one. Along the years I’ve discovered other
+        passions and hobbies as well, just more ways of blessing and cherishing
+        life.
       </div>
 
       <div className="text-container">
-        Anything that implies nature, animals, outdoos, arts, ways of
-        expression, feelings, connection, balance, I will be there, happy to be
-        part of it or present in it, acknowledging and, probably taking a
-        picture.
+        Anything that involves nature, animals, outdoors, arts, or dance - I
+        will be there, happy to be a part of it or present in it, acknowledging
+        and probably taking a picture.
       </div>
 
       <ImageCollage photos={getPhotosForCollage(0)} alt="Adventures" />
@@ -46,16 +43,15 @@ export const AboutPage = () => {
         <span className="text-container-bold">database</span> for my many albums
         of all the trips and events I’ve been to. Having a programmer mind, I
         designed the filtering mechanism and the whole site just the way I
-        wanted, to be easy to see the data that I want.
+        wanted, to be easy to find and see the data that I want.
       </div>
 
       <div className="text-container">
-        I don’t wish to be a travel photographer blogger or instagrammer or
-        content creator.. There are many out there that are doing an amazing
-        thing but, I don’t find myself in that, at least for now. I just have a
-        huge hunger to{" "}
-        <span className="text-container-bold">explore the world</span> and see
-        it from every angle.
+        I don’t wish to be a blogger, Instagrammer, or content creator. There
+        are many out there doing a great job, but I don’t see myself in those
+        roles, at least for now. I simply have a deep desire to{" "}
+        <span className="text-container-bold">explore the world</span> and
+        capture its beauty through my lenses.
       </div>
 
       <div className="text-container">
@@ -76,32 +72,31 @@ export const AboutPage = () => {
 
       <div className="text-container">
         I remember I was using my first camera on film, the family camera, when
-        I was 13 years old, taking photos of my dog. In 2004, at 14 years old, I
-        had my first digital camera, which to me was a miracle. From having only
-        24 or 36 shots per film, to being able to take 200-300 digital photos
-        only to copy them to the computer and start again without paying for
-        another film… was overwhelming. At 17 I upgraded to a semi-professional
-        camera, since 2009 I’ve owned DSLRs and in 2018 I added mirrorless to my
-        collection!
+        I was only 13 years old, taking photos of my dog. At 14 years old, my
+        dad bought me my first digital camera, which to me was a miracle. From
+        having only 24 or 36 shots per film, to being able to take 200-300
+        digital photos only to copy them to the computer and start again without
+        paying for another film… was overwhelming. Later on I upgraded to a
+        semi-professional camera, since 2009 I’ve owned DSLRs and in 2018 I
+        added mirrorless to my collection.
       </div>
 
       <div className="text-container">
         From nature, animals, wildlife, dog shows, pets to traveling, dancing,
         hiking, winter sports, exploring new places, I’ve managed to combine
         them all very well during the years with my passion for photography.
-        Between 14 and 18 I used to be a photographer at{" "}
+        Between the ages of 14 and 18, I used to be a photographer at{" "}
         <span className="text-container-bold">dog shows</span> in Romania and
-        other countries nearby, taking pictures of dogs for breeders.
+        other nearby countries, taking pictures for dog breeders.
       </div>
 
       {/* Dog shows */}
       <ImageCollage photos={getPhotosForCollage(2)} alt="Dogs" />
 
       <div className="text-container">
-        Later, after I started working and had my own money, I went traveling
-        with other landscape photographers to stunning places in the middle of
-        nature, catching unforgettable sunsets, dreamy mornings with fog above
-        villages, capturing the{" "}
+        Later on, I started traveling with other landscape photographers to
+        stunning places in the middle of nature, catching unforgettable sunsets,
+        dreamy mornings with fog above villages, capturing the{" "}
         <span className="text-container-bold">rural life of Romania</span> and
         the whole nature across the country.
       </div>
@@ -112,25 +107,25 @@ export const AboutPage = () => {
       <div className="text-container">
         In 2010 I discovered{" "}
         <span className="text-container-bold">dancing</span>, another huge
-        passion that stayed with me till present. Today I go to{" "}
+        passion that has remained with me to this day. Since 2015 I've been
+        traveling to{" "}
         <span className="text-container-bold">Brazilian Zouk dance events</span>{" "}
-        around Europe as a photographer and dancer. Thank to this hobby I've met
-        an amazing community that I’ve been seeing at different festivals
-        everywhere around the world. I feel truly blessed I found this passion
-        and dance.. But my words will never be enough to describe the feelings
-        and intensity of the moment I get to experience through dancing. I can
-        only hope the photos show a glimpse of the heaven we’ve found..
+        around the world as both a photographer and dancer. Thanks to this hobby
+        I've connected with an incredible community that I meet at festivals all
+        over the world. I feel truly blessed to have found this passion for
+        dance, but my words will never be enough to describe the intensity of
+        the moment we get to experience through dancing. I can only hope the
+        photos show a glimpse of the heaven we’ve found..
       </div>
 
       {/* Dancing */}
       <ImageCollage photos={getPhotosForCollage(3)} alt="Traveling" />
 
       <div className="text-container">
-        Besides dancing events, I love traveling on every occasion, either if
-        it’s for visiting friends abroad, to see a place I read about or
-        organize trips and hikes in the middle of the nature to catch those
-        perfect moments of the day in pictures. Or… as I am preparing now, to
-        leave home for a while and just ‘go’ nomad.
+        Besides dancing events, I simply love traveling—whether it’s to visit
+        friends, explore places I’ve read about, or organize trips and hikes in
+        the middle of the nature to capture its beauty in pictures. Or… as I am
+        preparing now, to leave home for a while and just ‘go’ nomad.
       </div>
 
       <div
@@ -180,14 +175,17 @@ export const AboutPage = () => {
       </div>
 
       <div className="text-container" style={{ display: "block" }}>
-        Special mention about my awesome dog.. a{" "}
+        Special mention about my dear{" "}
         <span className="text-container-bold">
           Golden Retriever girl, Geena{" "}
         </span>
-        , that I feel so blessed to have. She is actually a real star, since a
-        lot of people know her from all over the world. She was popular at my
-        college, at my dance school, dog shows - she’s an International Show
-        Champion and my travel companion in many of my adventures in Romania.
+        , who brightened my life for 15 wonderful years, leaving me with
+        cherished memories that will forever hold a special place in my heart.
+        Geena was more than just a pet; she was a star known far and wide. From
+        my college days to dance school and international dog shows where she
+        earned the title of International Show Champion, Geena was not only a
+        companion but also a beloved travel partner on my many adventures
+        throughout Romania.
       </div>
 
       {/* <includeCanvasPopCss /> */}

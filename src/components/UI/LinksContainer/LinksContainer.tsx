@@ -70,14 +70,13 @@ export const LinksContainer = ({ containerType }: LinksContainerProps) => {
         <div style={wrapperStyle}>
           <div style={linkColStyle}>
             {getLinkComponent(getLinkData(LinkType.FbPage))}
-            {getLinkComponent(getLinkData(LinkType.FbPagePhotography))}
             {getLinkComponent(getLinkData(LinkType.FbPageZouk))}
             {getLinkComponent(getLinkData(LinkType.Instagram))}
             {getLinkComponent(getLinkData(LinkType.Flickr))}
+            {getLinkComponent(getLinkData(LinkType.PX500))}
           </div>
 
           <div style={linkColStyle}>
-            {getLinkComponent(getLinkData(LinkType.PX500))}
             {getLinkComponent(getLinkData(LinkType.Shutterstock))}
             {getLinkComponent(getLinkData(LinkType.AdobeStock))}
             {getLinkComponent(getLinkData(LinkType.IStock))}
@@ -89,15 +88,15 @@ export const LinksContainer = ({ containerType }: LinksContainerProps) => {
         <div style={wrapperStyle}>
           <div style={linkColStyle}>
             {getLinkComponent(getLinkData(LinkType.Gmail))}
-            {getLinkComponent(getLinkData(LinkType.Yahoo))}
+            {/* {getLinkComponent(getLinkData(LinkType.Yahoo))} */}
             {getLinkComponent(getLinkData(LinkType.FbPage))}
-            {getLinkComponent(getLinkData(LinkType.FbPagePhotography))}
+            {/* {getLinkComponent(getLinkData(LinkType.FbPagePhotography))} */}
             {getLinkComponent(getLinkData(LinkType.FbPageZouk))}
             {getLinkComponent(getLinkData(LinkType.Instagram))}
+            {getLinkComponent(getLinkData(LinkType.PX500))}
           </div>
 
           <div style={linkColStyle}>
-            {getLinkComponent(getLinkData(LinkType.PX500))}
             {getLinkComponent(getLinkData(LinkType.Flickr))}
             {getLinkComponent(getLinkData(LinkType.Shutterstock))}
             {getLinkComponent(getLinkData(LinkType.AdobeStock))}
@@ -110,13 +109,13 @@ export const LinksContainer = ({ containerType }: LinksContainerProps) => {
         <div style={wrapperStyle}>
           <div style={linkColStyle}>
             {getLinkComponent(getLinkData(LinkType.Gmail))}
-            {getLinkComponent(getLinkData(LinkType.Yahoo))}
+            {/* {getLinkComponent(getLinkData(LinkType.Yahoo))} */}
             {getLinkComponent(getLinkData(LinkType.Instagram))}
           </div>
 
           <div style={linkColStyle}>
             {getLinkComponent(getLinkData(LinkType.FbPage))}
-            {getLinkComponent(getLinkData(LinkType.FbPagePhotography))}
+            {/* {getLinkComponent(getLinkData(LinkType.FbPagePhotography))} */}
             {getLinkComponent(getLinkData(LinkType.FbPageZouk))}
           </div>
         </div>

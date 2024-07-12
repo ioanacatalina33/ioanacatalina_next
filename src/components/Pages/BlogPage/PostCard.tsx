@@ -15,67 +15,71 @@ export function PostCard({ post }: { post: BlogPost }) {
   const isMobile = screenType === ScreenType.Mobile;
 
   return (
-    <Link scroll={false} href={"/blog/" + post.url}>
-      <a style={{ textDecoration: "none", color: "inherit" }}>
-        <PostCardDiv mobile={isMobile}>
-          <ImageDiv mobile={isMobile}>
-            <Image src={"/img/Blog/" + post.id + ".jpg"} mobile={isMobile} />
-          </ImageDiv>
-          <ContentDiv mobile={isMobile}>
-            <h3>{post.title}</h3>
-            <div style={{ flexGrow: 1 }}>{post.text}...</div>
+    <Link
+      scroll={false}
+      href={"/blog/" + post.url}
+      style={{ textDecoration: "none", color: "inherit" }}
+    >
+      {/* <a style={{ textDecoration: "none", color: "inherit" }}> */}
+      <PostCardDiv mobile={isMobile}>
+        <ImageDiv mobile={isMobile}>
+          <Image src={"/img/Blog/" + post.id + ".jpg"} mobile={isMobile} />
+        </ImageDiv>
+        <ContentDiv mobile={isMobile}>
+          <h3>{post.title}</h3>
+          <div style={{ flexGrow: 1 }}>{post.text}...</div>
 
-            <div
-              style={{
-                display: "flex",
-                alignSelf: "flex-end",
-                width: "100%",
-              }}
-            >
-              <div style={{ flex: 1 }}>
-                <Button
-                  style={{
-                    textAlign: "center",
-                    padding: "0.2rem 1rem 0.2rem 1rem",
-                    margin: "1rem 0rem 0rem 0rem",
-                    color: "#1a1a1a",
-                  }}
-                  variant="warning"
-                >
-                  <b>Read more</b>
-                </Button>
+          <div
+            style={{
+              display: "flex",
+              alignSelf: "flex-end",
+              width: "100%",
+            }}
+          >
+            <div style={{ flex: 1 }}>
+              <Button
+                style={{
+                  textAlign: "center",
+                  padding: "0.2rem 1rem 0.2rem 1rem",
+                  margin: "1rem 0rem 0rem 0rem",
+                  color: "#1a1a1a",
+                }}
+                variant="warning"
+              >
+                <b>Read more</b>
+              </Button>
+            </div>
+            <div style={{ opacity: "0.3" }}>
+              <div
+                style={{
+                  fontSize: "4rem",
+                  fontWeight: 800,
+                  lineHeight: "4rem",
+                  margin: 0,
+                  padding: 0,
+                }}
+              >
+                {post.date.getDate() < 10
+                  ? "0" + post.date.getDate()
+                  : post.date.getDate()}
               </div>
-              <div style={{ opacity: "0.3" }}>
-                <div
-                  style={{
-                    fontSize: "4rem",
-                    fontWeight: 800,
-                    lineHeight: "4rem",
-                    margin: 0,
-                    padding: 0,
-                  }}
-                >
-                  {post.date.getDate() < 10
-                    ? "0" + post.date.getDate()
-                    : post.date.getDate()}
-                </div>
-                <div
-                  style={{
-                    fontWeight: 900,
-                    fontSize: "1rem",
-                    lineHeight: "1rem",
-                    margin: 0,
-                    padding: 0,
-                  }}
-                >
-                  {months[post.date.getMonth()].toUpperCase()}{" "}
-                  {post.date.getFullYear()}
-                </div>
+              <div
+                style={{
+                  fontWeight: 900,
+                  fontSize: "1rem",
+                  lineHeight: "1rem",
+                  margin: 0,
+                  padding: 0,
+                }}
+              >
+                {months[post.date.getMonth()].toUpperCase()}{" "}
+                {post.date.getFullYear()}
               </div>
             </div>
-          </ContentDiv>
-        </PostCardDiv>
-      </a>
+          </div>
+        </ContentDiv>
+      </PostCardDiv>
+      {/* </a> */}
     </Link>
   );
 }
@@ -90,7 +94,8 @@ const PostCardDiv = styled.div<MobileProps>`
   justify-content: center;
   align-items: flex-start;
   background-color: #ffffff;
-  box-shadow: rgba(50, 50, 93, 0.3) 0px 1px 1px -6px,
+  box-shadow:
+    rgba(50, 50, 93, 0.3) 0px 1px 1px -6px,
     rgba(0, 0, 0, 0.3) 0px 9px 15px 0px;
   transition: 0.2s;
   max-width: 750px;
@@ -99,7 +104,8 @@ const PostCardDiv = styled.div<MobileProps>`
   cursor: pointer;
 
   :hover {
-    box-shadow: rgba(50, 50, 93, 0.3) 0px 1px 1px -5px,
+    box-shadow:
+      rgba(50, 50, 93, 0.3) 0px 1px 1px -5px,
       rgba(0, 0, 0, 0.5) 0px 13px 22px 0px;
   }
 

@@ -34,7 +34,7 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
 
   const coverImg = useMemo(
     () => "/img/Blog/" + fullPost.post.id + "_large.jpg",
-    [fullPost.post.id]
+    [fullPost.post.id],
   );
 
   const FullSizeLayer = useFullScreenlayer(StaticPage.BLOG, {
@@ -62,7 +62,7 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
           locations.push(locationClone);
         } else {
           const existingLocation: Location = locations.find(
-            (l) => l.name === loc.name
+            (l) => l.name === loc.name,
           );
           existingLocation.articles.push(album);
         }
@@ -159,19 +159,17 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
 
             {blogPosts.length > 3 && (
               <Link href="/blog">
-                <a>
-                  <Button
-                    style={{
-                      textAlign: "center",
-                      padding: "0.5rem 1rem 0.5rem 1rem",
-                      margin: "1rem 0rem 0rem 0rem",
-                      color: "#1a1a1a",
-                    }}
-                    variant="warning"
-                  >
-                    <b>See more posts</b>
-                  </Button>
-                </a>
+                <Button
+                  style={{
+                    textAlign: "center",
+                    padding: "0.5rem 1rem 0.5rem 1rem",
+                    margin: "1rem 0rem 0rem 0rem",
+                    color: "#1a1a1a",
+                  }}
+                  variant="warning"
+                >
+                  <b>See more posts</b>
+                </Button>
               </Link>
             )}
           </div>

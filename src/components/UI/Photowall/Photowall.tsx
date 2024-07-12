@@ -1,5 +1,5 @@
 import React from "react";
-import FadeIn from "react-fade-in";
+// import FadeIn from "react-fade-in";
 
 import { AlbumType } from "types";
 import { Album } from "types/modelTypes";
@@ -64,7 +64,7 @@ export const Photowall = ({
                       lazyload={lazyload}
                       type={PhotoContainerType.PHOTOC_MAIN}
                     />
-                  )
+                  ),
                 )}
               </div>
               // </FadeIn>

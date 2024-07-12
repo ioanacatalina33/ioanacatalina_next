@@ -72,7 +72,7 @@ export function getLinkData(type: LinkType): ILinkData {
 
     case LinkType.FbPageZouk:
       return {
-        name: "Brazilian Zouk Page",
+        name: "Photography Page",
         url: "https://www.facebook.com/IoanaCatalinaBrazilianZouk",
         src: "/img/sm_facebook_on.png",
         classImgA: "link-photo-facebook",

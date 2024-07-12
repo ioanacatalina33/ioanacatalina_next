@@ -5,11 +5,12 @@ import { useFilters, useScreenType } from "hooks/utils";
 import { getUniqueValues, getYears } from "helpers";
 import { AlbumType } from "types/enums";
 import { Months } from "helpers/const";
-import { FilterName, FiltersType, updateFilter, updateFilters } from "store";
+import { FilterName, FiltersType } from "store";
 
 import { DanceFiltersProps } from "./common";
 import { FilterComponent } from "./FilterComponent";
 import { useFiltersQuery } from "hooks/useFiltersQuery";
+import { updateFilter, updateFilters } from "store/appSlice";
 
 export const FiltersDance = ({ albums, showFilters }: DanceFiltersProps) => {
   const dispatch = useDispatch();
@@ -33,10 +34,21 @@ export const FiltersDance = ({ albums, showFilters }: DanceFiltersProps) => {
         types: [],
         subtypes: filterNewValues,
       };
-      dispatch(updateFilters(onlySubtypesFilters, FiltersType.Dance));
+      dispatch(
+        updateFilters({
+          filters: onlySubtypesFilters,
+          filterType: FiltersType.Dance,
+        }),
+      );
       addFiltersToURL(onlySubtypesFilters);
     } else {
-      dispatch(updateFilter(filterName, filterNewValues, FiltersType.Dance));
+      dispatch(
+        updateFilter({
+          name: filterName,
+          values: filterNewValues,
+          filterType: FiltersType.Dance,
+        }),
+      );
       addFiltersToURL({ [filterName]: filterNewValues });
     }
   }

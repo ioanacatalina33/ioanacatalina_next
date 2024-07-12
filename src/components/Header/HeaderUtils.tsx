@@ -27,7 +27,7 @@ export const HeaderDropdown = () => {
             <div
               className="collapsible-nav-dropdown"
               style={{
-                color: dropdownOpen ? Colors.primary : "",
+                color: dropdownOpen ? Colors.primary : undefined,
                 fontSize: "2rem",
                 lineHeight: "0.1rem",
                 paddingBottom: "1.3rem",

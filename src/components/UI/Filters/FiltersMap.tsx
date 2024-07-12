@@ -29,7 +29,7 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
         if (!albumIds.includes(article.identifier))
           albumIds.push(article.identifier);
         albums_.push(article);
-      })
+      }),
     );
     setAlbums(albums_);
   }, [locations]);
@@ -48,7 +48,13 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
   }, [screenType]);
 
   function onFiltersChanged(filterName: FilterName, filterNewValues: string[]) {
-    dispatch(updateFilter(filterName, filterNewValues, FiltersType.Map));
+    dispatch(
+      updateFilter({
+        name: filterName,
+        values: filterNewValues,
+        filterType: FiltersType.Map,
+      }),
+    );
     addFiltersToURL({ [filterName]: filterNewValues });
   }
 
@@ -67,7 +73,10 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
         top: "5rem",
         padding: "0.5rem",
         height: showFilters ? "auto" : "fit-content",
+        maxHeight: "calc(100vh - 100px)",
+        overflowY: showFilters ? "auto" : "hidden",
         backgroundColor: "rgba(245, 245, 245, 0.7)",
+        fontSize: "0.9rem",
       }}
     >
       <FiltersHeader

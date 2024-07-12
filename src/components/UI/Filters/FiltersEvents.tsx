@@ -4,11 +4,12 @@ import { useFilters } from "hooks/utils";
 
 import { getUniqueValues } from "helpers";
 import { AlbumType } from "types/enums";
-import { FilterName, FiltersType, updateFilter, updateFilters } from "store";
+import { FilterName, FiltersType } from "store";
 
 import { LogosFiltersProps } from "./common";
 import { FilterComponent } from "./FilterComponent";
 import { useFiltersQuery } from "hooks/useFiltersQuery";
+import { updateFilter, updateFilters } from "store/appSlice";
 
 export const FiltersEvents = ({ albums }: LogosFiltersProps) => {
   const dispatch = useDispatch();
@@ -28,10 +29,21 @@ export const FiltersEvents = ({ albums }: LogosFiltersProps) => {
         types: [],
         subtypes: filterNewValues,
       };
-      dispatch(updateFilters(onlySubtypesFilters, FiltersType.Dance));
+      dispatch(
+        updateFilters({
+          filters: onlySubtypesFilters,
+          filterType: FiltersType.Dance,
+        }),
+      );
       addFiltersToURL(onlySubtypesFilters);
     } else {
-      dispatch(updateFilter(filterName, filterNewValues, FiltersType.Dance));
+      dispatch(
+        updateFilter({
+          name: filterName,
+          values: filterNewValues,
+          filterType: FiltersType.Dance,
+        }),
+      );
       addFiltersToURL({ [filterName]: filterNewValues });
     }
   }

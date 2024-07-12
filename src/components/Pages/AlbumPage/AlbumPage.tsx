@@ -16,7 +16,7 @@ import {
 import { AlbumType, FullAlbumDetails, PhotosDisplayType } from "types";
 
 import { AlbumHeader } from "./Components/AlbumHeader";
-import { GeenaPage } from "../GeenaPage";
+import { GeenaPage } from "../../UI/GeenaPg";
 import { AlbumDisplayType } from "./Components/AlbumDisplayType";
 import { PhotosDisplay } from "./Components/PhotosDisplay";
 import { AlbumRecommended } from "./Components/AlbumRecommended";
@@ -60,7 +60,7 @@ export const AlbumPage = ({
       undefined,
       {
         shallow: true,
-      }
+      },
     );
   }
 
@@ -75,7 +75,7 @@ export const AlbumPage = ({
     setPathname(
       window.location.href.indexOf("?") > 0
         ? window.location.href.slice(0, window.location.href.indexOf("?"))
-        : window.location.href
+        : window.location.href,
     );
 
     if (displayMode !== undefined)
@@ -88,12 +88,12 @@ export const AlbumPage = ({
   const imagesFullPath = getFullPathImgs(images, album.identifier);
 
   const hasLargeCover = imagesFullPath.includes(
-    articleCoverLarge(album.identifier)
+    articleCoverLarge(album.identifier),
   );
   const imagesToDisplay = imagesFullPath.filter(
     (img) =>
       img !== articleCoverLarge(album.identifier) &&
-      (img.includes(".jpg") || img.includes(".png"))
+      (img.includes(".jpg") || img.includes(".png")),
   );
 
   function albumDisplaySelected(value: PhotosDisplayType) {
@@ -117,7 +117,7 @@ export const AlbumPage = ({
           ? album.name_location
           : getLocationsWithComaAnd(album.locations)
         : album.name,
-    [album]
+    [album],
   );
 
   const subTitle = useMemo(
@@ -125,7 +125,7 @@ export const AlbumPage = ({
       album.type === AlbumType.Dance && !!album.locations
         ? getLocationsWithComaAnd(album.locations) + ", " + album.country
         : album.country,
-    [album]
+    [album],
   );
 
   return (
@@ -139,7 +139,7 @@ export const AlbumPage = ({
           coverImageSrc={urlAlbumHeader(
             album.type,
             album.identifier,
-            hasLargeCover
+            hasLargeCover,
           )}
           isCoverLarge={hasLargeCover}
           nextLink={

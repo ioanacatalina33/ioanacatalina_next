@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import { ScreenType } from "types/enums";
 import { useSelector } from "hooks/utils";
@@ -8,6 +7,12 @@ import { SubscribeContent } from "../SubscribeContent";
 import { Colors } from "helpers";
 import { Button } from "react-bootstrap";
 import { ShopLink } from "../Advertising";
+import {
+  AvatarIcon,
+  FlexElement1,
+  FlexElement2,
+  FollowMeFlex,
+} from "./FollowMe.style";
 
 interface FollowMeInterface {
   subscribe?: boolean;
@@ -20,16 +25,20 @@ export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
   return (
     <div
       style={{
-        backgroundColor: invertColors ? Colors.secondary.main : "",
+        backgroundColor: invertColors ? Colors.secondary.main : undefined,
       }}
     >
-      <FollowMeFlex screenType={screenType}>
+      <FollowMeFlex
+        style={{
+          flexDirection: screenType === ScreenType.Mobile ? "column" : "row",
+        }}
+      >
         <FlexElement1>
           <AvatarIcon src="/img/followme.jpg" alt="Travel girl" />
         </FlexElement1>
         <FlexElement2
           className="text-container"
-          style={{ color: invertColors ? "#fafafa" : "" }}
+          style={{ color: invertColors ? "#fafafa" : undefined }}
         >
           I&apos;m a <b>traveler/ photographer/ dancer</b> in love with the
           journey. For more photos of my adventures, follow me on
@@ -60,7 +69,7 @@ export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.instagram.com/ioana.catalina.e"
-              style={{ color: invertColors ? "#ffffff" : "" }}
+              style={{ color: invertColors ? "#ffffff" : undefined }}
             >
               Instagram
             </a>
@@ -103,33 +112,3 @@ export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
     </div>
   );
 };
-
-const FlexElement1 = styled.div`
-  flex: 1 0 0;
-`;
-
-const FlexElement2 = styled.div`
-  flex: 1 0 50%;
-`;
-
-const AvatarIcon = styled.img`
-  border-radius: 50%;
-  width: 100%;
-  max-width: 200px;
-`;
-
-interface FollowMeFlexProp {
-  screenType: ScreenType;
-}
-
-const FollowMeFlex = styled.div<FollowMeFlexProp>`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 900px;
-  padding: 2rem 1rem;
-  margin: 0rem auto;
-  justify-content: center;
-  align-items: center;
-  flex-direction: ${({ screenType }) =>
-    screenType === ScreenType.Mobile ? "column" : "row"};
-`;

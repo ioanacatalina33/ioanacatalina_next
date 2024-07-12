@@ -45,7 +45,7 @@ export const GeenaLinks = () => {
         </div>
       </div>
 
-      <div className="text-container text-centered">
+      {/* <div className="text-container text-centered">
         <div>
           <img
             alt=""
@@ -88,7 +88,7 @@ export const GeenaLinks = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 };

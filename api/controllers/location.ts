@@ -19,7 +19,7 @@ export async function fetchValidLocations(): Promise<Location> {
         subtype: 1,
         identifier: 1,
       },
-      Article
+      Article,
     );
   } catch (err) {
     console.error("error at fetchValidLocations " + err.message);
@@ -32,7 +32,7 @@ export async function getNumberLocations() {
   try {
     await dbConnect();
 
-    number = await Location.count();
+    number = await Location.countDocuments();
   } catch (err) {
     console.error("error at getNumberLocations: " + err.message);
   }
@@ -68,7 +68,7 @@ export async function getValidLocations(req, res) {
         identifier: 1,
         metadata: 1,
       },
-      Article
+      Article,
     )
     .where({ coord_long: { $ne: "1" }, coord_lat: { $ne: "1" } })
     .then((locations) => {

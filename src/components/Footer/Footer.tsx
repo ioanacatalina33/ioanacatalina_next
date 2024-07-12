@@ -15,17 +15,22 @@ export const Footer = () => {
       className="col text-left my-auto"
       style={{ padding: "0rem 1rem 0rem 1rem" }}
     >
-      <Link scroll={false} href="/map">
-        <a className="bottom-element-text">MAP</a>
+      <Link scroll={false} href="/map" className="bottom-element-text">
+        MAP
+        {/* <a className="bottom-element-text">MAP</a> */}
       </Link>
-      <Link scroll={false} href="/travel/all">
-        <a className="bottom-element-text">Travel</a>
+      <Link scroll={false} href="/travel/all" className="bottom-element-text">
+        {" "}
+        Travel
+        {/* <a className="bottom-element-text">Travel</a> */}
       </Link>
-      <Link scroll={false} href="/dance/all">
-        <a className="bottom-element-text">Dance</a>
+      <Link scroll={false} href="/dance/all" className="bottom-element-text">
+        Dance
+        {/* <a className="bottom-element-text">Dance</a> */}
       </Link>
-      <Link scroll={false} href="/blog">
-        <a className="bottom-element-text">Blog</a>
+      <Link scroll={false} href="/blog" className="bottom-element-text">
+        Blog
+        {/* <a className="bottom-element-text">Blog</a> */}
       </Link>
     </div>
   );
@@ -35,25 +40,26 @@ export const Footer = () => {
       className="col text-left my-auto"
       style={{ padding: "0rem 1rem 0rem 1rem" }}
     >
-      <Link scroll={false} href="/about">
-        <a className="bottom-element-text">My story</a>
+      <Link scroll={false} href="/about" className="bottom-element-text">
+        My story
+        {/* <a className="bottom-element-text">My story</a> */}
       </Link>
-      <Link scroll={false} href="/highlights">
-        <a className="bottom-element-text">Highlights</a>
+      <Link scroll={false} href="/highlights" className="bottom-element-text">
+        Highlights
+        {/* <a className="bottom-element-text">Highlights</a> */}
       </Link>
-      <Link scroll={false} href="/collaborations">
-        <a className="bottom-element-text">Collaboration</a>
-      </Link>
-      <a
+      <Link
+        scroll={false}
+        href="/collaborations"
         className="bottom-element-text"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ioanacatalina.smugmug.com/"
       >
-        <span>Shop</span>
-      </a>
-      <Link scroll={false} href="/contact">
-        <a className="bottom-element-text">Contact</a>
+        Collaboration
+        {/* <a className="bottom-element-text">Collaboration</a> */}
+      </Link>
+
+      <Link scroll={false} href="/contact" className="bottom-element-text">
+        Contact
+        {/* <a className="bottom-element-text">Contact</a> */}
       </Link>
     </div>
   );

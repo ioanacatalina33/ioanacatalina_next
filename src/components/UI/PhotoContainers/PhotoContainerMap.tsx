@@ -51,45 +51,43 @@ export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
   return (
     <div className="map-photo-col col-12 col-centered" style={containerPadding}>
       <Link scroll={false} href={articleURL}>
-        <a>
-          <div className="photo-container white-background-hovered">
-            <div className="photo-container-img-space border-corner-up">
-              <div
-                className="loading-animation border-corner-up"
-                style={{ minHeight: show ? "auto" : "13rem" }}
-              >
-                <img
-                  className="photo-small border-corner-up"
-                  style={{ visibility: "hidden", ...cornersStyle }}
-                  src={"/img/cover_placeholder_search_.jpg"}
-                  alt=""
-                  onLoad={onLoad}
-                />
-              </div>
-
+        <div className="photo-container white-background-hovered">
+          <div className="photo-container-img-space border-corner-up">
+            <div
+              className="loading-animation border-corner-up"
+              style={{ minHeight: show ? "auto" : "13rem" }}
+            >
               <img
-                className="cover-loaded border-corner-up"
-                src={articleCover(article.identifier)}
+                className="photo-small border-corner-up"
+                style={{ visibility: "hidden", ...cornersStyle }}
+                src={"/img/cover_placeholder_search_.jpg"}
                 alt=""
                 onLoad={onLoad}
               />
+            </div>
 
-              <span style={getTitleStyle()} className="photo-container-title">
-                {getDate()}
+            <img
+              className="cover-loaded border-corner-up"
+              src={articleCover(article.identifier)}
+              alt=""
+              onLoad={onLoad}
+            />
+
+            <span style={getTitleStyle()} className="photo-container-title">
+              {getDate()}
+            </span>
+          </div>
+
+          <div>
+            <div className="photo-container-name">{getNameText()}</div>
+
+            <div className="photo-container-date-country">
+              <span className="photo-container-country">
+                {getLeftCornerText()}
               </span>
             </div>
-
-            <div>
-              <div className="photo-container-name">{getNameText()}</div>
-
-              <div className="photo-container-date-country">
-                <span className="photo-container-country">
-                  {getLeftCornerText()}
-                </span>
-              </div>
-            </div>
           </div>
-        </a>
+        </div>
       </Link>
     </div>
   );

@@ -59,7 +59,7 @@ export async function getAlbumsByType(type: AlbumType): Promise<Album[]> {
 export async function getAlbumsBetweenDates(
   dateStart: Date,
   dateEnd: Date,
-  type?: AlbumType
+  type?: AlbumType,
 ): Promise<Album[]> {
   let albums = [];
   try {
@@ -96,7 +96,7 @@ export async function getAlbumsBetweenDates(
 }
 
 export async function getAlbumDetails(
-  name_url: string
+  name_url: string,
 ): Promise<FullAlbumDetails> {
   console.log("Getting album details");
 
@@ -120,7 +120,7 @@ export async function getAlbumDetails(
 
 async function getNextAndPrev(
   albumUrl: string,
-  type: AlbumType
+  type: AlbumType,
 ): Promise<{ next: Album[]; prev: Album[] }> {
   const next = [];
   const prev = [];
@@ -170,7 +170,7 @@ async function getRecommended(album: Album): Promise<Album[]> {
             subtype: { $ne: album.subtype },
           })
             .populate("locations", Location)
-            .sort({ date_start: -1 })
+            .sort({ date_start: -1 }),
         );
       }
     } else if (album.type === "Travel") {
@@ -191,7 +191,7 @@ async function getRecommended(album: Album): Promise<Album[]> {
             type: album.type,
           })
             .populate("locations", Location)
-            .sort({ date_start: -1 })
+            .sort({ date_start: -1 }),
         );
       }
     }
@@ -220,7 +220,7 @@ export async function getNumberAlbums(): Promise<number> {
     await dbConnect();
     console.log("Getting getNumberAlbums");
 
-    number = await Article.count();
+    number = await Article.countDocuments();
   } catch (err) {
     console.error("error at getNumberAlbums: " + err.message);
   }

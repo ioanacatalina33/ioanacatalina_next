@@ -34,8 +34,8 @@ export const PhotoContainerHighlights = ({
   let colsClass = isSingle
     ? "photo-col"
     : type === PhotoContainerType.PHOTOC_REC
-    ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
-    : "photo-col col-lg-4 col-md-4 col-sm-6";
+      ? "photo-col col-md-offset-2 col-lg-4 col-md-4 col-sm-6 col-centered"
+      : "photo-col col-lg-4 col-md-4 col-sm-6";
 
   //adding v2 padding
   colsClass = colsClass + " photo-col-padding-v2";
@@ -55,37 +55,35 @@ export const PhotoContainerHighlights = ({
 
   const content = (
     <Link scroll={false} href={articleURL}>
-      <a>
-        <div className="photo-container" style={widthStyle}>
-          <div className="photo-container-img-space">
-            <div
-              className="loading-animation"
-              style={{ minHeight: show ? "auto" : "13rem" }}
-            >
-              <img
-                className="photo-small"
-                style={cornersStyle}
-                src={"/img/cover_placeholder_.png"}
-                onLoad={onLoad}
-                alt=""
-              />
-            </div>
-            {lazyLoad ? (
-              <LazyLoad debounce={false} offsetVertical={1000}>
-                {loadedImage}
-              </LazyLoad>
-            ) : (
-              loadedImage
-            )}
-            <span
-              style={{ fontSize: "1.7rem", ...cornersStyle }}
-              className="photo-container-title"
-            >
-              {album.name}
-            </span>
+      <div className="photo-container" style={widthStyle}>
+        <div className="photo-container-img-space">
+          <div
+            className="loading-animation"
+            style={{ minHeight: show ? "auto" : "13rem" }}
+          >
+            <img
+              className="photo-small"
+              style={cornersStyle}
+              src={"/img/cover_placeholder_.png"}
+              onLoad={onLoad}
+              alt=""
+            />
           </div>
+          {lazyLoad ? (
+            <LazyLoad debounce={false} offsetVertical={1000}>
+              {loadedImage}
+            </LazyLoad>
+          ) : (
+            loadedImage
+          )}
+          <span
+            style={{ fontSize: "1.7rem", ...cornersStyle }}
+            className="photo-container-title"
+          >
+            {album.name}
+          </span>
         </div>
-      </a>
+      </div>
     </Link>
   );
 

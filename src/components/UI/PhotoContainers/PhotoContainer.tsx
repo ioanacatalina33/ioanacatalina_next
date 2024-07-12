@@ -88,54 +88,56 @@ export const PhotoContainer = ({
 
   const content = useMemo(
     () => (
-      <Link scroll={false} href={articleURL}>
-        <a title={titleText.length > 18 ? titleText : ""}>
-          <div className="photo-container">
-            <div className="photo-container-img-space border-corner-up">
-              <div
-                className="loading-animation border-corner-up"
-                style={{ minHeight: show ? "auto" : "13rem" }}
-              >
-                <img
-                  className="photo-small border-corner-up"
-                  style={{
-                    visibility: "hidden",
-                  }}
-                  src={"/img/cover_placeholder_.jpg"}
-                  onLoad={onLoad}
-                  alt=""
-                />
-              </div>
-              {lazyload ? (
-                <LazyLoad debounce={false} offsetVertical={1000}>
-                  {loadedImage}
-                </LazyLoad>
-              ) : (
-                loadedImage
-              )}
-              <span style={getTitleStyle()} className="photo-container-title">
-                {titleText}
-              </span>
+      <Link
+        scroll={false}
+        href={articleURL}
+        title={titleText.length > 18 ? titleText : ""}
+      >
+        {/* <a title={titleText.length > 18 ? titleText : ""}> */}
+        <div className="photo-container">
+          <div className="photo-container-img-space border-corner-up">
+            <div
+              className="loading-animation border-corner-up"
+              style={{ minHeight: show ? "auto" : "13rem" }}
+            >
+              <img
+                className="photo-small border-corner-up"
+                style={{
+                  visibility: "hidden",
+                }}
+                src={"/img/cover_placeholder_.jpg"}
+                onLoad={onLoad}
+                alt=""
+              />
             </div>
-
-            {album.type !== AlbumType.Highlights && (
-              <div style={{ background: "transparent" }}>
-                <div className="photo-container-name"> {getNameText()} </div>
-                <div className="photo-container-date-country">
-                  <span className="photo-container-country">
-                    {album.country}
-                  </span>
-                  <span className="photo-container-date">
-                    {getFileDateTitleString(album.date_start, album.date_end)}
-                  </span>
-                </div>
-              </div>
+            {lazyload ? (
+              <LazyLoad debounce={false} offsetVertical={1000}>
+                {loadedImage}
+              </LazyLoad>
+            ) : (
+              loadedImage
             )}
+            <span style={getTitleStyle()} className="photo-container-title">
+              {titleText}
+            </span>
           </div>
-        </a>
+
+          {album.type !== AlbumType.Highlights && (
+            <div style={{ background: "transparent" }}>
+              <div className="photo-container-name"> {getNameText()} </div>
+              <div className="photo-container-date-country">
+                <span className="photo-container-country">{album.country}</span>
+                <span className="photo-container-date">
+                  {getFileDateTitleString(album.date_start, album.date_end)}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* </a> */}
       </Link>
     ),
-    [album, onLoad]
+    [album, onLoad],
   );
 
   return (

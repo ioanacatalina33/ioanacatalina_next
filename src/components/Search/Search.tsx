@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import FadeIn from "react-fade-in/lib/FadeIn";
 
 import { PhotoContainerSearch } from "components/UI/PhotoContainers";
 import { useSelector } from "hooks/utils";
 import { useTextDebounce } from "hooks/useTextDebounce";
-import { updateMobileSearch, updateQueryText } from "store";
+
 import { Album } from "types/modelTypes";
+import { updateMobileSearch, updateQueryText } from "store/appSlice";
 
 export const Search = () => {
   const allArticles = useSelector((state) => state.app.allArticles);
@@ -34,7 +34,7 @@ export const Search = () => {
     return (
       article.name.toLowerCase().indexOf(query) > -1 ||
       article.locations.filter(
-        (location) => location.name.toLowerCase().indexOf(query) > -1
+        (location) => location.name.toLowerCase().indexOf(query) > -1,
       ).length > 0 ||
       article.subtype.toLowerCase().indexOf(query) > -1 ||
       article.type.toLowerCase().indexOf(query) > -1 ||
