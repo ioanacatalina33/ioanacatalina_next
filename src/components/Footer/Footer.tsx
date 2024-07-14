@@ -3,7 +3,6 @@ import React from "react";
 import { useSelector } from "hooks/utils";
 
 import { ScreenType } from "types/enums";
-import { useBrowsers } from "hooks/useBrowsers";
 import { Colors } from "helpers/const";
 import Link from "next/link";
 
@@ -17,21 +16,20 @@ export const Footer = () => {
     >
       <Link scroll={false} href="/map" className="bottom-element-text">
         MAP
-        {/* <a className="bottom-element-text">MAP</a> */}
       </Link>
       <Link scroll={false} href="/travel/all" className="bottom-element-text">
         {" "}
         Travel
-        {/* <a className="bottom-element-text">Travel</a> */}
       </Link>
       <Link scroll={false} href="/dance/all" className="bottom-element-text">
         Dance
-        {/* <a className="bottom-element-text">Dance</a> */}
       </Link>
-      <Link scroll={false} href="/blog" className="bottom-element-text">
+      <Link scroll={false} href="/highlights" className="bottom-element-text">
+        Highlights
+      </Link>
+      {/* <Link scroll={false} href="/blog" className="bottom-element-text">
         Blog
-        {/* <a className="bottom-element-text">Blog</a> */}
-      </Link>
+      </Link> */}
     </div>
   );
 
@@ -42,11 +40,6 @@ export const Footer = () => {
     >
       <Link scroll={false} href="/about" className="bottom-element-text">
         My story
-        {/* <a className="bottom-element-text">My story</a> */}
-      </Link>
-      <Link scroll={false} href="/highlights" className="bottom-element-text">
-        Highlights
-        {/* <a className="bottom-element-text">Highlights</a> */}
       </Link>
       <Link
         scroll={false}
@@ -54,12 +47,10 @@ export const Footer = () => {
         className="bottom-element-text"
       >
         Collaboration
-        {/* <a className="bottom-element-text">Collaboration</a> */}
       </Link>
 
       <Link scroll={false} href="/contact" className="bottom-element-text">
         Contact
-        {/* <a className="bottom-element-text">Contact</a> */}
       </Link>
     </div>
   );
@@ -70,7 +61,7 @@ export const Footer = () => {
       target="_blank"
       style={{ margin: "0.2rem" }}
       rel="noopener noreferrer"
-      href="https://www.facebook.com/IoanaCatalinaPhotography"
+      href="https://www.facebook.com/IoanaCatalinaBrazilianZouk"
     >
       <img
         src="/img/sm_facebook_on.png"
@@ -242,13 +233,13 @@ export const Footer = () => {
 
   const iconsLeft = (
     <>
-      <div style={{ maxWidth: "5rem", margin: "1.5rem" }}>
+      {/* <div style={{ maxWidth: "5rem", margin: "1.5rem" }}>
         <img
           style={{ height: "auto", width: "100%" }}
           src="/img/logo_airplane.png"
           alt="Plane"
         />
-      </div>
+      </div> */}
       <div style={{ maxWidth: "4rem", margin: "1.5rem" }}>
         <img
           style={{ height: "auto", width: "100%" }}

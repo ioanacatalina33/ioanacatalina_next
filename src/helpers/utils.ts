@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Album } from "types";
 
 export const sleep = (milliseconds: number) => {
@@ -14,4 +15,11 @@ export function contentScroll(screenHeight) {
     top: screenHeight,
     behavior: "smooth",
   });
+}
+
+export function usePrevious<T>(value: T): T | undefined {
+  const ref = useRef<T>();
+  useEffect(() => void (ref.current = value), [value]);
+
+  return ref.current;
 }

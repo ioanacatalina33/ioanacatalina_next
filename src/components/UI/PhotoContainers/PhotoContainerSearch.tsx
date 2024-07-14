@@ -95,7 +95,7 @@ export const PhotoContainerSearch = ({
                     onLoad={onLoad}
                   />
                 </div>
-                <LazyLoad debounce={false} offsetVertical={800}>
+                <LazyLoad offset={800}>
                   <img
                     className="cover-loaded border-corner-up"
                     src={articleCover(article.identifier)}

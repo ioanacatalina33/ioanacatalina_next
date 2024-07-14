@@ -1,5 +1,11 @@
 import { getAlbumDetails } from "../../../api/controllers/albums";
 
+export const config = {
+  api: {
+    externalResolver: true,
+  },
+};
+
 export default function userHandler(req, res) {
   const {
     query: { id, name },

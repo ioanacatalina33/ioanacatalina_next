@@ -87,7 +87,7 @@ export const PhotosDisplay = ({
           width: getPicWidth(
             screenType === ScreenType.Mobile
               ? PhotosDisplayType.ONE
-              : displayMode
+              : displayMode,
           ),
         }}
         className="photo-display-container"
@@ -169,7 +169,7 @@ export const PhotosDisplay = ({
                     </Button>
                   </div> */}
                 </div>
-              )
+              ),
             )
           : ""}
       </div>

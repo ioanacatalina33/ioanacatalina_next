@@ -21,7 +21,7 @@ export const DancePage = ({ albums, lazyload }: DanceProps) => {
 
   const { filteredAlbums, loading } = useFilteredAlbums(
     albums,
-    FiltersType.Dance
+    FiltersType.Dance,
   );
 
   const { isFiltered } = useIsFiltered(FiltersType.Dance);
@@ -31,7 +31,7 @@ export const DancePage = ({ albums, lazyload }: DanceProps) => {
       {FullSizeLayer}
       <div className="App">
         <h2>Dance events</h2>
-        <ShopLink center />
+        {/* <ShopLink center /> */}
         <LogosExplanation />
         <FiltersEvents albums={albums} />
         <div style={{ display: "flex" }}>

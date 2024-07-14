@@ -1,9 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { addSubscriber } from "../../api/controllers";
 
+export const config = {
+  api: {
+    externalResolver: true,
+  },
+};
+
 export default (
   req: NextApiRequest,
-  res: NextApiResponse<{ message?: string; result: number }>
+  res: NextApiResponse<{ message?: string; result: number }>,
 ) => {
   const { method } = req;
 

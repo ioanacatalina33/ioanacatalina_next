@@ -45,11 +45,15 @@ export const AlbumPage = ({
 
   function pushQuery() {
     let newQuery: QueryType = { ...query };
+
     if (selectedDisplay !== DefaultDisplayType)
       newQuery = { ...newQuery, display: selectedDisplay };
+    else delete newQuery.display;
 
     if (currentIndex !== undefined) {
       newQuery = { ...newQuery, img: currentIndex + 1 };
+    } else {
+      delete newQuery.img;
     }
 
     push(
@@ -170,8 +174,10 @@ export const AlbumPage = ({
             }
           />
 
-          <div dangerouslySetInnerHTML={{ __html: album.description }} />
-          {!!album.description && (
+          {album.type !== AlbumType.Highlights && (
+            <div dangerouslySetInnerHTML={{ __html: album.description }} />
+          )}
+          {album.type !== AlbumType.Highlights && !!album.description && (
             <>
               <br />
               <br />

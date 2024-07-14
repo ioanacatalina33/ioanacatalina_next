@@ -37,7 +37,7 @@ export function ShareButtons({
         {(facebook || all) && (
           <FacebookShareButton url={url}>
             <FacebookIcon
-              size={50}
+              size={38}
               className="social-media-modal-buttons"
               round={true}
             />
@@ -46,7 +46,7 @@ export function ShareButtons({
         {(twitter || all) && (
           <TwitterShareButton url={url}>
             <TwitterIcon
-              size={50}
+              size={38}
               className="social-media-modal-buttons"
               round={true}
             />
@@ -55,7 +55,7 @@ export function ShareButtons({
         {(whatsupp || all) && (
           <WhatsappShareButton url={url}>
             <WhatsappIcon
-              size={50}
+              size={38}
               className="social-media-modal-buttons"
               round={true}
             />

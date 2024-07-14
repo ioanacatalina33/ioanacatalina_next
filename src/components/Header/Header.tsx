@@ -22,7 +22,7 @@ export const Header = () => {
   const isMobileSearch = useSelector((state) => state.app.isMobileSearch);
 
   const isLargeScreen = screenWidth > 1210;
-  const showPlane = screenWidth > 1400;
+  const showCamera = screenWidth > 1400;
 
   useEffect(() => {
     setIsOnTop(window.pageYOffset === 0);
@@ -148,29 +148,29 @@ export const Header = () => {
                     DANCE
                   </Link>
 
-                  <Link
+                  {/* <Link
                     scroll={false}
                     href="/blog"
                     className="custom-navbar-link links-large"
                   >
                     BLOG
-                  </Link>
+                  </Link> */}
                   {!isLargeScreen && (
                     <div style={{ display: "inline-block" }}>
                       <HeaderDropdown />
                     </div>
                   )}
-                  {showPlane && (
+                  {showCamera && (
                     <div
                       style={{
-                        maxWidth: "2.1rem",
+                        maxWidth: "2rem",
                         margin: "0rem 1.5rem",
                         display: "inline-block",
                       }}
                     >
                       <img
                         style={{ height: "auto", width: "100%" }}
-                        src="/img/logo_airplane.png"
+                        src="/img/logo_camera.png"
                         alt="Plane"
                       />
                     </div>
@@ -316,7 +316,7 @@ export const Header = () => {
                     Dance
                   </Nav.Link>
                 )}
-                {screenType === ScreenType.Mobile && (
+                {/* {screenType === ScreenType.Mobile && (
                   <Nav.Link
                     eventKey="3"
                     href="/blog"
@@ -324,7 +324,7 @@ export const Header = () => {
                   >
                     Blog
                   </Nav.Link>
-                )}
+                )} */}
 
                 <Nav.Link
                   eventKey="5"

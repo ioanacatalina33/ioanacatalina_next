@@ -833,7 +833,7 @@ export const danceEvents: DanceEvent[] = [
 ];
 
 export const getDanceEvent = (subtype: string): DanceEvent | undefined => {
-  var event = danceEvents.filter((event) => {
+  const event = danceEvents.filter((event) => {
     return event.subtype === subtype;
   });
   if (event.length === 0) return undefined;

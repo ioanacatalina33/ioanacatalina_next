@@ -63,9 +63,7 @@ export const PhotoContainerHome = ({
               />
             </div>
             {lazyLoad ? (
-              <LazyLoad debounce={false} offsetVertical={300}>
-                {loadedImg}
-              </LazyLoad>
+              <LazyLoad offset={300}>{loadedImg}</LazyLoad>
             ) : (
               loadedImg
             )}

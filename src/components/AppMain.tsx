@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
 import { initGA } from "helpers/traking";
-import { sleep } from "helpers";
+import { sleep, usePrevious } from "helpers";
 import { fetchSmallArticles } from "helpers/api";
 
 // import { CanvasPopComp } from "./Canvaspop/CanvasPopComp";
@@ -77,6 +77,24 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
     dispatch(updateQueryText(""));
     dispatch(updateMobileSearch(false));
   }, [pathname, query.id, dispatch]);
+
+  const prevQuery = usePrevious(query);
+  useEffect(() => {
+    if (prevQuery && query.id !== prevQuery.id)
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+  }, [query]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
 
   async function rerender() {
     setShowContent(false);

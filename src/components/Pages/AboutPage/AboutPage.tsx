@@ -19,14 +19,14 @@ export const AboutPage = () => {
       <h2>About me</h2>
 
       <div className="text-container">
-        As you probably noticed, I've always had a profound love for nature and
-        a deep admiration for the world around us. In my childhood, I had my own
-        universe, spending time alone, day dreaming and watching documentaries
-        on Animal Planet, hoping that one day I will be that explorer going on
-        the adventure. Even though things didn’t go quite like that, I am seeing
-        my dreams coming true, one by one. Along the years I’ve discovered other
-        passions and hobbies as well, just more ways of blessing and cherishing
-        life.
+        As you probably noticed, I&apos;ve always had a profound love for nature
+        and a deep admiration for the world around us. In my childhood, I had my
+        own universe, spending time alone, day dreaming and watching
+        documentaries on Animal Planet, hoping that one day I will be that
+        explorer going on the adventure. Even though things didn&apos;t go quite
+        like that, I am seeing my dreams coming true, one by one. Along the
+        years I&apos;ve discovered other passions and hobbies as well, just more
+        ways of blessing and cherishing life.
       </div>
 
       <div className="text-container">
@@ -107,15 +107,15 @@ export const AboutPage = () => {
       <div className="text-container">
         In 2010 I discovered{" "}
         <span className="text-container-bold">dancing</span>, another huge
-        passion that has remained with me to this day. Since 2015 I've been
+        passion that has remained with me to this day. Since 2015 I&apos;ve been
         traveling to{" "}
         <span className="text-container-bold">Brazilian Zouk dance events</span>{" "}
         around the world as both a photographer and dancer. Thanks to this hobby
-        I've connected with an incredible community that I meet at festivals all
-        over the world. I feel truly blessed to have found this passion for
-        dance, but my words will never be enough to describe the intensity of
-        the moment we get to experience through dancing. I can only hope the
-        photos show a glimpse of the heaven we’ve found..
+        I&apos;ve connected with an incredible community that I meet at
+        festivals all over the world. I feel truly blessed to have found this
+        passion for dance, but my words will never be enough to describe the
+        intensity of the moment we get to experience through dancing. I can only
+        hope the photos show a glimpse of the heaven we’ve found..
       </div>
 
       {/* Dancing */}

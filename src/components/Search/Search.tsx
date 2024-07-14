@@ -10,7 +10,6 @@ import { updateMobileSearch, updateQueryText } from "store/appSlice";
 
 export const Search = () => {
   const allArticles = useSelector((state) => state.app.allArticles);
-  const isLoading = useSelector((state) => state.app.isLoading);
   const queryForSearch = useSelector((state) => state.app.queryText);
 
   const [articlesFiltered, setArticlesFiltered] = useState([]);
@@ -66,24 +65,24 @@ export const Search = () => {
           : "slideOut"
       }
     >
-      {isLoading ? (
+      {/* {isLoading ? (
         <div className="loading-plane">
           <div className="animated-background"></div>
         </div>
-      ) : (
-        <div className="photo-wall-search">
-          <div className="photo-wall-search-wrapper row">
-            {articlesFiltered.map((article, index) => (
-              <PhotoContainerSearch
-                onAlbumClicked={onAlbumClicked}
-                key={index}
-                article={article}
-                isSingle={articlesFiltered.length === 1}
-              />
-            ))}
-          </div>
+      ) : ( */}
+      <div className="photo-wall-search">
+        <div className="photo-wall-search-wrapper row">
+          {articlesFiltered.map((article, index) => (
+            <PhotoContainerSearch
+              onAlbumClicked={onAlbumClicked}
+              key={index}
+              article={article}
+              isSingle={articlesFiltered.length === 1}
+            />
+          ))}
         </div>
-      )}
+      </div>
+      {/* )} */}
     </div>
   );
 };

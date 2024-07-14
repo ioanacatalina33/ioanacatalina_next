@@ -70,9 +70,7 @@ export const PhotoContainerHighlights = ({
             />
           </div>
           {lazyLoad ? (
-            <LazyLoad debounce={false} offsetVertical={1000}>
-              {loadedImage}
-            </LazyLoad>
+            <LazyLoad offset={1000}>{loadedImage}</LazyLoad>
           ) : (
             loadedImage
           )}
@@ -92,18 +90,7 @@ export const PhotoContainerHighlights = ({
       className={colsClass}
       style={{ visibility: show ? "visible" : "hidden" }}
     >
-      {lazyLoad ? (
-        <LazyLoad
-          debounce={false}
-          offsetVertical={300}
-          placeholder={<img alt="" src="/img/loading.gif" />}
-          alt=""
-        >
-          {content}
-        </LazyLoad>
-      ) : (
-        content
-      )}
+      {lazyLoad ? <LazyLoad offset={300}>{content}</LazyLoad> : content}
     </div>
   );
 };

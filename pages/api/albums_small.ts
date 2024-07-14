@@ -3,9 +3,15 @@ import { Album } from "types";
 
 import { getSmallAlbums } from "../../api/controllers";
 
+export const config = {
+  api: {
+    externalResolver: true,
+  },
+};
+
 export default (
   req: NextApiRequest,
-  res: NextApiResponse<Album[] | { message: string }>
+  res: NextApiResponse<Album[] | { message: string }>,
 ) => {
   const { method } = req;
 

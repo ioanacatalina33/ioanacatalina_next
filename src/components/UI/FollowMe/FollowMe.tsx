@@ -40,17 +40,8 @@ export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
           className="text-container"
           style={{ color: invertColors ? "#fafafa" : undefined }}
         >
-          I&apos;m a <b>traveler/ photographer/ dancer</b> in love with the
-          journey. For more photos of my adventures, follow me on
-          {/* <span className="text-left links-element">
-          <a className="links-element-text link-photo-facebook" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/catalina.i.e.3">
-            <img alt="" src="/img/sm_facebook_on.png" className="mystory-socialmedia" />
-          </a>
-          <a className="links-element-text link-facebook" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/catalina.i.e.3">
-            Facebook
-          </a>
-        </span>
-        <br /> */}
+          I&apos;m a <b>traveler</b>, <b>photographer</b> and <b>dancer</b>{" "}
+          finding joy in every step of my journey. Follow me on
           <span className="text-left links-element">
             <a
               className="links-element-text link-photo-instagram"
@@ -74,7 +65,8 @@ export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
               Instagram
             </a>
           </span>
-          <br />
+          for a glimpse into my adventures!
+          {/* <br />
           <br />
           If you enjoy and want to support my work, you can
           <a
@@ -94,7 +86,7 @@ export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
             >
               <b>Buy me a coffee</b>
             </Button>
-          </a>
+          </a> */}
           {/* <span className="text-left links-element">
             <a
               className="links-element-text link-nationalg"

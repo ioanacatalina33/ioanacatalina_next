@@ -97,7 +97,7 @@ export const HomePage = ({
               style={{ height: "5rem", padding: "0rem 1rem 0rem 1.4rem" }}
             />
           </div>
-          <SubscribeButton parentPage="Home" />
+          {/* <SubscribeButton parentPage="Home" /> */}
           <HomeContainers />
         </div>
       </div>

@@ -3,10 +3,26 @@ import { AlbumDetails, AlbumType, FullAlbumDetails } from "types";
 export const HighlightsAlbums: AlbumDetails[] = [
   {
     type: AlbumType.Highlights,
-    name: "Nature",
-    name_url: "nature",
+    name: "Landscape",
+    name_url: "landscape",
     description: "",
-    identifier: "/Highlights/nature/",
+    identifier: "/Highlights/landscape/",
+    locations: [],
+  },
+  {
+    type: AlbumType.Highlights,
+    name: "Wildlife",
+    name_url: "wildlife",
+    description: "",
+    identifier: "/Highlights/wildlife/",
+    locations: [],
+  },
+  {
+    type: AlbumType.Highlights,
+    name: "Travel",
+    name_url: "travel",
+    description: "",
+    identifier: "/Highlights/travel/",
     locations: [],
   },
   {
@@ -15,14 +31,6 @@ export const HighlightsAlbums: AlbumDetails[] = [
     name_url: "city",
     description: "",
     identifier: "/Highlights/city/",
-    locations: [],
-  },
-  {
-    type: AlbumType.Highlights,
-    name: "Events",
-    name_url: "events",
-    description: "",
-    identifier: "/Highlights/events/",
     locations: [],
   },
   {
@@ -43,10 +51,18 @@ export const HighlightsAlbums: AlbumDetails[] = [
   },
   {
     type: AlbumType.Highlights,
-    name: "Animals",
-    name_url: "animals",
+    name: "Events",
+    name_url: "events",
     description: "",
-    identifier: "/Highlights/animals/",
+    identifier: "/Highlights/events/",
+    locations: [],
+  },
+  {
+    type: AlbumType.Highlights,
+    name: "Dogs",
+    name_url: "dogs",
+    description: "",
+    identifier: "/Highlights/dogs/",
     locations: [],
   },
   {
@@ -68,10 +84,10 @@ export const HighlightsAlbums: AlbumDetails[] = [
 ];
 
 export const getHighlightAlbumDetails = (
-  albumName: string
+  albumName: string,
 ): FullAlbumDetails => {
   const album = HighlightsAlbums.filter(
-    (article) => article.name_url === albumName
+    (article) => article.name_url === albumName,
   )[0];
   const recommended = getHighlightsRecommended(albumName);
 
@@ -82,11 +98,11 @@ export const getHighlightsAlbums = (albumName?: string) => {
   if (albumName !== undefined) {
     return HighlightsAlbums.filter((article) => article.name_url === albumName);
   }
-  return HighlightsAlbums.slice(0, HighlightsAlbums.length - 2);
+  return HighlightsAlbums.slice(0, HighlightsAlbums.length - 1);
 };
 
 export const getHighlightsRecommended = (albumName: string) => {
   return HighlightsAlbums.filter(
-    (article) => article.name_url !== albumName && article.name !== "Geena"
+    (article) => article.name_url !== albumName && article.name !== "Geena",
   ).slice(0, 6);
 };

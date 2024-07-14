@@ -39,8 +39,13 @@ export const ArticleSubHeader = ({
         </div>
 
         <div className="album-subheader-element3">
-          {!dateStart && <div style={{ textAlign: "right" }}>Share this:</div>}
-          <ShareButtons facebook twitter whatsupp />
+          <div style={{ display: "flex", alignItems: "start" }}>
+            <div style={{ textAlign: "right", paddingRight: "0.5rem" }}>
+              Share this:
+            </div>
+
+            <ShareButtons facebook twitter whatsupp />
+          </div>
         </div>
       </div>
       <div>
@@ -79,7 +84,7 @@ export const ArticleSubHeader = ({
           <h2 style={{ textAlign: "left" }}>{title}</h2>
         )}
       </div>
-      {danceEvent && <ShopLink />}
+      {/* {danceEvent && <ShopLink />} */}
     </div>
   );
 };

@@ -19,7 +19,7 @@ export function useFiltersQuery(filterType: FiltersType) {
   }, []);
 
   const addFiltersToURL = (filters: Partial<Filters>) => {
-    let queryForURL = { ...query, ...filters };
+    const queryForURL = { ...query, ...filters };
     pushFilters(queryForURL);
   };
 

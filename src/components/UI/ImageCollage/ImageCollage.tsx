@@ -62,14 +62,14 @@ export const ImageCollage = ({
                 (marginTopBottom
                   ? marginTopBottom
                   : screenType !== ScreenType.Mobile
-                  ? "3rem"
-                  : "1rem") + " auto",
+                    ? "3rem"
+                    : "1rem") + " auto",
               padding: "0rem",
             }
           : {}
       }
     >
-      <LazyLoad debounce={false} offsetVertical={500}>
+      <LazyLoad offset={500}>
         <div>
           {renderImages.map((image, i) => (
             <img

@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   const images = await getImagesNamesFromFolder("/Blog/" + post.id);
   const imagesFullPath = images.map(
-    (img) => "/img/Blog/" + post.id + "/" + img
+    (img) => "/img/Blog/" + post.id + "/" + img,
   );
   fullPost.images = imagesFullPath;
 
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     const albums = await getAlbumsBetweenDates(
       post.dateStart,
       post.dateEnd,
-      AlbumType.Travel
+      AlbumType.Travel,
     );
     fullPost.albums = albums;
   }
