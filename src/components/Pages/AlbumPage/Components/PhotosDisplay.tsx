@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
 
 import { ModalBuyDigital } from "components/UI/Modals";
-import { WEBSITE_PATH } from "helpers";
 import { useScreenType } from "hooks";
 import { PhotosDisplayType, ScreenType } from "types";
 
 import { ImageLoaderDisplay } from "./ImageLoaderDisplay";
 import { SlideshowModal } from "./SlideshowModal";
+import LazyLoad from "react-lazy-load";
 
 interface PhotosDisplayProps {
   currentIndex: number;
@@ -93,15 +92,15 @@ export const PhotosDisplay = ({
         className="photo-display-container"
       >
         <div className="photo-small-display loading-animation">
-          {/* <LazyLoad debounce={false} offsetVertical={500}> */}
-          <ImageLoaderDisplay
-            displayMode={displayMode}
-            loadedClassName="img-display-loaded image-zoom"
-            loadingClassName="img-display-loading"
-            src={image}
-            alt={alt + " " + index}
-          />
-          {/* </LazyLoad> */}
+          <LazyLoad>
+            <ImageLoaderDisplay
+              displayMode={displayMode}
+              loadedClassName="img-display-loaded image-zoom"
+              loadingClassName="img-display-loading"
+              src={image}
+              alt={alt + " " + index}
+            />
+          </LazyLoad>
         </div>
       </div>
     );
@@ -134,45 +133,16 @@ export const PhotosDisplay = ({
 
       <div className="photo-display">
         {images !== undefined && images.length > 0
-          ? images.map((image, index) =>
-              screenType !== ScreenType.Mobile ? (
-                getImage(image, index)
-              ) : (
-                <div key={index}>
-                  {getImage(image, index)}
-                  {/* <div style={{ display: "flex", justifyContent: "center" }}>
-                    <Button
-                      variant="warning"
-                      onClick={() => setDigitalShow(index)}
-                      className="button-buy"
-                      style={{
-                        fontSize: "0.9rem",
-                        padding: "0.5rem 1.4rem",
-                        outline: "none",
-                      }}
-                    >
-                      Buy digital
-                    </Button>
-                    <Button
-                      variant="warning"
-                      data-cp-url={WEBSITE_PATH + "/offline" + image}
-                      disabled={printsDisabled}
-                      onClick={disablePrints}
-                      className="button-buy"
-                      style={{
-                        fontSize: "0.9rem",
-                        padding: "0.5rem 1.4rem",
-                        outline: "none",
-                      }}
-                    >
-                      Buy print
-                    </Button>
-                  </div> */}
-                </div>
-              ),
-            )
+          ? images.map((image, index) => getImage(image, index))
           : ""}
       </div>
+
+      {/* <div className="photo-display-grid">
+        {images.map((image, index) => <></>)}
+      </div> */}
     </div>
   );
 };
+
+{
+}

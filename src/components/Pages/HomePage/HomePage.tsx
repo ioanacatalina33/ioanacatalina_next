@@ -44,27 +44,27 @@ export const HomePage = ({
           <div
             style={{
               padding: "3rem 1rem 0rem 1rem",
-              fontSize: "1.5rem",
+              fontSize: "1.6rem",
               textAlign: "left",
               width: "fit-content",
             }}
           >
-            <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
+            <span style={{ fontSize: "2rem", fontWeight: 600 }}>
               {nrCountries}
             </span>
             {"  "}
             countries {screenType !== ScreenType.Mobile ? "\u00A0" : <br />}
-            <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
+            <span style={{ fontSize: "2rem", fontWeight: 600 }}>
               {nrLocations}
             </span>
             {"  "}
             locations {screenType !== ScreenType.Mobile ? "\u00A0" : <br />}
-            <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
+            <span style={{ fontSize: "2rem", fontWeight: 600 }}>
               {nrAlbums}
             </span>
             {"  "}
             albums {screenType !== ScreenType.Mobile ? "\u00A0" : <br />}
-            <span style={{ fontSize: "2.2rem", fontWeight: 900 }}>
+            <span style={{ fontSize: "2 drem", fontWeight: 600 }}>
               {nrImages}
             </span>
             {"  "}

@@ -12,21 +12,21 @@
   outline: none !important;
 }
 
-@font-face {
+/* @font-face {
   font-family: "MartelSans";
   src:
     local("MartelSans-SemiBold"),
     url("../fonts/MartelSans-SemiBold.ttf") format("truetype");
   font-weight: 600;
-}
+} */
 
-@font-face {
+/* @font-face {
   font-family: "MartelSansBold";
   src:
     local("MartelSans-Black"),
     url("../fonts/MartelSans-Black.ttf") format("truetype");
   font-weight: 900;
-}
+} */
 
 button,
 button:hover,
@@ -49,7 +49,9 @@ a,
 }
 
 .App {
-  font-family: "Segoe UI", "Roboto", "Sans serif", "Oxygen";
+  /* font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif; */
+  font-family: serif;
   min-height: 80vh;
 }
 
@@ -59,6 +61,10 @@ a,
   bottom: 0;
   width: 100%;
   height: 100%;
+}
+
+.no-right-click {
+  pointer-events: none;
 }
 
 .header {
@@ -74,12 +80,12 @@ hr.style1 {
   margin: 0rem 0rem 0rem 0rem;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4 {
   font-family: "serif", "Cambria", "Segoe UI", "Roboto", "Sans serif", "Oxygen";
-}
+} */
 
 h1 {
   text-align: center;
@@ -478,21 +484,9 @@ h4 {
 
 /* ---------------- Album Hedader -------------------- */
 
-.album-header {
-  display: flex;
-  background-color: #4a4b4d;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0rem;
-  margin: 0;
-  opacity: 1;
-}
-
 .header-album {
   width: 100%;
-  height: calc(100vh - 37px);
+  height: 50vh;
   padding: 0rem;
 }
 
@@ -657,6 +651,24 @@ h4 {
 /* ----------------- End Album Subheader ---------------- */
 
 /* ----------------- Album Content --------------------- */
+
+.photo-display-grid {
+  display: grid;
+  gap: 1rem;
+  /* grid-template-columns: auto auto auto auto; */
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+
+/* .img-wrapper-grid {
+  flex: 0 1 33%;
+} */
+
+.img-wrapper-grid > img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+}
 
 .photo-display {
   display: flex;
@@ -1104,6 +1116,10 @@ h4 {
   padding: 0.2rem 0rem 0.2rem 0rem;
 }
 
+.photo-col-padding-v3 {
+  padding: 0.2rem 0rem 0.2rem 0rem;
+}
+
 .col-centered {
   float: none;
   margin: 0 auto;
@@ -1173,7 +1189,7 @@ h4 {
   left: 0;
   bottom: 0;
   padding: 0.3rem 1rem 0rem 1rem;
-  font-weight: 600;
+  font-weight: 400;
   text-align: left;
   /* background-color: rgba(55, 55, 55, 0.6); */
   background: linear-gradient(
@@ -1192,7 +1208,11 @@ h4 {
   overflow: hidden;
   text-overflow: ellipsis;
   /* text-transform: uppercase; */
-  /* font-family: "serif", "Cambria", "Segoe UI", "Roboto", "Sans serif", "Oxygen"; */
+  /* font-family: "Oxygen", "serif", "Cambria", "Segoe UI", "Roboto", "Sans serif"; */
+}
+
+.photo-container-title-dance {
+  font-size: 1.3rem;
 }
 
 .photo-container-title-home {
@@ -1234,7 +1254,7 @@ h4 {
   padding: 0.8rem 1rem 0.1rem 1rem;
   font-size: 1rem;
   margin: 0rem;
-  color: #333333;
+  color: #888888;
   background: transparent;
 }
 
@@ -1304,7 +1324,7 @@ h4 {
   font-weight: 400;
   line-height: 1.6;
   font-size: 1rem;
-  font-family: "serif", "Cambria", "Segoe UI", "Roboto", "Sans serif", "Oxygen";
+  /* font-family: "serif", "Cambria", "Segoe UI", "Roboto", "Sans serif", "Oxygen"; */
 }
 
 .text-centered {
@@ -1313,8 +1333,8 @@ h4 {
 
 .home-text-container {
   text-align: center;
-  font-weight: 700;
-  font-size: 1.3rem;
+  font-weight: 400;
+  font-size: 1.2rem;
 }
 
 .text-container-bold {
@@ -1737,12 +1757,11 @@ h4 {
   }
 
   .photo-col-padding-v2 {
-    padding: 0.2rem;
+    padding: 0.5rem;
   }
 
-  .album-header {
-    height: 100%;
-    padding: 0;
+  .photo-col-padding-v3 {
+    padding: 0.2rem;
   }
 
   .photo-display {
@@ -1814,11 +1833,6 @@ h4 {
 
   .links-container {
     display: flex;
-  }
-
-  .album-header {
-    height: 25rem;
-    padding: 0.5rem;
   }
 
   .header-album {
@@ -1893,10 +1907,6 @@ h4 {
     padding: 0.5rem 1em 0.5rem 1rem;
   }
 
-  .album-header {
-    height: 30rem;
-  }
-
   .header-album {
     height: calc(100vh - 60px);
   }
@@ -1906,6 +1916,10 @@ h4 {
   }
 
   .photo-col-padding-v2 {
+    padding: 0.5rem;
+  }
+
+  .photo-col-padding-v3 {
     padding: 0.2rem;
   }
 
@@ -1953,10 +1967,6 @@ h4 {
       5rem;
   }
 
-  .album-header {
-    height: 30rem;
-  }
-
   .header-album {
     height: calc(100vh - 60px);
   }
@@ -1974,10 +1984,6 @@ h4 {
     padding: 1.5rem 3em 1.5rem 3rem;
   }
 
-  .album-header {
-    height: 45rem;
-  }
-
   .header-album {
     height: calc(100vh - 60px);
   }
@@ -1992,6 +1998,10 @@ h4 {
 
   .photo-container-title {
     font-size: 2rem;
+  }
+
+  .photo-container-title-dance {
+    font-size: 1.4rem;
   }
 }
 

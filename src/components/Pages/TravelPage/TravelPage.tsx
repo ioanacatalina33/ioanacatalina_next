@@ -19,7 +19,7 @@ export const TravelPage = ({ albums, lazyload }: TravelProps) => {
 
   const { filteredAlbums, loading } = useFilteredAlbums(
     albums,
-    FiltersType.Travel
+    FiltersType.Travel,
   );
 
   const { isFiltered } = useIsFiltered(FiltersType.Travel);

@@ -13,15 +13,15 @@ export async function getImagesNamesFromFolder(folderPath: string) {
 
 export async function getNumberImages() {
   const nrTravel = getImagesNumberFromFolder(
-    path.join(process.cwd(), "public/img/travel/")
+    path.join(process.cwd(), "public/img/travel/"),
   );
   const nrDance = getImagesNumberFromFolder(
-    path.join(process.cwd(), "public/img/dance/")
+    path.join(process.cwd(), "public/img/dance/"),
   );
-  const nrHighlights = getImagesNumberFromFolder(
-    path.join(process.cwd(), "public/img/highlights/")
-  );
-  return nrTravel + nrDance + nrHighlights;
+  // const nrHighlights = getImagesNumberFromFolder(
+  //   path.join(process.cwd(), "public/img/highlights/")
+  // );
+  return nrTravel + nrDance;
 }
 
 export function getImagesNumberFromFolder(folderPath: string) {
@@ -30,7 +30,7 @@ export function getImagesNumberFromFolder(folderPath: string) {
   subFolders.forEach(
     (folder) =>
       (totalCount =
-        totalCount + fs.readdirSync(path.join(folderPath, folder)).length)
+        totalCount + fs.readdirSync(path.join(folderPath, folder)).length),
   );
   return totalCount;
 }

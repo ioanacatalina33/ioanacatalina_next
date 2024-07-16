@@ -76,11 +76,11 @@ export const AlbumPage = ({
     const photoIndex = mapPhotoFromURL(window.location.search);
     const displayMode = mapPropertyFromURL(window.location.search, "display");
 
-    setPathname(
-      window.location.href.indexOf("?") > 0
-        ? window.location.href.slice(0, window.location.href.indexOf("?"))
-        : window.location.href,
-    );
+    // setPathname(
+    //   window.location.href.indexOf("?") > 0
+    //     ? window.location.href.slice(0, window.location.href.indexOf("?"))
+    //     : window.location.href,
+    // );
 
     if (displayMode !== undefined)
       setSelectedDisplay(displayMode as PhotosDisplayType);

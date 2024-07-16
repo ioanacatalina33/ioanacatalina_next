@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   ]);
 
   return {
-    props: { nrCountries: nrCountries + 3, nrAlbums, nrLocations, nrImages },
+    props: { nrCountries: nrCountries + 2, nrAlbums, nrLocations, nrImages },
   };
 };
 

@@ -127,42 +127,42 @@ const getFullSizeImageTravel = (): FullSizeImage => {
       class: "img-loaded-text-center opacity45",
       alt: "Travel around the world",
     },
-    {
-      url: "/img/fullscreen/travel_header_03.jpg",
-      text: "Travel is like knowledge. The more you see the more you know you haven't seen.",
-      class: "img-loaded-text-top-right opacity40",
-      alt: "Travel around the world",
-    },
-    {
-      url: "/img/fullscreen/travel_header_04.jpg",
-      text: "It feels good to be lost in the right direction.",
-      class: "img-loaded-text-top-right opacity45",
-      alt: "Travel around the world",
-    },
+    // {
+    //   url: "/img/fullscreen/travel_header_03.jpg",
+    //   text: "Travel is like knowledge. The more you see the more you know you haven't seen.",
+    //   class: "img-loaded-text-top-right opacity40",
+    //   alt: "Travel around the world",
+    // },
+    // {
+    //   url: "/img/fullscreen/travel_header_04.jpg",
+    //   text: "It feels good to be lost in the right direction.",
+    //   class: "img-loaded-text-top-right opacity45",
+    //   alt: "Travel around the world",
+    // },
     {
       url: "/img/fullscreen/travel_header_05.jpg",
       text: "Never lose the sense of wonder.",
       class: "img-loaded-text-top-right opacity45",
       alt: "Travel around the world",
     },
-    {
-      url: "/img/fullscreen/travel_header_06.jpg",
-      text: "Wherever you are, be all there.",
-      class: "img-loaded-text-top-center opacity45",
-      alt: "Travel around the world",
-    },
+    // {
+    //   url: "/img/fullscreen/travel_header_06.jpg",
+    //   text: "Wherever you are, be all there.",
+    //   class: "img-loaded-text-top-center opacity45",
+    //   alt: "Travel around the world",
+    // },
     {
       url: "/img/fullscreen/travel_header_07.jpg",
       text: "There's no such place as faraway.",
       class: "img-loaded-text-top-right opacity40",
       alt: "Travel around the world",
     },
-    {
-      url: "/img/fullscreen/travel_header_08.jpg",
-      text: "A journey of a thousands miles begins with a single step.",
-      class: "img-loaded-text-top-left opacity40",
-      alt: "Travel around the world",
-    },
+    // {
+    //   url: "/img/fullscreen/travel_header_08.jpg",
+    //   text: "A journey of a thousands miles begins with a single step.",
+    //   class: "img-loaded-text-top-left opacity40",
+    //   alt: "Travel around the world",
+    // },
   ];
   return images[Math.floor(Math.random() * images.length)];
 };

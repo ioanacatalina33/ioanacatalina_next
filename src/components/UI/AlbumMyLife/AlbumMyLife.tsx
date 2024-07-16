@@ -23,6 +23,7 @@ export const AlbumMyLife = () => {
           album={getHighlightsAlbums("myadventures")[0]}
           type={PhotoContainerType.PHOTOC_REC}
           isSingle
+          lazyLoad
         />
       </div>
       {/* </FadeIn> */}

@@ -112,10 +112,16 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
     window.addEventListener("resize", updateDim);
     document.addEventListener("keydown", escFunction, false);
 
+    const handleContextmenu = (e) => {
+      e.preventDefault();
+    };
+    document.addEventListener("contextmenu", handleContextmenu);
+
     return () => {
       window.removeEventListener("resize", checkWidth);
       window.removeEventListener("resize", updateDim);
       window.removeEventListener("keydown", escFunction, false);
+      document.removeEventListener("contextmenu", handleContextmenu);
     };
   }, []);
 

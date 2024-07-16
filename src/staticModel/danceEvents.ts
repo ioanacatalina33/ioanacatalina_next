@@ -830,6 +830,48 @@ export const danceEvents: DanceEvent[] = [
       website: "",
     },
   },
+  {
+    subtype: "LetsFlow",
+    name: "Let's Flow",
+    logo: PATH_LOGO + "letsflow.png",
+    organizers: [
+      {
+        name: "Bruno Barreto",
+        facebook: "https://www.facebook.com/arkkanjo",
+        email: "",
+      },
+      {
+        name: "Malu Maia",
+        facebook: "https://www.facebook.com/malu.maia.902",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/letsflowfestival",
+      website: "",
+    },
+  },
+  {
+    subtype: "NeoZoukFestival",
+    name: "NeoZouk Festival",
+    logo: PATH_LOGO + "NeoZoukFestival.png",
+    organizers: [
+      {
+        name: "Anna Russa",
+        facebook: "https://www.facebook.com/zvezdaomega",
+        email: "",
+      },
+      {
+        name: "Mafie Zouker",
+        facebook: "https://www.facebook.com/profile.php?id=100063058877955",
+        email: "",
+      },
+    ],
+    links: {
+      facebook: "https://www.facebook.com/profile.php?id=61551892541913",
+      website: "",
+    },
+  },
 ];
 
 export const getDanceEvent = (subtype: string): DanceEvent | undefined => {

@@ -1,10 +1,9 @@
 import { Button } from "react-bootstrap";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { contentScroll } from "helpers";
 import { useBrowsers, useScreenSize } from "hooks";
 import { AlbumType } from "types";
-import { ImageLoader } from "components/UI/ImageLoader";
 
 interface AlbumHeaderProps {
   type: AlbumType;
@@ -34,13 +33,7 @@ export const AlbumHeader = ({
   };
 
   return (
-    <div
-      className={
-        type === AlbumType.Highlights
-          ? "album-header header-album"
-          : "album-header header-album"
-      }
-    >
+    <div className={"header-album"}>
       <div className="album-header-wrapper">
         <div
           className={
@@ -72,53 +65,63 @@ export const AlbumHeader = ({
             </Button>
           </Link>
         )}
-        <div className={(isIE ? "row " : "") + " album-header-container"}>
-          <ImageLoader
-            style={{
-              objectFit:
-                type === AlbumType.Highlights || isCoverLarge
-                  ? "cover"
-                  : "contain",
-              width: isIE ? "auto" : "100%",
-            }}
-            src={coverImageSrc}
-            loadedClassName="img-normal-loaded"
-            loadingClassName="img-normal-loading"
-            alt={title + " " + subtitle + " header"}
-          />
-          <div className="img-loaded-text-album-header-absolute">
-            <div
-              className="img-loaded-text-album-header"
-              style={{ paddingBottom: "0.8rem" }}
-            >
-              <span
-                className={
-                  type !== AlbumType.Highlights
-                    ? "album-header-text-span"
-                    : "album-header-text-span album-header-text-span-highlights"
-                }
-              >
-                <h1 style={{ padding: "0.8rem 0rem 0.5rem 0rem", margin: "0" }}>
-                  {title}
-                </h1>
-              </span>
+        {/* <ImageLoader
+          style={{
+            objectFit:
+              type === AlbumType.Highlights || isCoverLarge
+                ? "cover"
+                : "contain",
+            width: isIE ? "auto" : "100%",
+          }}
+          src={coverImageSrc}
+          loadedClassName="img-normal-loaded"
+          loadingClassName="img-normal-loading"
+          alt={title + " " + subtitle + " header"}
+        /> */}
+        <img
+          className="img-loaded"
+          style={{
+            objectFit:
+              type === AlbumType.Highlights || isCoverLarge
+                ? "cover"
+                : "contain",
+            width: isIE ? "auto" : "100%",
+          }}
+          src={coverImageSrc}
+          alt={title + " " + subtitle + " header"}
+        />
 
-              {type !== AlbumType.Highlights && (
-                <span className="album-header-text-span-subtitle">
-                  {subtitle}
-                </span>
-              )}
-            </div>
-          </div>
-
-          <button
-            onClick={() => contentScroll(screenHeight - 60)}
-            className="arrow-down arrow-down-absolute arrow-down-inverted"
-            style={{ margin: "0 auto", marginTop: "2rem" }}
+        <div className="img-loaded-text-album-header-absolute no-right-click">
+          <div
+            className="img-loaded-text-album-header"
+            style={{ paddingBottom: "0.8rem" }}
           >
-            <i className="fa fa-angle-down arrow-down-icon-inverted"></i>
-          </button>
+            <span
+              className={
+                type !== AlbumType.Highlights
+                  ? "album-header-text-span"
+                  : "album-header-text-span album-header-text-span-highlights"
+              }
+            >
+              <h1 style={{ padding: "0.8rem 0rem 0.5rem 0rem", margin: "0" }}>
+                {title}
+              </h1>
+            </span>
+
+            {type !== AlbumType.Highlights && (
+              <span className="album-header-text-span-subtitle">
+                {subtitle}
+              </span>
+            )}
+          </div>
         </div>
+        <button
+          onClick={() => contentScroll(screenHeight - 60)}
+          className="arrow-down arrow-down-absolute arrow-down-inverted"
+          style={{ margin: "0 auto", marginTop: "2rem" }}
+        >
+          <i className="fa fa-angle-down arrow-down-icon-inverted"></i>
+        </button>
       </div>
     </div>
   );

@@ -42,11 +42,9 @@ export const Photowall = ({
                 No albums found with these filters!
               </div>
             )}
-
             {!filtered && emptyAlbums && (
               <div className="no-albums-found ">No albums to show!</div>
             )}
-
             {!emptyAlbums && (
               // <FadeIn>
               <div className="photo-wall row">
@@ -56,6 +54,7 @@ export const Photowall = ({
                       key={index}
                       album={album}
                       type={PhotoContainerType.PHOTOC_MAIN}
+                      lazyLoad={true}
                     />
                   ) : (
                     <PhotoContainer

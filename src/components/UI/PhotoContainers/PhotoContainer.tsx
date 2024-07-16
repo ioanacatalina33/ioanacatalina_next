@@ -75,7 +75,11 @@ export const PhotoContainer = ({
       : "photo-col col-lg-3 col-md-4 col-sm-6 ";
 
   // version two
-  colsClass = colsClass + " photo-col-padding-v2";
+  colsClass =
+    colsClass +
+    (album.type === AlbumType.Dance
+      ? " photo-col-padding-v3"
+      : " photo-col-padding-v2");
 
   const loadedImage = (
     <img
@@ -115,7 +119,14 @@ export const PhotoContainer = ({
             ) : (
               loadedImage
             )}
-            <span style={getTitleStyle()} className="photo-container-title">
+            <span
+              style={getTitleStyle()}
+              className={
+                album.type === AlbumType.Dance
+                  ? "photo-container-title photo-container-title-dance"
+                  : "photo-container-title"
+              }
+            >
               {titleText}
             </span>
           </div>
