@@ -42,45 +42,45 @@ export const MapComponent = ({
       : {
           longitude: 0,
           latitude: 44.854256,
-          zoom: 1.3,
+          zoom: 2.2,
         },
   );
 
   const [markerSize, setMarkerSize] = useState({
     width: "1.2rem",
     height: "1.49rem",
-    offsetLeft: 1,
-    setOffsetTop: 1,
+    offsetLeft: 0,
+    setOffsetTop: 0,
   });
 
   useEffect(() => {
     if (viewport.zoom < 2)
       setMarkerSize({
-        width: "0.7rem",
-        height: "1rem",
-        offsetLeft: -5.6,
-        setOffsetTop: -16,
+        width: "0.9rem",
+        height: "1.2rem",
+        offsetLeft: 0,
+        setOffsetTop: -7,
       });
     else if (viewport.zoom < 3.2)
       setMarkerSize({
         width: "1.2rem",
         height: "1.49rem",
-        offsetLeft: -9.6,
-        setOffsetTop: -23.84,
+        offsetLeft: 0,
+        setOffsetTop: -9,
       });
     else if (viewport.zoom < 5)
       setMarkerSize({
         width: "1.5rem",
         height: "1.86rem",
-        offsetLeft: -12,
-        setOffsetTop: -29.76,
+        offsetLeft: 0,
+        setOffsetTop: -10,
       });
     else
       setMarkerSize({
         width: "2rem",
         height: "2.5rem",
-        offsetLeft: -16,
-        setOffsetTop: -40,
+        offsetLeft: 0,
+        setOffsetTop: -14,
       });
   }, [viewport.zoom]);
 

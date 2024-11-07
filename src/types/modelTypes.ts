@@ -22,6 +22,8 @@ export interface Album {
   subtype?: string;
   url?: string;
   identifier: string;
+  description?: string;
+  keywords?: string;
 }
 
 export interface AlbumDetails extends Album {

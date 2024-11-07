@@ -37,7 +37,10 @@ export const Search = () => {
       ).length > 0 ||
       article.subtype.toLowerCase().indexOf(query) > -1 ||
       article.type.toLowerCase().indexOf(query) > -1 ||
-      article.country.toLowerCase().indexOf(query) > -1
+      article.country.toLowerCase().indexOf(query) > -1 ||
+      article.name_location.toLowerCase().indexOf(query) > -1 ||
+      article.description?.toLowerCase().indexOf(query) > -1 ||
+      article.keywords?.toLowerCase().indexOf(query) > -1
     );
   }
 
