@@ -24,6 +24,7 @@ export interface AppStore {
   allArticles: Album[];
   isMobileSearch: boolean;
   queryText: string;
+  travelPageCount: number;
   filters: {
     travel: Filters;
     dance: Filters;

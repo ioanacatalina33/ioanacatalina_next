@@ -5,13 +5,13 @@ export const FlexElement1 = styled.div`
 `;
 
 export const FlexElement2 = styled.div`
-  flex: 1 0 50%;
+  flex: 1 0 30%;
 `;
 
 export const AvatarIcon = styled.img`
   border-radius: 50%;
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
 `;
 
 export const FollowMeFlex = styled.div`

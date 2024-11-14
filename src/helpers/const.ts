@@ -15,13 +15,6 @@ export const rootPath =
 export const PATH_LOGO = "img/Logos/";
 export const PATH_ARTICLES = "/img";
 
-export const Colors = {
-  primary: "#fec400",
-  secondary: {
-    main: "#2a2a2a",
-  },
-};
-
 export const Months = [
   "Jan",
   "Feb",

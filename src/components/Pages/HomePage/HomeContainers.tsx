@@ -4,27 +4,28 @@ import { PhotoContainerHome } from "components/UI/PhotoContainers";
 export const HomeContainers = () => {
   return (
     <div className="row home-container">
-      <PhotoContainerHome name="Map" url="/map" img="/img/Home/map.jpg" />
       <PhotoContainerHome
-        name="Travel"
-        url="/travel"
-        img="/img/Home/travel.jpg"
+        name="My Story"
+        url="/about"
+        img="/img/Home/mystory.jpg"
       />
-      <PhotoContainerHome name="Dance" url="/dance" img="/img/Home/dance.jpg" />
       <PhotoContainerHome
         name="Highlights"
         url="/highlights"
         img="/img/Home/highlights.jpg"
       />
+      <PhotoContainerHome name="Blog" url="/blog" img="/img/Home/blog.jpg" />
+
+      <PhotoContainerHome name="Map" url="/map" img="/img/Home/map_.jpg" />
       <PhotoContainerHome
-        name="About me"
-        url="/about"
-        img="/img/Home/aboutme.jpg"
+        name="Travel"
+        url="/travel"
+        img="/img/Home/travel.jpg"
       />
       <PhotoContainerHome
-        name="Collaborations"
-        url="/collaborations"
-        img="/img/Home/collaborations.jpg"
+        name="Work with me"
+        url="/work-with-me"
+        img="/img/Home/workwithme.jpg"
       />
     </div>
   );

@@ -3,29 +3,39 @@ import React from "react";
 import { ScreenType } from "types/enums";
 import { useSelector } from "hooks/utils";
 
-import { SubscribeContent } from "../SubscribeContent";
-import { Colors } from "helpers";
-import { Button } from "react-bootstrap";
-import { ShopLink } from "../Advertising";
 import {
   AvatarIcon,
   FlexElement1,
   FlexElement2,
   FollowMeFlex,
 } from "./FollowMe.style";
+import { SocialMediaButtons } from "../SocialMediaButtons/SocialMediaButtons";
+import { Flex } from "../Flex/Flex";
+import { SpacingOffsets } from "helpers/cssGenerators";
 
-interface FollowMeInterface {
+interface FollowMeInterface extends SpacingOffsets {
   subscribe?: boolean;
   invertColors?: boolean;
+  showSocialMedia?: boolean;
 }
 
-export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
+export const FollowMe = ({
+  invertColors,
+  showSocialMedia = true,
+  marginOffset,
+  paddingOffset,
+}: FollowMeInterface) => {
   const screenType = useSelector((state) => state.app.screenType);
 
   return (
-    <div
+    <Flex
+      marginOffset={marginOffset}
+      paddingOffset={paddingOffset}
+      fullWidth
       style={{
-        backgroundColor: invertColors ? Colors.secondary.main : undefined,
+        backgroundColor: invertColors
+          ? "rgb(var(--secondary-color))"
+          : undefined,
       }}
     >
       <FollowMeFlex
@@ -40,67 +50,19 @@ export const FollowMe = ({ subscribe, invertColors }: FollowMeInterface) => {
           className="text-container"
           style={{ color: invertColors ? "#fafafa" : undefined }}
         >
-          I&apos;m a <b>traveler</b>, <b>photographer</b> and <b>dancer</b>{" "}
-          finding joy in every step of my journey. Follow me on
-          <span className="text-left links-element">
-            <a
-              className="links-element-text link-photo-instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.instagram.com/ioana.catalina.e"
-            >
-              <img
-                alt=""
-                src="/img/sm_instagram_on.png"
-                className="mystory-socialmedia"
-              />
-            </a>
-            <a
-              className="links-element-text link-instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.instagram.com/ioana.catalina.e"
-              style={{ color: invertColors ? "#ffffff" : undefined }}
-            >
-              Instagram
-            </a>
-          </span>
-          for a glimpse into my adventures!
-          {/* <br />
+          I&apos;m Ioana, a passionate photographer and software engineer,
+          finding joy in every step of my journey. <br />
+          My work is dedicated to capturing the breathtaking beauty of our
+          <span style={{ color: "rgb(var(--primary-color))" }}>
+            {" "}
+            natural world
+          </span>{" "}
+          , while inspiring a deeper connection with nature and promoting a
+          greater commitment to its preservation.
           <br />
-          If you enjoy and want to support my work, you can
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.buymeacoffee.com/ioanacatalina"
-          >
-            <Button
-              style={{
-                textAlign: "center",
-                padding: "0.3rem 0.8rem 0.3rem 0.8rem",
-                margin: "0rem 0rem 0rem 0.8rem",
-                fontSize: "1.1rem",
-                fontFamily: "Segoe UI, Roboto, Sans serif, Oxygen",
-              }}
-              variant="warning"
-            >
-              <b>Buy me a coffee</b>
-            </Button>
-          </a> */}
-          {/* <span className="text-left links-element">
-            <a
-              className="links-element-text link-nationalg"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.buymeacoffee.com/ioanacatalina"
-              style={{ color: invertColors ? "#ffffff" : "" }}
-            >
-              buy me a coffee
-            </a>
-          </span>{" "} */}
-          {subscribe && <SubscribeContent />}
+          {showSocialMedia && <SocialMediaButtons darkColor={!invertColors} />}
         </FlexElement2>
       </FollowMeFlex>
-    </div>
+    </Flex>
   );
 };

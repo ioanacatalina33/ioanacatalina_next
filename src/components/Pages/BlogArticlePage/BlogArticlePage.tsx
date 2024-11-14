@@ -39,7 +39,7 @@ export function BlogArticlePage({ fullPost }: BlogArticlePageInterface) {
 
   const FullSizeLayer = useFullScreenlayer(StaticPage.BLOG, {
     alt: post.id,
-    class: "img-loaded-text-center",
+    class: { textPosition: "img-loaded-text-center" },
     text: post.title,
     url: coverImg,
   });

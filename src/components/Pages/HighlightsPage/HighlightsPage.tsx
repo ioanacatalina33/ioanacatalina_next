@@ -14,7 +14,7 @@ export const HighlightsPage = ({ albums }: HighlightsProps) => {
   return (
     <>
       {FullSizeLayer}
-      <div className="App">
+      <div className="App" style={{ marginBottom: "2rem" }}>
         <h2>Highlights</h2>
 
         <Photowall albums={albums} type={AlbumType.Highlights} />

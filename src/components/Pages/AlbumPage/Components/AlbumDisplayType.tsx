@@ -22,7 +22,7 @@ export const AlbumDisplayType = ({
     //const backgroundImageStyle = type === "1" ? "url('/img/table_display_1.png')" : type === "2" ? "url('/img/table_display_2.png')" : "url('/img/table_display_3.png')"
     if (hover)
       return {
-        backgroundColor: "#e2a71e",
+        backgroundColor: "rgb(var(--primary-color))",
         borderColor: "white",
         color: "white",
         backgroundImage: backgroundImageStyle,
@@ -40,14 +40,14 @@ export const AlbumDisplayType = ({
   }
 
   return screenType !== ScreenType.Mobile ? (
-    <div className="album-subheader-element2">
+    <div style={{ marginBottom: "1rem" }}>
       <button
         onClick={() => optionSelected(PhotosDisplayType.FOUR)}
         style={getButtonStyle(
           PhotosDisplayType.FOUR,
-          selected === PhotosDisplayType.FOUR
+          selected === PhotosDisplayType.FOUR,
         )}
-        className="filter-element radius-edge-left"
+        className="filter-element filter-element-album-display radius-edge-left"
       >
         <span
           onClick={() => optionSelected(PhotosDisplayType.FOUR)}
@@ -61,9 +61,9 @@ export const AlbumDisplayType = ({
         onClick={() => optionSelected(PhotosDisplayType.THREE)}
         style={getButtonStyle(
           PhotosDisplayType.THREE,
-          selected === PhotosDisplayType.THREE
+          selected === PhotosDisplayType.THREE,
         )}
-        className="filter-element"
+        className="filter-element filter-element-album-display"
       >
         <span
           onClick={() => optionSelected(PhotosDisplayType.THREE)}
@@ -77,9 +77,9 @@ export const AlbumDisplayType = ({
         onClick={() => optionSelected(PhotosDisplayType.TWO)}
         style={getButtonStyle(
           PhotosDisplayType.TWO,
-          selected === PhotosDisplayType.TWO
+          selected === PhotosDisplayType.TWO,
         )}
-        className="filter-element"
+        className="filter-element filter-element-album-display"
       >
         <span
           onClick={() => optionSelected(PhotosDisplayType.TWO)}
@@ -93,9 +93,9 @@ export const AlbumDisplayType = ({
         onClick={() => optionSelected(PhotosDisplayType.ONE)}
         style={getButtonStyle(
           PhotosDisplayType.ONE,
-          selected === PhotosDisplayType.ONE
+          selected === PhotosDisplayType.ONE,
         )}
-        className="filter-element radius-edge-right"
+        className="filter-element filter-element-album-display radius-edge-right"
       >
         <span
           onClick={() => optionSelected(PhotosDisplayType.ONE)}

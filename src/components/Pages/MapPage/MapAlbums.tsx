@@ -37,7 +37,7 @@ export const MapAlbums = ({
             marginBottom: "2rem",
           }}
         >
-          {location ? "Trips in " + location.name : ""}
+          {location ? location.name : ""}
         </h3>
       )}
 

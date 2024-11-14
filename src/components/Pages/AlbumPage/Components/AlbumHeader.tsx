@@ -29,7 +29,8 @@ export const AlbumHeader = ({
   const { isIE } = useBrowsers();
 
   const blurrBackground = {
-    backgroundImage: "url('" + coverImageSrc + "')",
+    // backgroundImage: "url('" + coverImageSrc + "')",
+    backgroundColor: "rgba(var(--secondary-color),0.9)",
   };
 
   return (
@@ -65,19 +66,7 @@ export const AlbumHeader = ({
             </Button>
           </Link>
         )}
-        {/* <ImageLoader
-          style={{
-            objectFit:
-              type === AlbumType.Highlights || isCoverLarge
-                ? "cover"
-                : "contain",
-            width: isIE ? "auto" : "100%",
-          }}
-          src={coverImageSrc}
-          loadedClassName="img-normal-loaded"
-          loadingClassName="img-normal-loading"
-          alt={title + " " + subtitle + " header"}
-        /> */}
+
         <img
           className="img-loaded"
           style={{

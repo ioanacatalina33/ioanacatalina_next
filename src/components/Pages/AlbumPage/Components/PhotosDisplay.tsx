@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 import { ModalBuyDigital } from "components/UI/Modals";
 import { useScreenType } from "hooks";
-import { PhotosDisplayType, ScreenType } from "types";
+import { PhotosDisplayType } from "types";
 
 import { ImageLoaderDisplay } from "./ImageLoaderDisplay";
 import { SlideshowModal } from "./SlideshowModal";
 import LazyLoad from "react-lazy-load";
+import { Flex } from "components/UI/Flex/Flex";
 
 interface PhotosDisplayProps {
   currentIndex: number;
@@ -25,7 +26,7 @@ export const PhotosDisplay = ({
   displayMode,
   currentIndex,
 }: PhotosDisplayProps) => {
-  const { screenType } = useScreenType();
+  const { isDesktop, isMobile } = useScreenType();
 
   const [digitalShow, setDigitalShow] = useState<number | undefined>(undefined);
 
@@ -52,7 +53,7 @@ export const PhotosDisplay = ({
   }
 
   async function imageClicked(index: number) {
-    if (screenType !== ScreenType.Mobile) {
+    if (!isMobile) {
       setIndex(index);
     }
   }
@@ -83,11 +84,7 @@ export const PhotosDisplay = ({
         onClick={() => imageClicked(index)}
         key={index}
         style={{
-          width: getPicWidth(
-            screenType === ScreenType.Mobile
-              ? PhotosDisplayType.ONE
-              : displayMode,
-          ),
+          width: getPicWidth(isMobile ? PhotosDisplayType.ONE : displayMode),
         }}
         className="photo-display-container"
       >
@@ -95,7 +92,9 @@ export const PhotosDisplay = ({
           <LazyLoad>
             <ImageLoaderDisplay
               displayMode={displayMode}
-              loadedClassName="img-display-loaded image-zoom"
+              loadedClassName={
+                "img-display-loaded " + (isDesktop ? "image-zoom" : "")
+              }
               loadingClassName="img-display-loading"
               src={image}
               alt={alt + " " + index}
@@ -116,7 +115,7 @@ export const PhotosDisplay = ({
   }
 
   return (
-    <div>
+    <Flex fullWidth column align={(a) => a.center}>
       <SlideshowModal
         show={modalShow}
         images={images}
@@ -140,7 +139,7 @@ export const PhotosDisplay = ({
       {/* <div className="photo-display-grid">
         {images.map((image, index) => <></>)}
       </div> */}
-    </div>
+    </Flex>
   );
 };
 

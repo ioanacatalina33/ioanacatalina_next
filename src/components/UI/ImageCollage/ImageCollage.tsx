@@ -37,7 +37,11 @@ export const ImageCollage = ({
   const imageStyle = {
     width: imageWidthPercentage + "%",
     padding:
-      !photoPadding || screenType === ScreenType.Mobile ? "0rem" : photoPadding,
+      screenType !== ScreenType.Desktop
+        ? "0.15rem"
+        : !photoPadding
+          ? "0.08rem"
+          : photoPadding,
   };
   let imageHeight = 0;
   const fullWidth = fullWidthParam
@@ -64,7 +68,8 @@ export const ImageCollage = ({
                   : screenType !== ScreenType.Mobile
                     ? "3rem"
                     : "1rem") + " auto",
-              padding: "0rem",
+              padding:
+                screenType !== ScreenType.Desktop ? "0.15rem" : "0.08rem",
             }
           : {}
       }

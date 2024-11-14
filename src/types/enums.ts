@@ -29,6 +29,7 @@ export enum StaticPage {
   MAP = "Map",
   ABOUT = "MyStory",
   COLLABORATORS = "Coolab",
+  WORK_WITH_ME = "WorkWithMe",
   CONTACT = "Contact",
   GEENA = "Geena",
   BLOG = "Blog",

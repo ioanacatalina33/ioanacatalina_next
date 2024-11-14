@@ -1,4 +1,3 @@
-import { Colors } from "helpers/const";
 import { AlbumType } from "types/enums";
 import React, { useEffect, useState } from "react";
 import { ButtonToolbar, Button } from "react-bootstrap";
@@ -66,7 +65,7 @@ export const FilterComponent = ({
       if (selected.indexOf(selectedValue) > -1) {
         //exists - take it out
         selectedValues = selectedValues.filter(
-          (value) => selectedValue !== value
+          (value) => selectedValue !== value,
         );
       } else {
         //doesn't exist - add it
@@ -76,7 +75,7 @@ export const FilterComponent = ({
       if (selected.indexOf(selectedValue) > -1) {
         if (selected.length === 1) {
           selectedValues = selectedValues.filter(
-            (value) => selectedValue !== value
+            (value) => selectedValue !== value,
           );
         } else {
           selectedValues = [];
@@ -101,7 +100,7 @@ export const FilterComponent = ({
   };
 
   const styleButtonClicked = {
-    backgroundColor: "#e2a71e", //"#f6bc00",
+    backgroundColor: "rgb(var(--primary-color))",
     borderColor: "white",
     color: "#ffffff",
     ...buttonStyle,
@@ -123,7 +122,7 @@ export const FilterComponent = ({
                 style={
                   selected.includes(value)
                     ? {
-                        boxShadow: "0 4px 1px -2px " + Colors.primary,
+                        boxShadow: "0 4px 1px -2px rgb(var(--primary-color))",
                         color: "#1b1b1b",
                       }
                     : {}
@@ -178,11 +177,11 @@ export const FilterComponent = ({
                   ? " radius-edge-top"
                   : " radius-edge-left")
               : index === values.length - 1
-              ? filterClassName +
-                (mapFilters || albumType === AlbumType.Dance
-                  ? " radius-edge-bottom"
-                  : " radius-edge-right")
-              : filterClassName;
+                ? filterClassName +
+                  (mapFilters || albumType === AlbumType.Dance
+                    ? " radius-edge-bottom"
+                    : " radius-edge-right")
+                : filterClassName;
           return (
             <Button
               className={className}
@@ -194,7 +193,7 @@ export const FilterComponent = ({
               }
               size={filterName === FilterName.months ? "sm" : undefined}
             >
-              {value}
+              {value === "City" ? "Urban" : value}
             </Button>
           );
         })}

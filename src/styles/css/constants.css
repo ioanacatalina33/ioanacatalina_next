@@ -1,0 +1,12 @@
+:root {
+  --primary-color: 30, 164, 118;
+  --primary-color-hover: 64, 212, 175;
+
+  --secondary-color: 42, 42, 42;
+
+  --header-color: 33, 33, 33;
+
+  --primary-color-old: #fec400;
+
+  --content-width: 55rem;
+}

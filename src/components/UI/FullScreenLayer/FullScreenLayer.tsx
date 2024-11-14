@@ -7,8 +7,6 @@ import { useBrowsers } from "hooks/useBrowsers";
 import { useScreenSize, useScreenType } from "hooks/utils";
 import { FullSizeImage } from "staticModel";
 
-import { ImageLoader } from "../ImageLoader";
-
 interface FullScreenLayerProps {
   fullSizeImage: FullSizeImage;
   inverse?: boolean;
@@ -19,31 +17,66 @@ export const FullScreenLayer = ({
   inverse,
 }: FullScreenLayerProps) => {
   const { screenHeight } = useScreenSize();
-  const { screenType } = useScreenType();
+  const { isMobile, screenType, isDesktop } = useScreenType();
   const { isIE } = useBrowsers();
 
+  const isMobileOrUndefined = screenType === undefined || isMobile;
+  const headerVisible = isDesktop;
+
+  const splitText = fullSizeImage.text.split("<br/>");
+
   return (
-    <div style={{ marginBottom: "100vh" }}>
-      {/* <LazyLoad debounce={false} offsetVertical={1000}> */}
-      <div>
-        <ImageLoader
+    <div
+      className={"header-album"}
+      style={headerVisible ? { height: "100vh", marginTop: "-60px" } : {}}
+    >
+      <div className="album-header-wrapper">
+        <img
+          className="img-loaded"
+          style={{
+            objectFit: "cover",
+            width: isIE ? "auto" : "100%",
+          }}
           src={fullSizeImage.url}
-          loadedClassName="img-loaded"
-          loadingClassName="img-loading"
-          style={{ width: isIE ? "auto" : "100%" }}
           alt={fullSizeImage.alt}
         />
-        <div className="FullScreen-imgOverlay" />
+        <div className="header-shader" />
 
         {fullSizeImage.text !== undefined && fullSizeImage.text !== "" ? (
           <div
             className={
-              screenType === undefined || screenType !== ScreenType.Mobile
-                ? fullSizeImage.class + " img-loaded-text-span opacity45"
-                : "img-loaded-text-center opacity45 img-loaded-text-span"
+              (!isMobileOrUndefined
+                ? fullSizeImage.class.textPosition
+                : "img-loaded-text-center") + " img-loaded-text-span"
             }
+            style={{
+              width: isMobileOrUndefined
+                ? "85%"
+                : fullSizeImage.class.width
+                  ? fullSizeImage.class.width + "%"
+                  : "auto",
+              opacity: isMobile
+                ? "0.50"
+                : fullSizeImage.class.opacity ?? "0.45",
+            }}
           >
-            <h1>{fullSizeImage.text}</h1>
+            <h1>
+              {splitText.length === 1
+                ? fullSizeImage.text
+                : splitText.map((text) => (
+                    <>
+                      {text}
+                      <br />
+                    </>
+                  ))}
+            </h1>
+            {fullSizeImage.author ? (
+              <h4 style={{ marginTop: "-0.6rem" }}>
+                {"—" + fullSizeImage.author}
+              </h4>
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           ""
@@ -64,6 +97,7 @@ export const FullScreenLayer = ({
           ></i>
         </button>
       </div>
+      {/* </div> */}
       {/* </LazyLoad> */}
     </div>
   );

@@ -211,12 +211,15 @@ export function getMetaForGeena(): MetaData {
 
 export function getMetaForBlogPost(blog: BlogPost): MetaData {
   return {
-    title: blog.title,
+    title: blog ? blog.title : "",
     keywords:
-      "photography, blog, post, articles, mind " + blog.keywords.join(","),
-    description: "My adventures in words. " + blog.text.slice(0, 200),
-    ogimage: "/img/Blog/" + blog.id + ".jpg",
-    ogdescription: blog.subtitle + " " + blog.text.slice(0, 200),
+      "photography, blog, post, articles, mind " +
+      (blog ? blog.keywords.join(",") : ""),
+    description:
+      "My adventures in words. " + (blog ? blog.text.slice(0, 200) : ""),
+    ogimage: blog ? "/img/Blog/" + blog.id + ".jpg" : "",
+    ogdescription:
+      (blog ? blog.subtitle : "") + " " + (blog ? blog.text.slice(0, 200) : ""),
     h1: "",
   };
 }
@@ -242,7 +245,7 @@ export function getMetaForTravelAlbum(article: AlbumDetails): MetaData {
           " " +
           getFileDateTitleMonthStringWithoutDay(
             article.date_start,
-            article.date_end
+            article.date_end,
           ) +
           (article.metadata ? `. ${article.metadata}. ` : ". ") +
           albumTravelDefaultDescription +
@@ -284,7 +287,7 @@ export function getMetaForDanceAlbum(article: AlbumDetails): MetaData {
       " on " +
       getFileDateTitleMonthStringWithoutDay(
         article.date_start,
-        article.date_end
+        article.date_end,
       ) +
       (article.metadata ? `. ${article.metadata}. ` : ". ") +
       albumDanceDefaultDescription,

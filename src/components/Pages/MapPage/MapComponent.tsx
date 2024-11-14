@@ -47,8 +47,8 @@ export const MapComponent = ({
   );
 
   const [markerSize, setMarkerSize] = useState({
-    width: "1.2rem",
-    height: "1.49rem",
+    width: "1.1rem",
+    height: "1.39rem",
     offsetLeft: 0,
     setOffsetTop: 0,
   });
@@ -56,29 +56,29 @@ export const MapComponent = ({
   useEffect(() => {
     if (viewport.zoom < 2)
       setMarkerSize({
-        width: "0.9rem",
-        height: "1.2rem",
+        width: "0.85rem",
+        height: "1.14rem",
         offsetLeft: 0,
         setOffsetTop: -7,
       });
     else if (viewport.zoom < 3.2)
       setMarkerSize({
-        width: "1.2rem",
-        height: "1.49rem",
+        width: "1.1rem",
+        height: "1.39rem",
         offsetLeft: 0,
         setOffsetTop: -9,
       });
     else if (viewport.zoom < 5)
       setMarkerSize({
-        width: "1.5rem",
-        height: "1.86rem",
+        width: "1.2rem",
+        height: "1.5rem",
         offsetLeft: 0,
         setOffsetTop: -10,
       });
     else
       setMarkerSize({
-        width: "2rem",
-        height: "2.5rem",
+        width: "1.7rem",
+        height: "2.2rem",
         offsetLeft: 0,
         setOffsetTop: -14,
       });
@@ -125,6 +125,7 @@ export const MapComponent = ({
       style={{ width: width ?? "100vw", height: height ?? "100vh" }}
       mapboxAccessToken={token}
       mapStyle="mapbox://styles/mapbox/outdoors-v11"
+      //mapStyle="mapbox://styles/mapbox/satellite-v9"
       onZoom={(zoom) => setViewport(zoom.viewState)}
     >
       {markers}

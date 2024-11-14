@@ -10,6 +10,7 @@ import { FiltersType } from "store";
 import { Album } from "types/modelTypes";
 import { ShopLink } from "components/UI/Advertising";
 import { LogosExplanation } from "components/UI/Filters/components";
+import { Flex } from "components/UI/Flex/Flex";
 
 interface DanceProps {
   albums: Album[];
@@ -34,7 +35,7 @@ export const DancePage = ({ albums, lazyload }: DanceProps) => {
         {/* <ShopLink center /> */}
         <LogosExplanation />
         <FiltersEvents albums={albums} />
-        <div style={{ display: "flex" }}>
+        <Flex>
           <FiltersDance albums={albums} showFilters />
           <div style={{ flex: 5 }}>
             <div style={{ paddingLeft: "0.2rem", paddingTop: "1rem" }}>
@@ -48,7 +49,7 @@ export const DancePage = ({ albums, lazyload }: DanceProps) => {
               filtered={isFiltered}
             />
           </div>
-        </div>
+        </Flex>
       </div>
     </>
   );

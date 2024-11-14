@@ -874,12 +874,14 @@ export const danceEvents: DanceEvent[] = [
   },
 ];
 
+export const collaborativeDanceEvents = danceEvents.filter(
+  (event) => event.subtype !== "PZM" && event.subtype !== "ForroVsZouk",
+);
+
 export const getDanceEvent = (subtype: string): DanceEvent | undefined => {
-  const event = danceEvents.filter((event) => {
+  return danceEvents.find((event) => {
     return event.subtype === subtype;
   });
-  if (event.length === 0) return undefined;
-  else return event[0];
 };
 
 export const getDanceEventMeta = (event: DanceEvent) => {

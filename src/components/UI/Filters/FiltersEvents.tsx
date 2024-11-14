@@ -51,7 +51,7 @@ export const FiltersEvents = ({ albums }: LogosFiltersProps) => {
   return !albums.length ? (
     <></>
   ) : (
-    <div className="filters-logos">
+    <div className="filters-background">
       <FilterComponent
         filterName={FilterName.subtypes}
         albumType={AlbumType.Dance}

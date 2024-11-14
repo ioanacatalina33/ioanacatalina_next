@@ -1,347 +1,199 @@
 import React from "react";
 
-import { useSelector } from "hooks/utils";
+import { useScreenType } from "hooks/utils";
 
-import { ScreenType } from "types/enums";
-import { Colors } from "helpers/const";
 import Link from "next/link";
+import { SocialMediaButtons } from "components/UI/SocialMediaButtons/SocialMediaButtons";
+import { Flex } from "components/UI/Flex/Flex";
 
 export const Footer = () => {
-  const screenType = useSelector((state) => state.app.screenType);
+  const { isDesktop, isMobile, isTablet } = useScreenType();
 
-  const linksLeft = (
+  const linksRight = (
     <div
-      className="col text-left my-auto"
-      style={{ padding: "0rem 1rem 0rem 1rem" }}
+      style={{
+        padding: "0rem 1rem 0rem 2rem",
+      }}
     >
       <Link scroll={false} href="/map" className="bottom-element-text">
         MAP
       </Link>
       <Link scroll={false} href="/travel/all" className="bottom-element-text">
-        {" "}
         Travel
       </Link>
-      <Link scroll={false} href="/dance/all" className="bottom-element-text">
+      <Link scroll={false} href="/dance" className="bottom-element-text">
         Dance
       </Link>
-      <Link scroll={false} href="/highlights" className="bottom-element-text">
-        Highlights
-      </Link>
-      {/* <Link scroll={false} href="/blog" className="bottom-element-text">
-        Blog
-      </Link> */}
-    </div>
-  );
-
-  const linksRight = (
-    <div
-      className="col text-left my-auto"
-      style={{ padding: "0rem 1rem 0rem 1rem" }}
-    >
-      <Link scroll={false} href="/about" className="bottom-element-text">
-        My story
-      </Link>
-      <Link
-        scroll={false}
-        href="/collaborations"
-        className="bottom-element-text"
-      >
-        Collaboration
-      </Link>
-
       <Link scroll={false} href="/contact" className="bottom-element-text">
         Contact
       </Link>
     </div>
   );
 
-  const linkFacebook = (
-    <a
-      className="bottom-element-sm"
-      target="_blank"
-      style={{ margin: "0.2rem" }}
-      rel="noopener noreferrer"
-      href="https://www.facebook.com/IoanaCatalinaBrazilianZouk"
+  const linksLeft = (
+    <div
+      style={{
+        padding: "0rem 1rem 0rem 1rem",
+      }}
     >
-      <img
-        src="/img/sm_facebook_on.png"
-        height="25"
-        alt="Facebook"
-        // onMouseOver={(e) =>
-        //   (e.currentTarget.src = "/img/sm_facebook_off.png")
-        // }
-        // onMouseOut={(e) =>
-        //   (e.currentTarget.src = "/img/sm_facebook_off.png")
-        // }
-      />
-    </a>
-  );
+      <Link scroll={false} href="/about" className="bottom-element-text">
+        My story
+      </Link>
+      <Link scroll={false} href="/highlights" className="bottom-element-text">
+        Highlights
+      </Link>
+      <Link scroll={false} href="/blog" className="bottom-element-text">
+        Blog
+      </Link>
 
-  const linkInstagram = (
-    <a
-      className="bottom-element-sm"
-      target="_blank"
-      style={{ margin: "0.2rem" }}
-      rel="noopener noreferrer"
-      href="https://www.instagram.com/ioana.catalina.e/"
-    >
-      <img
-        src="/img/sm_instagram_on.png"
-        height="25"
-        alt="Instagram"
-        // onMouseOver={(e) =>
-        //   (e.currentTarget.src = "/img/sm_instagram_on.png")
-        // }
-        // onMouseOut={(e) =>
-        //   (e.currentTarget.src = "/img/sm_instagram_off.png")
-        // }
-      />
-    </a>
-  );
-
-  const linkFliker = (
-    <a
-      className="bottom-element-sm"
-      target="_blank"
-      style={{ margin: "0.2rem" }}
-      rel="noopener noreferrer"
-      href="https://www.flickr.com/photos/ioana_e"
-    >
-      <img
-        src="/img/sm_flickr_on.png"
-        height="25"
-        alt="Flickr"
-        // onMouseOver={(e) =>
-        //   (e.currentTarget.src = "/img/sm_flickr_on.png")
-        // }
-        // onMouseOut={(e) =>
-        //   (e.currentTarget.src = "/img/sm_flickr_off.png")
-        // }
-      />
-    </a>
-  );
-
-  const link500Px = (
-    <a
-      className="bottom-element-sm"
-      target="_blank"
-      style={{ margin: "0.2rem" }}
-      rel="noopener noreferrer"
-      href="https://500px.com/ioanacatalinae"
-    >
-      <img
-        src="/img/sm_500px_on.png"
-        height="25"
-        alt="500px"
-        // onMouseOver={(e) =>
-        //   (e.currentTarget.src = "/img/sm_500px_on.png")
-        // }
-        // onMouseOut={(e) =>
-        //   (e.currentTarget.src = "/img/sm_500px_off.png")
-        // }
-      />
-    </a>
-  );
-
-  const linkShutterstock = (
-    <a
-      className="bottom-element-sm"
-      target="_blank"
-      style={{ margin: "0.2rem" }}
-      rel="noopener noreferrer"
-      href="https://www.shutterstock.com/g/IoanaCatalinaE"
-    >
-      <img
-        src="/img/sm_shutterstock_on.png"
-        height="25"
-        alt="Shutterstock"
-        // onMouseOver={(e) =>
-        //   (e.currentTarget.src = "/img/sm_shutterstock_on.png")
-        // }
-        // onMouseOut={(e) =>
-        //   (e.currentTarget.src = "/img/sm_shutterstock_off.png")
-        // }
-      />
-    </a>
-  );
-
-  const linkAdobeStock = (
-    <a
-      className="bottom-element-sm"
-      target="_blank"
-      style={{ margin: "0.2rem" }}
-      rel="noopener noreferrer"
-      href="https://stock.adobe.com/es/contributor/206273411/icephotography"
-    >
-      <img
-        src="/img/sm_adobe_on.png"
-        height="25"
-        alt="Adobe Stock"
-        // onMouseOver={(e) =>
-        //   (e.currentTarget.src =
-        //     "/img/sm_adobe_on.png")
-        // }
-        // onMouseOut={(e) =>
-        //   (e.currentTarget.src =
-        //     "/img/sm_adobe_off.png")
-        // }
-      />
-    </a>
-  );
-
-  const socialMedia = (
-    <div style={{ padding: "1rem 0rem 1rem 0rem" }}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "fit-content",
-        }}
-      >
-        {screenType !== ScreenType.Mobile ? (
-          <>
-            <div style={{ margin: "0.2rem" }}>
-              {linkFacebook}
-              {linkInstagram}
-            </div>
-            <div style={{ margin: "0.2rem" }}>
-              {linkFliker}
-              {link500Px}
-            </div>
-            <div style={{ margin: "0.2rem" }}>
-              {linkShutterstock}
-              {linkAdobeStock}
-            </div>{" "}
-          </>
-        ) : (
-          <>
-            <div
-              style={{ margin: "0.2rem", display: "flex", flexWrap: "wrap" }}
-            >
-              {linkFacebook}
-              {linkInstagram}
-              {linkFliker}
-              {link500Px}
-              {linkShutterstock}
-              {linkAdobeStock}
-            </div>
-          </>
-        )}
-      </div>
+      <Link scroll={false} href="/work-with-me" className="bottom-element-text">
+        Work with me
+      </Link>
     </div>
   );
 
   const iconsLeft = (
     <>
-      {/* <div style={{ maxWidth: "5rem", margin: "1.5rem" }}>
-        <img
-          style={{ height: "auto", width: "100%" }}
-          src="/img/logo_airplane.png"
-          alt="Plane"
-        />
-      </div> */}
-      <div style={{ maxWidth: "4rem", margin: "1.5rem" }}>
-        <img
-          style={{ height: "auto", width: "100%" }}
-          src="/img/logo_camera.png"
-          alt="Photo Camera"
-        />
+      {/* {isDesktop && ( */}
+      <div className="footer-img-container footer-img-tree">
+        <a href="/travel/back-to-the-jungle-in-brazil-2024">
+          <img
+            style={{ height: "auto", width: "100%", opacity: "0" }}
+            src="/img/logo_tree.png"
+            alt="Tree"
+          />
+        </a>
+      </div>
+      {/* )} */}
+
+      <div className="footer-img-container footer-img-camera">
+        <a href="/work-with-me">
+          <img
+            style={{ height: "auto", width: "100%", opacity: "0" }}
+            src="/img/logo_camera.png"
+            alt="Photo Camera"
+          />
+        </a>
       </div>
     </>
   );
 
   const iconsRight = (
     <>
-      <div style={{ maxWidth: "5rem", margin: "1.5rem" }}>
+      <div className={"footer-img-container footer-img-golden"}>
         <a href="/highlights/geena">
           <img
-            style={{ width: "100%", maxWidth: "5.5rem" }}
+            style={{
+              width: "100%",
+              height: "auto",
+              opacity: "0",
+            }}
             src="/img/logo_golden.png"
             alt="Golden Retriever"
-            onMouseOver={(e) =>
-              (e.currentTarget.src = "/img/logo_golden_color.png")
-            }
-            onMouseOut={(e) => (e.currentTarget.src = "/img/logo_golden.png")}
           />
         </a>
       </div>
-      <div style={{ maxWidth: "7rem", margin: "1.5rem" }}>
-        <img
-          style={{ height: "auto", width: "100%" }}
-          src="/img/logo_mountain.png"
-          alt="Mountain"
-        />
+
+      {/* {isDesktop && ( */}
+      <div className="footer-img-container footer-img-mountain">
+        <a href="/highlights/landscape">
+          <img
+            style={{ height: "auto", width: "100%", opacity: "0" }}
+            src="/img/logo_mountain.png"
+            alt="Mountain"
+          />
+        </a>
       </div>
+      {/* )} */}
     </>
   );
 
+  const footerIcons = (
+    <Flex>
+      {iconsLeft}
+      {iconsRight}
+    </Flex>
+  );
+
   return (
-    <div
+    <Flex
+      column
+      className="footer_font"
       style={{
         width: "100%",
-        backgroundColor: Colors.secondary.main,
+
+        backgroundColor: "rgb(var(--secondary-color))",
         alignItems: "center",
-        paddingTop: "1.5rem",
+        paddingTop: "2rem",
       }}
     >
-      <div
+      {isMobile && footerIcons}
+      <Flex
+        justify={(j) => j.center}
+        align={(a) => a.center}
         style={{
-          display: "flex",
-          width: "fit-content",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: screenType === ScreenType.Desktop ? "row" : "column",
+          width: "94vw",
+          maxWidth: "1400px",
         }}
       >
-        {screenType !== ScreenType.Mobile && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
+        {!isMobile && (
+          <Flex
+            align={(a) => a.center}
+            justify={(j) => j.end}
+            style={{ flex: 1 }}
+            column={isTablet}
           >
             {iconsLeft}
-          </div>
+          </Flex>
         )}
-        <div
+
+        <Flex
+          align={(a) => a.center}
+          justify={(j) => j.center}
           style={{
-            padding:
-              screenType === ScreenType.Desktop
-                ? "0rem 3rem 0rem 3rem"
-                : "0rem",
-            display: "flex",
-            alignItems: "center",
+            padding: isDesktop ? "0rem 1rem 0rem 1rem" : "0rem",
+            flex: isDesktop ? 0.8 : 2,
           }}
         >
           {linksLeft}
           {linksRight}
-          {screenType !== ScreenType.Mobile && (
-            <>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              {socialMedia}
-            </>
-          )}
-        </div>
-        {screenType !== ScreenType.Mobile && (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
+        </Flex>
+        {!isMobile && (
+          <Flex
+            align={(a) => a.center}
+            justify={(j) => j.start}
+            style={{ flex: 1 }}
+            column={isTablet}
           >
             {iconsRight}
-          </div>
+          </Flex>
         )}
-        {screenType === ScreenType.Mobile && socialMedia}
-      </div>
-      <div
-        className="col-12 text-left"
-        style={{ color: "#999999", paddingLeft: "1rem" }}
+      </Flex>
+
+      <Flex
+        align={(a) => a.center}
+        column
+        paddingOffset={{ top: 0.5, bottom: 0.5 }}
+        marginOffset={{ top: 1 }}
+        // justify={(j) => j.between}
+        style={{
+          width: "94vw",
+          maxWidth: "1400px",
+          borderTop: "1px solid rgba(255,255,255,0.2)",
+        }}
       >
-        © Ioana Catalina E.{" "}
+        <SocialMediaButtons full />
+      </Flex>
+      <div
+        style={{
+          color: "#999999",
+          paddingBottom: "0.2rem",
+          width: "94vw",
+          maxWidth: "1400px",
+        }}
+      >
+        © Ioana Catalina E.
       </div>
-    </div>
+    </Flex>
   );
 };

@@ -16,7 +16,7 @@ export const Search = () => {
   const dispatch = useDispatch();
 
   async function searchInArticles(searchText: string) {
-    if (searchText === "") setArticlesFiltered([]);
+    if (searchText.length < 2) setArticlesFiltered([]);
     else {
       const queryText = searchText.toLowerCase().split(" ");
       const selectedArticles = allArticles.filter((article) => {

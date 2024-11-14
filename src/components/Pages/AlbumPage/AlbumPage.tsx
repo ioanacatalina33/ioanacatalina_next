@@ -22,6 +22,7 @@ import { PhotosDisplay } from "./Components/PhotosDisplay";
 import { AlbumRecommended } from "./Components/AlbumRecommended";
 import { AlbumRecommendedMyLife } from "./Components/AlbumRecommendedMyLife";
 import { ArticleSubHeader } from "components/UI/ArticleSubHeader";
+import { Flex } from "components/UI/Flex/Flex";
 
 interface AlbumPageProps {
   fullAlbum: FullAlbumDetails;
@@ -35,6 +36,10 @@ export const AlbumPage = ({
   const [selectedDisplay, setSelectedDisplay] = useState(DefaultDisplayType);
   const [currentIndex, setCurrentIndex] = useState(undefined);
   const [pathname, setPathname] = useState("");
+
+  const isTravelType = album.type === AlbumType.Travel;
+  const isDanceType = album.type === AlbumType.Dance;
+  const isHighlightType = album.type === AlbumType.Highlights;
 
   const [modalShow, setModalShow] = useState(false);
 
@@ -116,7 +121,7 @@ export const AlbumPage = ({
 
   const title = useMemo(
     () =>
-      album.type === AlbumType.Travel && !!album.locations
+      isTravelType && !!album.locations
         ? album.name_location
           ? album.name_location
           : getLocationsWithComaAnd(album.locations)
@@ -126,7 +131,7 @@ export const AlbumPage = ({
 
   const subTitle = useMemo(
     () =>
-      album.type === AlbumType.Dance && !!album.locations
+      isDanceType && !!album.locations
         ? getLocationsWithComaAnd(album.locations) + ", " + album.country
         : album.country,
     [album],
@@ -135,7 +140,7 @@ export const AlbumPage = ({
   return (
     <>
       <Meta album={album} />
-      <div className="App">
+      <Flex className="App">
         <AlbumHeader
           type={album.type}
           title={title}
@@ -160,24 +165,20 @@ export const AlbumPage = ({
 
         {album.name === "Geena" && <GeenaPage />}
 
-        <div className="text-container">
-          <ArticleSubHeader
-            title={
-              album.type === AlbumType.Highlights
-                ? album.description
-                : album.name
-            }
-            dateStart={album.date_start}
-            dateEnd={album.date_end}
-            danceEvent={
-              album.type === AlbumType.Dance ? album.subtype : undefined
-            }
-          />
+        <ArticleSubHeader
+          title={isHighlightType ? album.description : album.name}
+          dateStart={album.date_start}
+          dateEnd={album.date_end}
+          danceEvent={
+            album.type === AlbumType.Dance ? album.subtype : undefined
+          }
+        />
 
-          {album.type !== AlbumType.Highlights && (
+        <div className="text-container">
+          {!isHighlightType && (
             <div dangerouslySetInnerHTML={{ __html: album.description }} />
           )}
-          {album.type !== AlbumType.Highlights && !!album.description && (
+          {!isHighlightType && !!album.description && (
             <>
               <br />
               <br />
@@ -210,11 +211,14 @@ export const AlbumPage = ({
         {album.name === "Geena" ? (
           <AlbumRecommendedMyLife />
         ) : recommended.length > 0 ? (
-          <AlbumRecommended text="Recommended:" recommended={recommended} />
+          <AlbumRecommended
+            text={isHighlightType ? "More highlights:" : "Recommended:"}
+            recommended={recommended}
+          />
         ) : (
           ""
         )}
-      </div>
+      </Flex>
     </>
   );
 };

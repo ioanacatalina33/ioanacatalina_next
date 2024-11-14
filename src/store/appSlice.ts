@@ -13,6 +13,7 @@ const initialState: AppStore = {
   screenHeight: undefined,
   allArticles: [],
   isMobileSearch: false,
+  travelPageCount: 0,
   queryText: "",
   filters: {
     travel: {
@@ -62,6 +63,10 @@ export const appSlice = createSlice({
     updateQueryText: (state, action: PayloadAction<string>) => {
       state.queryText = action.payload;
     },
+    incrementTravelPageCount: (state) => {
+      console.log("state.travelPageCount ", state.travelPageCount);
+      state.travelPageCount = state.travelPageCount + 1;
+    },
     updateMobileSearch: (state, action: PayloadAction<boolean>) => {
       state.isMobileSearch = action.payload;
     },
@@ -97,6 +102,7 @@ export const {
   updateMobileSearch,
   updateFilters,
   updateFilter,
+  incrementTravelPageCount,
 } = appSlice.actions;
 
 export default appSlice.reducer;

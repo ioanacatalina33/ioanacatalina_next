@@ -25,7 +25,14 @@ interface Props {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const postId = params.id.toString();
+
   const post = getBlogPostByUrl(postId);
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
   const fullPost = { post, images: [], albums: [] };
 
   const images = await getImagesNamesFromFolder("/Blog/" + post.id);
