@@ -9,6 +9,7 @@ import { FiltersType, incrementTravelPageCount } from "store";
 import { Album } from "types/modelTypes";
 import { useFullScreenlayer } from "hooks/useFullScreenLayer";
 import { useDispatch } from "react-redux";
+import { COUNTER_TRAVEL } from "helpers";
 
 interface TravelProps {
   albums: Album[];
@@ -26,7 +27,14 @@ export const TravelPage = ({ albums, lazyload }: TravelProps) => {
   );
 
   useEffect(() => {
-    dispatch(incrementTravelPageCount());
+    // dispatch(incrementTravelPageCount());
+    if (typeof window !== "undefined") {
+      const travelPageCount = localStorage.getItem(COUNTER_TRAVEL) ?? 0;
+      localStorage.setItem(
+        COUNTER_TRAVEL,
+        (Number(travelPageCount) + 1).toString(),
+      );
+    }
   }, []);
 
   const { isFiltered } = useIsFiltered(FiltersType.Travel);

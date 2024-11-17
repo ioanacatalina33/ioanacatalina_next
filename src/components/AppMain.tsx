@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { NextComponentType, NextPageContext } from "next";
-import { pageview } from "react-ga";
+// import { pageview } from "react-ga";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
-import { initGA } from "helpers/traking";
+// import { initGA } from "helpers/traking";
 import { sleep, usePrevious } from "helpers";
 import { fetchSmallArticles } from "helpers/api";
 
@@ -71,7 +71,7 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
 
   useEffect(() => {
     rerender();
-    pageview(window.location.pathname + (query.id ? query.id : ""));
+    // pageview(window.location.pathname + (query.id ? query.id : ""));
 
     // closing search
     dispatch(updateQueryText(""));
@@ -103,7 +103,7 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
   }
 
   useEffect(() => {
-    initGA();
+    // initGA();
     getAlbums();
     checkWidth();
     updateDim();

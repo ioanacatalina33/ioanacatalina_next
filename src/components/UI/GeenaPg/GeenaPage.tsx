@@ -38,7 +38,7 @@ export const GeenaPage = () => {
         over the world. She was known at my college, at my dance school, dog
         shows (she’s Champion in 4 countries, International Show Champion, Club
         Winner etc.) and my travel companion in many of my adventures in
-        Romania. She&apos; was also the{" "}
+        Romania. She was also the{" "}
         <span className="text-container-bold">
           {" "}
           mother of 15 adorable Golden Retrievers

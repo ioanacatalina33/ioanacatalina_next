@@ -124,14 +124,6 @@ export const Meta = ({ album, blogPost }: MetaProps) => {
         <meta name="og:longitude" content="21.2087" />
 
         <link rel="canonical" href={canonical} />
-        <link
-          href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-          rel="stylesheet"
-        />
       </Head>
       <h1 style={{ display: "none" }}>{metaData.h1}</h1>
     </>

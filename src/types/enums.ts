@@ -4,6 +4,7 @@ export enum Routes {
   About = "/about",
   Contact = "/contact",
   Collaborations = "/collaborations",
+  WorkWithMe = "/work-with-me",
   Highlights = "/highlights",
   Travel = "/travel",
   Dance = "/dance",

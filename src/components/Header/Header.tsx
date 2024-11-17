@@ -63,7 +63,8 @@ export const Header = () => {
       pathname === Routes.Collaborations ||
       pathname === Routes.Contact ||
       pathname === Routes.Blog ||
-      pathname === Routes.BlogArticle
+      pathname === Routes.BlogArticle ||
+      pathname === Routes.WorkWithMe
     );
   }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { FiltersDance, FiltersEvents } from "components/UI/Filters";
 import { Photowall } from "components/UI/Photowall";
@@ -11,6 +11,7 @@ import { Album } from "types/modelTypes";
 import { ShopLink } from "components/UI/Advertising";
 import { LogosExplanation } from "components/UI/Filters/components";
 import { Flex } from "components/UI/Flex/Flex";
+import { COUNTER_DANCE } from "helpers";
 
 interface DanceProps {
   albums: Album[];
@@ -26,6 +27,17 @@ export const DancePage = ({ albums, lazyload }: DanceProps) => {
   );
 
   const { isFiltered } = useIsFiltered(FiltersType.Dance);
+
+  useEffect(() => {
+    // dispatch(incrementTravelPageCount());
+    if (typeof window !== "undefined") {
+      const dancePageCount = localStorage.getItem(COUNTER_DANCE) ?? 0;
+      localStorage.setItem(
+        COUNTER_DANCE,
+        (Number(dancePageCount) + 1).toString(),
+      );
+    }
+  }, []);
 
   return (
     <>

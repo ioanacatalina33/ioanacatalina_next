@@ -20,7 +20,6 @@ import { GeenaPage } from "../../UI/GeenaPg";
 import { AlbumDisplayType } from "./Components/AlbumDisplayType";
 import { PhotosDisplay } from "./Components/PhotosDisplay";
 import { AlbumRecommended } from "./Components/AlbumRecommended";
-import { AlbumRecommendedMyLife } from "./Components/AlbumRecommendedMyLife";
 import { ArticleSubHeader } from "components/UI/ArticleSubHeader";
 import { Flex } from "components/UI/Flex/Flex";
 
@@ -140,7 +139,7 @@ export const AlbumPage = ({
   return (
     <>
       <Meta album={album} />
-      <Flex className="App">
+      <Flex className_="App">
         <AlbumHeader
           type={album.type}
           title={title}
@@ -208,9 +207,8 @@ export const AlbumPage = ({
         {prevPhotos.length !== 0 && (
           <AlbumRecommended text="Previous albums:" recommended={prevPhotos} />
         )}
-        {album.name === "Geena" ? (
-          <AlbumRecommendedMyLife />
-        ) : recommended.length > 0 ? (
+
+        {recommended.length > 0 ? (
           <AlbumRecommended
             text={isHighlightType ? "More highlights:" : "Recommended:"}
             recommended={recommended}

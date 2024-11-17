@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ReactIcon = styled.a<{ darkColor?: boolean }>`
+export const ReactIcon = styled.a<{ darkColor?: boolean; hoverColor?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,6 +14,7 @@ export const ReactIcon = styled.a<{ darkColor?: boolean }>`
   }
   svg:hover {
     transition: 0.4s;
-    color: rgb(var(--primary-color));
+    color: ${({ hoverColor }) =>
+      hoverColor ? hoverColor : "rgb(var(--primary-color))"};
   }
 `;

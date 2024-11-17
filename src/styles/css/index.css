@@ -20,14 +20,14 @@ button:focus {
 
 a,
 :visited {
-  outline: 0;
-  outline: none;
+  /* outline: 0; */
+  /* outline: none; */
 }
 :hover,
 :active,
 :focus {
-  outline: 0;
-  outline: none;
+  /* outline: 0; */
+  /* outline: none; */
 }
 
 .App {
@@ -183,7 +183,7 @@ h5 {
   background: #f3f3f3;
   padding: 0.8rem 0rem 0.8rem 0rem;
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
   opacity: 1;
   transition: all 0.7s linear;
   -webkit-transition: all 0.7s linear;
@@ -1104,7 +1104,7 @@ h5 {
 }
 
 .photo-col-padding-v2 {
-  padding: 0.2rem 0rem 0.2rem 0rem;
+  padding: 0.5rem 0.1rem 0.5rem 0.1rem;
 }
 
 .photo-col-padding-v3 {
@@ -1307,7 +1307,7 @@ h5 {
 }
 
 .text-container {
-  max-width: 55rem;
+  max-width: var(--content-width);
   display: block;
   text-align: left;
   flex-direction: column;
@@ -1332,6 +1332,7 @@ h5 {
 
 .text-container-bold {
   font-weight: 600;
+  /* color: rgb(var(--primary-color)); */
 }
 
 .links-element {
@@ -1339,6 +1340,7 @@ h5 {
 }
 
 .links-element-text {
+  font-size: 1.1rem;
   background: transparent;
   border: 0;
   color: #333333;
@@ -1359,7 +1361,7 @@ h5 {
   background-color: #3b5998;
   color: white;
   border-radius: 0.2rem;
-  box-shadow: 0 2px 0px 0 rgba(59, 89, 152, 1);
+  /* box-shadow: 0 2px 0px 0 rgba(59, 89, 152, 1); */
 }
 
 .link-instagram:hover,
@@ -1368,7 +1370,7 @@ h5 {
   background-color: #d32297;
   color: white;
   border-radius: 0.2rem;
-  box-shadow: 0 2px 0px 0 rgba(143, 13, 13, 0.5);
+  /* box-shadow: 0 2px 0px 0 rgba(143, 13, 13, 0.5); */
 }
 
 .link-flikr:hover,
@@ -1377,7 +1379,7 @@ h5 {
   background-color: #d32265;
   color: white;
   border-radius: 0.2rem;
-  box-shadow: 0 2px 0px 0 rgba(14, 23, 143, 0.5);
+  /* box-shadow: 0 2px 0px 0 rgba(14, 23, 143, 0.5); */
 }
 
 .link-adobe:hover,
@@ -1386,7 +1388,7 @@ h5 {
   background-color: #ff4674;
   color: black;
   border-radius: 0.2rem;
-  box-shadow: 0 2px 0px 0 rgba(228, 2, 89, 0.5);
+  /* box-shadow: 0 2px 0px 0 rgba(228, 2, 89, 0.5); */
 }
 
 .link-shutterstock:hover,
@@ -1395,7 +1397,7 @@ h5 {
   background-color: #dc0909;
   color: white;
   border-radius: 0.2rem;
-  box-shadow: 0 2px 0px 0 rgba(201, 0, 0, 0.5);
+  /* box-shadow: 0 2px 0px 0 rgba(201, 0, 0, 0.5); */
 }
 
 .link-nationalg:hover,
@@ -1413,16 +1415,16 @@ h5 {
   background-color: #248100;
   color: white;
   border-radius: 0.2rem;
-  box-shadow: 0 2px 0px 0 rgba(2, 110, 11, 0.5);
+  /* box-shadow: 0 2px 0px 0 rgba(2, 110, 11, 0.5); */
 }
 
 .link-underlined:hover,
 .link-photo-underlined:hover + .link-underlined {
   text-decoration: none;
-  background-color: #666666;
+  background-color: #888888;
   color: white;
   border-radius: 0.2rem;
-  box-shadow: 0 2px 0px 0 rgba(33, 33, 33, 0.5);
+  /* box-shadow: 0 2px 0px 0 rgba(33, 33, 33, 0.5); */
 }
 
 .link-facebook,
@@ -1438,20 +1440,12 @@ h5 {
   transition: all 0.2s ease-in;
   padding: 0.1rem 0.2rem 0.1rem 0.2rem;
   -webkit-transition: all 0.15s ease-in;
-  box-shadow: 0 1.2px 0px 0 rgba(33, 33, 33, 0.5);
+  /* box-shadow: 0 1.2px 0px 0 rgba(33, 33, 33, 0.5); */
 }
 
 .link-facebook-color {
   color: #3b5998;
   box-shadow: 0 1.2px 0px 0 rgba(59, 89, 152, 1);
-}
-
-.links-container-wrapper {
-  flex-direction: column;
-  font-size: 1.2rem;
-  color: #666666;
-  margin: 0 auto;
-  padding: 0;
 }
 
 .links-container {
@@ -1842,6 +1836,10 @@ h5 {
     font-size: 1.7rem;
     padding: 0.3rem 1rem 0.3rem 1rem;
   }
+
+  .links-element-text {
+    font-size: 1.2rem;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -1912,7 +1910,7 @@ h5 {
   }
 
   .filters-same-line {
-    width: 90%;
+    width: 100%;
   }
 
   .photo-wall-aboutme {

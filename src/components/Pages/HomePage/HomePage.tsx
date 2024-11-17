@@ -26,7 +26,7 @@ export const HomePage = ({
   const { isMobile } = useScreenType();
 
   return (
-    <Flex className="App">
+    <Flex className_="App">
       {FullSizeLayer}
 
       <FollowMe showSocialMedia={false} marginOffset={{ top: 2, bottom: 1 }} />
@@ -34,7 +34,7 @@ export const HomePage = ({
       <Flex
         align={(a) => a.center}
         style={{
-          maxWidth: "55rem",
+          maxWidth: "var(--content-width)",
         }}
       >
         <div>

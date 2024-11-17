@@ -10,6 +10,7 @@ export interface FullSizeImage {
 
 export interface FullSizeImageClass {
   opacity?: number;
+  mobileOpacity?: number;
   width?: number; // percentage
   textPosition: string;
 }
@@ -17,6 +18,7 @@ export interface FullSizeImageClass {
 export const getFullSizeImageByPage = (
   type: PageType,
   travelPageCount: number,
+  dancePageCount: number,
 ): FullSizeImage => {
   switch (type) {
     case StaticPage.HOME:
@@ -34,7 +36,7 @@ export const getFullSizeImageByPage = (
     case AlbumType.Travel:
       return getFullSizeImageTravel(travelPageCount);
     case AlbumType.Dance:
-      return getFullSizeImageDance();
+      return getFullSizeImageDance(dancePageCount);
     case AlbumType.Highlights:
       return getFullSizeImageHighlights();
   }
@@ -80,8 +82,12 @@ const getFullSizeImageContact = (): FullSizeImage => {
   const images = [
     {
       url: "/img/fullscreen/contact_header_01.jpg",
-      text: "Contact",
-      class: { textPosition: "img-loaded-text-center" },
+      text: "Get in touch",
+      class: {
+        textPosition: "img-loaded-text-center",
+        opacity: 0.25,
+        mobileOpacity: 0.22,
+      },
       alt: "Contact me Ioana Catalina E. photography",
     },
   ];
@@ -115,18 +121,29 @@ const getFullSizeImageCollaborations = (): FullSizeImage => {
 
 const getFullSizeImageWorkWithMe = (): FullSizeImage => {
   return {
-    url: "/img/fullscreen/home_header2.jpg",
-    text: "To be in nature is to find clarity.<br/>To work with it is to find peace.",
-    class: { textPosition: "img-loaded-text-center", width: 60, opacity: 0.3 },
-    alt: "Work with mes",
+    url: "/img/fullscreen/travel_header_08.jpg",
+    text: "When we work with nature, we are in tune with the rhythms of life.",
+
+    class: {
+      textPosition: "img-loaded-text-top-center",
+      width: 88,
+      opacity: 0.45,
+    },
+    alt: "Travel around the world",
   };
+  // return {
+  //   url: "/img/fullscreen/home_header2.jpg",
+  //   text: "When we work with nature, we are in tune with the rhythms of life.",
+  //   class: { textPosition: "img-loaded-text-center", width: 60, opacity: 0.3 },
+  //   alt: "Work with mes",
+  // };
 };
 
 const getFullSizeImageBlog = (): FullSizeImage => {
   const images = [
     {
       url: "/img/fullscreen/blog_header_01.jpg",
-      text: "Blog posts",
+      text: "Coming up soon!",
       class: { textPosition: "img-loaded-text-center" },
       alt: "Blog posts",
     },
@@ -135,7 +152,7 @@ const getFullSizeImageBlog = (): FullSizeImage => {
 };
 
 const getFullSizeImageTravel = (travelPageCount: number): FullSizeImage => {
-  const images = [
+  const images: FullSizeImage[] = [
     {
       //url: "/img/fullscreen/travel_header_08.jpg",
       url: "/img/fullscreen/travel_header_07.jpg",
@@ -144,53 +161,76 @@ const getFullSizeImageTravel = (travelPageCount: number): FullSizeImage => {
       alt: "A journey of a thousand miles begins with a single step",
     },
     {
-      url: "/img/fullscreen/travel_header_01.jpg",
-      text: "In a world where you can be anything, be kind.",
-      class: { textPosition: "img-loaded-text-top-right", opacity: 0.5 },
-      alt: "In a world where you can be anything, be kind",
-    },
-    {
       //url: "/img/fullscreen/travel_header_05.jpg",
       url: "/img/fullscreen/travel_header_04.jpg",
       text: "Never lose the sense of wonder.",
-      class: { textPosition: "img-loaded-text-top-right", opacity: 0.45 },
+      class: { textPosition: "img-loaded-text-center", opacity: 0.55 },
       alt: "Never lose the sense of wonder",
     },
-    // {
-    //   url: "/img/fullscreen/travel_header_02.jpg",
-    //   text: "Never stop exploring",
-    //   class: "img-loaded-text-center opacity45",
-    //   alt: "Travel around the world",
-    // },
-    // {
-    //   url: "/img/fullscreen/travel_header_03.jpg",
-    //   text: "Travel is like knowledge. The more you see the more you know you haven't seen.",
-    //   class: "img-loaded-text-top-right opacity40",
-    //   alt: "Travel around the world",
-    // },
-    // {
-    //   url: "/img/fullscreen/travel_header_04.jpg",
-    //   text: "It feels good to be lost in the right direction.",
-    //   class: "img-loaded-text-top-right opacity45",
-    //   alt: "Travel around the world",
-    // },
-    // {
-    //   url: "/img/fullscreen/travel_header_06.jpg",
-    //   text: "Wherever you are, be all there.",
-    //   class: "img-loaded-text-top-center opacity45",
-    //   alt: "Travel around the world",
-    // },
-    // {
-    //   url: "/img/fullscreen/travel_header_07.jpg",
-    //   text: "There's no such place as faraway.",
-    //   class: "img-loaded-text-top-right opacity40",
-    //   alt: "Travel around the world",
-    // },
+    {
+      url: "/img/fullscreen/travel_header_02.jpg",
+      text: "“The earth has music for those who listen.”",
+      author: "George Santayana",
+      class: {
+        textPosition: "img-loaded-text-center",
+        opacity: 0.4,
+        width: 60,
+      },
+      alt: "The earth has music for those who listen",
+    },
+    {
+      url: "/img/fullscreen/travel_header_03.jpg",
+      author: "Jimmy Dean",
+      text: '"You can’t change the direction of the wind, but you can adjust your sails."',
+      class: {
+        textPosition: "img-loaded-text-center",
+        opacity: 0.45,
+        width: 90,
+      },
+      alt: "Travel around the world",
+    },
+    {
+      url: "/img/fullscreen/travel_header_05.jpg",
+      author: "Mother Teresa",
+      text: '"We can do no great things, only small things with great love."',
+      class: {
+        textPosition: "img-loaded-text-bottom-center",
+        opacity: 0.4,
+        width: 80,
+        mobileOpacity: 0.38,
+      },
+      alt: "We can do no great things, only small things with great love.",
+    },
+    {
+      url: "/img/fullscreen/travel_header_06.jpg",
+      text: "In the stillness of nature, we find the answers we’ve been searching for.",
+      class: { textPosition: "img-loaded-text-bottom-center", opacity: 0.4 },
+      alt: "In the stillness of nature, we find the answers we’ve been searching for",
+    },
+    {
+      url: "/img/fullscreen/travel_header_08.jpg",
+      text: '"In every leaf and stream, there is a story of life that connects us all."',
+      author: "John Muir",
+      class: {
+        textPosition: "img-loaded-text-top-center",
+        width: 88,
+        opacity: 0.45,
+      },
+      alt: "Travel around the world",
+    },
+    {
+      url: "/img/fullscreen/travel_header_01.jpg",
+      text: "In a world where you can be anything, be kind.",
+      author: "Clare Pooley",
+      class: { textPosition: "img-loaded-text-top-right", opacity: 0.5 },
+      alt: "In a world where you can be anything, be kind",
+    },
   ];
-  return images[travelPageCount % 3];
+  return images[travelPageCount % 8];
+  //return images[1];
 };
 
-const getFullSizeImageDance = (): FullSizeImage => {
+const getFullSizeImageDance = (dancePageCount: number): FullSizeImage => {
   const images = [
     {
       url: "/img/fullscreen/dance_header_01.jpg",
@@ -223,63 +263,100 @@ const getFullSizeImageDance = (): FullSizeImage => {
       alt: "Dancing Brazilian Zouk Freddy and Andressa",
     },
   ];
-  return images[Math.floor(Math.random() * images.length)];
+  //return images[Math.floor(Math.random() * images.length)];
+  return images[dancePageCount % 4];
 };
 
-type PhotosCollage = (index: number) => string[];
+export enum PhotosCollageType {
+  MyAdventures,
+  Photography,
+  DogShows,
+  Dancing,
+  RomaniaTravel,
+  SouthAmerica,
+  Nature,
+  Geena,
+}
+
+type PhotosCollage = (type: PhotosCollageType) => string[];
 //My story photos
-export const getPhotosForCollage: PhotosCollage = (index: number) => {
-  const images = [
-    [
-      //1 - adventures
-      "/img/photos/aboutme_adventures/pic1.jpg",
-      "/img/photos/aboutme_adventures/pic2.jpg",
-      "/img/photos/aboutme_adventures/pic3.jpg",
-      "/img/photos/aboutme_adventures/pic4.jpg",
-      "/img/photos/aboutme_adventures/pic5.jpg",
-    ],
-    [
-      //2 - photography
-      "/img/photos/aboutme_photo/pic1.jpg",
-      "/img/photos/aboutme_photo/pic2.jpg",
-      "/img/photos/aboutme_photo/pic3.jpg",
-      "/img/photos/aboutme_photo/pic4.jpg",
-      "/img/photos/aboutme_photo/pic5.jpg",
-    ],
-    [
-      //3-dog shows
-      "/img/photos/aboutme_dogs/pic1.jpg",
-      "/img/photos/aboutme_dogs/pic2.jpg",
-      "/img/photos/aboutme_dogs/pic3.jpg",
-      "/img/photos/aboutme_dogs/pic4.jpg",
-      "/img/photos/aboutme_dogs/pic5.jpg",
-    ],
-    [
-      //4 -dancing
-      "/img/photos/aboutme_dancing/pic1.jpg",
-      "/img/photos/aboutme_dancing/pic2.jpg",
-      "/img/photos/aboutme_dancing/pic3.jpg",
-      "/img/photos/aboutme_dancing/pic4.jpg",
-      "/img/photos/aboutme_dancing/pic5.jpg",
-    ],
-    [
-      //5 -travel
-      "/img/photos/aboutme_travel/pic1.jpg",
-      "/img/photos/aboutme_travel/pic2.jpg",
-      "/img/photos/aboutme_travel/pic3.jpg",
-      "/img/photos/aboutme_travel/pic4.jpg",
-      "/img/photos/aboutme_travel/pic5.jpg",
-    ],
-    [
-      //6 -geena
-      "/img/photos/aboutme_geena/pic1.jpg",
-      "/img/photos/aboutme_geena/pic2.jpg",
-      "/img/photos/aboutme_geena/pic3.jpg",
-      "/img/photos/aboutme_geena/pic4.jpg",
-      "/img/photos/aboutme_geena/pic5.jpg",
-    ],
-  ];
-  return images[index];
+export const getPhotosForCollage: PhotosCollage = (type: PhotosCollageType) => {
+  switch (type) {
+    case PhotosCollageType.MyAdventures:
+      return [
+        //1 - adventures
+        "/img/photos/aboutme_adventures/pic1.jpg",
+        "/img/photos/aboutme_adventures/pic2.jpg",
+        "/img/photos/aboutme_adventures/pic3.jpg",
+        "/img/photos/aboutme_adventures/pic4.jpg",
+        "/img/photos/aboutme_adventures/pic5.jpg",
+      ];
+    case PhotosCollageType.Photography:
+      return [
+        //2 - photography
+        "/img/photos/aboutme_photo/pic1.jpg",
+        "/img/photos/aboutme_photo/pic2.jpg",
+        "/img/photos/aboutme_photo/pic3.jpg",
+        "/img/photos/aboutme_photo/pic4.jpg",
+        "/img/photos/aboutme_photo/pic5.jpg",
+      ];
+    case PhotosCollageType.DogShows:
+      return [
+        //3-dog shows
+        "/img/photos/aboutme_dogs/pic1.jpg",
+        "/img/photos/aboutme_dogs/pic2.jpg",
+        "/img/photos/aboutme_dogs/pic3.jpg",
+        "/img/photos/aboutme_dogs/pic4.jpg",
+        "/img/photos/aboutme_dogs/pic5.jpg",
+      ];
+    case PhotosCollageType.Dancing:
+      return [
+        //4 -dancing
+        "/img/photos/aboutme_dancing/pic1.jpg",
+        "/img/photos/aboutme_dancing/pic2.jpg",
+        "/img/photos/aboutme_dancing/pic3.jpg",
+        "/img/photos/aboutme_dancing/pic4.jpg",
+        "/img/photos/aboutme_dancing/pic5.jpg",
+      ];
+    case PhotosCollageType.RomaniaTravel:
+      return [
+        //5 -travel
+        "/img/photos/aboutme_romania_travel/pic1.jpg",
+        "/img/photos/aboutme_romania_travel/pic2.jpg",
+        "/img/photos/aboutme_romania_travel/pic3.jpg",
+        "/img/photos/aboutme_romania_travel/pic4.jpg",
+        "/img/photos/aboutme_romania_travel/pic5.jpg",
+      ];
+    case PhotosCollageType.Geena:
+      return [
+        //6 -geena
+        "/img/photos/aboutme_geena/pic1.jpg",
+        "/img/photos/aboutme_geena/pic2.jpg",
+        "/img/photos/aboutme_geena/pic3.jpg",
+        "/img/photos/aboutme_geena/pic4.jpg",
+        "/img/photos/aboutme_geena/pic5.jpg",
+      ];
+    case PhotosCollageType.SouthAmerica:
+      return [
+        //5 -travel
+        "/img/photos/aboutme_south_america/pic1.jpg",
+        "/img/photos/aboutme_south_america/pic2.jpg",
+        "/img/photos/aboutme_south_america/pic3.jpg",
+        "/img/photos/aboutme_south_america/pic4.jpg",
+        "/img/photos/aboutme_south_america/pic5.jpg",
+      ];
+    case PhotosCollageType.Nature:
+      return [
+        //5 -travel
+        "/img/photos/aboutme_nature/pic1.jpg",
+        "/img/photos/aboutme_nature/pic2.jpg",
+        "/img/photos/aboutme_nature/pic3.jpg",
+        "/img/photos/aboutme_nature/pic4.jpg",
+        "/img/photos/aboutme_nature/pic5.jpg",
+      ];
+    default:
+      return [];
+  }
 };
 
 export const getPhotosForCollaborationsDance: () => string[] = () => {

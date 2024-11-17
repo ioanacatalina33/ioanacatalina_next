@@ -19,7 +19,7 @@ enum JustifyPositions {
 interface GeneralProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
-  className?: string;
+  className_?: string;
   id?: string;
   title?: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -41,8 +41,8 @@ interface StyleProps {
 
 type Props = GeneralProps & FlexProps & StyleProps & SpacingOffsets;
 
-export function Flex({ wrap, ...props }: Props) {
-  return <Component {...props} $wrap={wrap} />;
+export function Flex({ wrap, className_, ...props }: Props) {
+  return <Component {...props} $wrap={wrap} className={className_} />;
 }
 
 // Exclude reserved prop names to avoid DOM errors

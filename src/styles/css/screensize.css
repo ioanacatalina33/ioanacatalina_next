@@ -51,6 +51,15 @@
   -webkit-transform: translate(-50%, -50%);
 }
 
+.img-loaded-text-center-mobile {
+  position: absolute;
+  text-align: center;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
 .img-loaded-text-top-center {
   position: absolute;
   text-align: center;
@@ -93,7 +102,7 @@
 .img-loaded-text-bottom-right {
   position: absolute;
   text-align: center;
-  bottom: 10%;
+  bottom: 20%;
   right: 10%;
 }
 

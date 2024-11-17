@@ -31,3 +31,6 @@ export const Months = [
 ];
 
 export const DefaultDisplayType = PhotosDisplayType.FOUR;
+
+export const COUNTER_TRAVEL = "counter-travel";
+export const COUNTER_DANCE = "counter-dance";

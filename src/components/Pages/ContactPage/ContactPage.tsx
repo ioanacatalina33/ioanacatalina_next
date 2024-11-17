@@ -11,9 +11,9 @@ export const ContactPage = () => {
   return (
     <div className="App">
       {FullSizeLayer}
-      <h2>Get in touch</h2>
+      <h2>Contact</h2>
 
-      {Picture40Rem("/img/alwayslate.jpg")}
+      {/* {Picture40Rem("/img/alwayslate.jpg")} */}
 
       <div
         style={{

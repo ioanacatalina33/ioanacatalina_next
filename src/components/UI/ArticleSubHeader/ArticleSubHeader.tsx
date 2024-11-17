@@ -33,12 +33,12 @@ export const ArticleSubHeader = ({
         left: 1,
         right: 1,
       }}
-      style={{ maxWidth: "55rem" }}
+      style={{ maxWidth: "var(--content-width)" }}
     >
       <Flex
         align={(j) => j.center}
         fullWidth
-        className="text-defaults"
+        className_="text-defaults"
         marginOffset={{ bottom: isMobile ? -1 : 0 }}
       >
         <div style={{ flex: 1, paddingRight: "2rem" }}>

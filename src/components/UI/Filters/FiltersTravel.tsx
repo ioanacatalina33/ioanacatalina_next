@@ -78,7 +78,7 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
   return !albums.length ? (
     <></>
   ) : (
-    <div className="filter-container-div">
+    <div className="filter-container-div" style={{ width: "100%" }}>
       <FiltersHeader
         nrDisplayed={nrFiltered}
         showFilters={showFilters}
@@ -120,7 +120,9 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
             style={{
               marginTop: "0.8rem",
               display: "flex",
+              alignItems: "center",
               flexDirection: "row",
+              justifyContent: "center",
             }}
           >
             <FilterComponent
@@ -130,7 +132,7 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
               selected={filters.continents}
               onFiltersChanged={onFiltersChanged}
             />
-            &nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
             <FilterComponent
               filterName={FilterName.subtypes}
               albumType={AlbumType.Travel}

@@ -40,14 +40,14 @@ export const FullScreenLayer = ({
           src={fullSizeImage.url}
           alt={fullSizeImage.alt}
         />
-        <div className="header-shader" />
+        {!isMobile && <div className="header-shader" />}
 
         {fullSizeImage.text !== undefined && fullSizeImage.text !== "" ? (
           <div
             className={
               (!isMobileOrUndefined
                 ? fullSizeImage.class.textPosition
-                : "img-loaded-text-center") + " img-loaded-text-span"
+                : "img-loaded-text-center-mobile") + " img-loaded-text-span"
             }
             style={{
               width: isMobileOrUndefined
@@ -56,7 +56,7 @@ export const FullScreenLayer = ({
                   ? fullSizeImage.class.width + "%"
                   : "auto",
               opacity: isMobile
-                ? "0.50"
+                ? fullSizeImage.class.mobileOpacity ?? "0.50"
                 : fullSizeImage.class.opacity ?? "0.45",
             }}
           >
@@ -64,10 +64,10 @@ export const FullScreenLayer = ({
               {splitText.length === 1
                 ? fullSizeImage.text
                 : splitText.map((text) => (
-                    <>
+                    <span key={text}>
                       {text}
                       <br />
-                    </>
+                    </span>
                   ))}
             </h1>
             {fullSizeImage.author ? (

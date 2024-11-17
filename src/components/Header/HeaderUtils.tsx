@@ -52,7 +52,7 @@ export const HeaderDropdown = () => {
             </Link>
           </NavDropdown.Item>
           <NavDropdown.Item>
-            <Link scroll={false} href="/collaborations">
+            <Link scroll={false} href="/work-with-me">
               Work with me
             </Link>
           </NavDropdown.Item>

@@ -1,1 +1,0 @@
-export { AlbumMyLife } from "./AlbumMyLife";

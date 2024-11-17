@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Event } from "helpers/traking";
+// import { Event } from "helpers/traking";
 import { ScreenType } from "types/enums";
 import { useScreenType } from "hooks/utils";
 
@@ -16,7 +16,7 @@ export const SubscribeButton = ({ parentPage }: SubscribePressedProps) => {
   const [showDialog, setShowDialog] = useState(false);
 
   function onSubscribePressed() {
-    Event("SUBSCRIBE", "Subscribe first button pressed ", parentPage);
+    // Event("SUBSCRIBE", "Subscribe first button pressed ", parentPage);
     setShowDialog(true);
   }
 

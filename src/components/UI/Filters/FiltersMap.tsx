@@ -108,6 +108,7 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
               marginTop: "0.8rem",
               display: "flex",
               flexDirection: "row",
+              justifyContent: "center",
             }}
           >
             <FilterComponent
@@ -117,7 +118,7 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
               onFiltersChanged={onFiltersChanged}
               mapFilters
             />
-
+            &nbsp;&nbsp;&nbsp;
             <FilterComponent
               filterName={FilterName.subtypes}
               values={subtypes}

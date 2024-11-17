@@ -10,40 +10,11 @@ import { WorkCompanies } from "./WorkCompanies";
 import { collaborativeDanceEvents } from "staticModel";
 import Link from "next/link";
 import YoutubeEmbed from "components/UI/YoutubeComponent/YoutubeComponent";
+import { imageContainer } from "helpers/imageContainer";
 
 export const WorkWithMePage = () => {
   const FullSizeLayer = useFullScreenlayer(StaticPage.WORK_WITH_ME);
   const { isMobile } = useScreenType();
-
-  type ImageContainerProps = {
-    src: string;
-    alt: string;
-    maxWidth?: string;
-    funnyBorderRadius?: boolean;
-  };
-  function imageContainer({
-    src,
-    alt,
-    maxWidth,
-    funnyBorderRadius,
-  }: ImageContainerProps) {
-    return (
-      <div style={{ flex: 1, padding: "1rem" }}>
-        <img
-          style={{
-            height: "auto",
-            width: "100%",
-            maxWidth: maxWidth ? maxWidth : "100%",
-            borderRadius: funnyBorderRadius
-              ? "0.1rem 2rem 0.1rem 2rem"
-              : "0.1rem",
-          }}
-          src={src}
-          alt={alt}
-        />
-      </div>
-    );
-  }
 
   function getLogo(src: string, alt: string) {
     return (
@@ -61,10 +32,10 @@ export const WorkWithMePage = () => {
   }
 
   return (
-    <Flex className="App">
+    <Flex className_="App">
       {FullSizeLayer}
       <h2>Work with me</h2>
-      <Flex column style={{ maxWidth: "55rem" }}>
+      <Flex column style={{ maxWidth: "var(--content-width)" }}>
         <Flex column={isMobile ? true : false} align={(a) => a.center}>
           {imageContainer({
             src: "/img/photos/workwithme/me1.jpg",
@@ -88,7 +59,7 @@ export const WorkWithMePage = () => {
             creativity with logical problem-solving in everything I do.
           </Paragraph>
         </Flex>
-        <Paragraph>
+        <Paragraph leftSide>
           I am currently open to new opportunities in projects focused on the
           environmental sectors, including climate change, biodiversity, and
           sustainability. Through my photography and videography, I also aim to
@@ -193,9 +164,9 @@ export const WorkWithMePage = () => {
             <h5>Travel Photography</h5>
             My love for travel, particularly in my younger years, has allowed me
             to visit and experience diverse cultures and landscapes. This has
-            shaped my deep empathy for our planet and reinforced my desire to
-            protect it. Travel photography is a way for me to document and share
-            the beauty and diversity of the world.
+            shaped my deep empathy for our planet and reinforced a deep sense of
+            connection with the world around me. Travel photography is a way for
+            me to document and share the beauty and diversity of the world.
           </Paragraph>
           {isMobile &&
             imageContainer({
@@ -240,7 +211,7 @@ export const WorkWithMePage = () => {
         </Flex>
       </Flex>
       <Flex
-        className="filters-background"
+        className_="filters-background"
         column
         align={(a) => a.center}
         marginOffset={{ top: 3, bottom: 1 }}
@@ -281,7 +252,7 @@ export const WorkWithMePage = () => {
       {getLogo("/img/logo_camera_color.png", "Tree")}
       <Spacer size={(s) => s.m} withBorder />
       <h3 style={{ textAlign: "center" }}>Videography</h3>
-      <Flex column style={{ maxWidth: "55rem" }}>
+      <Flex column style={{ maxWidth: "var(--content-width)" }}>
         <Paragraph>
           While photography has been my primary focus, I’ve also ventured into
           videography, creating travel videos that document nature and the

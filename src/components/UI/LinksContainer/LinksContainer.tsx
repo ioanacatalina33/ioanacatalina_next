@@ -4,23 +4,26 @@ import React from "react";
 import { LinksPageType, ScreenType } from "types/enums";
 import { getLinkData, ILinkData, LinkType } from "staticModel";
 import { useScreenType } from "hooks";
+import { Flex } from "../Flex/Flex";
 
 function getLinkComponent({
   name,
   url,
-  src,
   classImgA,
   classLinkA,
+  iconOn,
 }: ILinkData) {
   return (
-    <div className="links-element" style={{ fontSize: "1.2rem" }}>
+    <Flex className_="links-element" align={(a) => a.center}>
       <a
         className={"links-element-text " + classImgA}
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.instagram.com/ioana.catalina.e"
+        style={{ paddingRight: "0.4rem", paddingBottom: "0.1rem" }}
       >
-        <img alt="" src={src} className="mystory-socialmedia" />
+        {/* <img alt="" src={src} className="mystory-socialmedia" /> */}
+        {iconOn}
       </a>
       <a
         className={"links-element-text " + classLinkA}
@@ -30,7 +33,7 @@ function getLinkComponent({
       >
         {name}
       </a>
-    </div>
+    </Flex>
   );
 }
 
@@ -72,11 +75,12 @@ export const LinksContainer = ({ containerType }: LinksContainerProps) => {
             {getLinkComponent(getLinkData(LinkType.FbPage))}
             {getLinkComponent(getLinkData(LinkType.FbPageZouk))}
             {getLinkComponent(getLinkData(LinkType.Instagram))}
+            {getLinkComponent(getLinkData(LinkType.Youtube))}
             {getLinkComponent(getLinkData(LinkType.Flickr))}
-            {getLinkComponent(getLinkData(LinkType.PX500))}
           </div>
 
           <div style={linkColStyle}>
+            {getLinkComponent(getLinkData(LinkType.PX500))}
             {getLinkComponent(getLinkData(LinkType.Shutterstock))}
             {getLinkComponent(getLinkData(LinkType.AdobeStock))}
             {getLinkComponent(getLinkData(LinkType.IStock))}
@@ -90,13 +94,14 @@ export const LinksContainer = ({ containerType }: LinksContainerProps) => {
             {getLinkComponent(getLinkData(LinkType.Gmail))}
             {/* {getLinkComponent(getLinkData(LinkType.Yahoo))} */}
             {getLinkComponent(getLinkData(LinkType.FbPage))}
-            {/* {getLinkComponent(getLinkData(LinkType.FbPagePhotography))} */}
             {getLinkComponent(getLinkData(LinkType.FbPageZouk))}
             {getLinkComponent(getLinkData(LinkType.Instagram))}
-            {getLinkComponent(getLinkData(LinkType.PX500))}
+            {getLinkComponent(getLinkData(LinkType.Linkedin))}
+            {getLinkComponent(getLinkData(LinkType.Youtube))}
           </div>
 
           <div style={linkColStyle}>
+            {getLinkComponent(getLinkData(LinkType.PX500))}
             {getLinkComponent(getLinkData(LinkType.Flickr))}
             {getLinkComponent(getLinkData(LinkType.Shutterstock))}
             {getLinkComponent(getLinkData(LinkType.AdobeStock))}
