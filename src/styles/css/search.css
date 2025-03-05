@@ -72,18 +72,18 @@
 
 @media only screen and (min-width: 600px) {
   #search-wrapper {
-    top: 3.6rem;
+    top: 3.2rem;
   }
 }
 
 @media only screen and (min-width: 768px) {
   #search-wrapper {
-    top: 3.6rem;
+    top: 3.2rem;
   }
 }
 
 @media only screen and (min-width: 992px) {
   #search-wrapper {
-    top: 3.6rem;
+    top: 3.2rem;
   }
 }

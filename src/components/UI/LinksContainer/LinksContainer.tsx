@@ -21,6 +21,7 @@ function getLinkComponent({
         rel="noopener noreferrer"
         href="https://www.instagram.com/ioana.catalina.e"
         style={{ paddingRight: "0.4rem", paddingBottom: "0.1rem" }}
+        aria-hidden="true"
       >
         {/* <img alt="" src={src} className="mystory-socialmedia" /> */}
         {iconOn}

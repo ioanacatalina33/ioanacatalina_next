@@ -30,6 +30,7 @@ export function SocialMediaButtons({
         rel="noopener noreferrer"
         href="https://www.instagram.com/ioana.catalina.e"
         darkColor={darkColor}
+        aria-label="Instagram"
       >
         <FaInstagram size={30} />
       </ReactIcon>
@@ -38,6 +39,7 @@ export function SocialMediaButtons({
         rel="noopener noreferrer"
         href="https://www.facebook.com/IoanaCatalinaBrazilianZouk"
         darkColor={darkColor}
+        aria-label="Facebook page"
       >
         <FaFacebook size={27} />
       </ReactIcon>
@@ -46,6 +48,7 @@ export function SocialMediaButtons({
         rel="noopener noreferrer"
         href="https://www.youtube.com/@IoanaCatalinaE"
         darkColor={darkColor}
+        aria-label="Youtube"
       >
         <RiYoutubeLine size={35} />
       </ReactIcon>
@@ -58,6 +61,7 @@ export function SocialMediaButtons({
             rel="noopener noreferrer"
             href="https://www.linkedin.com/in/ioanacatalina/"
             darkColor={darkColor}
+            aria-label="Linkedin"
           >
             <FaLinkedin size={30} />
           </ReactIcon>
@@ -66,6 +70,7 @@ export function SocialMediaButtons({
             rel="noopener noreferrer"
             href="https://www.flickr.com/photos/ioana_e"
             darkColor={darkColor}
+            aria-label="Flickr"
           >
             <IoLogoFlickr size={30} />
           </ReactIcon>
@@ -74,6 +79,7 @@ export function SocialMediaButtons({
             rel="noopener noreferrer"
             href="https://www.shutterstock.com/g/IoanaCatalinaE"
             darkColor={darkColor}
+            aria-label="Shutterstock"
           >
             <CgShutterstock size={30} />
           </ReactIcon>
@@ -82,6 +88,7 @@ export function SocialMediaButtons({
             rel="noopener noreferrer"
             href="https://stock.adobe.com/es/contributor/206273411/icephotography"
             darkColor={darkColor}
+            aria-label="Adobe Stock"
           >
             <SiAdobe size={25} />
           </ReactIcon>
@@ -90,6 +97,7 @@ export function SocialMediaButtons({
             rel="noopener noreferrer"
             href="https://500px.com/ioanacatalinae"
             darkColor={darkColor}
+            aria-label="500px"
           >
             <Lia500Px size={33} />
           </ReactIcon>{" "}

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { PhotoContainerSearch } from "components/UI/PhotoContainers";
 import { useSelector } from "hooks/utils";
-import { useTextDebounce } from "hooks/useTextDebounce";
+import { useDebounce } from "hooks/useTextDebounce";
 
 import { Album } from "types/modelTypes";
 import { updateMobileSearch, updateQueryText } from "store/appSlice";
@@ -49,7 +49,7 @@ export const Search = () => {
     dispatch(updateMobileSearch(false));
   }
 
-  const { debouncedValue } = useTextDebounce(queryForSearch, 500);
+  const debouncedValue = useDebounce<string>(queryForSearch, 500);
 
   useEffect(() => {
     searchInArticles(debouncedValue);

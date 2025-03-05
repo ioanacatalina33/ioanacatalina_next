@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useTextDebounce(value: string, delay: number = 500) {
+export function useDebounce<T>(value: T, delay: number = 500) {
   const [debouncedValue, setDebouncedValue] = useState(value);
   const [handler, setHandler] = useState<NodeJS.Timeout>();
 
@@ -9,7 +9,7 @@ export function useTextDebounce(value: string, delay: number = 500) {
     setHandler(
       setTimeout(() => {
         setDebouncedValue(value);
-      }, delay)
+      }, delay),
     );
 
     // Cancel the timeout if value changes (also on delay change or unmount)
@@ -18,5 +18,5 @@ export function useTextDebounce(value: string, delay: number = 500) {
     };
   }, [value, delay]);
 
-  return { debouncedValue };
+  return debouncedValue;
 }

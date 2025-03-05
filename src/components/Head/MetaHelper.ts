@@ -39,12 +39,12 @@ export function getMetaDefault(): MetaData {
     keywords:
       "best, photography, photos, pics, amazing, awesome, beautiful, instagram, insta, moments, photographer, portofolio, portfolio, trips, vacations, holidays, spots, photogenic",
     description:
-      "My best photos of adventures from trips and faraway vacations and holidays. Photographs from Brazilian Zouk Dance festivals in Europe and around the world. Most photogenic places and spots for passionate photographer travelers",
+      "World through my lenses: Capturing moments that inspire a love for our planet.",
 
-    ogimage: "/img/Home/aboutme.jpg",
+    ogimage: "/img/Home/meta_home.jpg",
     ogdescription:
-      "A database of all my trips and adventures. Welcome on board!",
-    h1: "Ioana Catalina E. Photography nature landscape city travel photographer",
+      "World through my lenses: Capturing moments that inspire a love for our planet.",
+    h1: "World through my lenses: Capturing moments that inspire a love for our planet",
   };
 }
 
@@ -54,11 +54,11 @@ export function getMetaForTravel(): MetaData {
     keywords:
       "Travel, wanderlust, best, photos, photograph, pics, nomad, life, photographer, holidays, vacations, trips, amazing, beautiful, places, locations, famous, destinations, spot, views, adventures, awesome, city, break, nature, landscape, cityscape, popular, travelers, Europe, United States, and Africa: Spain, France, Italy, Switzerland, Germany, Croatia, Portugal, Norway, California, Lost Angeles, San Francisco, Las Vegas, Romania, Netherlands, Sweden, Austria, Poland, Czech Republic, ",
     description:
-      "My best photos of city breaks, trips and holidays in Europe and all over the world. Amazing travel and vacation landscape photography of adventures and hikes in nature. Most photogenic spots and famous locations for passionate photographer travelers in Europe, United States, and Africa: Spain, France, Italy, Switzerland, Germany, Croatia, Portugal, Norway, California, Lost Angeles, San Francisco, Las Vegas, Romania, Netherlands, Sweden, Austria, Poland, Czech Republic.",
+      "A journey of a thousand miles begins with a single step. Album photos of my travels around the world.",
 
     ogimage: "/img/Home/travel.jpg",
     ogdescription:
-      "View all my albums of the best photos I took over the years of cities, landscapes, hikes, adventures and priceless moments.",
+      "A journey of a thousand miles begins with a single step. Album photos of my travels around the world.",
     h1: "Travel, city, nature, landscape, hiking photography all over the world",
   };
 }
@@ -86,7 +86,7 @@ export function getMetaForHighlights(): MetaData {
     description:
       "My best photos, a portfolio from the last years. Famous popular cities and places, stunning sunsets and sunrises over the seas and oceans, hiking, trekking adventures in the mountains, beautiful locations in the middle of nature, wonderlus and dreamy life of a traveler or nomad, portraits of people and animals, dancing, special events, weddings, couples, parties.",
 
-    ogimage: "/img/Home/highlights.jpg",
+    ogimage: "/img/Home/meta_highlights.jpg",
     ogdescription:
       "View my portfolio of all the greatest photos I took over the years of cities, landscapes, dance events, people, hikes, adventures and priceless moments.",
     h1: "My best photography. nature, city, landscapes, dance, people.",
@@ -124,14 +124,14 @@ export function getMetaForHome(): MetaData {
   return {
     title: "Ioana Catalina E. Photography",
     keywords:
-      "photography, escape, photos, best, places, locations, wanderlust, nomad, life, world, traveler, girl, photographer, freedom, explore, experience, wander, photogenic, brazilian, zouk, dance, festival, events, workshops, brazil, latin, lambazouk, lambada, views, viewpoint, map, destination, famous, amazing, pics, instagram, instagramable, exotic, by country, city, hikes, adventures",
+      "photography, photos, environment, travel, wanderlust, nomad, life, world, traveler, girl, photographer, explore, experience, wander, photogenic, brazilian, zouk, dance, festival, events, workshops, brazil, latin, lambazouk, lambada, views, viewpoint, map, destination, famous, amazing, pics, hikes, sustainability, planet, protect",
     description:
-      "A travel photographer in love with exploring the world and dancing. Here you will find a database and a map with the albums of all my trips and adventures! Welcome aboard!",
+      "World through my lenses: Capturing moments that inspire a love for our planet.",
 
-    ogimage: "/img/Home/aboutme.jpg",
+    ogimage: "/img/Home/meta_home.jpg",
     ogdescription:
-      "A database of all my trips and adventures. Welcome on board!",
-    h1: "Ioana Catalina E. Photography nature landscape city travel photographer",
+      "World through my lenses: Capturing moments that inspire a love for our planet.",
+    h1: "World through my lenses: Capturing moments that inspire a Love for our Planet",
   };
 }
 
@@ -141,9 +141,9 @@ export function getMetaForContact(): MetaData {
     keywords:
       "photography, contact, photos, best, places, locations, wanderlust, nomad, life, world, traveler, girl, photographer, freedom, explore, experience, wander, photogenic, brazilian, zouk, dance, festival, events, workshops, brazil, latin, lambazouk, lambada, collaborations, work, with, me, email, social, media, link, contacts, influencer, freedom, wanderer, globe",
     description:
-      "A travel photographer in love with exploring the world and dancing. My contact and portfolio on social media.",
+      "A travel photographer exploring the world and dancing. My contact and portfolio on social media.",
 
-    ogimage: "/img/alwayslate.jpg",
+    ogimage: "/img/Home/meta_mystory.jpg",
     ogdescription:
       "Travel photographer in love with the world. Contact me for any details.",
     h1: "How to contact me on email and social media",
@@ -165,6 +165,21 @@ export function getMetaForCollaborations(): MetaData {
   };
 }
 
+export function getMetaForWorkWithMe(): MetaData {
+  return {
+    title: "Work with me | Ioana Catalina E. Photography",
+    keywords:
+      "photography, contact, photos, collaborate, collaborations, business, work, with, me, management, instagram, facebook, spread, product, global, email, social, media, link, contacts, influencer, freedom, wanderer, globe, job, work, best, places, locations, wanderlust, nomad, life, world, traveler, girl, photographer, freedom, explore, experience, wander, photogenic, brazilian, zouk, dance, festival, events, workshops, brazil, latin, lambazouk, lambada,partnership",
+    description:
+      "Inspiring a deeper connection with nature and promoting a stronger commitment to its preservation.",
+
+    ogimage: "/img/Home/meta_workwithme.jpg",
+    ogdescription:
+      "Inspiring a deeper connection with nature and promoting a stronger commitment to its preservation.",
+    h1: "Collaborate, work with me. Professional travel photographer",
+  };
+}
+
 export function getMetaForMyStory(): MetaData {
   return {
     title: "My story | Ioana Catalina E. Photography",
@@ -173,7 +188,7 @@ export function getMetaForMyStory(): MetaData {
     description:
       "About myself and my many passion. I'm a daydreaming traveler photographer in love with dancing and exploring the world.",
 
-    ogimage: "/img/Home/aboutme.jpg",
+    ogimage: "/img/Home/meta_home.jpg",
     ogdescription:
       "About myself and my many passion. I'm a daydreaming travel and dancing events photographer in love with exploring the world.",
     h1: "All about me. My story and biography. My hobbies and passions.",
@@ -201,10 +216,10 @@ export function getMetaForGeena(): MetaData {
     keywords:
       "photography, story, golden, retriever, hiking, pet, dog, animal, lover, nature, amazing photos, wanderer, globe, best, places, traveler, girl, photographer, owners, breeders, dog shows, breeding, pedigree, soulcharisma, wizzdom, of, champion, european, romania, camrose time to return, camrose cabus christopher, litter, puppies, westley, swanavly, silver joy",
     description:
-      "Photos of my awesome golden retriever girl, Wizzdom of Soulcharisma, Geena. She is a pure bred show dog champion, travel and hiking companion and a best friend. Her parents are Swanavly Silver Joy and Camrose Time To Return, son of Camrose Cabus Christopher.",
+      "Photos of my beloved golden Retriever girl, Geena - Wizzdom of Soulcharisma, Geena. She is a pure bred show dog champion, travel and hiking companion and a best friend. Her parents are Swanavly Silver Joy and Camrose Time To Return, son of Camrose Cabus Christopher.",
     ogimage: "/img/Highlights/geena/259_.jpg",
     ogdescription:
-      "Photos of my awesome Golden Retriever girl, Wizzdom of Soulcharisma, Geena. She is a pure bred show dog champion, travel and hiking companion and an amazing best friend.",
+      "Photos of my beloved Golden Retriever girl, Geena - Wizzdom of Soulcharisma, Geena.",
     h1: "About my beloved Golden Retriever, Geena",
   };
 }

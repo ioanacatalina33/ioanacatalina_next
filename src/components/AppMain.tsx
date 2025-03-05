@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NextComponentType, NextPageContext } from "next";
-// import { pageview } from "react-ga";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -8,7 +7,6 @@ import { useRouter } from "next/router";
 import { sleep, usePrevious } from "helpers";
 import { fetchSmallArticles } from "helpers/api";
 
-// import { CanvasPopComp } from "./Canvaspop/CanvasPopComp";
 import { Meta } from "./Head";
 import { Header } from "./Header";
 import { Search } from "./Search";
@@ -21,6 +19,7 @@ import {
   updateScreen,
   updateScreenDim,
 } from "store/appSlice";
+import { useDebounce } from "hooks";
 
 interface AppMain {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -43,8 +42,20 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
   function escFunction(event) {
     if (event.keyCode === 27) dispatch(updateQueryText(""));
   }
+  const [screenSize, setScreenSize] = useState(0);
+  const debouncedScreenSize = useDebounce<number>(screenSize, 0);
+
+  function onScreenResize() {
+    setScreenSize(window.innerWidth);
+  }
+
+  useEffect(() => {
+    checkWidth();
+  }, [debouncedScreenSize]);
 
   const checkWidth = () => {
+    updateDeviceDim(window.innerWidth, window.innerHeight);
+
     const match = window.matchMedia(`(min-width: 992px)`).matches;
     if (match) {
       updateDeviceType(ScreenType.Desktop);
@@ -63,15 +74,10 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
     dispatch(updateArticles(albums));
   }
 
-  const updateDim = () => {
-    updateDeviceDim(window.innerWidth, window.innerHeight);
-  };
-
   const [showContent, setShowContent] = useState(true);
 
   useEffect(() => {
     rerender();
-    // pageview(window.location.pathname + (query.id ? query.id : ""));
 
     // closing search
     dispatch(updateQueryText(""));
@@ -103,13 +109,10 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
   }
 
   useEffect(() => {
-    // initGA();
     getAlbums();
     checkWidth();
-    updateDim();
 
-    window.addEventListener("resize", checkWidth);
-    window.addEventListener("resize", updateDim);
+    window.addEventListener("resize", onScreenResize);
     document.addEventListener("keydown", escFunction, false);
 
     const handleContextmenu = (e) => {
@@ -118,8 +121,8 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
     document.addEventListener("contextmenu", handleContextmenu);
 
     return () => {
-      window.removeEventListener("resize", checkWidth);
-      window.removeEventListener("resize", updateDim);
+      window.removeEventListener("resize", onScreenResize);
+      //window.removeEventListener("resize", updateDim);
       window.removeEventListener("keydown", escFunction, false);
       document.removeEventListener("contextmenu", handleContextmenu);
     };

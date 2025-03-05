@@ -19,7 +19,6 @@ export const AlbumDisplayType = ({
 
   function getButtonStyle(type: PhotosDisplayType, hover: boolean) {
     const backgroundImageStyle = "url('/img/table_display_" + type + ".png')";
-    //const backgroundImageStyle = type === "1" ? "url('/img/table_display_1.png')" : type === "2" ? "url('/img/table_display_2.png')" : "url('/img/table_display_3.png')"
     if (hover)
       return {
         backgroundColor: "rgb(var(--primary-color))",

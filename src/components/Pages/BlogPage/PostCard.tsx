@@ -7,6 +7,7 @@ import { useScreenType } from "hooks";
 import { ScreenType } from "types";
 import { Button } from "react-bootstrap";
 import { Months } from "helpers";
+import { imageLoader } from "helpers/imageLoader";
 
 export function PostCard({ post }: { post: BlogPost }) {
   const { screenType } = useScreenType();
@@ -23,7 +24,11 @@ export function PostCard({ post }: { post: BlogPost }) {
       {/* <a style={{ textDecoration: "none", color: "inherit" }}> */}
       <PostCardDiv mobile={isMobile}>
         <ImageDiv mobile={isMobile}>
-          <Image src={"/img/Blog/" + post.id + ".jpg"} mobile={isMobile} />
+          <Image
+            src={"/img/Blog/" + post.id + ".jpg"}
+            mobile={isMobile}
+            loader={imageLoader}
+          />
         </ImageDiv>
         <ContentDiv mobile={isMobile}>
           <h3>{post.title}</h3>

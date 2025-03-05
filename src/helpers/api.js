@@ -2,6 +2,7 @@ import { sleep } from "./utils";
 
 export const fetchSmallArticles = async () => {
   try {
+    console.log("are we getting here?");
     const response = await fetch("/api/albums_small");
     const body = await response.json();
     if (response.status !== 200) {

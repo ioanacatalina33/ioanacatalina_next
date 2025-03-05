@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import LazyLoad from "react-lazy-load";
+import Image from "next/image";
+import { imageLoader } from "helpers/imageLoader";
 
 interface PhotoContainerHome {
   url: string;
@@ -23,50 +24,39 @@ export const PhotoContainerHome = ({
 
   const cornersStyle = { borderRadius: "0.1rem" };
 
-  const loadedImg = (
-    <img
-      className="cover-loaded"
-      style={cornersStyle}
-      src={img}
-      alt={name}
-      onLoad={onLoad}
-    />
-  );
-
   return (
-    <div
-      className="photo-col photo-col-padding-v3 col-lg-4 col-md-4 col-5 col-xs-offset-2 col-centered"
-      // style={{ visibility: show ? "visible" : "hidden" }}
-    >
-      {/* <LazyLoad
-        debounce={false}
-        offsetVertical={500}
-        placeholder={<img alt="" src="/img/loading.gif" />}
-        alt=""
-      > */}
+    <div className="photo-col photo-col-padding-v3 col-lg-4 col-md-4 col-5 col-xs-offset-2 col-centered">
       <Link scroll={false} href={url}>
         <div
           className="photo-container photo-container-opacity"
           style={cornersStyle}
         >
-          <div className="photo-container-img-space">
-            <div
+          <div className="photo-container-img-space-home">
+            {/* <div
               className="loading-animation"
               style={{ minHeight: show ? "auto" : "13rem", ...cornersStyle }}
             >
-              <img
+              <Image
                 className="photo-small"
                 onLoad={onLoad}
                 style={{ visibility: "hidden", ...cornersStyle }}
                 src={"/img/cover_placeholder_square.jpg"}
+                width={0}
+                height={0}
                 alt=""
               />
-            </div>
-            {lazyLoad ? (
-              <LazyLoad offset={300}>{loadedImg}</LazyLoad>
-            ) : (
-              loadedImg
-            )}
+            </div> */}
+            <Image
+              className="cover-loaded"
+              loader={imageLoader}
+              style={cornersStyle}
+              src={img}
+              alt={name}
+              width={0}
+              height={0}
+              onLoad={onLoad}
+              sizes="(max-width: 768px) 50vw, (max-width: 1000px) 25vw"
+            />
             <span
               style={cornersStyle}
               className="photo-container-title photo-container-title-home"
@@ -76,7 +66,6 @@ export const PhotoContainerHome = ({
           </div>
         </div>
       </Link>
-      {/* </LazyLoad> */}
     </div>
   );
 };

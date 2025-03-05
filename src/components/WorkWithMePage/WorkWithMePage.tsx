@@ -272,6 +272,8 @@ export const WorkWithMePage = () => {
         <YoutubeEmbed embedId="BzC8JBbIRfQ" />
         <Spacer size={(s) => s.m} />
         <YoutubeEmbed embedId="Lsz5g945484" />
+        <Spacer size={(s) => s.m} />
+        <YoutubeEmbed embedId="quBttnUH7as" />
       </Flex>
 
       <Paragraph centered>

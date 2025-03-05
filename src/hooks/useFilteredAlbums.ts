@@ -6,7 +6,7 @@ import { useFilters } from "./utils";
 
 export const useFilteredAlbums = (
   albums: Album[],
-  filtersType: FiltersType
+  filtersType: FiltersType,
 ) => {
   const [filteredAlbums, setFilteredAlbums] = useState(albums);
   const { filters } = useFilters(filtersType);
@@ -20,7 +20,7 @@ export const useFilteredAlbums = (
   async function filter() {
     setLoading(true);
     setFilteredAlbums([]);
-    await sleep(1);
+    await sleep(100);
     const filteredArtciles = filterArticles(albums, filters);
     setFilteredAlbums(filteredArtciles);
     setLoading(false);

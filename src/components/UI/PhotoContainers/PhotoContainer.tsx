@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import Image from "next/image";
 import LazyLoad from "react-lazy-load";
 
 import {
@@ -11,6 +12,7 @@ import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 import Link from "next/link";
 import { getDanceEvent } from "staticModel";
+import { imageLoader } from "helpers/imageLoader";
 
 export enum PhotoContainerType {
   PHOTOC_MAIN = "main",
@@ -82,12 +84,23 @@ export const PhotoContainer = ({
       : " photo-col-padding-v2");
 
   const loadedImage = (
-    <img
+    <Image
       className="cover-loaded border-corner-up"
+      // style={cornersStyle}
+      loader={imageLoader}
       src={articleCover(album.identifier)}
       alt={titleText + " " + album.country}
+      width={0}
+      height={0}
       onLoad={onLoad}
+      sizes="(max-width: 580px) 100vw, (max-width: 760px) 50vw, (max-width: 1000px) 38vw, 30vw"
     />
+    // <img
+    //   className="cover-loaded border-corner-up"
+    //   src={articleCover(album.identifier)}
+    //   alt={titleText + " " + album.country}
+    //   onLoad={onLoad}
+    // />
   );
 
   const content = useMemo(
@@ -114,11 +127,11 @@ export const PhotoContainer = ({
                 alt=""
               />
             </div>
-            {lazyload ? (
+            {/* {lazyload ? (
               <LazyLoad offset={1000}>{loadedImage}</LazyLoad>
-            ) : (
-              loadedImage
-            )}
+            ) : ( */}
+            {loadedImage}
+            {/* )} */}
             <span
               style={getTitleStyle()}
               className={
@@ -146,7 +159,7 @@ export const PhotoContainer = ({
         {/* </a> */}
       </Link>
     ),
-    [album, onLoad],
+    [album, onLoad, show],
   );
 
   return (

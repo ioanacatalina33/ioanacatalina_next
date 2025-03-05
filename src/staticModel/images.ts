@@ -43,12 +43,14 @@ export const getFullSizeImageByPage = (
 };
 
 const getFullSizeImageAboutMe = (): FullSizeImage => {
-  const images = [
+  const images: FullSizeImage[] = [
     {
       url: "/img/fullscreen/aboutme_header_01.jpg",
       text: "My story",
       class: {
         textPosition: "img-loaded-text-center",
+        mobileOpacity: 0.7,
+        opacity: 0.6,
       },
       alt: "About me",
     },
@@ -57,19 +59,14 @@ const getFullSizeImageAboutMe = (): FullSizeImage => {
 };
 
 const getFullSizeImageHome = (): FullSizeImage => {
-  const images = [
-    // {
-    //   url: "/img/fullscreen/home_header.jpg",
-    //   text: "A database of my adventures",
-    //   class: "img-loaded-text-center",
-    //   alt: "Malaga Spain Home Image",
-    // },
+  const images: FullSizeImage[] = [
     {
       url: "/img/fullscreen/home_header3.jpg",
       text: "World through my lenses: Capturing moments that inspire a Love for our Planet",
       class: {
         textPosition: "img-loaded-text-center",
-        opacity: 0.28,
+        opacity: 0.38,
+        mobileOpacity: 0.45,
         width: 70,
       },
       alt: "World through my lenses: Capturing Moments That Inspire a love for our planet",
@@ -131,12 +128,6 @@ const getFullSizeImageWorkWithMe = (): FullSizeImage => {
     },
     alt: "Travel around the world",
   };
-  // return {
-  //   url: "/img/fullscreen/home_header2.jpg",
-  //   text: "When we work with nature, we are in tune with the rhythms of life.",
-  //   class: { textPosition: "img-loaded-text-center", width: 60, opacity: 0.3 },
-  //   alt: "Work with mes",
-  // };
 };
 
 const getFullSizeImageBlog = (): FullSizeImage => {
@@ -154,29 +145,30 @@ const getFullSizeImageBlog = (): FullSizeImage => {
 const getFullSizeImageTravel = (travelPageCount: number): FullSizeImage => {
   const images: FullSizeImage[] = [
     {
-      //url: "/img/fullscreen/travel_header_08.jpg",
-      url: "/img/fullscreen/travel_header_07.jpg",
-      text: "A journey of a thousand miles begins with a single step.",
-      class: { textPosition: "img-loaded-text-top-left", opacity: 0.45 },
-      alt: "A journey of a thousand miles begins with a single step",
-    },
-    {
-      //url: "/img/fullscreen/travel_header_05.jpg",
-      url: "/img/fullscreen/travel_header_04.jpg",
-      text: "Never lose the sense of wonder.",
-      class: { textPosition: "img-loaded-text-center", opacity: 0.55 },
-      alt: "Never lose the sense of wonder",
-    },
-    {
       url: "/img/fullscreen/travel_header_02.jpg",
       text: "“The earth has music for those who listen.”",
       author: "George Santayana",
       class: {
         textPosition: "img-loaded-text-center",
         opacity: 0.4,
+        mobileOpacity: 0.4,
         width: 60,
       },
       alt: "The earth has music for those who listen",
+    },
+    {
+      //url: "/img/fullscreen/travel_header_05.jpg",
+      url: "/img/fullscreen/travel_header_04.jpg",
+      text: "Never lose your sense of wonder.",
+      class: { textPosition: "img-loaded-text-center", opacity: 0.55 },
+      alt: "Never lose your sense of wonder",
+    },
+    {
+      //url: "/img/fullscreen/travel_header_08.jpg",
+      url: "/img/fullscreen/travel_header_07.jpg",
+      text: "A journey of a thousand miles begins with a single step.",
+      class: { textPosition: "img-loaded-text-top-left", opacity: 0.45 },
+      alt: "A journey of a thousand miles begins with a single step",
     },
     {
       url: "/img/fullscreen/travel_header_03.jpg",
@@ -220,9 +212,13 @@ const getFullSizeImageTravel = (travelPageCount: number): FullSizeImage => {
     },
     {
       url: "/img/fullscreen/travel_header_01.jpg",
-      text: "In a world where you can be anything, be kind.",
+      text: '"In a world where you can be anything, be kind."',
       author: "Clare Pooley",
-      class: { textPosition: "img-loaded-text-top-right", opacity: 0.5 },
+      class: {
+        textPosition: "img-loaded-text-top-right",
+        opacity: 0.5,
+        mobileOpacity: 0.6,
+      },
       alt: "In a world where you can be anything, be kind",
     },
   ];
@@ -250,12 +246,6 @@ const getFullSizeImageDance = (dancePageCount: number): FullSizeImage => {
       class: { textPosition: "img-loaded-text-top-right", opacity: 0.6 },
       alt: "Dancing Brazilian Zouk Anderson and Brenda",
     },
-    // {
-    //   url: "/img/fullscreen/dance_header_04.jpg",
-    //   text: "Life is better when you dance.",
-    //   class: { textPosition: "img-loaded-text-top-left", opacity: 0.45 },
-    //   alt: "Dancing Brazilian Zouk",
-    // },
     {
       url: "/img/fullscreen/dance_header_05.jpg",
       text: "Dancing is the closest thing to magic.",

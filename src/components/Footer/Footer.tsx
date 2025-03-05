@@ -1,10 +1,12 @@
 import React from "react";
 
 import { useScreenType } from "hooks/utils";
+import Image from "next/image";
 
 import Link from "next/link";
 import { SocialMediaButtons } from "components/UI/SocialMediaButtons/SocialMediaButtons";
 import { Flex } from "components/UI/Flex/Flex";
+import { imageLoader } from "helpers/imageLoader";
 
 export const Footer = () => {
   const { isDesktop, isMobile, isTablet } = useScreenType();
@@ -54,24 +56,47 @@ export const Footer = () => {
 
   const iconsLeft = (
     <>
-      {/* {isDesktop && ( */}
-      <div className="footer-img-container footer-img-tree">
+      <div className="footer-photo-container">
         <a href="/travel/back-to-the-jungle-in-brazil-2024">
-          <img
-            style={{ height: "auto", width: "100%", opacity: "0" }}
+          <Image
+            loader={imageLoader}
+            className="bottom"
+            src="/img/logo_tree_color.png"
+            alt="Photo Camera"
+            sizes="100vw"
+            width={0}
+            height={0}
+          />
+          <Image
+            className="top"
+            loader={imageLoader}
             src="/img/logo_tree.png"
-            alt="Tree"
+            alt="Photo Camera"
+            sizes="100vw"
+            width={0}
+            height={0}
           />
         </a>
       </div>
-      {/* )} */}
-
-      <div className="footer-img-container footer-img-camera">
+      <div className="footer-photo-container">
         <a href="/work-with-me">
-          <img
-            style={{ height: "auto", width: "100%", opacity: "0" }}
+          <Image
+            className="bottom"
+            loader={imageLoader}
+            src="/img/logo_camera_color2.png"
+            alt="Photo Camera"
+            sizes="100vw"
+            width={0}
+            height={0}
+          />
+          <Image
+            className="top"
+            loader={imageLoader}
             src="/img/logo_camera.png"
             alt="Photo Camera"
+            sizes="100vw"
+            width={0}
+            height={0}
           />
         </a>
       </div>
@@ -80,31 +105,51 @@ export const Footer = () => {
 
   const iconsRight = (
     <>
-      <div className={"footer-img-container footer-img-golden"}>
+      <div className="footer-photo-container footer-photo-container-right">
         <a href="/highlights/geena">
-          <img
-            style={{
-              width: "100%",
-              height: "auto",
-              opacity: "0",
-            }}
+          <Image
+            className="bottom footer-img-golden"
+            loader={imageLoader}
+            src="/img/logo_golden_color.png"
+            alt="Golden Retriever icon"
+            sizes="100vw"
+            width={0}
+            height={0}
+          />
+          <Image
+            className="top footer-img-golden"
+            loader={imageLoader}
             src="/img/logo_golden.png"
-            alt="Golden Retriever"
+            alt="Golden Retriecer icon"
+            sizes="100vw"
+            width={0}
+            height={0}
           />
         </a>
       </div>
 
-      {/* {isDesktop && ( */}
-      <div className="footer-img-container footer-img-mountain">
+      <div className="footer-photo-container footer-photo-container-right">
         <a href="/highlights/landscape">
-          <img
-            style={{ height: "auto", width: "100%", opacity: "0" }}
+          <Image
+            className="bottom footer-img-mountain"
+            loader={imageLoader}
+            src="/img/logo_mountain_color.png"
+            alt="Mountain logo"
+            sizes="100vw"
+            width={0}
+            height={0}
+          />
+          <Image
+            className="top footer-img-mountain"
+            loader={imageLoader}
             src="/img/logo_mountain.png"
-            alt="Mountain"
+            alt="Mountain logo"
+            sizes="100vw"
+            width={0}
+            height={0}
           />
         </a>
       </div>
-      {/* )} */}
     </>
   );
 
@@ -118,7 +163,7 @@ export const Footer = () => {
   return (
     <Flex
       column
-      className="footer_font"
+      className_="footer_font"
       style={{
         width: "100%",
 

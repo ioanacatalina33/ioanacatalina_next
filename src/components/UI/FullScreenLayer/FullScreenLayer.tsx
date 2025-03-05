@@ -1,11 +1,11 @@
 import React from "react";
-import LazyLoad from "react-lazy-load";
+import Image from "next/image";
 
 import { contentScroll } from "helpers";
-import { ScreenType } from "types/enums";
 import { useBrowsers } from "hooks/useBrowsers";
 import { useScreenSize, useScreenType } from "hooks/utils";
 import { FullSizeImage } from "staticModel";
+import { imageLoader } from "helpers/imageLoader";
 
 interface FullScreenLayerProps {
   fullSizeImage: FullSizeImage;
@@ -18,7 +18,6 @@ export const FullScreenLayer = ({
 }: FullScreenLayerProps) => {
   const { screenHeight } = useScreenSize();
   const { isMobile, screenType, isDesktop } = useScreenType();
-  const { isIE } = useBrowsers();
 
   const isMobileOrUndefined = screenType === undefined || isMobile;
   const headerVisible = isDesktop;
@@ -28,18 +27,23 @@ export const FullScreenLayer = ({
   return (
     <div
       className={"header-album"}
-      style={headerVisible ? { height: "100vh", marginTop: "-60px" } : {}}
+      style={headerVisible ? { height: "100vh", marginTop: "-51px" } : {}}
     >
       <div className="album-header-wrapper">
-        <img
-          className="img-loaded"
-          style={{
-            objectFit: "cover",
-            width: isIE ? "auto" : "100%",
-          }}
-          src={fullSizeImage.url}
-          alt={fullSizeImage.alt}
-        />
+        {fullSizeImage.url && (
+          <Image
+            src={fullSizeImage.url}
+            loader={imageLoader}
+            className="img-loaded"
+            alt={"Full screen representative nature image"}
+            sizes="100vw"
+            width={0}
+            height={0}
+            placeholder="blur"
+            blurDataURL="./img/gradient_10x10_horizontal.png"
+            priority
+          />
+        )}
         {!isMobile && <div className="header-shader" />}
 
         {fullSizeImage.text !== undefined && fullSizeImage.text !== "" ? (
@@ -84,6 +88,7 @@ export const FullScreenLayer = ({
 
         <button
           onClick={() => contentScroll(screenHeight - 60)}
+          aria-label="Go to content"
           className={
             "arrow-down arrow-down-absolute " +
             (inverse ? "arrow-down-inverted" : "")
@@ -97,8 +102,6 @@ export const FullScreenLayer = ({
           ></i>
         </button>
       </div>
-      {/* </div> */}
-      {/* </LazyLoad> */}
     </div>
   );
 };

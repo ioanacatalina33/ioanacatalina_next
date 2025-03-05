@@ -19,6 +19,7 @@ import {
   getMetaForMyStory,
   getMetaForTravel,
   getMetaForTravelAlbum,
+  getMetaForWorkWithMe,
   MetaData,
 } from "./MetaHelper";
 import { BlogPost, blogPosts } from "staticModel/Blog/blog";
@@ -64,6 +65,9 @@ export const Meta = ({ album, blogPost }: MetaProps) => {
       break;
     case Routes.Collaborations:
       metaData = getMetaForCollaborations();
+      break;
+    case Routes.WorkWithMe:
+      metaData = getMetaForWorkWithMe();
       break;
     case Routes.About:
       metaData = getMetaForMyStory();
@@ -125,7 +129,7 @@ export const Meta = ({ album, blogPost }: MetaProps) => {
 
         <link rel="canonical" href={canonical} />
       </Head>
-      <h1 style={{ display: "none" }}>{metaData.h1}</h1>
+      {/* <h1 style={{ display: "none" }}>{metaData.h1}</h1> */}
     </>
   );
 };

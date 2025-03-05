@@ -2,14 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import "../src/styles/css/canvaspop.css";
+// import "../src/styles/css/canvaspop.css";
 import "../src/styles/css/index.css";
 import "../src/styles/css/menu.css";
 import "../src/styles/css/screensize.css";
 import "../src/styles/css/search.css";
 import "../src/styles/css/map.css";
 
-import { useEffect } from "react";
+import { StrictMode, useEffect } from "react";
 import Head from "next/head";
 import Script from "next/script";
 import type { AppProps /*, AppContext */ } from "next/app";
@@ -65,7 +65,9 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       </Script>
       <Provider store={store}>
         <GlobalStyles />
-        <AppMain Component={Component} pageProps={pageProps} />
+        <StrictMode>
+          <AppMain Component={Component} pageProps={pageProps} />
+        </StrictMode>
       </Provider>
     </>
   );

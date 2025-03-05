@@ -2,8 +2,6 @@ import React from "react";
 
 import { FollowMe } from "components/UI/FollowMe";
 import { StaticPage } from "types/enums";
-import { useBrowsers } from "hooks/useBrowsers";
-import { useScreenType } from "hooks/utils";
 
 import { HomeContainers } from "./HomeContainers";
 import { useFullScreenlayer } from "hooks/useFullScreenLayer";
@@ -23,7 +21,6 @@ export const HomePage = ({
   nrImages,
 }: HomeProps) => {
   const FullSizeLayer = useFullScreenlayer(StaticPage.HOME);
-  const { isMobile } = useScreenType();
 
   return (
     <Flex className_="App">

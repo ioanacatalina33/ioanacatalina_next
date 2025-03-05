@@ -46,7 +46,6 @@ export const Photowall = ({
               <div className="no-albums-found ">No albums to show!</div>
             )}
             {!emptyAlbums && (
-              // <FadeIn>
               <div className="photo-wall row">
                 {albums.map((album, index) =>
                   type === AlbumType.Highlights ? (
@@ -66,7 +65,6 @@ export const Photowall = ({
                   ),
                 )}
               </div>
-              // </FadeIn>
             )}
           </>
         )}

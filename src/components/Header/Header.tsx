@@ -22,7 +22,8 @@ export const Header = () => {
   const queryText = useSelector((state) => state.app.queryText);
   const isMobileSearch = useSelector((state) => state.app.isMobileSearch);
 
-  const showCamera = screenWidth > 1400;
+  //const showCamera = screenWidth > 1400;
+  const showCamera = false;
   const showFullMenu = screenWidth > 1200;
 
   useEffect(() => {
@@ -63,7 +64,7 @@ export const Header = () => {
       pathname === Routes.Collaborations ||
       pathname === Routes.Contact ||
       pathname === Routes.Blog ||
-      pathname === Routes.BlogArticle ||
+      // pathname === Routes.BlogArticle ||
       pathname === Routes.WorkWithMe
     );
   }
@@ -107,7 +108,7 @@ export const Header = () => {
           <img
             style={{ height: "auto", width: "100%" }}
             src="/img/logo_camera.png"
-            alt="Plane"
+            alt="Camera"
           />
         </div>
       )}
@@ -294,6 +295,7 @@ export const Header = () => {
                   onClick={onCloseSearchPressed}
                   variant="outline-warning"
                   className="navbar-search-button"
+                  aria-label="Search"
                 >
                   <i
                     className={
@@ -305,6 +307,7 @@ export const Header = () => {
                   value={queryText}
                   onChange={onSearchQueryChanged}
                   type="text"
+                  id="nav-search"
                   placeholder="Search"
                   className="navbar-search"
                 />
@@ -331,6 +334,7 @@ export const Header = () => {
                     onChange={onSearchQueryChanged}
                     type="text"
                     placeholder="Search"
+                    name="Search"
                     className="navbar-search"
                     style={{
                       flex: "1",
@@ -342,6 +346,7 @@ export const Header = () => {
                   onClick={toggleMobileSearch}
                   variant="outline-warning"
                   className="navbar-search-button"
+                  aria-label="Search"
                   style={{
                     borderRadius: isMobileSearch
                       ? "0rem 0.4rem 0.4rem 0rem"

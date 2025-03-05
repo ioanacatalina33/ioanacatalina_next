@@ -1,9 +1,11 @@
 import { Button } from "react-bootstrap";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { contentScroll } from "helpers";
 import { useBrowsers, useScreenSize } from "hooks";
 import { AlbumType } from "types";
+import { imageLoader } from "helpers/imageLoader";
 
 interface AlbumHeaderProps {
   type: AlbumType;
@@ -67,7 +69,24 @@ export const AlbumHeader = ({
           </Link>
         )}
 
-        <img
+        <Image
+          src={coverImageSrc}
+          loader={imageLoader}
+          className="img-loaded"
+          alt={title + " " + subtitle + " header"}
+          sizes="100vw"
+          width={0}
+          height={0}
+          style={{
+            objectFit:
+              type === AlbumType.Highlights || isCoverLarge
+                ? "cover"
+                : "contain",
+            width: isIE ? "auto" : "100%",
+          }}
+          priority
+        />
+        {/* <img
           className="img-loaded"
           style={{
             objectFit:
@@ -78,7 +97,7 @@ export const AlbumHeader = ({
           }}
           src={coverImageSrc}
           alt={title + " " + subtitle + " header"}
-        />
+        /> */}
 
         <div className="img-loaded-text-album-header-absolute no-right-click">
           <div
@@ -107,6 +126,7 @@ export const AlbumHeader = ({
         <button
           onClick={() => contentScroll(screenHeight - 60)}
           className="arrow-down arrow-down-absolute arrow-down-inverted"
+          aria-label="Go to content"
           style={{ margin: "0 auto", marginTop: "2rem" }}
         >
           <i className="fa fa-angle-down arrow-down-icon-inverted"></i>

@@ -7,12 +7,14 @@ const logos12 = (
       <img
         style={{ width: "100%" }}
         src="/img/photos/workwithme/logos/sensidev.jpg"
+        alt="Sensidev"
       />
     </div>
     <div style={{ flex: 1, padding: "1rem", maxWidth: "10rem" }}>
       <img
         style={{ width: "100%" }}
         src="/img/photos/workwithme/logos/ledidi.jpg"
+        alt="Ledidi"
       />
     </div>
   </>
@@ -24,12 +26,14 @@ const logos34 = (
       <img
         style={{ width: "100%" }}
         src="/img/photos/workwithme/logos/edreams.jpg"
+        alt="Edreams"
       />
     </div>
     <div style={{ flex: 1, padding: "1rem", maxWidth: "10rem" }}>
       <img
         style={{ width: "100%" }}
         src="/img/photos/workwithme/logos/infobest.jpg"
+        alt="Infobest"
       />
     </div>
   </>

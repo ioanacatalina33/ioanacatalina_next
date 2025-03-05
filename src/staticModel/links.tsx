@@ -16,7 +16,6 @@ import { CgShutterstock } from "react-icons/cg";
 import { TbBrandNationalGeographic } from "react-icons/tb";
 
 import { ReactElement } from "react";
-import { ReactIcon } from "components/UI/Icon/Icon.style";
 
 export enum LinkType {
   Gmail = "Gmail",
@@ -57,8 +56,12 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "mailto:ioana.echim@gmail.com",
         classImgA: "link-photo-others",
         classLinkA: "link-underlined",
-        iconOff: <CgMail size={25} color={"#333333"} />,
-        iconOn: <CgMail size={25} color={"#333333"} />,
+        iconOff: (
+          <CgMail size={25} color={"#333333"} aria-label={"Google Email"} />
+        ),
+        iconOn: (
+          <CgMail size={25} color={"#333333"} aria-label={"Google Email"} />
+        ),
       };
     case LinkType.Yahoo:
       return {
@@ -66,8 +69,12 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "mailto:ioana_catalina_33@yahoo.com",
         classImgA: "link-photo-shutterstock",
         classLinkA: "link-shutterstock",
-        iconOff: <AiFillYahoo size={25} color={"#333333"} />,
-        iconOn: <AiFillYahoo size={25} color={"#de0000"} />,
+        iconOff: (
+          <AiFillYahoo size={25} color={"#333333"} aria-label={"Yahoo Email"} />
+        ),
+        iconOn: (
+          <AiFillYahoo size={25} color={"#de0000"} aria-label={"Yahoo Email"} />
+        ),
       };
     case LinkType.Instagram:
       return {
@@ -75,8 +82,20 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.instagram.com/ioana.catalina.e",
         classImgA: "link-photo-instagram",
         classLinkA: "link-instagram",
-        iconOff: <RiInstagramFill size={25} color={"#333333"} />,
-        iconOn: <RiInstagramFill size={25} color={"#d32297"} />,
+        iconOff: (
+          <RiInstagramFill
+            size={25}
+            color={"#333333"}
+            aria-label={"Instagram"}
+          />
+        ),
+        iconOn: (
+          <RiInstagramFill
+            size={25}
+            color={"#d32297"}
+            aria-label={"Instagram"}
+          />
+        ),
       };
 
     case LinkType.FbPage:
@@ -85,18 +104,12 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.facebook.com/catalina.i.e.3",
         classImgA: "link-photo-facebook",
         classLinkA: "link-facebook",
-        iconOff: <FaFacebook size={23} color={"#333333"} />,
-        iconOn: <FaFacebook size={23} color={"#3b5998"} />,
-      };
-
-    case LinkType.FbPagePhotography:
-      return {
-        name: "Photography page",
-        url: "https://www.facebook.com/IoanaCatalinaPhotography",
-        classImgA: "link-photo-facebook",
-        classLinkA: "link-facebook",
-        iconOff: <FaFacebook size={23} color={"#333333"} />,
-        iconOn: <FaFacebook size={23} color={"#3b5998"} />,
+        iconOff: (
+          <FaFacebook size={23} color={"#333333"} aria-label={"Facebook"} />
+        ),
+        iconOn: (
+          <FaFacebook size={23} color={"#3b5998"} aria-label={"Facebook"} />
+        ),
       };
 
     case LinkType.FbPageZouk:
@@ -105,8 +118,20 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.facebook.com/IoanaCatalinaBrazilianZouk",
         classImgA: "link-photo-facebook",
         classLinkA: "link-facebook",
-        iconOff: <FaFacebook size={23} color={"#333333"} />,
-        iconOn: <FaFacebook size={23} color={"#3b5998"} />,
+        iconOff: (
+          <FaFacebook
+            size={23}
+            color={"#333333"}
+            aria-label={"Photography page"}
+          />
+        ),
+        iconOn: (
+          <FaFacebook
+            size={23}
+            color={"#3b5998"}
+            aria-label={"Photography page"}
+          />
+        ),
       };
 
     case LinkType.NationalGeogrpahic:
@@ -115,8 +140,20 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://yourshot.nationalgeographic.com/profile/1275781/",
         classImgA: "link-photo-nationalg",
         classLinkA: "link-nationalg",
-        iconOff: <TbBrandNationalGeographic size={25} color={"#333333"} />,
-        iconOn: <TbBrandNationalGeographic size={25} color={"#f3e300"} />,
+        iconOff: (
+          <TbBrandNationalGeographic
+            size={25}
+            color={"#333333"}
+            aria-label={"National Geographic"}
+          />
+        ),
+        iconOn: (
+          <TbBrandNationalGeographic
+            size={25}
+            color={"#f3e300"}
+            aria-label={"National Geographic"}
+          />
+        ),
       };
     case LinkType.PX500:
       return {
@@ -124,8 +161,12 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://500px.com/IoanaCatalinaE",
         classImgA: "link-photo-underlined",
         classLinkA: "link-underlined",
-        iconOff: <Lia500Px size={25} color={"#333333"} />,
-        iconOn: <Lia500Px size={25} color={"#888888"} />,
+        iconOff: (
+          <Lia500Px size={25} color={"#333333"} aria-label={"500px profile"} />
+        ),
+        iconOn: (
+          <Lia500Px size={25} color={"#888888"} aria-label={"500px profile"} />
+        ),
       };
     case LinkType.Flickr:
       return {
@@ -133,8 +174,20 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.flickr.com/photos/ioana_e",
         classImgA: "link-photo-flikr",
         classLinkA: "link-flikr",
-        iconOff: <IoLogoFlickr size={25} color={"#333333"} />,
-        iconOn: <IoLogoFlickr size={25} color={"#d32265"} />,
+        iconOff: (
+          <IoLogoFlickr
+            size={25}
+            color={"#333333"}
+            aria-label={"Flickr profile"}
+          />
+        ),
+        iconOn: (
+          <IoLogoFlickr
+            size={25}
+            color={"#d32265"}
+            aria-label={"Flicker profile"}
+          />
+        ),
       };
     case LinkType.Shutterstock:
       return {
@@ -142,8 +195,20 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.shutterstock.com/g/ioanacatalinae",
         classImgA: "link-photo-shutterstock",
         classLinkA: "link-shutterstock",
-        iconOff: <CgShutterstock size={25} color={"#333333"} />,
-        iconOn: <CgShutterstock size={25} color={"#dc0909"} />,
+        iconOff: (
+          <CgShutterstock
+            size={25}
+            color={"#333333"}
+            aria-label={"Shutterstock"}
+          />
+        ),
+        iconOn: (
+          <CgShutterstock
+            size={25}
+            color={"#dc0909"}
+            aria-label={"Shutterstock"}
+          />
+        ),
       };
     case LinkType.IStock:
       return {
@@ -151,8 +216,20 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.istockphoto.com/es/portfolio/ioanacatalinae",
         classImgA: "link-photo-underlined",
         classLinkA: "link-underlined",
-        iconOff: <TbCircleLetterIFilled size={25} color={"#333333"} />,
-        iconOn: <TbCircleLetterIFilled size={25} color={"#888888"} />,
+        iconOff: (
+          <TbCircleLetterIFilled
+            size={25}
+            color={"#333333"}
+            aria-label={"IStock"}
+          />
+        ),
+        iconOn: (
+          <TbCircleLetterIFilled
+            size={25}
+            color={"#888888"}
+            aria-label={"IStock"}
+          />
+        ),
       };
     case LinkType.AdobeStock:
       return {
@@ -160,8 +237,12 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://stock.adobe.com/es/contributor/206273411/icephotography",
         classImgA: "link-photo-adobe",
         classLinkA: "link-adobe",
-        iconOff: <SiAdobe size={22} color={"#333333"} />,
-        iconOn: <SiAdobe size={22} color={"#ff4674"} />,
+        iconOff: (
+          <SiAdobe size={22} color={"#333333"} aria-label={"Adobe Stock"} />
+        ),
+        iconOn: (
+          <SiAdobe size={22} color={"#ff4674"} aria-label={"Adobe Stock"} />
+        ),
       };
     case LinkType.Dreamstime:
       return {
@@ -169,8 +250,12 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.dreamstime.com/tophat33_info",
         classImgA: "link-photo-dreamstime",
         classLinkA: "link-dreamstime",
-        iconOff: <SiDreamstime size={23} color={"#333333"} />,
-        iconOn: <SiDreamstime size={23} color={"#248100"} />,
+        iconOff: (
+          <SiDreamstime size={23} color={"#333333"} aria-label={"Dreamstime"} />
+        ),
+        iconOn: (
+          <SiDreamstime size={23} color={"#248100"} aria-label={"Dreamstime"} />
+        ),
       };
     case LinkType.Linkedin:
       return {
@@ -178,8 +263,12 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.linkedin.com/in/ioanacatalina/",
         classImgA: "link-photo-facebook",
         classLinkA: "link-facebook",
-        iconOff: <FaLinkedin size={25} color={"#333333"} />,
-        iconOn: <FaLinkedin size={25} color={"#3b5998"} />,
+        iconOff: (
+          <FaLinkedin size={25} color={"#333333"} aria-label={"Linkedin"} />
+        ),
+        iconOn: (
+          <FaLinkedin size={25} color={"#3b5998"} aria-label={"Linkedin"} />
+        ),
       };
     case LinkType.Youtube:
       return {
@@ -187,8 +276,12 @@ export function getLinkData(type: LinkType): ILinkData {
         url: "https://www.youtube.com/@IoanaCatalinaE",
         classImgA: "link-photo-shutterstock",
         classLinkA: "link-shutterstock",
-        iconOff: <FaYoutube size={25} color={"#333333"} />,
-        iconOn: <FaYoutube size={25} color={"#de0000"} />,
+        iconOff: (
+          <FaYoutube size={25} color={"#333333"} aria-label={"Youtube"} />
+        ),
+        iconOn: (
+          <FaYoutube size={25} color={"#de0000"} aria-label={"Youtube"} />
+        ),
       };
   }
 }

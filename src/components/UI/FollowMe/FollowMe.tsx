@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 import { ScreenType } from "types/enums";
 import { useSelector } from "hooks/utils";
 
@@ -12,6 +12,7 @@ import {
 import { SocialMediaButtons } from "../SocialMediaButtons/SocialMediaButtons";
 import { Flex } from "../Flex/Flex";
 import { SpacingOffsets } from "helpers/cssGenerators";
+import { imageLoader } from "helpers/imageLoader";
 
 interface FollowMeInterface extends SpacingOffsets {
   subscribe?: boolean;
@@ -45,6 +46,20 @@ export const FollowMe = ({
       >
         <FlexElement1>
           <AvatarIcon src="/img/followme.jpg" alt="Travel girl" />
+          {/* <Image
+            src="/img/followme.jpg"
+            alt="Travel girl"
+            loader={imageLoader}
+            // sizes="100vw"
+            width={0}
+            height={0}
+            style={{
+              borderRadius: "50%",
+              width: "100%",
+              maxWidth: "300px",
+            }}
+            priority
+          /> */}
         </FlexElement1>
         <FlexElement2
           className="text-container"
