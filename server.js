@@ -5,7 +5,6 @@ const dev = process.env.NODE_ENV !== "production";
 
 const port = !dev ? process.env.PORT : 3000;
 
-// Create the Express-Next App
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
