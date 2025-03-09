@@ -8,6 +8,7 @@ import "../src/styles/css/menu.css";
 import "../src/styles/css/screensize.css";
 import "../src/styles/css/search.css";
 import "../src/styles/css/map.css";
+import ErrorBoundary from "../src/components/ErrorBoundary";
 
 import { StrictMode, useEffect } from "react";
 import Head from "next/head";
@@ -65,9 +66,11 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       </Script>
       <Provider store={store}>
         <GlobalStyles />
-        <StrictMode>
+        <ErrorBoundary>
+          {/* <StrictMode> */}
           <AppMain Component={Component} pageProps={pageProps} />
-        </StrictMode>
+          {/* </StrictMode> */}
+        </ErrorBoundary>
       </Provider>
     </>
   );

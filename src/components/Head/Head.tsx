@@ -22,7 +22,7 @@ import {
   getMetaForWorkWithMe,
   MetaData,
 } from "./MetaHelper";
-import { BlogPost, blogPosts } from "staticModel/Blog/blog";
+import { BlogPost } from "staticModel/Blog/blog";
 
 interface MetaProps {
   album?: AlbumDetails;

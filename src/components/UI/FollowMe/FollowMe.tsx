@@ -58,7 +58,6 @@ export const FollowMe = ({
               width: "100%",
               maxWidth: "300px",
             }}
-            priority
           /> */}
         </FlexElement1>
         <FlexElement2

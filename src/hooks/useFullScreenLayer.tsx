@@ -1,25 +1,17 @@
 import React from "react";
 
 import { FullScreenLayer } from "components/UI/FullScreenLayer";
-import { PageType } from "types/enums";
+import { AlbumType, PageType } from "types/enums";
 import { useEffect, useState } from "react";
 import { FullSizeImage, getFullSizeImageByPage } from "staticModel";
-// import { useSelector } from "./utils";
 import { COUNTER_DANCE, COUNTER_TRAVEL } from "helpers";
 
-export const useFullScreenlayer = (
-  pageType: PageType,
-  imageP?: FullSizeImage,
-  inverse?: boolean,
-) => {
+export const useFullScreenlayer = (pageType: PageType, inverse?: boolean) => {
   const [imageProps, setImageProps] = useState<FullSizeImage>({
-    text: "",
-    class: {
-      textPosition: "",
-      opacity: 0.45,
-    },
     url: "",
+    text: "",
     alt: "",
+    class: { textPosition: "", width: 0 },
   });
 
   const travelPageCount =
@@ -32,19 +24,33 @@ export const useFullScreenlayer = (
       ? localStorage.getItem(COUNTER_DANCE) ?? 0
       : 0;
 
-  //const travelPageCount = useSelector((state) => state.app.travelPageCount);
+  // For dynamic covers that hold counts in localStorage we need to wait for the first render first before setting the cover
+  // since the server has no idea about the localStorage
+  const isDynamicCover =
+    pageType === AlbumType.Travel || pageType === AlbumType.Dance;
 
   useEffect(() => {
     setImageProps(
-      imageP
-        ? imageP
-        : getFullSizeImageByPage(
-            pageType,
-            Number(travelPageCount),
-            Number(dancePageCount),
-          ),
+      getFullSizeImageByPage(
+        pageType,
+        Number(travelPageCount),
+        Number(dancePageCount),
+      ),
     );
   }, []);
 
-  return <FullScreenLayer fullSizeImage={imageProps} inverse={inverse} />;
+  return (
+    <FullScreenLayer
+      fullSizeImage={
+        isDynamicCover
+          ? imageProps
+          : getFullSizeImageByPage(
+              pageType,
+              Number(travelPageCount),
+              Number(dancePageCount),
+            )
+      }
+      inverse={inverse}
+    />
+  );
 };
