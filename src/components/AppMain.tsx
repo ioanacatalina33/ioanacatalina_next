@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 // import { initGA } from "helpers/traking";
 import { sleep, usePrevious } from "helpers";
-import { fetchSmallArticles } from "helpers/api";
 
 import { Meta } from "./Head";
 import { Header } from "./Header";
@@ -20,6 +19,7 @@ import {
   updateScreenDim,
 } from "store/appSlice";
 import { useDebounce } from "hooks";
+import { fetchSmallArticles } from "helpers/api";
 
 interface AppMain {
   // eslint-disable-next-line @typescript-eslint/ban-types

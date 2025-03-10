@@ -31,7 +31,7 @@ exports.connect = (mongoose) => {
       })
       .catch((error) => {
         console.log(
-          "Not possible to connect to the database! " + JSON.stringify(error)
+          "Not possible to connect to the database! " + JSON.stringify(error),
         );
       });
   });
@@ -43,11 +43,11 @@ exports.connect = (mongoose) => {
     })
     .catch((error) => {
       console.log(
-        "Not possible to connect to the database! " + JSON.stringify(error)
+        "Not possible to connect to the database! " + JSON.stringify(error),
       );
     });
 };
 
-sleep = (milliseconds) => {
+const sleep = (milliseconds: number) => {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };

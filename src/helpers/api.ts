@@ -84,6 +84,6 @@ export const fetchParameter = async (name) => {
   } catch (err) {
     // console.log("fetching again");
     await sleep(2000);
-    return await fetchParameter();
+    return await fetchParameter(name);
   }
 };

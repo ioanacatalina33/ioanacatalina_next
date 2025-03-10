@@ -67,9 +67,9 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       <Provider store={store}>
         <GlobalStyles />
         <ErrorBoundary>
-          {/* <StrictMode> */}
-          <AppMain Component={Component} pageProps={pageProps} />
-          {/* </StrictMode> */}
+          <StrictMode>
+            <AppMain Component={Component} pageProps={pageProps} />
+          </StrictMode>
         </ErrorBoundary>
       </Provider>
     </>

@@ -12,7 +12,7 @@ async function dbConnect() {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
-    auto_reconnect: true,
+    autoReconnect: true,
   });
 }
 
