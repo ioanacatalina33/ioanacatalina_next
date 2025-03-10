@@ -1,67 +1,59 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-import { BlogArticlePage } from "components/Pages/BlogArticlePage";
+import { BlogPost } from "types";
+import client from "../../lib/contentful";
+import { parseToBlogPost } from "../../api/parsers/blogPost";
 import { STATIC_PATHS_LOAD } from "helpers";
-import { getImagesNamesFromFolder, getRouteStaticPaths } from "../../api/utils";
-import { AlbumType, Routes } from "types";
-import { FullBlogPostDetails, getBlogPostByUrl } from "staticModel/Blog/blog";
-import { getAlbumsBetweenDates } from "../../api/controllers";
-import { NotFoundPage } from "components";
+import { BlogPostPage } from "components/Pages/BlogPostPage";
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   let paths = [];
-//   if (STATIC_PATHS_LOAD) {
-//     paths = await getRouteStaticPaths(Routes.BlogArticle);
-//   }
-//   return {
-//     paths: STATIC_PATHS_LOAD ? paths : [],
-//     fallback: STATIC_PATHS_LOAD ? false : "blocking",
-//   };
-// };
+export const getStaticPaths: GetStaticPaths = async () => {
+  let paths = [];
+
+  if (STATIC_PATHS_LOAD) {
+    const response = await client.getEntries({ content_type: "blogPost" });
+    paths = response.items.map((post) => ({
+      params: { id: post.fields.slug },
+    }));
+  }
+
+  return {
+    paths,
+    fallback: STATIC_PATHS_LOAD ? false : "blocking",
+  };
+};
 
 interface Props {
-  fullPost: FullBlogPostDetails;
+  post: BlogPost;
 }
 
-// export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-//   const postId = params.id.toString();
+export const getStaticProps: GetStaticProps<Props> = async ({
+  params,
+  preview = false,
+}) => {
+  const postId = params.id.toString();
+  const response = await client.getEntries({
+    content_type: "blogPost",
+    "fields.slug": postId,
+  });
+  const post = response.items[0];
 
-//   const post = getBlogPostByUrl(postId);
-//   if (!post) {
-//     return {
-//       notFound: true,
-//     };
-//   }
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: {
+      post: parseToBlogPost(post),
+      preview,
+    },
+  };
+};
 
-//   const fullPost = { post, images: [], albums: [] };
-
-//   const images = await getImagesNamesFromFolder("/Blog/" + post.id);
-//   const imagesFullPath = images.map(
-//     (img) => "/img/Blog/" + post.id + "/" + img,
-//   );
-//   fullPost.images = imagesFullPath;
-
-//   if (post.dateStart && post.dateEnd) {
-//     const albums = await getAlbumsBetweenDates(
-//       post.dateStart,
-//       post.dateEnd,
-//       AlbumType.Travel,
-//     );
-//     fullPost.albums = albums;
-//   }
-
-//   const final = JSON.parse(JSON.stringify(fullPost));
-
-//   return {
-//     props: { fullPost: final },
-//     //revalidate: 1, // In seconds
-//   };
-// };
-
-const blog = ({ fullPost }: Props) => {
-  //return <BlogArticlePage fullPost={fullPost} />;
-  return <NotFoundPage />;
+const blog = ({ post }: Props) => {
+  console.log(post);
+  return <BlogPostPage post={post} />;
 };
 
 export default blog;

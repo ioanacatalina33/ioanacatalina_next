@@ -134,7 +134,7 @@ const getFullSizeImageBlog = (): FullSizeImage => {
   const images = [
     {
       url: "/img/fullscreen/blog_header_01.jpg",
-      text: "Coming up soon!",
+      text: "Blog",
       class: { textPosition: "img-loaded-text-center" },
       alt: "Blog posts",
     },

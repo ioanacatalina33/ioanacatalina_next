@@ -1,4 +1,5 @@
 import { AlbumType } from "types/enums";
+import { Document } from "@contentful/rich-text-types";
 
 export interface Location {
   _id: string;
@@ -39,3 +40,54 @@ export type FullAlbumDetails = {
   prev: Album[];
   images: string[];
 };
+
+export interface BlogImage {
+  sys: {
+    id: string;
+  };
+  fields: BlogImageFields;
+}
+
+export interface BlogImageFields {
+  title: string;
+  description: string;
+  file: {
+    url: string;
+    details: {
+      image: {
+        width: number;
+        height: number;
+      };
+    };
+  };
+}
+
+export interface BlogAuthor {
+  sys: {
+    id: string;
+  };
+  fields: {
+    name: string;
+    avatar: BlogImage;
+  };
+}
+
+export interface BlogPostCard {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    slug: string;
+    summary: string;
+    date: string;
+    headerPhoto: BlogImage;
+    author: BlogAuthor;
+  };
+}
+
+export interface BlogPost extends BlogPostCard {
+  fields: BlogPostCard["fields"] & {
+    content: Document;
+  };
+}

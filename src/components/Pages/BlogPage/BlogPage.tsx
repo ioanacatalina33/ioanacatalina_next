@@ -1,12 +1,14 @@
 import { useFullScreenlayer, useScreenType } from "hooks";
 import React from "react";
-import { blogPosts } from "staticModel/Blog";
-import { ScreenType, StaticPage } from "types";
+import { BlogPost, BlogPostCard, ScreenType, StaticPage } from "types";
 import { PostCard } from "./PostCard";
 
-export function BlogPage() {
+interface BlogPageProps {
+  posts: BlogPostCard[];
+}
+
+export function BlogPage({ posts }: BlogPageProps) {
   const FullSizeLayer = useFullScreenlayer(StaticPage.BLOG);
-  const posts = blogPosts;
 
   const { screenType } = useScreenType();
 
@@ -24,7 +26,7 @@ export function BlogPage() {
         }}
       >
         {posts.map((post) => (
-          <PostCard key={post.id} post={post} />
+          <PostCard key={post.sys.id} post={post} />
         ))}
         {posts.length === 0 && <h1>Blog</h1>}
       </div>

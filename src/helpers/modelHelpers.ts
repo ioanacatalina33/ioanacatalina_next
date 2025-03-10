@@ -28,7 +28,7 @@ export const albumDynamicUrl = (type: AlbumType) => {
 export const urlAlbumHeader = (
   type: AlbumType,
   identifier: string,
-  isCoverLarge: boolean
+  isCoverLarge: boolean,
 ): string => {
   return type === AlbumType.Highlights || isCoverLarge
     ? articleCoverLarge(identifier)
@@ -38,7 +38,7 @@ export const urlAlbumHeader = (
 export const getUniqueValues = (
   albums: Album[],
   property: string,
-  sort: boolean
+  sort: boolean,
 ): string[] => {
   if (sort === true) {
     return Array.from(new Set(albums.map((item) => item[property]))).sort();
@@ -50,7 +50,7 @@ export const getUniqueValues = (
 export const getUniqueCountriesByContinents = (
   albums: Album[],
   continents: string[],
-  sort: boolean
+  sort: boolean,
 ): string[] => {
   if (continents.length === 0) return [];
   if (sort === true) {
@@ -58,23 +58,23 @@ export const getUniqueCountriesByContinents = (
       new Set(
         albums
           .filter((article) => continents.includes(article.continent))
-          .map((item) => item.country)
-      )
+          .map((item) => item.country),
+      ),
     ).sort();
   } else {
     return Array.from(
       new Set(
         albums
           .filter((article) => continents.includes(article.continent))
-          .map((item) => item.country)
-      )
+          .map((item) => item.country),
+      ),
     );
   }
 };
 
 export const getYears = (albums: Album[]): string[] => {
   return Array.from(
-    new Set(albums.map((item) => moment(item.date_start).format("YYYY")))
+    new Set(albums.map((item) => moment(item.date_start).format("YYYY"))),
   )
     .sort()
     .reverse();
@@ -82,9 +82,13 @@ export const getYears = (albums: Album[]): string[] => {
 
 export const getMonths = (albums: Album[]): string[] => {
   return Array.from(
-    new Set(albums.map((item) => moment(item.date_start).format("MMM")))
+    new Set(albums.map((item) => moment(item.date_start).format("MMM"))),
   ).sort();
 };
+
+export function getBlogDate(date: Date): string {
+  return moment(date).format("D MMM YYYY");
+}
 
 interface Filters {
   years: string[];
@@ -97,7 +101,7 @@ interface Filters {
 
 export const filterArticles = (
   articles: Album[],
-  filters: Partial<Filters>
+  filters: Partial<Filters>,
 ): Album[] => {
   const hasYears = filters.years && filters.years.length !== 0;
   const hasMonths = filters.months && filters.months.length !== 0;
@@ -110,7 +114,7 @@ export const filterArticles = (
     return (
       (!hasContinents ||
         filters.continents.filter(
-          (continent) => article.continent === continent
+          (continent) => article.continent === continent,
         ).length > 0) &&
       (!hasCountries ||
         filters.countries.filter((country) => article.country === country)
@@ -120,11 +124,11 @@ export const filterArticles = (
           .length > 0) &&
       (!hasYears ||
         filters.years.filter(
-          (year) => moment(article.date_start).format("YYYY") === year
+          (year) => moment(article.date_start).format("YYYY") === year,
         ).length > 0) &&
       (!hasMonths ||
         filters.months.filter(
-          (month) => moment(article.date_start).format("MMM") === month
+          (month) => moment(article.date_start).format("MMM") === month,
         ).length > 0) &&
       (!hasTypes ||
         filters.types.filter((type) => article.type === type).length > 0)
@@ -134,7 +138,7 @@ export const filterArticles = (
 
 export const filterLocations = (
   locations: Location[],
-  filters: Partial<Filters>
+  filters: Partial<Filters>,
 ) => {
   const newLocations = locations.filter((location) => {
     const articles = filterArticles(location.articles, filters);
@@ -145,7 +149,7 @@ export const filterLocations = (
 
 export const filterArticlesForLocation = (
   articles: Album[],
-  filters: Partial<Filters>
+  filters: Partial<Filters>,
 ): Album[] => {
   const articlesSelected = articles.filter((article) => {
     return (
@@ -154,10 +158,10 @@ export const filterArticlesForLocation = (
         .length > 0 ||
         article.type !== "Travel") &&
       filters.years.filter(
-        (year) => moment(article.date_start).format("YYYY") === year
+        (year) => moment(article.date_start).format("YYYY") === year,
       ).length > 0 &&
       filters.months.filter(
-        (month) => moment(article.date_start).format("MMM") === month
+        (month) => moment(article.date_start).format("MMM") === month,
       ).length > 0
     );
   });
@@ -175,8 +179,8 @@ export const getLocationsWithComaAnd = (locations: Location[]): string => {
       index < locations.length - 3
         ? (locationsString = locationsString + loc.name + ", ")
         : index === locations.length - 2
-        ? (locationsString = locationsString + loc.name + " & ")
-        : (locationsString = locationsString + loc.name)
+          ? (locationsString = locationsString + loc.name + " & ")
+          : (locationsString = locationsString + loc.name),
     );
   }
   return locationsString;
@@ -214,7 +218,7 @@ export const getFileDateTitle = (date_start: Date, date_end: Date): string => {
 
 export const getFileDateTitleString = (
   date_start: Date,
-  date_end: Date
+  date_end: Date,
 ): string => {
   if (
     moment(date_start).format("YYYY.MM.DD") ===
@@ -255,7 +259,7 @@ export const getFileDateTitleString = (
 
 export const getFileDateTitleMonthString = (
   date_start: Date,
-  date_end: Date
+  date_end: Date,
 ): string => {
   if (
     moment(date_start).format("YYYY.MM.DD") ===
@@ -296,7 +300,7 @@ export const getFileDateTitleMonthString = (
 
 export const getFileDateTitleMonthStringWithoutDay = (
   date_start: Date,
-  date_end: Date
+  date_end: Date,
 ): string => {
   if (
     moment(date_start).format("YYYY.MM") === moment(date_end).format("YYYY.MM")
@@ -320,7 +324,7 @@ export const getFileDateTitleMonthStringWithoutDay = (
 
 export const getFileDateTitleMonthStringWithShortYear = (
   date_start: Date,
-  date_end: Date
+  date_end: Date,
 ): string => {
   if (
     moment(date_start).format("YYYY.MM.DD") ===
@@ -365,10 +369,10 @@ function dateOrdinal(d) {
     (31 === d || 21 === d || 1 === d || "31" === d || "21" === d || "1" === d
       ? "st"
       : 22 === d || 2 === d || "22" === d || "2" === d
-      ? "nd"
-      : 23 === d || 3 === d || "23" === d || "3" === d
-      ? "rd"
-      : "th")
+        ? "nd"
+        : 23 === d || 3 === d || "23" === d || "3" === d
+          ? "rd"
+          : "th")
   );
 }
 

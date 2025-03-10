@@ -32,7 +32,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   }
   return {
     props: { fullAlbum },
-    //revalidate: 1, // In seconds
   };
 };
 

@@ -1241,7 +1241,7 @@ h5 {
   display: inline-block;
   width: 100%;
   margin: 0rem;
-  padding: 0rem;
+  padding: 0rem 0rem 0.3rem 0rem;
   background: transparent;
 }
 
@@ -1327,6 +1327,19 @@ h5 {
   font-weight: 400;
   line-height: 1.6;
   font-size: 1.1rem;
+}
+
+.blog-header-image-text {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 1rem 1rem 1rem;
+  margin: 0 auto;
+  opacity: 0.8;
+  font-weight: 400;
+  line-height: 1.4;
+  font-size: 0.95rem;
+  padding: 0.4rem 1rem 0.2rem 1rem;
 }
 
 .text-centered {
@@ -1763,7 +1776,7 @@ h5 {
 /* -------------- END HOME ---------------- */
 
 .video-responsive {
-  overflow: hidden;
+  /* overflow: hidden; */
   padding-bottom: 56.25%;
   position: relative;
   height: 0;

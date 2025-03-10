@@ -1,88 +1,54 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled, { css } from "styled-components";
 import Link from "next/link";
 
-import { BlogPost } from "staticModel/Blog/blog";
 import { useScreenType } from "hooks";
-import { ScreenType } from "types";
-import { Button } from "react-bootstrap";
-import { Months } from "helpers";
-import { imageLoader } from "helpers/imageLoader";
+import { BlogPostCard, ScreenType } from "types";
+import { getBlogDate } from "helpers";
+import { ContentfulImage } from "components/Contentful/Image/ContentfulImage";
 
-export function PostCard({ post }: { post: BlogPost }) {
+export function PostCard({ post }: { post: BlogPostCard }) {
   const { screenType } = useScreenType();
 
-  const months = Months;
   const isMobile = screenType === ScreenType.Mobile;
+
+  const imageComponent = useMemo(
+    () => (
+      <div style={{ flex: 1 }}>
+        <ContentfulImage
+          src={post.fields.headerPhoto.fields.file.url}
+          alt={post.fields.headerPhoto.fields.title}
+          height={post.fields.headerPhoto.fields.file.details.image.height}
+          width={post.fields.headerPhoto.fields.file.details.image.width}
+          sizes="(max-width: 580px) 100vw, (max-width: 760px) 50vw, (max-width: 1000px) 38vw, 30vw"
+          layout="responsive"
+          style={{ objectFit: "cover" }}
+        />
+      </div>
+    ),
+    [post, isMobile],
+  );
 
   return (
     <Link
       scroll={false}
-      href={"/blog/" + post.url}
+      href={"/blog/" + post.fields.slug}
       style={{ textDecoration: "none", color: "inherit" }}
     >
-      {/* <a style={{ textDecoration: "none", color: "inherit" }}> */}
       <PostCardDiv mobile={isMobile}>
-        <ImageDiv mobile={isMobile}>
-          <Image
-            src={"/img/Blog/" + post.id + ".jpg"}
-            mobile={isMobile}
-            loader={imageLoader}
-          />
-        </ImageDiv>
+        {isMobile && imageComponent}
         <ContentDiv mobile={isMobile}>
-          <h3>{post.title}</h3>
-          <div style={{ flexGrow: 1 }}>{post.text}...</div>
-
-          <div
-            style={{
-              display: "flex",
-              alignSelf: "flex-end",
-              width: "100%",
-            }}
-          >
-            <div style={{ flex: 1 }}>
-              <Button
-                style={{
-                  textAlign: "center",
-                  padding: "0.2rem 1rem 0.2rem 1rem",
-                  margin: "1rem 0rem 0rem 0rem",
-                  color: "#1a1a1a",
-                }}
-                variant="warning"
-              >
-                <b>Read more</b>
-              </Button>
-            </div>
-            <div style={{ opacity: "0.3" }}>
-              <div
-                style={{
-                  fontSize: "4rem",
-                  fontWeight: 800,
-                  lineHeight: "4rem",
-                  margin: 0,
-                  padding: 0,
-                }}
-              >
-                {post.date.getDate() < 10
-                  ? "0" + post.date.getDate()
-                  : post.date.getDate()}
-              </div>
-              <div
-                style={{
-                  fontWeight: 900,
-                  fontSize: "1rem",
-                  lineHeight: "1rem",
-                  margin: 0,
-                  padding: 0,
-                }}
-              >
-                {months[post.date.getMonth()].toUpperCase()}{" "}
-                {post.date.getFullYear()}
-              </div>
-            </div>
+          <h3>{post.fields.title}</h3>
+          <div style={{ flexGrow: 1 }}>
+            {isMobile ? post.fields.summary : post.fields.summary.slice(0, 158)}
+            ...
           </div>
+
+          <DateDiv>
+            <span>{getBlogDate(new Date(post.fields.date))}</span>
+          </DateDiv>
         </ContentDiv>
+        {!isMobile && imageComponent}
       </PostCardDiv>
       {/* </a> */}
     </Link>
@@ -96,14 +62,13 @@ interface MobileProps {
 const PostCardDiv = styled.div<MobileProps>`
   display: flex;
   flex-direction: ${({ mobile }) => (mobile ? "column" : "row")};
-  justify-content: center;
-  align-items: flex-start;
+  align-items: ${({ mobile }) => (mobile ? "left" : "center")};
   background-color: #ffffff;
   box-shadow:
     rgba(50, 50, 93, 0.3) 0px 1px 1px -6px,
-    rgba(0, 0, 0, 0.3) 0px 9px 15px 0px;
+    rgba(0, 0, 0, 0.3) 0px 6px 10px 0px;
   transition: 0.2s;
-  max-width: 750px;
+  max-width: 900px;
   margin: 2rem auto;
 
   cursor: pointer;
@@ -111,42 +76,8 @@ const PostCardDiv = styled.div<MobileProps>`
   :hover {
     box-shadow:
       rgba(50, 50, 93, 0.3) 0px 1px 1px -5px,
-      rgba(0, 0, 0, 0.5) 0px 13px 22px 0px;
+      rgba(0, 0, 0, 0.5) 0px 9px 12px 0px;
   }
-
-  /* &&:after {
-    content: "✈️";
-  } */
-`;
-
-const ImageDiv = styled.div<MobileProps>`
-  ${({ mobile }) => css`
-    ${!mobile &&
-    css`
-      position: relative;
-    `}
-
-    flex: 1;
-  `}
-`;
-
-const Image = styled.img<MobileProps>`
-  ${({ mobile }) => css`
-    flex: 1;
-    width: 100%;
-    height: auto;
-
-    ${!mobile &&
-    css`
-      width: 95%;
-      position: absolute;
-      top: 2rem;
-      left: -3rem;
-    `}
-
-    box-shadow: rgba(50, 50, 93, 0.3) 0px 1px 1px -5px,
-      rgba(0, 0, 0, 0.5) 0px 13px 22px 0px;
-  `}
 `;
 
 const ContentDiv = styled.div<MobileProps>`
@@ -154,25 +85,18 @@ const ContentDiv = styled.div<MobileProps>`
     display: flex;
     flex-direction: column;
     flex: 1;
-    height: 100%;
-
-    /* display: flex;
-  flex-direction: column; */
+    padding: ${({ mobile }) => (mobile ? "1rem" : "0rem 1rem 0rem 2rem")};
     text-align: left;
-    padding: 1rem;
-
-    ${!mobile &&
-    css`
-      padding: 1rem 1rem 1rem 0rem;
-      min-height: 20rem;
-    `}
   `}
 `;
 
-const MaxLinesText = styled.div`
-  display: block; /* or inline-block */
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
-  max-height: 4.5rem;
+const DateDiv = styled.div`
+  display: flex;
+  align-self: flex-end;
+  padding-top: 1rem;
+  opacity: 0.6;
+  justify-content: flex-start;
+  width: 100%;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 `;
