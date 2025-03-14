@@ -9,7 +9,6 @@ export async function getUrlPaths(type: AlbumType): Promise<string[]> {
   let paths = [];
   try {
     await dbConnect();
-    console.log("getUrlPaths called");
 
     //retrieve albums by type
     const pathsObj = await Article.find()

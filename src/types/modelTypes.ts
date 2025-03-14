@@ -83,6 +83,7 @@ export interface BlogPostCard {
     date: string;
     headerPhoto: BlogImage;
     author: BlogAuthor;
+    keywords: string[];
   };
 }
 

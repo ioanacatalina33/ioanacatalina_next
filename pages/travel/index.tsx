@@ -6,6 +6,7 @@ import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 
 import { getAlbumsByType } from "../../api/controllers/albums";
+import { LazyLoadContext } from "Context/LazyLoadContext";
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const data = await getAlbumsByType(AlbumType.Travel);
@@ -26,7 +27,11 @@ interface Props {
 }
 
 const travel = ({ albums }: Props) => {
-  return <TravelPage albums={albums} lazyload />;
+  return (
+    <LazyLoadContext.Provider value={{ lazyload: true }}>
+      <TravelPage albums={albums} />
+    </LazyLoadContext.Provider>
+  );
 };
 
 export default travel;

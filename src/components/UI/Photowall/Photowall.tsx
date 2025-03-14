@@ -15,14 +15,12 @@ interface PhotowallProps {
   type?: AlbumType;
   loading?: boolean;
   filtered?: boolean;
-  lazyload?: boolean;
 }
 
 export const Photowall = ({
   albums,
   type,
   loading,
-  lazyload,
   filtered = true,
 }: PhotowallProps) => {
   const emptyAlbums = !albums || !albums.length;
@@ -59,7 +57,6 @@ export const Photowall = ({
                     <PhotoContainer
                       key={index}
                       album={album}
-                      lazyload={lazyload}
                       type={PhotoContainerType.PHOTOC_MAIN}
                     />
                   ),

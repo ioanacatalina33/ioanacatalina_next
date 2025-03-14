@@ -32,20 +32,6 @@ export const PhotoContainerHome = ({
           style={cornersStyle}
         >
           <div className="photo-container-img-space-home">
-            {/* <div
-              className="loading-animation"
-              style={{ minHeight: show ? "auto" : "13rem", ...cornersStyle }}
-            >
-              <Image
-                className="photo-small"
-                onLoad={onLoad}
-                style={{ visibility: "hidden", ...cornersStyle }}
-                src={"/img/cover_placeholder_square.jpg"}
-                width={0}
-                height={0}
-                alt=""
-              />
-            </div> */}
             <Image
               className="cover-loaded"
               loader={imageLoader}

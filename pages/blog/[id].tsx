@@ -13,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   if (STATIC_PATHS_LOAD) {
     const response = await client.getEntries({ content_type: "blogPost" });
     paths = response.items.map((post) => ({
-      params: { slug: post.fields.slug },
+      params: { id: post.fields.slug },
     }));
   }
 
@@ -23,17 +23,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-interface Props {
-  post: BlogPost;
-}
-
 export const getStaticProps: GetStaticProps<Props> = async ({
   params,
   preview = false,
 }) => {
-  console.log("preview ", preview);
   const cfClient = preview ? previewClient : client;
-  const postId = params.slug.toString();
+  const postId = params.id.toString();
   const response = await cfClient.getEntries({
     content_type: "blogPost",
     "fields.slug": postId,
@@ -53,6 +48,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({
     },
   };
 };
+
+interface Props {
+  post: BlogPost;
+}
 
 const blog = ({ post }: Props) => {
   return <BlogPostPage post={post} />;

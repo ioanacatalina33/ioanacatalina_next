@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import Image from "next/image";
 import LazyLoad from "react-lazy-load";
 
@@ -13,6 +13,7 @@ import { Album } from "types/modelTypes";
 import Link from "next/link";
 import { getDanceEvent } from "staticModel";
 import { imageLoader } from "helpers/imageLoader";
+import { LazyLoadContext } from "Context/LazyLoadContext";
 
 export enum PhotoContainerType {
   PHOTOC_MAIN = "main",
@@ -22,15 +23,15 @@ export enum PhotoContainerType {
 interface PhotoContainerProps {
   album: Album;
   type: PhotoContainerType;
-  lazyload?: boolean;
 }
 
 export const PhotoContainer = ({
   album,
   type,
-  lazyload,
 }: PhotoContainerProps): JSX.Element => {
   const [show, setShow] = useState(false);
+
+  const { lazyload } = useContext(LazyLoadContext);
 
   function onLoad() {
     setShow(true);
@@ -86,7 +87,6 @@ export const PhotoContainer = ({
   const loadedImage = (
     <Image
       className="cover-loaded border-corner-up"
-      // style={cornersStyle}
       loader={imageLoader}
       src={articleCover(album.identifier)}
       alt={titleText + " " + album.country}
@@ -95,12 +95,6 @@ export const PhotoContainer = ({
       onLoad={onLoad}
       sizes="(max-width: 580px) 100vw, (max-width: 760px) 50vw, (max-width: 1000px) 38vw, 30vw"
     />
-    // <img
-    //   className="cover-loaded border-corner-up"
-    //   src={articleCover(album.identifier)}
-    //   alt={titleText + " " + album.country}
-    //   onLoad={onLoad}
-    // />
   );
 
   const content = useMemo(

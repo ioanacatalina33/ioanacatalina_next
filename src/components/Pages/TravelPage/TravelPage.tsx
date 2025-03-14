@@ -13,10 +13,9 @@ import { COUNTER_TRAVEL } from "helpers";
 
 interface TravelProps {
   albums: Album[];
-  lazyload?: boolean;
 }
 
-export const TravelPage = ({ albums, lazyload }: TravelProps) => {
+export const TravelPage = ({ albums }: TravelProps) => {
   const FullSizeLayer = useFullScreenlayer(AlbumType.Travel);
 
   const dispatch = useDispatch();
@@ -50,7 +49,6 @@ export const TravelPage = ({ albums, lazyload }: TravelProps) => {
           albums={filteredAlbums}
           loading={loading}
           filtered={isFiltered}
-          lazyload={lazyload}
         />
       </div>
     </>

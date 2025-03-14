@@ -16,7 +16,7 @@ export function BlogPostHeader({ title, date, headerImage, read = 5 }: Props) {
   const { isDesktop, isMobile } = useScreenType();
   return (
     <>
-      <div className="defaultWidth">
+      <div className="defaultWidth" style={{ width: "100%" }}>
         <Spacer size={(s) => (isDesktop ? s.m : s.s)} />
         <h1>{title}</h1>
         {!isMobile && <Spacer size={(s) => s.xs} withBorder />}

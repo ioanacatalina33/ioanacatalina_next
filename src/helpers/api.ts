@@ -41,8 +41,6 @@ export const addSubscriber = async (email, country, travel, dance) => {
 };
 
 export const buyDigital = async (email, name, message, img) => {
-  console.log("Sending buyDigital");
-
   const response = await fetch("/api/email/buydigital", {
     method: "POST",
     body: JSON.stringify({
@@ -58,7 +56,6 @@ export const buyDigital = async (email, name, message, img) => {
   try {
     const body = await response.json();
     if (response.status !== 200) {
-      //console.log("Error adding the subscriber " + body.message);
       return { result: -1, message: body.message };
     }
     return body;
@@ -77,12 +74,10 @@ export const fetchParameter = async (name) => {
     });
     const body = await response.json();
     if (response.status !== 200) {
-      // console.log("Error fetching parameter " + body.message);
       throw Error(body.message);
     }
     return body;
   } catch (err) {
-    // console.log("fetching again");
     await sleep(2000);
     return await fetchParameter(name);
   }

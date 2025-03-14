@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 import { HighlightsAlbums } from "staticModel";
-import { blogPosts } from "staticModel/Blog";
 import { AlbumType, Routes } from "types";
 import { getUrlPaths } from "./controllers";
 
@@ -48,10 +47,6 @@ export async function getRouteStaticPaths(route: Routes) {
     }
     case Routes.Highlights: {
       HighlightsAlbums.forEach((high) => fileNames.push(high.name_url));
-      break;
-    }
-    case Routes.BlogArticle: {
-      blogPosts.forEach((post) => fileNames.push(post.url));
       break;
     }
     default:

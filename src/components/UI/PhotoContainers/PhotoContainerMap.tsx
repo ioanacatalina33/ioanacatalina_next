@@ -6,6 +6,8 @@ import { AlbumType, ScreenType } from "types/enums";
 import { Album } from "types/modelTypes";
 import Link from "next/link";
 import { useScreenType } from "hooks";
+import Image from "next/image";
+import { imageLoader } from "helpers/imageLoader";
 
 interface PhotoContainerMapProps {
   article: Album;
@@ -48,6 +50,21 @@ export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
         ? "0rem 2rem 3rem 2rem"
         : "0rem 1rem 1rem 1rem",
   };
+
+  const loadedImage = (
+    <Image
+      className="cover-loaded border-corner-up"
+      // style={cornersStyle}
+      loader={imageLoader}
+      src={articleCover(article.identifier)}
+      alt={article.name}
+      width={0}
+      height={0}
+      onLoad={onLoad}
+      sizes="(max-width: 580px) 100vw, (max-width: 760px) 50vw, (max-width: 1000px) 38vw, 30vw"
+    />
+  );
+
   return (
     <div className="map-photo-col col-12 col-centered" style={containerPadding}>
       <Link scroll={false} href={articleURL}>
@@ -66,13 +83,7 @@ export const PhotoContainerMap = ({ article }: PhotoContainerMapProps) => {
               />
             </div>
 
-            <img
-              className="cover-loaded border-corner-up"
-              src={articleCover(article.identifier)}
-              alt=""
-              onLoad={onLoad}
-            />
-
+            {loadedImage}
             <span style={getTitleStyle()} className="photo-container-title">
               {getDate()}
             </span>

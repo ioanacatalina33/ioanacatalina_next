@@ -5,8 +5,7 @@ import {
   getLocationsWithComa,
 } from "helpers";
 import { getDanceEvent, getDanceEventMeta } from "staticModel";
-import { BlogPost } from "staticModel/Blog/blog";
-import { AlbumDetails } from "types";
+import { AlbumDetails, BlogPostCard } from "types";
 
 const albumTravelDefaultKeywords =
   "Travel, wanderlust, best, photos, photograph, pics, nomad, life, photographer, holidays, vacations, trips, amazing, beautiful, places, locations, famous, destinations, spot, views, adventures";
@@ -31,6 +30,7 @@ export interface MetaData {
   ogtitle?: string;
   h1?: string;
   ogtype?: string;
+  author?: string;
 }
 
 export function getMetaDefault(): MetaData {
@@ -40,7 +40,6 @@ export function getMetaDefault(): MetaData {
       "best, photography, photos, pics, amazing, awesome, beautiful, instagram, insta, moments, photographer, portofolio, portfolio, trips, vacations, holidays, spots, photogenic",
     description:
       "World through my lenses: Capturing moments that inspire a love for our planet.",
-
     ogimage: "/img/Home/meta_home.jpg",
     ogdescription:
       "World through my lenses: Capturing moments that inspire a love for our planet.",
@@ -95,11 +94,11 @@ export function getMetaForHighlights(): MetaData {
 
 export function getMetaForBlog(): MetaData {
   return {
-    title: "My adventures in words",
+    title: "Blog",
     keywords:
       "blog, posts, my, travel, life, about, thoughts, explore, mind, journey, road trip, trips",
     description: "My first personal blog ",
-    ogimage: "/img/photos/meta/blog.jpg",
+    ogimage: "/img/Home/meta_blog.jpg",
     ogdescription: "My adventures in words",
     h1: "Blog posts about my journeys",
   };
@@ -224,18 +223,15 @@ export function getMetaForGeena(): MetaData {
   };
 }
 
-export function getMetaForBlogPost(blog: BlogPost): MetaData {
+export function getMetaForBlogPost(blog: BlogPostCard): MetaData {
   return {
-    title: blog ? blog.title : "",
-    keywords:
-      "photography, blog, post, articles, mind " +
-      (blog ? blog.keywords.join(",") : ""),
-    description:
-      "My adventures in words. " + (blog ? blog.text.slice(0, 200) : ""),
-    ogimage: blog ? "/img/Blog/" + blog.id + ".jpg" : "",
-    ogdescription:
-      (blog ? blog.subtitle : "") + " " + (blog ? blog.text.slice(0, 200) : ""),
-    h1: "",
+    title: blog.fields.title,
+    keywords: "photography, blog, post, " + blog.fields.keywords.join(","),
+    // +  (blog ? blog.keywords.join(",") : ""),
+    description: blog.fields.summary.slice(0, 200),
+    ogimage: blog.fields.headerPhoto.fields.file.url,
+    ogdescription: blog.fields.summary.slice(0, 200),
+    ogtype: "article",
   };
 }
 

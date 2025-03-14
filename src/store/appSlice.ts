@@ -64,7 +64,6 @@ export const appSlice = createSlice({
       state.queryText = action.payload;
     },
     incrementTravelPageCount: (state) => {
-      console.log("state.travelPageCount ", state.travelPageCount);
       state.travelPageCount = state.travelPageCount + 1;
     },
     updateMobileSearch: (state, action: PayloadAction<boolean>) => {

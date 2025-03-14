@@ -15,10 +15,9 @@ import { COUNTER_DANCE } from "helpers";
 
 interface DanceProps {
   albums: Album[];
-  lazyload?: boolean;
 }
 
-export const DancePage = ({ albums, lazyload }: DanceProps) => {
+export const DancePage = ({ albums }: DanceProps) => {
   const FullSizeLayer = useFullScreenlayer(AlbumType.Dance);
 
   const { filteredAlbums, loading } = useFilteredAlbums(
@@ -57,7 +56,6 @@ export const DancePage = ({ albums, lazyload }: DanceProps) => {
             <Photowall
               albums={filteredAlbums}
               loading={loading}
-              lazyload={lazyload}
               filtered={isFiltered}
             />
           </div>

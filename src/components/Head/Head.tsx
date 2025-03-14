@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { AlbumDetails, Routes } from "types";
+import { AlbumDetails, BlogPostCard, Routes } from "types";
 import { rootPath } from "helpers";
 
 import {
@@ -22,20 +22,14 @@ import {
   getMetaForWorkWithMe,
   MetaData,
 } from "./MetaHelper";
-import { BlogPost } from "staticModel/Blog/blog";
 
 interface MetaProps {
   album?: AlbumDetails;
-  blogPost?: BlogPost;
+  blogPost?: BlogPostCard;
 }
 
 export const Meta = ({ album, blogPost }: MetaProps) => {
   const { pathname, query } = useRouter();
-
-  const url =
-    rootPath +
-    (query.id ? pathname.replace("[id]", query.id.toString()) : pathname) +
-    (query.img ? "?img=" + query.img : "");
 
   const canonical =
     rootPath +
@@ -116,7 +110,12 @@ export const Meta = ({ album, blogPost }: MetaProps) => {
               : metaData.description
           }
         />
-        <meta property="og:image" content={rootPath + metaData.ogimage} />
+        <meta
+          property="og:image"
+          content={
+            blogPost ? "https:" + metaData.ogimage : rootPath + metaData.ogimage
+          }
+        />
         <meta
           property="og:type"
           content={metaData.ogtype ? metaData.ogtype : "website"}
@@ -126,6 +125,9 @@ export const Meta = ({ album, blogPost }: MetaProps) => {
         <meta name="og:email" content="ioana.echim@gmail.com" />
         <meta name="og:latitude" content="45.7489" />
         <meta name="og:longitude" content="21.2087" />
+        {metaData.author && (
+          <meta name="article:author" content={metaData.author} />
+        )}
 
         <link rel="canonical" href={canonical} />
       </Head>

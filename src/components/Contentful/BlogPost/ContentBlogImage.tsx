@@ -27,8 +27,8 @@ export function ContentBlogImage({
         alt={title}
         height={file.details.image.height}
         width={file.details.image.width}
+        style={{ width: "100%", height: "auto", objectFit: "contain" }}
         sizes="(max-width: 850px) 100vw, 850px"
-        layout="responsive"
       />
       {description && (
         <figcaption className="blog-header-image-text">

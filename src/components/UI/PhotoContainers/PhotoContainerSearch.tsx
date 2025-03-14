@@ -6,6 +6,8 @@ import { articleCover, getFileDateTitleString } from "helpers";
 import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 import { getDanceEvent } from "staticModel";
+import Image from "next/image";
+import { imageLoader } from "helpers/imageLoader";
 
 interface PhotoContainerSearchProps {
   article: Album;
@@ -70,6 +72,20 @@ export const PhotoContainerSearch = ({
 
   colsClass = colsClass + " photo-col-padding-v2";
 
+  const loadedImage = (
+    <Image
+      className="cover-loaded border-corner-up"
+      // style={cornersStyle}
+      loader={imageLoader}
+      src={articleCover(article.identifier)}
+      alt={article.name}
+      width={0}
+      height={0}
+      onLoad={onLoad}
+      sizes="(max-width: 580px) 100vw, (max-width: 760px) 50vw, (max-width: 1000px) 38vw, 30vw"
+    />
+  );
+
   return (
     <div
       className={colsClass}
@@ -95,13 +111,7 @@ export const PhotoContainerSearch = ({
                     onLoad={onLoad}
                   />
                 </div>
-                <LazyLoad offset={800}>
-                  <img
-                    className="cover-loaded border-corner-up"
-                    src={articleCover(article.identifier)}
-                    alt=""
-                  />
-                </LazyLoad>
+                <LazyLoad offset={800}>{loadedImage}</LazyLoad>
                 <span style={getTitleStyle()} className="photo-container-title">
                   {getTitleText()}
                 </span>

@@ -22,6 +22,9 @@ export function parseToBlogPostCard(post: any): BlogPostCard {
       summary: post.fields.summary,
       date: post.fields.date,
       headerPhoto: post.fields.headerPhoto,
+      keywords: Object.values(post.fields.keywords).map(
+        (k: any) => k.fields.name,
+      ),
       author: {
         sys: {
           id: post.fields.author.sys.id,
