@@ -40,6 +40,9 @@ const initialState: AppStore = {
       subtypes: [],
       types: [],
     },
+    blog: {
+      topics: [],
+    },
   },
 };
 

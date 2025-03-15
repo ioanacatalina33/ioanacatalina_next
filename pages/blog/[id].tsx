@@ -1,11 +1,16 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 
-import { BlogPost } from "types";
+import { BlogPost, BlogPostCard } from "types";
 import client, { previewClient } from "../../lib/contentful";
-import { parseToBlogPost } from "../../api/parsers/blogPost";
+import {
+  parseToBlogPost,
+  parseToBlogPostCard,
+  parseToBlogPostCards,
+} from "../../api/parsers/blogPost";
 import { STATIC_PATHS_LOAD } from "helpers";
 import { BlogPostPage } from "components/Pages/BlogPostPage";
+import { getRelatedPosts, sortBlogPosts } from "../../api/utils";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths = [];
@@ -29,11 +34,30 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 }) => {
   const cfClient = preview ? previewClient : client;
   const postId = params.id.toString();
-  const response = await cfClient.getEntries({
-    content_type: "blogPost",
-    "fields.slug": postId,
-  });
-  const post = response.items[0];
+  const responses = await Promise.all([
+    cfClient.getEntries({
+      content_type: "blogPost",
+      "fields.slug": postId,
+    }),
+    client.getEntries({
+      content_type: "blogPost",
+      select: [
+        "sys",
+        "fields.title",
+        "fields.summary",
+        "fields.date",
+        "fields.slug",
+        "fields.headerPhoto",
+        "fields.keywords",
+        "fields.author",
+      ],
+    }),
+  ]);
+  const post = parseToBlogPost(responses[0].items[0]);
+
+  const posts = sortBlogPosts(parseToBlogPostCards(responses[1]));
+
+  const relatedPosts = getRelatedPosts(post, posts);
 
   if (!post) {
     return {
@@ -42,7 +66,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   }
   return {
     props: {
-      post: parseToBlogPost(post),
+      post,
+      relatedPosts,
       preview,
       fallback: "blocking",
     },
@@ -51,10 +76,11 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 
 interface Props {
   post: BlogPost;
+  relatedPosts: BlogPostCard[];
 }
 
-const blog = ({ post }: Props) => {
-  return <BlogPostPage post={post} />;
+const blog = ({ post, relatedPosts }: Props) => {
+  return <BlogPostPage post={post} relatedPosts={relatedPosts} />;
 };
 
 export default blog;

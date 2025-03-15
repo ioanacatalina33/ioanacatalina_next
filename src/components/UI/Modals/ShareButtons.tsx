@@ -2,22 +2,29 @@ import React, { useEffect, useState } from "react";
 import {
   EmailIcon,
   EmailShareButton,
-  FacebookIcon,
   FacebookShareButton,
-  TwitterIcon,
   TwitterShareButton,
-  WhatsappIcon,
   WhatsappShareButton,
+  PinterestShareButton,
 } from "react-share";
 import { ReactIcon } from "../Icon/Icon.style";
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaXTwitter,
+  FaWhatsapp,
+  FaPinterest,
+} from "react-icons/fa6";
+import { Flex } from "../Flex/Flex";
 
 interface ShareButtonsProps {
   facebook?: boolean;
   twitter?: boolean;
   whatsupp?: boolean;
   email?: boolean;
+  pinterest?: boolean;
+  linkeding?: boolean;
   all?: boolean;
+  vertical?: boolean;
 }
 
 export function ShareButtons({
@@ -25,7 +32,10 @@ export function ShareButtons({
   facebook,
   whatsupp,
   twitter,
+  pinterest,
+  linkeding,
   all,
+  vertical,
 }: ShareButtonsProps) {
   const [url, setUrl] = useState("");
 
@@ -35,11 +45,11 @@ export function ShareButtons({
 
   return (
     <>
-      <div>
+      <Flex justify={(j) => j.center} align={(a) => a.center} column={vertical}>
         {(facebook || all) && (
           <FacebookShareButton url={url}>
             <ReactIcon darkColor={true}>
-              <FaFacebook size={27} />
+              <FaFacebook size={35} />
             </ReactIcon>
           </FacebookShareButton>
           // <FacebookShareButton url={url}>
@@ -58,9 +68,16 @@ export function ShareButtons({
               round={true}
             /> */}
             <ReactIcon darkColor={true}>
-              <FaTwitter size={30} />
+              <FaXTwitter size={32} />
             </ReactIcon>
           </TwitterShareButton>
+        )}
+        {(pinterest || all) && (
+          <PinterestShareButton url={url} media={url}>
+            <ReactIcon darkColor={true}>
+              <FaPinterest size={35} />
+            </ReactIcon>
+          </PinterestShareButton>
         )}
         {(whatsupp || all) && (
           <WhatsappShareButton url={url}>
@@ -70,7 +87,7 @@ export function ShareButtons({
               round={true}
             /> */}
             <ReactIcon darkColor={true}>
-              <FaWhatsapp size={30} />
+              <FaWhatsapp size={35} />
             </ReactIcon>
           </WhatsappShareButton>
         )}
@@ -82,11 +99,11 @@ export function ShareButtons({
               round={true}
             /> */}
             <ReactIcon darkColor={true}>
-              <EmailIcon size={30} />
+              <EmailIcon size={35} />
             </ReactIcon>
           </EmailShareButton>
         )}
-      </div>
+      </Flex>
     </>
   );
 }

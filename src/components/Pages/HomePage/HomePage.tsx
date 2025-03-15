@@ -34,7 +34,7 @@ export const HomePage = ({
           maxWidth: "var(--content-width)",
         }}
       >
-        <div>
+        <main>
           <Flex
             justify={(j) => j.center}
             align={(a) => a.center}
@@ -67,7 +67,7 @@ export const HomePage = ({
 
           {/* <SubscribeButton parentPage="Home" /> */}
           <HomeContainers />
-        </div>
+        </main>
       </Flex>
     </Flex>
   );

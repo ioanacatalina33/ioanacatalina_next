@@ -1,10 +1,10 @@
 import { AlbumType } from "types/enums";
-import React, { useEffect, useState } from "react";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import CSSTransition from "react-transition-group/CSSTransition";
 import { getDanceEvent } from "staticModel";
 import { FilterName } from "store";
 import { ButtonGroup } from "react-bootstrap";
+import { useFilterSelected } from "hooks/useFilterSelected";
 
 interface FilterComponentProps {
   filterName: FilterName;
@@ -12,6 +12,7 @@ interface FilterComponentProps {
   allowMultipleSelect?: boolean;
   values: string[];
   selected: string[];
+  unselectOnEsc?: boolean;
   mapFilters?: boolean;
   onFiltersChanged: (filterName: FilterName, filterNewValues: string[]) => void;
 }
@@ -23,71 +24,24 @@ export const FilterComponent = ({
   values,
   selected,
   mapFilters,
+  unselectOnEsc = true,
   onFiltersChanged,
 }: FilterComponentProps) => {
-  const [ctrlPressed, setCtrlPressed] = useState(false);
+  const { handleValueClicked } = useFilterSelected({
+    selected,
+    unselectOnEsc,
+    allowMultipleSelect,
+    onFilterChanged(filterNewValues) {
+      onFiltersChanged(filterName, filterNewValues);
+    },
+  });
 
-  useEffect(() => {
-    if (!mapFilters) document.addEventListener("keydown", escFunction, false);
-    document.addEventListener("keydown", ctrlDown, false);
-    document.addEventListener("keyup", ctrlUp, false);
-    return () => {
-      document.addEventListener("keydown", ctrlDown, false);
-      document.addEventListener("keydown", ctrlUp, false);
-      if (!mapFilters)
-        document.removeEventListener("keydown", escFunction, false);
-    };
-  }, []);
-
-  function escFunction(event) {
-    if (event.keyCode === 27) {
-      onFiltersChanged(filterName, []);
-    }
-  }
-
-  function ctrlDown(event) {
-    if (event.keyCode === 91 || event.keyCode === 17) {
-      setCtrlPressed(true);
-    }
-  }
-
-  function ctrlUp(event) {
-    if (event.keyCode === 91 || event.keyCode === 17) {
-      setCtrlPressed(false);
-    }
-  }
-
-  function handleClick(evt) {
-    const selectedValue = evt.target.name;
-    let selectedValues = [...selected];
-
-    if (ctrlPressed && allowMultipleSelect) {
-      if (selected.indexOf(selectedValue) > -1) {
-        //exists - take it out
-        selectedValues = selectedValues.filter(
-          (value) => selectedValue !== value,
-        );
-      } else {
-        //doesn't exist - add it
-        selectedValues.push(selectedValue);
-      }
-    } else {
-      if (selected.indexOf(selectedValue) > -1) {
-        if (selected.length === 1) {
-          selectedValues = selectedValues.filter(
-            (value) => selectedValue !== value,
-          );
-        } else {
-          selectedValues = [];
-          selectedValues.push(selectedValue);
-        }
-      } else {
-        selectedValues = [];
-        selectedValues.push(selectedValue);
-      }
-    }
-
-    onFiltersChanged(filterName, selectedValues);
+  function handleClick(
+    evt: React.MouseEvent<HTMLButtonElement | HTMLInputElement>,
+  ) {
+    const selectedValue = (evt.target as HTMLButtonElement | HTMLInputElement)
+      .name;
+    handleValueClicked(selectedValue);
   }
 
   const buttonStyle = {

@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { HighlightsAlbums } from "staticModel";
-import { AlbumType, Routes } from "types";
+import { AlbumType, BlogPost, BlogPostCard, Routes } from "types";
 import { getUrlPaths } from "./controllers";
 
 export async function getImagesNamesFromFolder(folderPath: string) {
@@ -60,4 +60,18 @@ export async function getRouteStaticPaths(route: Routes) {
       },
     };
   });
+}
+
+export function sortBlogPosts(posts: BlogPostCard[]) {
+  posts.sort(
+    (a, b) =>
+      new Date(b.fields.date).getTime() - new Date(a.fields.date).getTime(),
+  );
+  return posts;
+}
+
+export function getRelatedPosts(post: BlogPostCard, posts: BlogPostCard[]) {
+  const relatedPosts = posts.filter((p) => p.fields.slug !== post.fields.slug);
+
+  return relatedPosts.sort(() => Math.random() - 0.5).slice(0, 4);
 }

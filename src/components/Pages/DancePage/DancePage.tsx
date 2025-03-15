@@ -8,7 +8,6 @@ import { useFullScreenlayer } from "hooks/useFullScreenLayer";
 import { useIsFiltered } from "hooks/utils";
 import { FiltersType } from "store";
 import { Album } from "types/modelTypes";
-import { ShopLink } from "components/UI/Advertising";
 import { LogosExplanation } from "components/UI/Filters/components";
 import { Flex } from "components/UI/Flex/Flex";
 import { COUNTER_DANCE } from "helpers";
@@ -41,7 +40,7 @@ export const DancePage = ({ albums }: DanceProps) => {
   return (
     <>
       {FullSizeLayer}
-      <div className="App">
+      <main className="App">
         <h2>Dance events</h2>
         {/* <ShopLink center /> */}
         <LogosExplanation />
@@ -60,7 +59,7 @@ export const DancePage = ({ albums }: DanceProps) => {
             />
           </div>
         </Flex>
-      </div>
+      </main>
     </>
   );
 };

@@ -1,7 +1,9 @@
 import { useFullScreenlayer, useScreenType } from "hooks";
 import React from "react";
 import { BlogPostCard, ScreenType, StaticPage } from "types";
-import { PostCard } from "../../UI/PhotoContainers/PostCard";
+import BlogWall from "./BlogWall";
+import { useFilteredBlogPosts } from "hooks/useFilteredBlogPosts";
+import { FiltersBlog } from "components/UI/Filters/FiltersBlog";
 
 interface BlogPageProps {
   posts: BlogPostCard[];
@@ -10,11 +12,13 @@ interface BlogPageProps {
 export function BlogPage({ posts }: BlogPageProps) {
   const FullSizeLayer = useFullScreenlayer(StaticPage.BLOG);
 
+  const { filteredPosts, loading } = useFilteredBlogPosts(posts);
+
   const { screenType } = useScreenType();
   return (
     <div className="App">
       {FullSizeLayer}
-      <div
+      <main
         style={{
           display: "flex",
           flexDirection: "column",
@@ -22,14 +26,12 @@ export function BlogPage({ posts }: BlogPageProps) {
             screenType === ScreenType.Mobile
               ? "2rem 1rem 2rem 1rem"
               : "3rem 1rem 5rem 4rem",
+          minHeight: "100vh",
         }}
       >
-        {posts.map((post, i) => (
-          <div key={post.sys.id + " " + { i }}>
-            <PostCard post={post} />
-          </div>
-        ))}
-      </div>
+        <FiltersBlog />
+        {!loading && <BlogWall posts={filteredPosts} />}
+      </main>
     </div>
   );
 }

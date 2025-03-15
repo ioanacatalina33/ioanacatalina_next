@@ -1,12 +1,14 @@
 import { ScreenType } from "types/enums";
 import { Album } from "types/modelTypes";
 
-export type Filters = Record<FilterName, string[]>;
+export type Filters = Partial<Record<FilterName, string[]>>;
+export type BlogFilters = Record<FilterName, string[]>;
 
 export enum FiltersType {
   Travel = "travel",
   Dance = "dance",
   Map = "map",
+  Blog = "blog",
 }
 
 export enum FilterName {
@@ -16,7 +18,9 @@ export enum FilterName {
   countries = "countries",
   subtypes = "subtypes",
   types = "types",
+  topics = "topics",
 }
+
 export interface AppStore {
   screenType: ScreenType;
   screenWidth: number;
@@ -29,6 +33,7 @@ export interface AppStore {
     travel: Filters;
     dance: Filters;
     map: Filters;
+    blog: Filters;
   };
 }
 

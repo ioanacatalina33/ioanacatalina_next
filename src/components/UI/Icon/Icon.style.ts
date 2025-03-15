@@ -4,7 +4,7 @@ export const ReactIcon = styled.a<{ darkColor?: boolean; hoverColor?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.4rem;
+  margin: 0.4rem 0.5rem 0.4rem 0.5rem;
   cursor: pointer;
 
   svg {

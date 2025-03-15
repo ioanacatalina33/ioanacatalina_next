@@ -41,18 +41,14 @@ export const ArticleSubHeader = ({
         className_="text-defaults"
         marginOffset={{ bottom: isMobile ? -1 : 0 }}
       >
-        <div style={{ flex: 1, paddingRight: "2rem" }}>
+        <div style={{ flex: 1, paddingRight: "2rem", textAlign: "left" }}>
           {dateStart !== undefined
             ? getFileDateTitleMonthString(dateStart, dateEnd)
             : ""}
         </div>
 
         <Flex align={(a) => a.center}>
-          <div style={{ textAlign: "right", paddingRight: "0.5rem" }}>
-            Share:
-          </div>
-
-          <ShareButtons facebook twitter whatsupp />
+          <ShareButtons facebook twitter whatsupp pinterest />
         </Flex>
       </Flex>
 

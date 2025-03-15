@@ -1,4 +1,4 @@
-import { Album, Location } from "types/modelTypes";
+import { Album, BlogPostCard, Location } from "types/modelTypes";
 
 export interface FiltersProps {
   albums: Album[];
@@ -15,4 +15,9 @@ export interface LogosFiltersProps {
 export interface MapFiltersProps {
   locations: Location[];
   nrFiltered: number;
+}
+
+export interface BlogFiltersProps {
+  blogPosts: BlogPostCard[];
+  availableTopics: string[];
 }

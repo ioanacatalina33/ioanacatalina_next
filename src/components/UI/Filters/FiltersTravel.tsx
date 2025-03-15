@@ -99,7 +99,8 @@ export const FiltersTravel = ({ albums, nrFiltered }: FiltersProps) => {
         >
           {screenType !== ScreenType.Mobile && (
             <div className="col" style={styleMention}>
-              <b>Ctrl+Click</b> for multiple select, <b>Esc</b> to deselect all
+              <b>Ctrl/Cmd+Click</b> for multiple select, <b>Esc</b> to deselect
+              all
             </div>
           )}
           <FilterComponent

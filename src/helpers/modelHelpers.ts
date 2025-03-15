@@ -2,7 +2,7 @@ import moment from "moment";
 
 import { AlbumType } from "../types/enums";
 import { PATH_ARTICLES } from "./const";
-import { Album, Location } from "types/modelTypes";
+import { Album, BlogPostCard, Location } from "types/modelTypes";
 import { FilterName } from "store";
 
 export const articleCover = (identifier: string): string => {
@@ -90,6 +90,10 @@ export function getBlogDate(date: Date): string {
   return moment(date).format("D MMM YYYY");
 }
 
+export function getBlogDateCaption(date: Date): string {
+  return moment(date).format("YYYY-MM-DD");
+}
+
 interface Filters {
   years: string[];
   months: string[];
@@ -133,6 +137,16 @@ export const filterArticles = (
       (!hasTypes ||
         filters.types.filter((type) => article.type === type).length > 0)
     );
+  });
+};
+
+export const filterBlogPosts = (
+  posts: BlogPostCard[],
+  keywords: string[],
+): BlogPostCard[] => {
+  if (!keywords || keywords.length === 0) return posts;
+  return posts.filter((post) => {
+    return post.fields.keywords.find((key) => keywords.includes(key));
   });
 };
 
@@ -439,6 +453,7 @@ export function mapFiltersFromURL(query) {
     countries: searchParams.getAll(FilterName.countries),
     types: searchParams.getAll(FilterName.types),
     subtypes: searchParams.getAll(FilterName.subtypes),
+    topics: searchParams.getAll(FilterName.topics),
   };
   return filtersFromURL;
 }

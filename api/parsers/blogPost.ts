@@ -11,6 +11,10 @@ export function parseToBlogPost(post: any): BlogPost {
   };
 }
 
+export function parseToBlogPostCards(response: any): BlogPostCard[] {
+  return response.items.map((post) => parseToBlogPostCard(post));
+}
+
 export function parseToBlogPostCard(post: any): BlogPostCard {
   return {
     sys: {

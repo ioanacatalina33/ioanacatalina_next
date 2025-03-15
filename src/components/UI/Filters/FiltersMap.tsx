@@ -100,7 +100,8 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
                 fontSize: "0.9rem",
               }}
             >
-              <b>Ctrl+Click</b> for multiple select
+              <b>Ctrl/Cmd+Click</b> <br />
+              for multiple select
             </div>
           )}
           <div
@@ -117,6 +118,7 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
               selected={filters.types}
               onFiltersChanged={onFiltersChanged}
               mapFilters
+              unselectOnEsc={false}
             />
             &nbsp;&nbsp;&nbsp;
             <FilterComponent
@@ -124,6 +126,7 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
               values={subtypes}
               selected={filters.subtypes}
               onFiltersChanged={onFiltersChanged}
+              unselectOnEsc={false}
               mapFilters
             />
           </div>
@@ -143,13 +146,16 @@ export const FiltersMap = ({ locations, nrFiltered }: MapFiltersProps) => {
               values={years}
               selected={filters.years}
               onFiltersChanged={onFiltersChanged}
+              unselectOnEsc={false}
               mapFilters
             />
+            &nbsp;&nbsp;&nbsp;
             <FilterComponent
               filterName={FilterName.months}
               values={months}
               selected={filters.months}
               onFiltersChanged={onFiltersChanged}
+              unselectOnEsc={false}
               mapFilters
             />{" "}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

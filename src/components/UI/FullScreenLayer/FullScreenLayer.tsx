@@ -25,7 +25,7 @@ export const FullScreenLayer = ({
   const splitText = fullSizeImage.text.split("<br/>");
 
   return (
-    <div
+    <header
       className={"header-album"}
       style={headerVisible ? { height: "100vh", marginTop: "-51px" } : {}}
     >
@@ -102,7 +102,7 @@ export const FullScreenLayer = ({
           ></i>
         </button>
       </div>
-    </div>
+    </header>
   );
 };
 

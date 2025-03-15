@@ -1,6 +1,5 @@
 import React from "react";
 
-import { SubscribeButton } from "components/UI/SubscribeButton";
 import { FollowMe } from "components/UI/FollowMe";
 import { ScreenType, StaticPage } from "types/enums";
 import { useBrowsers } from "hooks/useBrowsers";

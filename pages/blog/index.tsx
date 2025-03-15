@@ -3,20 +3,29 @@ import React from "react";
 import { BlogPage } from "components/Pages/BlogPage";
 import client from "../../lib/contentful";
 import { BlogPostCard } from "types";
-import { parseToBlogPostCard } from "../../api/parsers/blogPost";
+import {
+  parseToBlogPostCard,
+  parseToBlogPostCards,
+} from "../../api/parsers/blogPost";
 import { LazyLoadContext } from "Context/LazyLoadContext";
+import { sortBlogPosts } from "../../api/utils";
 
 export const getStaticProps = async () => {
-  const response = await client.getEntries({ content_type: "blogPost" });
+  const response = await client.getEntries({
+    content_type: "blogPost",
+    select: [
+      "sys",
+      "fields.title",
+      "fields.summary",
+      "fields.date",
+      "fields.slug",
+      "fields.headerPhoto",
+      "fields.keywords",
+      "fields.author",
+    ],
+  });
 
-  const posts: BlogPostCard[] = response.items.map((post) =>
-    parseToBlogPostCard(post),
-  );
-
-  posts.sort(
-    (a, b) =>
-      new Date(b.fields.date).getTime() - new Date(a.fields.date).getTime(),
-  );
+  const posts = sortBlogPosts(parseToBlogPostCards(response));
 
   return {
     props: {

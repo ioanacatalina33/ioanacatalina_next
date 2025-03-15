@@ -90,7 +90,7 @@ export const FiltersDance = ({ albums, showFilters }: DanceFiltersProps) => {
             >
               {isMobile && (
                 <div className="col" style={styleMention}>
-                  <b>Ctrl+Click</b> for multiple select
+                  <b>Ctrl/Cmd+Click</b> for multiple select
                   <br />
                   <b>Esc</b> to deselect all
                 </div>

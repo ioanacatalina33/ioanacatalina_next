@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Picture40Rem } from "components/UI/PictureContent";
 import { LinksContainer } from "components/UI/LinksContainer";
 import { LinksPageType, StaticPage } from "types/enums";
 import { useFullScreenlayer } from "hooks/useFullScreenLayer";

@@ -5,7 +5,7 @@ import { Photowall } from "components/UI/Photowall";
 import { AlbumType } from "types/enums";
 import { useFilteredAlbums } from "hooks/useFilteredAlbums";
 import { useIsFiltered } from "hooks/utils";
-import { FiltersType, incrementTravelPageCount } from "store";
+import { FiltersType } from "store";
 import { Album } from "types/modelTypes";
 import { useFullScreenlayer } from "hooks/useFullScreenLayer";
 import { useDispatch } from "react-redux";
@@ -17,8 +17,6 @@ interface TravelProps {
 
 export const TravelPage = ({ albums }: TravelProps) => {
   const FullSizeLayer = useFullScreenlayer(AlbumType.Travel);
-
-  const dispatch = useDispatch();
 
   const { filteredAlbums, loading } = useFilteredAlbums(
     albums,
@@ -41,7 +39,7 @@ export const TravelPage = ({ albums }: TravelProps) => {
   return (
     <>
       {FullSizeLayer}
-      <div className="App">
+      <main className="App">
         <h2>Travel</h2>
 
         <FiltersTravel albums={albums} nrFiltered={filteredAlbums.length} />
@@ -50,7 +48,7 @@ export const TravelPage = ({ albums }: TravelProps) => {
           loading={loading}
           filtered={isFiltered}
         />
-      </div>
+      </main>
     </>
   );
 };

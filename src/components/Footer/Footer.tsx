@@ -56,7 +56,7 @@ export const Footer = () => {
 
   const iconsLeft = (
     <>
-      <div className="footer-photo-container">
+      <footer className="footer-photo-container">
         <a href="/travel/back-to-the-jungle-in-brazil-2024">
           <Image
             loader={imageLoader}
@@ -77,7 +77,7 @@ export const Footer = () => {
             height={0}
           />
         </a>
-      </div>
+      </footer>
       <div className="footer-photo-container">
         <a href="/work-with-me">
           <Image

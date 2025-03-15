@@ -1,11 +1,12 @@
-import React, { useContext, useMemo, useState } from "react";
-import styled, { css } from "styled-components";
+import React, { useMemo, useState } from "react";
+import styled from "styled-components";
 import Link from "next/link";
 
 import { useScreenType } from "hooks";
 import { BlogPostCard, ScreenType } from "types";
 import { getBlogDate } from "helpers";
 import { ContentfulImage } from "components/Contentful/Image/ContentfulImage";
+import LazyLoad from "react-lazy-load";
 
 export function PostCard({ post }: { post: BlogPostCard }) {
   const { screenType } = useScreenType();
@@ -29,13 +30,18 @@ export function PostCard({ post }: { post: BlogPostCard }) {
     />
   );
 
+  let colsClass = "photo-col col-lg-12 col-sm-12 ";
+
   const imageComponent = useMemo(
     () => (
       <div className="photo-container" style={{ flex: 1 }}>
-        <div className="photo-container-img-space border-corner-up">
+        <div
+          className="photo-container-img-space border-corner-up"
+          style={{ background: "black" }}
+        >
           <div
             className="loading-animation border-corner-up"
-            style={{ minHeight: show ? "auto" : "13rem" }}
+            style={{ minHeight: show ? "auto" : "13rem", background: "black" }}
           >
             <img
               className="photo-small border-corner-up"
@@ -56,29 +62,35 @@ export function PostCard({ post }: { post: BlogPostCard }) {
 
   const content = useMemo(
     () => (
-      <Link
-        scroll={false}
-        href={"/blog/" + post.fields.slug}
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        <PostCardDiv mobile={isMobile}>
-          {isMobile && imageComponent}
-          <ContentDiv mobile={isMobile}>
-            <h3>{post.fields.title}</h3>
-            <div style={{ flexGrow: 1 }}>
-              {isMobile
-                ? post.fields.summary
-                : post.fields.summary.slice(0, 158)}
-              ...
-            </div>
+      <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+        <Link
+          scroll={false}
+          href={"/blog/" + post.fields.slug}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            backgroundColor: "blue",
+          }}
+        >
+          <PostCardDiv mobile={isMobile}>
+            {isMobile && imageComponent}
+            <ContentDiv mobile={isMobile}>
+              <h3>{post.fields.title}</h3>
+              <div style={{ flexGrow: 1 }}>
+                {isMobile
+                  ? post.fields.summary
+                  : post.fields.summary.slice(0, 130)}
+                ...
+              </div>
 
-            <DateDiv>
-              <span>{getBlogDate(new Date(post.fields.date))}</span>
-            </DateDiv>
-          </ContentDiv>
-          {!isMobile && imageComponent}
-        </PostCardDiv>
-      </Link>
+              <DateDiv>
+                <span>{getBlogDate(new Date(post.fields.date))}</span>
+              </DateDiv>
+            </ContentDiv>
+            {!isMobile && imageComponent}
+          </PostCardDiv>
+        </Link>
+      </div>
     ),
     [post, isMobile, imageComponent],
   );
@@ -111,29 +123,12 @@ const PostCardDiv = styled.div<MobileProps>`
   }
 `;
 
-const ImageContainer = styled.div`
-  /* flex: 1; */
-  position: relative;
-  width: 50%;
-  height: 25rem; /* Default height */
-
-  @media (min-width: 600px) {
-    height: 15rem;
-  }
-
-  @media (min-width: 900px) {
-    height: 25rem;
-  }
-`;
-
 const ContentDiv = styled.div<MobileProps>`
-  ${({ mobile }) => css`
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: ${({ mobile }) => (mobile ? "1rem" : "0rem 1rem 0rem 2rem")};
-    text-align: left;
-  `}
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: ${({ mobile }) => (mobile ? "1rem" : "0rem 1rem 0rem 2rem")};
+  text-align: left;
 `;
 
 const DateDiv = styled.div`
