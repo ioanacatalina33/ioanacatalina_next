@@ -5,7 +5,6 @@ import { BlogPost, BlogPostCard } from "types";
 import client, { previewClient } from "../../lib/contentful";
 import {
   parseToBlogPost,
-  parseToBlogPostCard,
   parseToBlogPostCards,
 } from "../../api/parsers/blogPost";
 import { STATIC_PATHS_LOAD } from "helpers";

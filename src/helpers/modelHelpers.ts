@@ -73,17 +73,20 @@ export const getUniqueCountriesByContinents = (
 };
 
 export const getYears = (albums: Album[]): string[] => {
-  return Array.from(
-    new Set(albums.map((item) => moment(item.date_start).format("YYYY"))),
-  )
-    .sort()
-    .reverse();
+  const set = new Set(
+    albums.map((item) => moment(item.date_start).format("YYYY")),
+  );
+  albums.forEach((item) => set.add(moment(item.date_end).format("YYYY")));
+
+  return Array.from(set).sort().reverse();
 };
 
 export const getMonths = (albums: Album[]): string[] => {
-  return Array.from(
-    new Set(albums.map((item) => moment(item.date_start).format("MMM"))),
-  ).sort();
+  const set = new Set(
+    albums.map((item) => moment(item.date_start).format("MMM")),
+  );
+  albums.forEach((item) => set.add(moment(item.date_end).format("MMM")));
+  return Array.from(set).sort();
 };
 
 export function getBlogDate(date: Date): string {
@@ -129,10 +132,16 @@ export const filterArticles = (
       (!hasYears ||
         filters.years.filter(
           (year) => moment(article.date_start).format("YYYY") === year,
+        ).length > 0 ||
+        filters.years.filter(
+          (year) => moment(article.date_end).format("YYYY") === year,
         ).length > 0) &&
       (!hasMonths ||
         filters.months.filter(
           (month) => moment(article.date_start).format("MMM") === month,
+        ).length > 0 ||
+        filters.months.filter(
+          (month) => moment(article.date_end).format("MMM") === month,
         ).length > 0) &&
       (!hasTypes ||
         filters.types.filter((type) => article.type === type).length > 0)

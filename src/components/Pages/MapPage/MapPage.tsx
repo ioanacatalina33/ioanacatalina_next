@@ -6,7 +6,9 @@ import { FiltersMap } from "components/UI/Filters";
 import { Location } from "types";
 
 import { MapAlbums } from "./MapAlbums";
-import { MapComponent } from "./MapComponent";
+import dynamic from "next/dynamic";
+
+const MapComponent = dynamic(() => import("./MapComponent"), { ssr: false });
 
 export const MapPage = ({ locations }: { locations: Location[] }) => {
   const { filteredLocations } = useFilteredLocations(locations);

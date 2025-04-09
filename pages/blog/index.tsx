@@ -3,10 +3,7 @@ import React from "react";
 import { BlogPage } from "components/Pages/BlogPage";
 import client from "../../lib/contentful";
 import { BlogPostCard } from "types";
-import {
-  parseToBlogPostCard,
-  parseToBlogPostCards,
-} from "../../api/parsers/blogPost";
+import { parseToBlogPostCards } from "../../api/parsers/blogPost";
 import { LazyLoadContext } from "Context/LazyLoadContext";
 import { sortBlogPosts } from "../../api/utils";
 

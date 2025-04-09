@@ -11,6 +11,8 @@ import { Spacer } from "components/UI/Spacer/Spacer";
 import { imageContainer } from "helpers/imageContainer";
 import { useScreenType } from "hooks";
 import { Flex } from "components/UI/Flex/Flex";
+import { LinksPortfolio } from "components/UI/LinksPortfolio/LinksPortfolio";
+import Link from "next/link";
 
 export const AboutPage = () => {
   const FullSizeLayer = useFullScreenlayer(StaticPage.ABOUT);
@@ -19,7 +21,7 @@ export const AboutPage = () => {
   return (
     <div className="App">
       {FullSizeLayer}
-      <main>
+      <main className="main-container">
         <h2>About me</h2>
         <Flex column style={{ maxWidth: "var(--content-width)" }}>
           <Flex column={isMobile ? true : false} align={(a) => a.center}>
@@ -45,18 +47,15 @@ export const AboutPage = () => {
           always excited to dive in, be present, immerse myself, and likely snap
           a photo.
         </Paragraph>
-
         {/* <div className="text-container">
         Anything that involves nature, animals, outdoors, arts, or dance- I’m
         in, excited to be present, immerse myself, and likely snap a picture.
       </div> */}
-
         <ImageCollage
           photos={getPhotosForCollage(PhotosCollageType.MyAdventures)}
           alt="Adventures"
         />
         {/* Adventure pics */}
-
         <Paragraph>
           I originally created this website as a personal space to organize and
           catalog the countless albums from my travels and events. With my
@@ -67,7 +66,6 @@ export const AboutPage = () => {
           nature and cultivate a deeper sense of respect for the world around
           us.
         </Paragraph>
-
         {/* <div className="text-container">
         I don’t wish to be a blogger, Instagrammer, or content creator. There
         are many out there doing a great job, but I don’t see myself in those
@@ -75,7 +73,6 @@ export const AboutPage = () => {
         <span className="text-container-bold">explore the world</span> and
         capture its beauty through my lenses.
       </div> */}
-
         <Paragraph>
           Passion for <span className="text-container-bold">photography</span>{" "}
           came so naturally to me during my younger years that I had never paid
@@ -88,12 +85,10 @@ export const AboutPage = () => {
           on, dancing came into my life, which became another amazing magical
           way of expression.
         </Paragraph>
-
         <ImageCollage
           photos={getPhotosForCollage(PhotosCollageType.Photography)}
           alt="About me"
         />
-
         <Paragraph>
           I remember I was using my first camera on film, the family camera,
           when I was only 13 years old, taking photos of my dog. At 14 years
@@ -104,7 +99,6 @@ export const AboutPage = () => {
           semi-professional camera, since 2009 I’ve owned DSLRs and in 2018 I
           added mirrorless to my collection.
         </Paragraph>
-
         <Paragraph>
           From nature, wildlife, dog shows, pets to traveling, dancing, hiking,
           winter sports, I’ve managed to combine them all very well during the
@@ -113,26 +107,22 @@ export const AboutPage = () => {
           <span className="text-container-bold">dog shows</span> in Romania and
           neighbour countries, taking pictures for dog breeders.
         </Paragraph>
-
         {/* Dog shows */}
         <ImageCollage
           photos={getPhotosForCollage(PhotosCollageType.DogShows)}
           alt="Dogs"
         />
-
         <Paragraph>
           Later on, in my early 20s, I started traveling with other landscape
           photographers to stunning places in the middle of nature, capturing
           the <span className="text-container-bold">rural life of Romania</span>{" "}
           and the whole nature across the country.
         </Paragraph>
-
         {/* Travel */}
         <ImageCollage
           photos={getPhotosForCollage(PhotosCollageType.RomaniaTravel)}
           alt="Travel"
         />
-
         <Paragraph>
           In 2010, I discovered{" "}
           <span className="text-container-bold">dancing</span>—a passion that
@@ -144,13 +134,11 @@ export const AboutPage = () => {
           the intensity of the moments we experience through it. I can only hope
           that my photos offer a glimpse into the heaven we’ve found.
         </Paragraph>
-
         {/* Dancing */}
         <ImageCollage
           photos={getPhotosForCollage(PhotosCollageType.Dancing)}
           alt="Dancing"
         />
-
         <Paragraph>
           The next chapter of my life was all about traveling the world, a dream
           I’d carried since childhood. In 2019, I quit my job to take a
@@ -172,7 +160,6 @@ export const AboutPage = () => {
           photos={getPhotosForCollage(PhotosCollageType.SouthAmerica)}
           alt="Travel"
         />
-
         <Paragraph>
           Now, after years of traveling to fulfill my dreams, my focus has
           shifted to projects that give back to the world. My recent travels
@@ -189,40 +176,14 @@ export const AboutPage = () => {
         <h5 style={{ margin: "1rem", marginTop: "0", textAlign: "center" }}>
           Some links with my profiles and portfolio:
         </h5>
-
         <LinksContainer containerType={LinksPageType.MyStory} />
         <Spacer size={(s) => s.s} />
-        <div
-          className="text-container text-centered"
-          style={{ paddingBottom: "4rem" }}
-        >
-          <h5 style={{ margin: "1rem", marginTop: "0", textAlign: "center" }}>
-            Articles where my photos had been published:
-          </h5>
-          <div>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              // className="link-underlined"
-              href="https://www.shutterstock.com/blog/secrets-epic-mountain-shots"
-            >
-              Shutterstock - secret epic mountain shots
-            </a>
-          </div>
-          <div>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              // className="link-underlined"
-              href="https://medium.com/@maria.c.suta/zouk-the-art-of-connection-6d9ced359852"
-            >
-              Medium - Zouk: The art of connection by Maria Cristina Suta
-            </a>
-          </div>
-          <div>...more to share soon</div>
+        <LinksPortfolio />
+        <Spacer size={(s) => s.m} />
+        <div className="text-container text-centered">
+          For more stories with my travels check out my{" "}
+          <Link href="/blog">blog articles!</Link>
         </div>
-        <h4>A blog will be up shortly!</h4>
-
         {/* <Paragraph>
         Special mention about my dear{" "}
         <span className="text-container-bold">

@@ -129,7 +129,7 @@ export const Footer = () => {
       </div>
 
       <div className="footer-photo-container footer-photo-container-right">
-        <a href="/highlights/landscape">
+        <a href="/blog/for-those-who-love-the-mountains">
           <Image
             className="bottom footer-img-mountain"
             loader={imageLoader}

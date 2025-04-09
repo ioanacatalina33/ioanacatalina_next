@@ -94,7 +94,7 @@ export function getMetaForHighlights(): MetaData {
 
 export function getMetaForBlog(): MetaData {
   return {
-    title: "Blog",
+    title: "Blog | Ioana Catalina E. Photography",
     keywords:
       "blog, posts, my, travel, life, about, thoughts, explore, mind, journey, road trip, trips",
     description: "My first personal blog ",

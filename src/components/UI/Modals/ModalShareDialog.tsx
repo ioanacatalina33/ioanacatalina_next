@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-  EmailShareButton,
-  EmailIcon,
-} from "react-share";
 
 import { ModalProps } from "./common";
 import { ShareButtons } from "./ShareButtons";

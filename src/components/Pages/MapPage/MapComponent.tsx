@@ -1,14 +1,9 @@
 // ES6
 import React, { useEffect, useState } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import { Marker } from "react-map-gl";
 import Map from "react-map-gl";
 
 import { Location } from "types";
-
-// const Map = ReactMapGL({
-//   accessToken:
-//     "pk.eyJ1IjoiaW9hbmFjYXRhbGluYTMzIiwiYSI6ImNqd251ZmR2bzBpcHMzenBmY2V0cHdidzEifQ.ChMpUh51gzz9xllDEpHSXA",
-// });
 
 interface MapComponentProps {
   locationsFiltered: Location[];
@@ -25,17 +20,14 @@ export interface ViewPort {
   zoom: number;
 }
 
-const token =
-  "pk.eyJ1IjoiaW9hbmFjYXRhbGluYTMzIiwiYSI6ImNqd251ZmR2bzBpcHMzenBmY2V0cHdidzEifQ.ChMpUh51gzz9xllDEpHSXA";
-
-export const MapComponent = ({
+export default function MapComponent({
   locationsFiltered,
   selectedLocation,
   width,
   height,
   viewport: viewportProp,
   onMarkerClicked,
-}: MapComponentProps) => {
+}: MapComponentProps) {
   const [viewport, setViewport] = useState(
     viewportProp
       ? viewportProp
@@ -45,6 +37,8 @@ export const MapComponent = ({
           zoom: 2.2,
         },
   );
+
+  const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
   const [markerSize, setMarkerSize] = useState({
     width: "1.1rem",
@@ -83,8 +77,6 @@ export const MapComponent = ({
         setOffsetTop: -14,
       });
   }, [viewport.zoom]);
-
-  /* H = (W*124.4/100) */
 
   const markers = React.useMemo(
     () =>
@@ -131,4 +123,4 @@ export const MapComponent = ({
       {markers}
     </Map>
   );
-};
+}

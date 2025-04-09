@@ -15,7 +15,10 @@ app
       const parsedUrl = parse(req.url, true);
       handle(req, res, parsedUrl);
     }).listen(port, () => {
-      console.log(`> Ready on http://localhost:${port}`);
+      if (dev)
+        console.log(
+          `> Ready on ${dev ? "http://localhost" : "https://ioanacatalina.com"}:${port}`,
+        );
     });
   })
   .catch((ex) => {

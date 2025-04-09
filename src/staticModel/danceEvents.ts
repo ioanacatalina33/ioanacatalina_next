@@ -748,7 +748,7 @@ export const danceEvents: DanceEvent[] = [
   {
     subtype: "CZC",
     name: "Canada Zouk Congress",
-    logo: PATH_LOGO + "CZC.png",
+    logo: PATH_LOGO + "czc.png",
     organizers: [
       {
         name: "Darius Zi",

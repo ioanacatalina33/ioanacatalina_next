@@ -19,9 +19,8 @@ export function BlogPage({ posts }: BlogPageProps) {
     <div className="App">
       {FullSizeLayer}
       <main
+        className="main-container"
         style={{
-          display: "flex",
-          flexDirection: "column",
           padding:
             screenType === ScreenType.Mobile
               ? "2rem 1rem 2rem 1rem"

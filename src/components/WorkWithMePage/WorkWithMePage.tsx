@@ -11,6 +11,7 @@ import { collaborativeDanceEvents } from "staticModel";
 import Link from "next/link";
 import YoutubeEmbed from "components/UI/YoutubeComponent/YoutubeComponent";
 import { imageContainer } from "helpers/imageContainer";
+import { LinksPortfolio } from "components/UI/LinksPortfolio/LinksPortfolio";
 
 export const WorkWithMePage = () => {
   const FullSizeLayer = useFullScreenlayer(StaticPage.WORK_WITH_ME);
@@ -34,7 +35,7 @@ export const WorkWithMePage = () => {
   return (
     <Flex className_="App">
       {FullSizeLayer}
-      <main>
+      <main className="main-container">
         <h2>Work with me</h2>
         <Flex column style={{ maxWidth: "var(--content-width)" }}>
           <Flex column={isMobile ? true : false} align={(a) => a.center}>
@@ -213,80 +214,81 @@ export const WorkWithMePage = () => {
               })}
           </Flex>
         </Flex>
-        <Flex
-          className_="filters-background"
-          column
-          align={(a) => a.center}
-          marginOffset={{ top: 3, bottom: 1 }}
-          paddingOffset={{ top: 1, bottom: 1 }}
-          fullWidth
-        >
-          <h4 style={{ color: "rgba(255,255,255,0.9)" }}>
-            Brazilian Zouk events and organizers I’ve worked with:
-          </h4>
-
-          <div style={{ width: "100%", maxWidth: "70rem", margin: "1rem" }}>
-            {collaborativeDanceEvents.map((organizer, index) => {
-              return organizer.logo !== "" && organizer.logo !== undefined ? (
-                <img
-                  className="logos-element-collaborations" //col-4 col-md-3 col-lg-2 col-xxl-1 justify-content-around
-                  key={index}
-                  src={organizer.logo}
-                  alt={organizer.logo}
-                ></img>
-              ) : (
-                ""
-              );
-            })}
-          </div>
-          {/* </ButtonToolbar>{" "} */}
-        </Flex>
-        <Paragraph centered>
-          To see the dance events albums{" "}
-          <Link
-            scroll={false}
-            href="/dance"
-            // className="custom-navbar-link links-small"
-          >
-            follow this link
-          </Link>
-          .
-        </Paragraph>
-        {getLogo("/img/logo_camera_color.png", "Tree")}
-        <Spacer size={(s) => s.m} withBorder />
-        <h3 style={{ textAlign: "center" }}>Videography</h3>
-        <Flex column style={{ maxWidth: "var(--content-width)" }}>
-          <Paragraph>
-            While photography has been my primary focus, I’ve also ventured into
-            videography, creating travel videos that document nature and the
-            beauty of our planet. Looking ahead, I plan to focus more on
-            documenting the causes and consequences of climate change, the human
-            impact on the environment, as well as exploring potential solutions.
-            If you have a project or idea that aligns with my vision, feel free
-            to reach out. I’m always open to collaboration.
-          </Paragraph>
-        </Flex>
-        <Flex
-          column
-          fullWidth
-          style={{ maxWidth: "45rem" }}
-          paddingOffset={{ top: 2, bottom: 2 }}
-        >
-          <YoutubeEmbed embedId="BzC8JBbIRfQ" />
-          <Spacer size={(s) => s.m} />
-          <YoutubeEmbed embedId="Lsz5g945484" />
-          <Spacer size={(s) => s.m} />
-          <YoutubeEmbed embedId="quBttnUH7as" />
-        </Flex>
-
-        <Paragraph centered>
-          For more details don't hesitate to{" "}
-          <Link scroll={false} href="/contact">
-            reach out
-          </Link>
-          .
-        </Paragraph>
       </main>
+      <LinksPortfolio />
+      <Flex
+        className_="filters-background"
+        column
+        align={(a) => a.center}
+        marginOffset={{ top: 3, bottom: 1 }}
+        paddingOffset={{ top: 1, bottom: 1 }}
+        fullWidth
+      >
+        <h4 style={{ color: "rgba(255,255,255,0.9)" }}>
+          Brazilian Zouk events and organizers I’ve worked with:
+        </h4>
+
+        <div style={{ width: "100%", maxWidth: "100rem", margin: "1rem" }}>
+          {collaborativeDanceEvents.map((organizer, index) => {
+            return organizer.logo !== "" && organizer.logo !== undefined ? (
+              <img
+                className="logos-element-collaborations" //col-4 col-md-3 col-lg-2 col-xxl-1 justify-content-around
+                key={index}
+                src={organizer.logo}
+                alt={organizer.logo}
+              ></img>
+            ) : (
+              ""
+            );
+          })}
+        </div>
+        {/* </ButtonToolbar>{" "} */}
+      </Flex>
+      <Paragraph centered>
+        To see the dance events albums{" "}
+        <Link
+          scroll={false}
+          href="/dance"
+          // className="custom-navbar-link links-small"
+        >
+          follow this link
+        </Link>
+        .
+      </Paragraph>
+      {getLogo("/img/logo_camera_color.png", "Tree")}
+      <Spacer size={(s) => s.m} withBorder />
+      <h3 style={{ textAlign: "center" }}>Videography</h3>
+      <Flex column style={{ maxWidth: "var(--content-width)" }}>
+        <Paragraph>
+          While photography has been my primary focus, I’ve also ventured into
+          videography, creating travel videos that document nature and the
+          beauty of our planet. Looking ahead, I plan to focus more on
+          documenting the causes and consequences of climate change, the human
+          impact on the environment, as well as exploring potential solutions.
+          If you have a project or idea that aligns with my vision, feel free to
+          reach out. I’m always open to collaboration.
+        </Paragraph>
+      </Flex>
+      <Flex
+        column
+        fullWidth
+        style={{ maxWidth: "45rem" }}
+        paddingOffset={{ top: 2, bottom: 2 }}
+      >
+        <YoutubeEmbed embedId="BzC8JBbIRfQ" />
+        <Spacer size={(s) => s.m} />
+        <YoutubeEmbed embedId="Lsz5g945484" />
+        <Spacer size={(s) => s.m} />
+        <YoutubeEmbed embedId="quBttnUH7as" />
+      </Flex>
+
+      <Paragraph centered>
+        For more details don't hesitate to{" "}
+        <Link scroll={false} href="/contact">
+          reach out
+        </Link>
+        .
+      </Paragraph>
     </Flex>
   );
 };

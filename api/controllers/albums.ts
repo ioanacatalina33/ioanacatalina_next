@@ -97,7 +97,7 @@ export async function getAlbumsBetweenDates(
 export async function getAlbumDetails(
   name_url: string,
 ): Promise<FullAlbumDetails> {
-  console.log("Getting album details");
+  console.log("Getting album details for ", name_url);
 
   let data: FullAlbumDetails;
   try {

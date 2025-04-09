@@ -17,7 +17,7 @@ export function BlogPostHeader({ title, date, headerImage, read = 5 }: Props) {
   return (
     <header className="defaultWidth" style={{ width: "100%" }}>
       <Spacer size={(s) => (isDesktop ? s.m : s.s)} />
-      <h1>{title}</h1>
+      <h1 style={{ padding: "1rem" }}>{title}</h1>
       {!isMobile && <Spacer size={(s) => s.xs} withBorder />}
       <span style={{ opacity: "0.7" }}>
         <time dateTime={getBlogDateCaption(new Date(date))}>

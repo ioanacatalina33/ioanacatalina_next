@@ -44,6 +44,13 @@ a,
   font-display: swap;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .defaultWidth {
   max-width: var(--content-width);
 }
@@ -432,20 +439,14 @@ h5 {
   border-radius: 0rem;
 }
 
-.filter-element:focus {
+.filter-element:focus,
+.filter-element:active {
   color: #dddddd;
   /* background: #505153; */
   background: rgb(10, 10, 10, 0.8);
   border: 0;
   outline: none;
   box-shadow: none;
-}
-
-.filter-element:hover {
-  /* color: #dddddd;
-  background: #67696d; */
-  color: #dddddd;
-  background: rgb(10, 10, 10, 1);
 }
 
 .filter-element-outline,
@@ -464,12 +465,6 @@ h5 {
   border: 0;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 128, 0.2);
   outline: 0;
-}
-
-.filter-element-outline:hover {
-  color: #dddddd;
-  /* background: #888b90; */
-  background: rgb(10, 10, 10, 1);
 }
 
 .logos-element,
@@ -1076,7 +1071,6 @@ h5 {
 
 .photowall-container {
   width: 100%;
-  align-content: center;
   text-align: center;
   padding: 1rem 1rem 1rem 1rem;
 }
@@ -1978,6 +1972,19 @@ h5 {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .filter-element:hover {
+    /* color: #dddddd;
+    background: #67696d; */
+    color: #dddddd;
+    background: rgb(10, 10, 10, 1);
+  }
+
+  .filter-element-outline:hover {
+    color: #dddddd;
+    /* background: #888b90; */
+    background: rgb(10, 10, 10, 1);
+  }
+
   .logos-element {
     /* max-width: 20rem; */
     padding: 0.5rem 1em 0.5rem 1rem;

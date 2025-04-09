@@ -19,10 +19,15 @@ interface Props {
 }
 
 export function BlogPostPage({ post, relatedPosts }: Props) {
-  console.log("related Post", relatedPosts);
   const { isDesktop } = useScreenType();
   const shareButtons = (
-    <ShareButtons facebook twitter whatsupp pinterest vertical />
+    <ShareButtons
+      facebook
+      twitter
+      whatsupp
+      pinterest
+      vertical={isDesktop ? true : false}
+    />
   );
   return (
     <>
@@ -45,7 +50,6 @@ export function BlogPostPage({ post, relatedPosts }: Props) {
             width: "100%",
           }}
         >
-          See more:{" "}
           {post.fields.keywords.map((value, index) => (
             <Link href={"/blog?topics=" + value}>
               <BlogTopicButton value={value} key={index} />
