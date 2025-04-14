@@ -82,7 +82,7 @@ export const PhotosDisplay = ({
     return (
       <div
         onClick={() => imageClicked(index)}
-        key={index}
+        key={image + index}
         style={{
           width: getPicWidth(isMobile ? PhotosDisplayType.ONE : displayMode),
         }}

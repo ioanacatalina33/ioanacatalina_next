@@ -62,7 +62,7 @@ export const AlbumPage = ({
 
     push(
       {
-        pathname: pathname,
+        // pathname: pathname,
         query: newQuery,
       },
       undefined,

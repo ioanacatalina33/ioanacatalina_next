@@ -104,7 +104,7 @@ export const AppMain = ({ Component, pageProps }: AppMain): JSX.Element => {
 
   async function rerender() {
     setShowContent(false);
-    await sleep(0);
+    await sleep(100);
     setShowContent(true);
   }
 
