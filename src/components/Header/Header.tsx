@@ -83,6 +83,14 @@ export const Header = () => {
 
       <Link
         scroll={false}
+        href="/travel"
+        className="custom-navbar-link links-large"
+      >
+        TRAVEL
+      </Link>
+
+      <Link
+        scroll={false}
         href="/highlights"
         className="custom-navbar-link links-large"
       >
@@ -127,19 +135,11 @@ export const Header = () => {
 
       <Link
         scroll={false}
-        href="/travel"
+        href="/dance"
         className="custom-navbar-link links-small"
       >
-        Travel
+        Dance
       </Link>
-
-      {/* <Link
-    scroll={false}
-    href="/dance"
-    className="custom-navbar-link links-small"
-  >
-    Dance
-  </Link> */}
 
       <Link
         scroll={false}
@@ -167,22 +167,15 @@ export const Header = () => {
         href="/map"
         style={{ color: "#cccccc", textDecoration: "none" }}
       >
-        MAP
+        Map
       </Nav.Link>
       <Nav.Link
-        eventKey="2"
-        href="/travel"
+        eventKey="3"
+        href="/dance"
         style={{ color: "#cccccc", textDecoration: "none" }}
       >
-        Travel
+        Dance
       </Nav.Link>
-      {/* <Nav.Link
-    eventKey="3"
-    href="/dance"
-    style={{ color: "#cccccc", textDecoration: "none" }}
-  >
-    Dance
-  </Nav.Link> */}
       <Nav.Link
         eventKey="7"
         href="/work-with-me"
@@ -234,7 +227,7 @@ export const Header = () => {
       <Navbar
         className={
           "custom-navbar " +
-          (allowInvisibleBackground() && isOnTop && isDesktop
+          (allowInvisibleBackground() && isOnTop && showFullMenu
             ? menuHover
               ? "semi-transparent-background"
               : "transparent-bg"
@@ -243,7 +236,7 @@ export const Header = () => {
         onMouseEnter={() => setMenuHover(true)}
         onMouseLeave={() => setMenuHover(false)}
         collapseOnSelect
-        expand="lg"
+        expand="xl"
         variant="dark"
         sticky="top"
       >
@@ -264,7 +257,7 @@ export const Header = () => {
             </div>
           </Link>
 
-          {isDesktop && (
+          {showFullMenu && (
             <>
               <Nav
                 className="custom-navbar-buttons-main"
@@ -281,13 +274,13 @@ export const Header = () => {
                     marginRight: "1rem",
                   }}
                 >
-                  {!showFullMenu ? (
+                  {/* {!showFullMenu ? (
                     <div style={{ display: "inline-block" }}>
                       <HeaderDropdown />
                     </div>
-                  ) : (
-                    RightMenu
-                  )}
+                  ) : ( */}
+                  {RightMenu}
+                  {/* )} */}
                 </div>
               </Nav>
               <div className="form-search">
@@ -315,9 +308,9 @@ export const Header = () => {
             </>
           )}
 
-          {!isDesktop && (
+          {!showFullMenu && (
             <>
-              {isTablet && !isMobileSearch && (
+              {!isMobile && !isMobileSearch && (
                 <Nav
                   className="custom-navbar-buttons-main"
                   style={{
@@ -369,7 +362,7 @@ export const Header = () => {
         </Flex>
 
         <Navbar.Collapse id="responsive-navbar-nav">
-          {!isDesktop && (
+          {!showFullMenu && (
             <Nav className="custom-navbar-buttons-me">
               {isMobile ? HiddenMenuMobile : HiddenMenuTablet}
             </Nav>
