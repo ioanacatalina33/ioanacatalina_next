@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { addSubscriber } from "../../api/controllers";
+import { addSubscriber } from "../../api/controllers/subscriber";
 
 export const config = {
   api: {

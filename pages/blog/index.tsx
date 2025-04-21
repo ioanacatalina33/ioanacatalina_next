@@ -7,7 +7,7 @@ import { parseToBlogPostCards } from "../../api/parsers/blogPost";
 import { LazyLoadContext } from "Context/LazyLoadContext";
 import { sortBlogPosts } from "../../api/utils";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const response = await client.getEntries({
     content_type: "blogPost",
     select: [

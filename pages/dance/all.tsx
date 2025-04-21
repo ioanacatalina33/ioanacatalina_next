@@ -5,9 +5,9 @@ import { DancePage } from "components";
 import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 
-import { getAlbumsByType } from "../../api/controllers";
+import { getAlbumsByType } from "../../api/controllers/albums";
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetStaticProps<Props> = async () => {
   const data = await getAlbumsByType(AlbumType.Dance);
 
   if (!data) {

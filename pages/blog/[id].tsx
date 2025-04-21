@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 import { BlogPost, BlogPostCard } from "types";
 import client, { previewClient } from "../../lib/contentful";
@@ -7,27 +7,26 @@ import {
   parseToBlogPost,
   parseToBlogPostCards,
 } from "../../api/parsers/blogPost";
-import { STATIC_PATHS_LOAD } from "helpers";
 import { BlogPostPage } from "components/Pages/BlogPostPage";
 import { getRelatedPosts, sortBlogPosts } from "../../api/utils";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  let paths = [];
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   let paths = [];
 
-  if (STATIC_PATHS_LOAD) {
-    const response = await client.getEntries({ content_type: "blogPost" });
-    paths = response.items.map((post) => ({
-      params: { id: post.fields.slug },
-    }));
-  }
+//   if (STATIC_PATHS_LOAD) {
+//     const response = await client.getEntries({ content_type: "blogPost" });
+//     paths = response.items.map((post) => ({
+//       params: { id: post.fields.slug },
+//     }));
+//   }
 
-  return {
-    paths,
-    fallback: STATIC_PATHS_LOAD ? false : "blocking",
-  };
-};
+//   return {
+//     paths,
+//     fallback: STATIC_PATHS_LOAD ? false : "blocking",
+//   };
+// };
 
-export const getStaticProps: GetStaticProps<Props> = async ({
+export const getServerSideProps: GetServerSideProps<Props> = async ({
   params,
   preview = false,
 }) => {

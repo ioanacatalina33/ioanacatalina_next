@@ -22,6 +22,8 @@ import { PhotosDisplay } from "./Components/PhotosDisplay";
 import { AlbumRecommended } from "./Components/AlbumRecommended";
 import { ArticleSubHeader } from "components/UI/ArticleSubHeader";
 import { Flex } from "components/UI/Flex/Flex";
+import { Spacer } from "components/UI/Spacer/Spacer";
+import { ShareButtons } from "components/UI/Modals/ShareButtons";
 
 interface AlbumPageProps {
   fullAlbum: FullAlbumDetails;
@@ -34,7 +36,6 @@ export const AlbumPage = ({
 
   const [selectedDisplay, setSelectedDisplay] = useState(DefaultDisplayType);
   const [currentIndex, setCurrentIndex] = useState(undefined);
-  const [pathname, setPathname] = useState("");
 
   const isTravelType = album.type === AlbumType.Travel;
   const isDanceType = album.type === AlbumType.Dance;
@@ -47,22 +48,27 @@ export const AlbumPage = ({
     img?: number;
   };
 
-  function pushQuery() {
+  function pushIndex(index: number) {
     let newQuery: QueryType = { ...query };
-
-    if (selectedDisplay !== DefaultDisplayType)
-      newQuery = { ...newQuery, display: selectedDisplay };
-    else delete newQuery.display;
-
-    if (currentIndex !== undefined) {
-      newQuery = { ...newQuery, img: currentIndex + 1 };
+    if (index !== undefined) {
+      newQuery = { ...newQuery, img: index + 1 };
     } else {
       delete newQuery.img;
     }
+    pushQuery(newQuery);
+  }
 
+  function pushDisplay(display: PhotosDisplayType) {
+    let newQuery: QueryType = { ...query };
+    if (display !== DefaultDisplayType) {
+      newQuery = { ...newQuery, display: display };
+    } else delete newQuery.display;
+    pushQuery(newQuery);
+  }
+
+  function pushQuery(newQuery: QueryType) {
     push(
       {
-        // pathname: pathname,
         query: newQuery,
       },
       undefined,
@@ -73,18 +79,8 @@ export const AlbumPage = ({
   }
 
   useEffect(() => {
-    pushQuery();
-  }, [currentIndex, selectedDisplay]);
-
-  useEffect(() => {
     const photoIndex = mapPhotoFromURL(window.location.search);
     const displayMode = mapPropertyFromURL(window.location.search, "display");
-
-    // setPathname(
-    //   window.location.href.indexOf("?") > 0
-    //     ? window.location.href.slice(0, window.location.href.indexOf("?"))
-    //     : window.location.href,
-    // );
 
     if (displayMode !== undefined)
       setSelectedDisplay(displayMode as PhotosDisplayType);
@@ -106,10 +102,12 @@ export const AlbumPage = ({
 
   function albumDisplaySelected(value: PhotosDisplayType) {
     setSelectedDisplay(value);
+    pushDisplay(value);
   }
 
   async function setIndex(index: number) {
     setCurrentIndex(index);
+    pushIndex(index);
     setModalShow(index !== undefined ? true : false);
     if (index !== undefined) {
       document.body.style.overflow = "hidden";
@@ -161,7 +159,7 @@ export const AlbumPage = ({
               : ""
           }
         />
-
+        <Spacer size={(s) => s.m} />
         {album.name === "Geena" && <GeenaPage />}
 
         <ArticleSubHeader
@@ -180,7 +178,6 @@ export const AlbumPage = ({
           {!isHighlightType && !!album.description && (
             <>
               <br />
-              <br />
             </>
           )}
         </div>
@@ -197,7 +194,9 @@ export const AlbumPage = ({
           images={imagesToDisplay}
           alt={title + " " + subTitle}
         />
-
+        <Flex align={(a) => a.center}>
+          <ShareButtons facebook twitter whatsupp pinterest />
+        </Flex>
         <div style={{ height: "3rem" }} />
         <FollowMe invertColors />
 

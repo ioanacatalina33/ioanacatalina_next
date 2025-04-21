@@ -1,5 +1,3 @@
-import { sleep } from "./utils";
-
 export const fetchSmallArticles = async () => {
   try {
     const response = await fetch("/api/albums_small");
@@ -81,4 +79,8 @@ export const fetchParameter = async (name) => {
     await sleep(2000);
     return await fetchParameter(name);
   }
+};
+
+const sleep = (milliseconds: number) => {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };

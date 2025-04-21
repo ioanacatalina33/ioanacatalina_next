@@ -27,19 +27,14 @@ export const ArticleSubHeader = ({
     <Flex
       column
       fullWidth
-      paddingOffset={{
-        top: isMobile ? 2 : 3,
-        bottom: 1,
-        left: 1,
-        right: 1,
-      }}
+      className_="text-container"
       style={{ maxWidth: "var(--content-width)" }}
     >
       <Flex
         align={(j) => j.center}
         fullWidth
         className_="text-defaults"
-        marginOffset={{ bottom: isMobile ? -1 : 0 }}
+        marginOffset={{ bottom: 0 }}
       >
         <div style={{ flex: 1, paddingRight: "2rem", textAlign: "left" }}>
           {dateStart !== undefined

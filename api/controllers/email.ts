@@ -37,7 +37,7 @@ interface MailOptions {
   text?: string;
   attachments?: {
     filename: string;
-    content: fs.ReadStream;
+    content: any;
   }[];
 }
 
@@ -58,7 +58,7 @@ function getMailOptions(req, title): MailOptions {
 export async function sendEmail(req, res) {
   const mailOptions = getMailOptions(
     req,
-    "IOANA CATALINA E. SHOP Title: " + req.body.title
+    "IOANA CATALINA E. SHOP Title: " + req.body.title,
   );
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
@@ -73,11 +73,11 @@ export async function sendEmail(req, res) {
 
 export async function sendBuyDigitalEmail(
   req: NextApiRequest,
-  res: NextApiResponse<{ message?: string; result?: number }>
+  res: NextApiResponse<{ message?: string; result?: number }>,
 ) {
   const mailOptions = getMailOptions(
     req,
-    "IOANA CATALINA E. WEBSITE Request to buy digital"
+    "IOANA CATALINA E. WEBSITE Request to buy digital",
   );
   mailOptions.text =
     mailOptions.text + "\n Sender's requested photo: " + req.body.img;
@@ -102,7 +102,7 @@ export async function sendBuyDigitalEmail(
 export async function sendEmailFreelance(req, res) {
   const mailOptions = getMailOptions(
     req,
-    "IOANA CATALINA Freelance: " + req.body.subject
+    "IOANA CATALINA Freelance: " + req.body.subject,
   );
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {

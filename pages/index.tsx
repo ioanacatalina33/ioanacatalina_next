@@ -1,13 +1,13 @@
 import React from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 
 import { HomePage } from "components";
 import {
   getNumberAlbums,
-  getNumberLocations,
   getNumberOfCountries,
-} from "../api/controllers";
+} from "../api/controllers/albums";
 import { getNumberImages } from "../api/utils";
+import { getNumberLocations } from "../api/controllers/location";
 
 interface Props {
   nrCountries: number;
@@ -16,7 +16,7 @@ interface Props {
   nrImages: number;
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const [nrCountries, nrAlbums, nrLocations, nrImages] = await Promise.all([
     getNumberOfCountries(),
     getNumberAlbums(),

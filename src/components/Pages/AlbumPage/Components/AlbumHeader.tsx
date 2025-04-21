@@ -36,12 +36,12 @@ export const AlbumHeader = ({
   };
 
   return (
-    <div className={"header-album"}>
+    <div className={"header-album"} style={blurrBackground}>
       <div className="album-header-wrapper">
         <div
-          className={
-            !coverImageSrc.includes("_large") ? "blurred-background" : ""
-          }
+          // className={
+          //   !coverImageSrc.includes("_large") ? "blurred-background" : ""
+          // }
           style={blurrBackground}
         />
         {/* <button onClick={props.backPressed} variant="outline-light" className="album-header-button album-header-button-close">

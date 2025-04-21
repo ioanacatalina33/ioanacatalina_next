@@ -2,24 +2,30 @@ import fs from "fs";
 import path from "path";
 import { HighlightsAlbums } from "staticModel";
 import { AlbumType, BlogPost, BlogPostCard, Routes } from "types";
-import { getUrlPaths } from "./controllers";
+import { getUrlPaths } from "./controllers/albums";
 
 export async function getImagesNamesFromFolder(folderPath: string) {
-  const directoryPath = path.join(process.cwd(), "public/img/" + folderPath);
+  const directoryPath =
+    process.env.NODE_ENV !== "production"
+      ? path.join(process.cwd(), "public/img/" + folderPath)
+      : process.env.IMAGES_PATH + folderPath;
+
   if (fs.existsSync(directoryPath)) return fs.readdirSync(directoryPath);
   else return [];
 }
 
 export async function getNumberImages() {
-  const nrTravel = getImagesNumberFromFolder(
-    path.join(process.cwd(), "public/img/travel/"),
-  );
-  const nrDance = getImagesNumberFromFolder(
-    path.join(process.cwd(), "public/img/dance/"),
-  );
-  // const nrHighlights = getImagesNumberFromFolder(
-  //   path.join(process.cwd(), "public/img/highlights/")
-  // );
+  const isDev = process.env.NODE_ENV !== "production";
+  const travelFolderPath = isDev
+    ? path.join(process.cwd(), "public/img/travel/")
+    : process.env.IMAGES_PATH + "Travel";
+  const danceFolderPath = isDev
+    ? path.join(process.cwd(), "public/img/dance/")
+    : process.env.IMAGES_PATH + "Dance";
+
+  const nrTravel = getImagesNumberFromFolder(travelFolderPath);
+  const nrDance = getImagesNumberFromFolder(danceFolderPath);
+
   return nrTravel + nrDance;
 }
 

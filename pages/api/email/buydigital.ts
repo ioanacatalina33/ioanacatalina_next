@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { sendBuyDigitalEmail } from "../../../api/controllers";
+import { sendBuyDigitalEmail } from "../../../api/controllers/email";
 
 export const config = {
   api: {

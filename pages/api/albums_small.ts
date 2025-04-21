@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Album } from "types";
 
-import { getSmallAlbums } from "../../api/controllers";
+import { getSmallAlbums } from "../../api/controllers/albums";
 
 export const config = {
   api: {

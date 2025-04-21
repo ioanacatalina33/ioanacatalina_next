@@ -205,6 +205,14 @@ export const Header = () => {
 
       <Nav.Link
         eventKey="6"
+        href="/travel"
+        style={{ color: "#cccccc", textDecoration: "none" }}
+      >
+        Travel
+      </Nav.Link>
+
+      <Nav.Link
+        eventKey="6"
         href="/highlights"
         style={{ color: "#cccccc", textDecoration: "none" }}
       >

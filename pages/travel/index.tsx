@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import React from "react";
 
 import { TravelPage } from "components";
@@ -8,7 +8,7 @@ import { Album } from "types/modelTypes";
 import { getAlbumsByType } from "../../api/controllers/albums";
 import { LazyLoadContext } from "Context/LazyLoadContext";
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const data = await getAlbumsByType(AlbumType.Travel);
   if (!data) {
     return {
@@ -18,7 +18,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: { albums: data },
-    // revalidate: 1, // In seconds
   };
 };
 

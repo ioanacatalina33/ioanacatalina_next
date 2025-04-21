@@ -1723,18 +1723,21 @@ h5 {
   text-decoration: none;
   color: rgb(var(--primary-color-hover));
   /* background: rgb(var(--primary-color)); */
+  background: transparent;
 }
 
 .text-container a:hover {
   text-decoration: none;
   color: rgb(var(--primary-color-hover));
   /* background: rgb(var(--primary-color)); */
+  background: transparent;
 }
 
 .text-container a:active {
   text-decoration: none;
   color: rgb(var(--primary-color-hover));
   /* background: rgb(var(--primary-color)); */
+  background: transparent;
 }
 
 /* Flash class and keyframe animation */
@@ -1768,7 +1771,7 @@ h5 {
 /* -------------- HOME ---------------- */
 
 .home-container {
-  max-width: 42rem;
+  max-width: 50rem;
   margin: 0 auto;
   padding: 1rem 0rem 1rem 0rem;
 }

@@ -5,7 +5,7 @@ import { DancePage } from "components";
 import { AlbumType } from "types/enums";
 import { Album } from "types/modelTypes";
 
-import { getAlbumsByType } from "../../api/controllers";
+import { getAlbumsByType } from "../../api/controllers/albums";
 import { LazyLoadContext } from "Context/LazyLoadContext";
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
